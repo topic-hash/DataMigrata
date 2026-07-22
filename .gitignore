@@ -1,0 +1,32 @@
+# SQL Server backups
+*.bak
+*.trn
+*.diff
+
+# SQL Server data files
+*.mdf
+*.ldf
+*.ndf
+
+# Connection files / credentials
+*.connection
+sqlconnections.json
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Docker volumes
+volumes/
+
+# Temp files
+*.tmp
+*.swp
