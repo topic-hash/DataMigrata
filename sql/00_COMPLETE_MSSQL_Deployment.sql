@@ -44,9 +44,17 @@ ALTER DATABASE MSSQL_Advanced_Demo SET QUERY_STORE (
     DATA_FLUSH_INTERVAL_SECONDS = 900,
     MAX_STORAGE_SIZE_MB = 1000
 );
-ALTER DATABASE MSSQL_Advanced_Demo SET COMPATIBILITY_LEVEL = 160; -- SQL 2022 (required for JSON native type)
+ALTER DATABASE MSSQL_Advanced_Demo SET COMPATIBILITY_LEVEL = 160; -- SQL 2022 (required for JSON_OBJECT)
 ALTER DATABASE MSSQL_Advanced_Demo SET AUTO_CREATE_STATISTICS ON;
 ALTER DATABASE MSSQL_Advanced_Demo SET AUTO_UPDATE_STATISTICS ON;
+GO
+
+-- Add MEMORY_OPTIMIZED_FILEGROUP (required for memory-optimized tables)
+ALTER DATABASE MSSQL_Advanced_Demo ADD FILEGROUP MSSQL_Advanced_Demo_mod CONTAINS MEMORY_OPTIMIZED_DATA;
+ALTER DATABASE MSSQL_Advanced_Demo
+    ADD FILE (NAME = N'MSSQL_Advanced_Demo_mod',
+               FILENAME = N'/var/opt/mssql/data/MSSQL_Advanced_Demo_mod')
+    TO FILEGROUP MSSQL_Advanced_Demo_mod;
 GO
 
 -- Enable FileStream if available (for FileTable)
@@ -694,7 +702,7 @@ SELECT
     p.Category,
     COUNT_BIG(*) AS ProductCount,
     SUM(p.BasePrice) AS TotalBasePrice,
-    AVG(p.BasePrice) AS AvgBasePrice,
+    SUM(p.BasePrice) / COUNT_BIG(*) AS AvgBasePrice,  -- Replace AVG for indexed view compatibility
     SUM(p.CostPrice) AS TotalCostPrice
 FROM Sales.Products p
 GROUP BY p.Category;
@@ -765,7 +773,7 @@ IF EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_CS_Transactions')
     DROP INDEX IX_CS_Transactions ON Sales.Transactions;
 
 CREATE NONCLUSTERED COLUMNSTORE INDEX IX_CS_Transactions 
-ON Sales.Transactions (EmployeeID, ProductID, TotalAmount, TransactionDate, PaymentStatus);
+ON Sales.Transactions (EmployeeID, ProductID, TransactionDate, PaymentStatus);  -- TotalAmount excluded (computed column)
 GO
 
 -- ============================================================================
@@ -824,7 +832,7 @@ GO
 -- VERIFICATION
 -- ============================================================================
 SELECT 
-    'HR.Employees' AS TableName, COUNT(*) AS RowCount FROM HR.Employees
+    'HR.Employees' AS [TableName], COUNT(*) AS [RowCount] FROM HR.Employees
 UNION ALL SELECT 'Sales.Products', COUNT(*) FROM Sales.Products
 UNION ALL SELECT 'Sales.Transactions', COUNT(*) FROM Sales.Transactions
 UNION ALL SELECT 'Sales.TransactionsHistory', COUNT(*) FROM Sales.TransactionsHistory
