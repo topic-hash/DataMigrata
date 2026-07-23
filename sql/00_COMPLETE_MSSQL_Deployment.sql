@@ -134,7 +134,7 @@ CREATE TABLE Sales.Transactions (
     TotalAmount AS (Quantity * UnitPrice * (1 - DiscountPct)) PERSISTED,
     TransactionDate DATETIME2 DEFAULT SYSUTCDATETIME(),
     Region GEOGRAPHY,
-    TransactionDetails JSON,
+    TransactionDetails NVARCHAR(MAX),  -- JSON data stored as NVARCHAR(MAX) for broad compatibility
     PaymentStatus NVARCHAR(20) DEFAULT 'pending',
     ValidFrom DATETIME2 GENERATED ALWAYS AS ROW START HIDDEN,
     ValidTo DATETIME2 GENERATED ALWAYS AS ROW END HIDDEN,
