@@ -55,6 +55,12 @@ GO
 
 USE MSSQL_Advanced_Demo;
 GO
+SET QUOTED_IDENTIFIER ON;
+SET ANSI_NULLS ON;
+SET ANSI_PADDING ON;
+SET ANSI_WARNINGS ON;
+SET CONCAT_NULL_YIELDS_NULL ON;
+GO
 
 -- ============================================================================
 -- STEP 3: CREATE SCHEMAS
