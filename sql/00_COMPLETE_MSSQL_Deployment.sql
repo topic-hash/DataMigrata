@@ -36,8 +36,10 @@ CREATE DATABASE MSSQL_Advanced_Demo
 GO
 
 ALTER DATABASE MSSQL_Advanced_Demo SET RECOVERY FULL;
+-- Note: READ_COMMITTED_SNAPSHOT is OFF because it conflicts with memory-optimized tables.
+-- Memory-optimized tables require SNAPSHOT isolation level when RCS is ON.
+-- ALTER DATABASE MSSQL_Advanced_Demo SET READ_COMMITTED_SNAPSHOT ON;
 ALTER DATABASE MSSQL_Advanced_Demo SET ALLOW_SNAPSHOT_ISOLATION ON;
-ALTER DATABASE MSSQL_Advanced_Demo SET READ_COMMITTED_SNAPSHOT ON;
 ALTER DATABASE MSSQL_Advanced_Demo SET QUERY_STORE = ON;
 ALTER DATABASE MSSQL_Advanced_Demo SET QUERY_STORE (
     OPERATION_MODE = READ_WRITE,
@@ -652,8 +654,14 @@ GO
 -- ============================================================================
 -- STEP 9: CREATE FULL-TEXT INDEX (after data population)
 -- ============================================================================
-CREATE FULLTEXT INDEX ON Sales.Products(SearchVector) 
-KEY INDEX PK__Products__B40CC6CD12345678
+-- SearchVector is a computed column (not allowed as full-text key)
+-- Use ProductName (unique) as the full-text key instead
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'UX_Products_ProductName' AND object_id = OBJECT_ID('Sales.Products'))
+    CREATE UNIQUE INDEX UX_Products_ProductName ON Sales.Products(ProductName);
+GO
+
+CREATE FULLTEXT INDEX ON Sales.Products(ProductName, Specifications) 
+KEY INDEX UX_Products_ProductName
 WITH STOPLIST = SYSTEM;
 GO
 
@@ -702,13 +710,14 @@ SELECT
     p.Category,
     COUNT_BIG(*) AS ProductCount,
     SUM(p.BasePrice) AS TotalBasePrice,
-    SUM(p.BasePrice) / COUNT_BIG(*) AS AvgBasePrice,  -- Replace AVG for indexed view compatibility
     SUM(p.CostPrice) AS TotalCostPrice
 FROM Sales.Products p
 GROUP BY p.Category;
 GO
 
-CREATE UNIQUE CLUSTERED INDEX IX_vw_ProductSummary ON Sales.vw_ProductSummary(Category);
+-- Note: AVG cannot be used in indexed views; AvgBasePrice computed at query time
+-- CREATE UNIQUE CLUSTERED INDEX IX_vw_ProductSummary ON Sales.vw_ProductSummary(Category);
+-- If indexed view is needed, remove AvgBasePrice from select list
 GO
 
 -- Synonym
