@@ -866,8 +866,7 @@ WITH Hierarchy AS (
     WHERE h.Level < 10
 )
 SELECT ManagerID, h.EmployeeID, h.FullName, h.Level
-FROM Hierarchy h
-ORDER BY h.ManagerID, h.Level;
+FROM Hierarchy h;
 GO
 
 -- Sales.vw_AllTransactions: Partitioned view across current and archive transactions
@@ -879,8 +878,18 @@ SELECT TransactionID, EmployeeID, ProductID, Quantity, UnitPrice, DiscountPct,
        TotalAmount, TransactionDate, Region, TransactionDetails, PaymentStatus
 FROM Sales.Transactions
 UNION ALL
-SELECT TransactionID, EmployeeID, ProductID, Quantity, UnitPrice, DiscountPct,
-       TotalAmount, TransactionDate, NULL AS Region, NULL AS TransactionDetails, PaymentStatus
+SELECT
+    TransactionID,
+    NULL AS EmployeeID,
+    ProductID,
+    NULL AS Quantity,
+    NULL AS UnitPrice,
+    NULL AS DiscountPct,
+    CAST(Amount AS DECIMAL(17,2)) AS TotalAmount,
+    CAST(ArchiveDate AS DATETIME2) AS TransactionDate,
+    NULL AS Region,
+    NULL AS TransactionDetails,
+    NULL AS PaymentStatus
 FROM Archive.OldTransactions;
 GO
 
@@ -990,10 +999,11 @@ GO
 IF OBJECT_ID('Sales.fn_GetEmployeeSales', 'IF') IS NOT NULL
     DROP FUNCTION Sales.fn_GetEmployeeSales;
 GO
-CREATE FUNCTION Sales.fn_GetEmployeeSales
+CREATE FUNCTION Sales.fn_GetEmployeeSales (
     @EmployeeID INT,
     @StartDate DATE,
     @EndDate DATE
+)
 RETURNS TABLE
 AS
 RETURN (

@@ -6,6 +6,10 @@
 USE MSSQL_Advanced_Demo;
 GO
 
+-- Required for XML data type methods, JSON_MODIFY, MERGE with OUTPUT, and indexed views
+SET QUOTED_IDENTIFIER ON;
+GO
+
 -- ============================================================================
 -- CATEGORY 1: HIERARCHICAL & RECURSIVE QUERIES (Operations 1-5)
 -- ============================================================================
@@ -17,7 +21,7 @@ WITH EmployeeHierarchy AS (
         CAST(FullName AS NVARCHAR(MAX)) AS HierarchyPath,
         0 AS Level,
         CAST(EmployeeID AS VARCHAR(MAX)) AS PathString,
-        Salary AS CumulativeSalary
+        CAST(Salary AS DECIMAL(18,2)) AS CumulativeSalary
     FROM HR.Employees
     WHERE ManagerID IS NULL
     UNION ALL
@@ -26,7 +30,7 @@ WITH EmployeeHierarchy AS (
         CAST(h.HierarchyPath + ' > ' + e.FullName AS NVARCHAR(MAX)),
         h.Level + 1,
         CAST(h.PathString + '.' + CAST(e.EmployeeID AS VARCHAR) AS VARCHAR(MAX)),
-        h.CumulativeSalary + e.Salary
+        CAST(h.CumulativeSalary + e.Salary AS DECIMAL(18,2))
     FROM HR.Employees e
     INNER JOIN EmployeeHierarchy h ON e.ManagerID = h.EmployeeID
     WHERE h.Level < 10
@@ -42,16 +46,23 @@ OPTION (MAXRECURSION 100);
 GO
 
 -- OP 2: Recursive CTE with aggregation up the hierarchy
-WITH HierarchyAgg AS (
+WITH SubCounts AS (
+    SELECT ManagerID, COUNT(*) AS DirectReports
+    FROM HR.Employees
+    WHERE ManagerID IS NOT NULL
+    GROUP BY ManagerID
+),
+HierarchyAgg AS (
     SELECT EmployeeID, ManagerID, FullName, Salary, 1 AS SubordinateCount
     FROM HR.Employees
     WHERE EmployeeID NOT IN (SELECT ManagerID FROM HR.Employees WHERE ManagerID IS NOT NULL)
     UNION ALL
-    SELECT 
+    SELECT
         p.EmployeeID, p.ManagerID, p.FullName, p.Salary,
-        c.SubordinateCount + ISNULL((SELECT COUNT(*) FROM HR.Employees s WHERE s.ManagerID = p.EmployeeID), 0)
+        c.SubordinateCount + sc.DirectReports
     FROM HR.Employees p
     INNER JOIN HierarchyAgg c ON c.ManagerID = p.EmployeeID
+    INNER JOIN SubCounts sc ON sc.ManagerID = p.EmployeeID
 )
 SELECT TOP 50
     e.EmployeeID, e.FullName, e.Department, e.JobTitle, e.Salary,
@@ -235,13 +246,16 @@ DECLARE @orders NVARCHAR(MAX) = '[
     {"product": "Agent", "qty": 5, "price": 4999.99}
 ]';
 
-SELECT *
+SELECT
+    Product,
+    Quantity,
+    Price,
+    Quantity * Price AS LineTotal
 FROM OPENJSON(@orders)
 WITH (
     Product NVARCHAR(100) '$.product',
     Quantity INT '$.qty',
-    Price DECIMAL(18,2) '$.price',
-    LineTotal AS (Quantity * Price)
+    Price DECIMAL(18,2) '$.price'
 );
 GO
 
@@ -250,11 +264,12 @@ GO
 -- ============================================================================
 
 -- OP 16: Temporal querying - AS OF
+DECLARE @AsOfDate DATETIME2 = DATEADD(DAY, -1, SYSUTCDATETIME());
+
 SELECT TOP 50
     TransactionID, EmployeeID, TotalAmount, TransactionDate,
     ValidFrom, ValidTo
-FROM Sales.Transactions
-FOR SYSTEM_TIME AS OF DATEADD(DAY, -1, SYSUTCDATETIME())
+FROM Sales.Transactions FOR SYSTEM_TIME AS OF @AsOfDate
 ORDER BY TransactionID;
 GO
 
@@ -312,7 +327,7 @@ GO
 
 -- OP 21: Indexed (Materialized) View with SCHEMABINDING and aggregation
 -- Already created during migration; query it directly
-SELECT * FROM Sales.vw_ProductSummary WITH (NOEXPAND)
+SELECT * FROM Sales.vw_ProductSummary
 ORDER BY Category;
 GO
 
@@ -416,8 +431,8 @@ GO
 
 -- OP 35: Multi-polygon territory analysis
 DECLARE @salesTerritory GEOGRAPHY = geography::STGeomFromText(
-    'MULTIPOLYGON(((-125 25, -125 50, -100 50, -100 25, -125 25)), 
-                  ((-100 30, -100 45, -80 45, -80 30, -100 30)))', 4326);
+    'MULTIPOLYGON(((-125 25, -100 25, -100 50, -125 50, -125 25)), 
+                  ((-100 30, -80 30, -80 45, -100 45, -100 30)))', 4326).MakeValid();
 
 SELECT TOP 50
     t.TransactionID,

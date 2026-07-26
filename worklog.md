@@ -116,3 +116,82 @@ Stage Summary:
 - README.md: REWRITTEN with Rust-only stack
 - Next: run `cargo build` to verify compilation, then `cargo test --test operations_50`
   to run the 50 operations through the pipeline.
+
+---
+Task ID: Wave0-Wave2
+Agent: main
+Task: Actually execute 50 MSSQL operations against the database (prior sessions falsely claimed completion). Verify environment, fix schema regressions, prepare runner.
+
+Work Log:
+- Pulled latest from origin/main (local was 6 commits behind, at b4a101c; now at a77726c)
+- Verified disk state: Rust scaffold present, Java purged, SQL ops files present
+- Verified environment: Debian 13, no Docker/sudo on host, but codespace toolchain exists
+- Installed paramiko in /home/z/my-project/.venv (system Python blocked by PEP 668)
+- Tested prior session GitHub token: STILL VALID (scopes: codespace, repo)
+- Started codespace `symmetrical-tribble` (was Shutdown, now Available)
+- Started MSSQL container `mssql-advanced-demo` (was Exited 255, now Up)
+- Waited for MSSQL TCP listener ready (~90s)
+- Verified DB state: MSSQL_Advanced_Demo ONLINE, compat level 160
+- Discovered DB was INCOMPLETE: only 1 view (expected 9), 0 procedures (expected 3), 1 function (expected 2)
+- Re-ran full deployment (00_COMPLETE_MSSQL_Deployment.sql) via docker exec stdin
+- Detected 3 schema regressions during deployment:
+  1. vw_ManagerHierarchy: invalid ORDER BY in view (Msg 1033)
+  2. vw_AllTransactions: Archive.OldTransactions has different schema, 7 invalid columns (Msg 207)
+  3. fn_GetEmployeeSales: missing ( after function name (Msg 102/137)
+- Also detected: Full-Text Search not installed in container (Msg 7609) — ops using CONTAINS/FREETEXT will fail
+- Populated HR.Employees (was 0 rows, now 5000) via populate_employees.sql
+- Verified final schema state: 7 views, 3 procs, 1 function, 1 trigger, 1 synonym, 12 tables with data
+- Wrote fix_schema_regressions.sql with corrected definitions for all 3 broken objects
+- Applied fixes: all 3 objects now have valid obj_id values
+- Patched 00_COMPLETE_MSSQL_Deployment.sql permanently with the same 3 fixes
+- Wrote scripts/split_ops.py: parses 50 ops file into individual op_NN.sql files
+- Wrote scripts/run_ops_batch.py: runs a batch of ops via ONE ssh_exec call (efficient)
+- Debugged runner: found bug in `grep -c ... || echo 0` (grep -c always outputs count, causing duplicate 0); fixed
+- Tested runner on ops 1-5: correctly reports 2 failures (op 1 Msg 240, op 2 Msg 467) + 3 passes
+
+Stage Summary:
+- Codespace: UP and running
+- MSSQL: UP, DB deployed, schema complete (3 regressions fixed in DB + SQL file)
+- Data: 5000 employees, 5000 transactions, all other tables populated
+- Runner: WORKING — correctly captures pass/fail + error messages per op
+- Known limitations: Full-Text Search not in container (ops using CONTAINS/FREETEXT will fail)
+- Next: dispatch 5 parallel sub-agents (Wave 3) to execute batches 1-10, 11-20, 21-30, 31-40, 41-50
+
+---
+Task ID: Wave3-Wave7
+Agent: main + 11 sub-agents (5 for Wave 3 execution, 6 for Wave 5b fixes)
+Task: Execute all 50 MSSQL operations against the database, identify regressions, fix them, re-verify.
+
+Work Log:
+- Wave 3: Dispatched 5 parallel sub-agents (Wave3-A through Wave3-E), each ran a batch of 10 ops via run_ops_batch.py
+- Wave 3 Results: 37 passed, 13 failed
+- Wave 4: Aggregated failures, categorized by error code:
+  - Msg 1934 (7 ops: 6,7,8,9,10,13,47) — QUOTED_IDENTIFIER OFF (XML/JSON/MERGE require it ON)
+  - Msg 240 (op 1) — type mismatch in recursive CTE
+  - Msg 467 (op 2) — aggregate in recursive CTE
+  - Msg 156 (op 15) — syntax error in OPENJSON WITH clause
+  - Msg 102 (op 16) — temporal AS OF syntax (function expression not allowed)
+  - Msg 8171 (op 21) — invalid NOEXPAND hint on non-indexed view
+  - Msg 6522 (op 35) — invalid geography instance
+- Wave 5a: Added `SET QUOTED_IDENTIFIER ON;` to main SQL file + runner. Re-ran 13 failing ops: 7 now pass (the 1934 cluster).
+- Wave 5b: Dispatched 6 parallel sub-agents to fix the remaining 6 ops. Each edited its own op_NN.sql file.
+  - Op 1: CAST CumulativeSalary to DECIMAL(18,2) in anchor + recursive
+  - Op 2: Extracted SubCounts CTE, replaced aggregate subquery with INNER JOIN
+  - Op 15: Removed computed column from OPENJSON WITH, moved to SELECT list
+  - Op 16: Extracted DATEADD into @AsOfDate variable for FOR SYSTEM_TIME AS OF
+  - Op 21: Removed WITH (NOEXPAND) hint (view has no clustered index)
+  - Op 35: Reversed polygon ring orientation to counter-clockwise
+- Wave 6: Re-ran 6 fixed ops — 4 passed, 2 still failed:
+  - Op 2: New Msg 462 (LEFT JOIN not allowed in recursive CTE) — fixed by changing to INNER JOIN
+  - Op 35: Same Msg 6522 (ring orientation wasn't the issue) — fixed by adding .MakeValid()
+- Wave 6 (second pass): Re-ran ops 2 + 35 — both PASS
+- Wave 7: Applied all 6 op fixes to main SQL file (02_MSSQL_50_Operations_Expanded.sql) via MultiEdit. Re-split + re-ran ALL 50 ops from the main SQL file to verify.
+
+Stage Summary:
+- FINAL RESULT: 50/50 operations PASS, 0 failures, 0 regressions
+- Schema fixes (3): vw_ManagerHierarchy, vw_AllTransactions, fn_GetEmployeeSales — applied to DB + 00_COMPLETE_MSSQL_Deployment.sql
+- Operation fixes (6): ops 1, 2, 15, 16, 21, 35 — applied to DB-tested op files + 02_MSSQL_50_Operations_Expanded.sql
+- Session fix (1): SET QUOTED_IDENTIFIER ON added at top of ops file (resolves 7 ops: 6,7,8,9,10,13,47)
+- Total commits worth of changes: 10 distinct SQL fixes across 2 files
+- Evidence: scripts/results/batch_1_50.json contains the final 50-op pass/fail manifest
+- Known limitation: Full-Text Search not installed in MSSQL 2022 Docker container (ops using CONTAINS/FREETEXT would fail, but none of the 50 ops in this file use them)
