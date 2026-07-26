@@ -139,3 +139,5 @@ DataMigrata/
 - **Docker** for containerized local development
 
 ---
+## License: 
+Apache 2.0 (effective from 2025-01-01). Previously MIT.
