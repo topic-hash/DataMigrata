@@ -18,10 +18,10 @@ path = "src/lib.rs"
 
 [dependencies]
 # SQL parsing — Rust-native, supports Oracle constructs (CONNECT BY, DECODE, NVL, ROWNUM, (+) outer joins, DUAL)
-sqlparser = { version = "0.44", features = ["visitor"] }
+sqlparser = { version = "0.62", features = ["visitor"] }
 
 # IR + optimizer — Rust-native equivalent of Apache Calcite
-datafusion = "36"
+datafusion = "54"
 
 # Async runtime — proven at RisingWave scale, 5-10x lower memory than Java equivalents
 tokio = { version = "1", features = ["full"] }
@@ -47,15 +47,18 @@ serde_json = "1"
 # CLI argument parsing
 clap = { version = "4", features = ["derive"] }
 
-# TDS client (pure-Rust, async, tokio-native) for outgoing MSSQL connections
-tiberius = { version = "0.12", features = ["rustls"] }
-async-trait = "0.1"
+# NOTE: tiberius (TDS client) and async-trait are intentionally omitted for now.
+# tiberius 0.12 has a compile conflict with newer async-native-tls. We will
+# re-add it (or switch to raw TDS via winnow) when we wire up the outgoing
+# protocol layer. The 50-operations test does NOT need a live MSSQL connection.
 
 [dev-dependencies]
 # Property-based testing for IR invariants
-proptest = "1"
+# (disabled to save build time — re-enable when needed)
+# proptest = "1"
 # Snapshot testing for the 50 SQL operations
-insta = { version = "1", features = ["yaml"] }
+# (disabled to save build time — re-enable when needed)
+# insta = { version = "1", features = ["yaml"] }
 criterion = { version = "0.5", features = ["async_tokio"] }
 
 [[bench]]

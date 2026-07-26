@@ -16,7 +16,6 @@
 //! - `MERGE` statement for `MERGE INTO` upserts
 
 use crate::optimizer::OptimizationResult;
-use sqlparser::ast::Statement;
 use thiserror::Error;
 
 /// Result of running the full pipeline on a single SQL input.
@@ -101,7 +100,7 @@ impl PipelineIntegration {
         let preprocessed_constructs = parsed.preprocessed_constructs;
 
         // Phase 2: lower AST → DataFusion LogicalPlan
-        let ir = self.lowering.lower(parsed.statements)?;
+        let ir = self.lowering.lower_with_count(parsed.statements, preprocessed_constructs)?;
         let lowered_constructs = ir.lowered_constructs;
 
         // Phase 3: optimize

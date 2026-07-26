@@ -143,7 +143,7 @@ mod temporal {
     }
 
     #[test]
-    fn op18_flashback scn() {
+    fn op18_flashback_scn() {
         let oracle = "SELECT * FROM transactions AS OF SCN 12345";
         let _ = run(oracle);
     }

@@ -17,3 +17,4 @@
 
 # Existing (preserved from prior .gitignore)
 sql/*.log
+target/

@@ -47,8 +47,8 @@ pub enum PipelineError {
     Ir(#[from] IrError),
 
     #[error("optimization error: {0}")]
-    Optimization(String),
+    Optimization(#[from] optimizer::OptimizationError),
 
     #[error("code generation error: {0}")]
-    Codegen(String),
+    Codegen(#[from] codemodel::CodegenError),
 }

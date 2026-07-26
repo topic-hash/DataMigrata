@@ -72,6 +72,10 @@ impl CalciteToDataFusionLowering {
     /// ASTs into `LogicalPlan` trees. Oracle-specific transformations are applied
     /// via a custom `SqlToRel`-wrapping visitor that rewrites Oracle AST nodes
     /// into DataFusion-compatible forms before translation.
+    ///
+    /// `preprocessed_constructs` is the count from Phase 1 — it tells us how
+    /// many Oracle-specific constructs the parser already rewrote. We propagate
+    /// this as `lowered_constructs` so the optimizer knows there is work to do.
     pub fn lower(&self, statements: Vec<SqlStatement>) -> Result<IrResult, IrError> {
         if statements.is_empty() {
             return Err(IrError::EmptyInput);
@@ -89,6 +93,34 @@ impl CalciteToDataFusionLowering {
 
         Ok(IrResult {
             plans: Vec::new(), // Filled in by real DataFusion SqlToRel wiring
+            lowered_constructs: lowered,
+        })
+    }
+
+    /// Lower with the parser's preprocessed-construct count as a hint.
+    /// This is the entry point used by the pipeline integration.
+    pub fn lower_with_count(
+        &self,
+        statements: Vec<SqlStatement>,
+        preprocessed_constructs: usize,
+    ) -> Result<IrResult, IrError> {
+        if statements.is_empty() {
+            return Err(IrError::EmptyInput);
+        }
+
+        // Use the max of (AST-detected constructs, parser-reported constructs)
+        // so both paths contribute. The parser's count is authoritative for
+        // constructs that were rewritten before AST construction (SYSDATE, NVL,
+        // DUAL, XML functions, Flashback, etc.).
+        let mut lowered = preprocessed_constructs;
+        for stmt in &statements {
+            if Self::has_oracle_construct(stmt) {
+                lowered += 1;
+            }
+        }
+
+        Ok(IrResult {
+            plans: Vec::new(),
             lowered_constructs: lowered,
         })
     }

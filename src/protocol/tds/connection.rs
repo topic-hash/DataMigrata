@@ -1,10 +1,15 @@
 //! TDS (Tabular Data Stream) client connection — connects to MSSQL.
 //!
-//! Wraps the `tiberius` crate (pure-Rust, async, tokio-native TDS client).
+//! NOTE: The `tiberius` crate was removed due to a compile conflict between
+//! tiberius 0.12 and newer async-native-tls. We will either:
+//! (a) wait for tiberius 0.13+ to fix the issue, or
+//! (b) implement raw TDS protocol parsing using `winnow` (same approach as TNS).
+//!
+//! For now, this module is a placeholder. The 50-operations test does not
+//! require a live MSSQL connection — it only verifies the SQL translation
+//! pipeline end-to-end (parse → IR → optimize → generate T-SQL).
 
 use std::time::Duration;
-use tokio::net::TcpStream;
-use tiberius::{Client, Config};
 
 /// A configured but not-yet-connected TDS client.
 #[derive(Debug, Clone)]
@@ -20,31 +25,24 @@ pub struct TdsConnection {
 }
 
 impl TdsConnection {
-    /// Build a `tiberius::Config` from this connection spec.
-    pub fn to_tiberius_config(&self) -> Config {
-        let mut config = Config::new();
-        config.host(&self.host);
-        config.port(self.port);
-        config.database(&self.database);
-        config.authentication(tiberius::AuthMethod::sql_server(&self.username, &self.password));
-        if self.encrypt {
-            config.encrypt(tiberius::Encrypt::Required);
+    pub fn new(host: impl Into<String>, port: u16, database: impl Into<String>) -> Self {
+        Self {
+            host: host.into(),
+            port,
+            database: database.into(),
+            username: String::new(),
+            password: String::new(),
+            encrypt: false,
+            trust_cert: false,
+            connect_timeout: Duration::from_secs(30),
         }
-        if self.trust_cert {
-            config.trust_cert();
-        }
-        config
     }
 
     /// Establish a connection to MSSQL.
     ///
-    /// Stub: real implementation calls `tiberius::Client::connect_named(config, tcp)`.
+    /// Stub: real implementation will use either tiberius 0.13+ (when released)
+    /// or a hand-rolled TDS client using `winnow` for zero-copy parsing.
     pub async fn connect(&self) -> Result<(), String> {
-        let _config = self.to_tiberius_config();
-        let _tcp = TcpStream::connect(format!("{}:{}", self.host, self.port))
-            .await
-            .map_err(|e| e.to_string())?;
-        // Real implementation: Client::connect_named(config, tcp).await
-        Ok(())
+        Err("TDS client not yet wired up — see module docs".to_string())
     }
 }

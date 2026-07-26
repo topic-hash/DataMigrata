@@ -1,0 +1,352 @@
+[
+  {
+    "op_number": 1,
+    "category": "Hierarchical",
+    "oracle_sql": "SELECT employee_id, manager_id, full_name, department, salary, LEVEL, SYS_CONNECT_BY_PATH(full_name, ' > ') AS hierarchy_path, CONNECT_BY_ROOT salary AS cumulative_salary FROM employees CONNECT BY PRIOR employee_id = manager_id START WITH manager_id IS NULL ORDER SIBLINGS BY full_name",
+    "expected_tsql": "WITH EmployeeHierarchy AS (SELECT EmployeeID, ManagerID, FullName, Department, Salary, JobTitle, CAST(FullName AS NVARCHAR(MAX)) AS HierarchyPath, 0 AS Level, CAST(EmployeeID AS VARCHAR(MAX)) AS PathString, Salary AS CumulativeSalary FROM HR.Employees WHERE ManagerID IS NULL UNION ALL SELECT e.EmployeeID, e.ManagerID, e.FullName, e.Department, e.Salary, e.JobTitle, CAST(h.HierarchyPath + ' > ' + e.FullName AS NVARCHAR(MAX)), h.Level + 1, CAST(h.PathString + '.' + CAST(e.EmployeeID AS VARCHAR) AS VARCHAR(MAX)), h.CumulativeSalary + e.Salary FROM HR.Employees e INNER JOIN EmployeeHierarchy h ON e.ManagerID = h.EmployeeID WHERE h.Level < 10) SELECT TOP 100 EmployeeID, FullName, Department, JobTitle, Salary, Level, HierarchyPath, CumulativeSalary, REPLICATE('  ', Level) + FullName AS IndentedDisplay FROM EmployeeHierarchy ORDER BY PathString OPTION (MAXRECURSION 100);",
+    "key_constructs": ["CONNECT BY", "LEVEL", "START WITH", "SYS_CONNECT_BY_PATH", "CONNECT_BY_ROOT", "ORDER SIBLINGS BY"]
+  },
+  {
+    "op_number": 2,
+    "category": "Hierarchical",
+    "oracle_sql": "SELECT e.employee_id, e.full_name, e.department, e.job_title, e.salary, (SELECT COUNT(*) FROM employees WHERE manager_id = e.employee_id) AS total_subordinates, e.salary + NVL((SELECT SUM(salary) FROM employees WHERE manager_id = e.employee_id), 0) AS team_cost FROM employees e ORDER BY team_cost DESC",
+    "expected_tsql": "WITH HierarchyAgg AS (SELECT EmployeeID, ManagerID, FullName, Salary, 1 AS SubordinateCount FROM HR.Employees WHERE EmployeeID NOT IN (SELECT ManagerID FROM HR.Employees WHERE ManagerID IS NOT NULL) UNION ALL SELECT p.EmployeeID, p.ManagerID, p.FullName, p.Salary, c.SubordinateCount + ISNULL((SELECT COUNT(*) FROM HR.Employees s WHERE s.ManagerID = p.EmployeeID), 0) FROM HR.Employees p INNER JOIN HierarchyAgg c ON c.ManagerID = p.EmployeeID) SELECT TOP 50 e.EmployeeID, e.FullName, e.Department, e.JobTitle, e.Salary, ISNULL(a.SubordinateCount, 0) AS TotalSubordinates, e.Salary + ISNULL((SELECT SUM(Salary) FROM HR.Employees WHERE ManagerID = e.EmployeeID), 0) AS TeamCost FROM HR.Employees e LEFT JOIN HierarchyAgg a ON e.EmployeeID = a.EmployeeID ORDER BY TeamCost DESC;",
+    "key_constructs": ["CONNECT BY", "NVL", "hierarchical aggregation"]
+  },
+  {
+    "op_number": 3,
+    "category": "Hierarchical",
+    "oracle_sql": "SELECT employee_id, full_name, job_title, LEVEL, SYS_CONNECT_BY_PATH(full_name, '/') AS path, PRIOR full_name AS parent_name FROM employees CONNECT BY PRIOR employee_id = manager_id START WITH manager_id IS NULL ORDER SIBLINGS BY SYS_CONNECT_BY_PATH(full_name, '/')",
+    "expected_tsql": "SELECT TOP 100 o.OrgNode.ToString() AS Path, o.OrgLevel, e.FullName, e.JobTitle, o.PositionTitle, o.OrgNode.GetAncestor(1).ToString() AS ParentPath, o.OrgNode.IsDescendantOf(HIERARCHYID::Parse('/')) AS IsUnderRoot FROM HR.OrgChart o JOIN HR.Employees e ON o.EmployeeID = e.EmployeeID ORDER BY o.OrgNode;",
+    "key_constructs": ["HIERARCHYID (MSSQL-only, no Oracle equivalent)", "CONNECT BY (reverse-engineered)", "GetAncestor", "IsDescendantOf"]
+  },
+  {
+    "op_number": 4,
+    "category": "Hierarchical",
+    "oracle_sql": "SELECT employee_id, full_name, SYS_CONNECT_BY_PATH(full_name, ' -> ') AS path, LEVEL AS depth FROM employees CONNECT BY PRIOR employee_id = manager_id START WITH manager_id IS NULL ORDER SIBLINGS BY full_name",
+    "expected_tsql": "WITH OrgPath AS (SELECT EmployeeID, ManagerID, FullName, CAST(FullName AS NVARCHAR(MAX)) AS Path, CAST(CAST(EmployeeID AS VARCHAR(10)) AS VARCHAR(MAX)) AS IdPath FROM HR.Employees WHERE ManagerID IS NULL UNION ALL SELECT e.EmployeeID, e.ManagerID, e.FullName, p.Path + ' -> ' + e.FullName, p.IdPath + ',' + CAST(e.EmployeeID AS VARCHAR(10)) FROM HR.Employees e JOIN OrgPath p ON e.ManagerID = p.EmployeeID) SELECT TOP 100 EmployeeID, FullName, Path, IdPath, LEN(IdPath) - LEN(REPLACE(IdPath, ',', '')) + 1 AS Depth FROM OrgPath ORDER BY IdPath;",
+    "key_constructs": ["SYS_CONNECT_BY_PATH", "LEVEL", "ORDER SIBLINGS BY"]
+  },
+  {
+    "op_number": 5,
+    "category": "Hierarchical",
+    "oracle_sql": "SELECT CONNECT_BY_ROOT manager_id AS ancestor, employee_id AS descendant, LEVEL AS distance FROM employees CONNECT BY PRIOR employee_id = manager_id START WITH manager_id IS NOT NULL",
+    "expected_tsql": "WITH TransitiveClosure AS (SELECT ManagerID AS Ancestor, EmployeeID AS Descendant, 1 AS Distance FROM HR.Employees WHERE ManagerID IS NOT NULL UNION ALL SELECT tc.Ancestor, e.EmployeeID, tc.Distance + 1 FROM TransitiveClosure tc JOIN HR.Employees e ON tc.Descendant = e.ManagerID) SELECT TOP 100 a.FullName AS Manager, d.FullName AS Subordinate, d.Department, tc.Distance, CASE WHEN tc.Distance = 1 THEN 'Direct' ELSE 'Indirect' END AS Relationship FROM TransitiveClosure tc JOIN HR.Employees a ON tc.Ancestor = a.EmployeeID JOIN HR.Employees d ON tc.Descendant = d.EmployeeID ORDER BY tc.Ancestor, tc.Distance;",
+    "key_constructs": ["CONNECT_BY_ROOT", "LEVEL", "START WITH", "transitive closure pattern"]
+  },
+  {
+    "op_number": 6,
+    "category": "XML",
+    "oracle_sql": "UPDATE employees SET employee_data = APPENDCHILDXML(employee_data, '/Employee/Skills', XMLTYPE('<Skill level=\"Advanced\">Project Management</Skill>')) WHERE employee_id = 1",
+    "expected_tsql": "UPDATE TOP (10) HR.Employees SET EmployeeData.modify('insert <Skill level=\"Advanced\">Project Management</Skill> into (/Employee/Skills)[1]') WHERE EmployeeData IS NOT NULL;",
+    "key_constructs": ["XMLType", "APPENDCHILDXML", "EXTRACT", "XML DML modify()"]
+  },
+  {
+    "op_number": 7,
+    "category": "XML",
+    "oracle_sql": "SELECT e.employee_id, e.full_name, x.skill_level, x.skill_name FROM employees e, XMLTABLE('/Employee/Skills/Skill' PASSING e.employee_data COLUMNS skill_level VARCHAR2(20) PATH '@level', skill_name VARCHAR2(100) PATH '.') x WHERE e.employee_data IS NOT NULL ORDER BY e.employee_id, x.skill_level",
+    "expected_tsql": "SELECT TOP 50 e.EmployeeID, e.FullName, skill.value('@level', 'NVARCHAR(20)') AS SkillLevel, skill.value('.', 'NVARCHAR(100)') AS SkillName FROM HR.Employees e CROSS APPLY e.EmployeeData.nodes('/Employee/Skills/Skill') AS Skills(skill) WHERE e.EmployeeData IS NOT NULL ORDER BY e.EmployeeID, SkillLevel;",
+    "key_constructs": ["XMLTABLE", "COLUMNS PATH", "CROSS APPLY nodes()", ".value()"]
+  },
+  {
+    "op_number": 8,
+    "category": "XML",
+    "oracle_sql": "SELECT e.employee_id, e.full_name, XMLELEMENT(\"Skills\", XMLAGG(XMLELEMENT(\"Skill\", XMLATTRIBUTES(skill_name AS \"name\", skill_level AS \"level\")) ORDER BY skill_level)) AS skills_xml FROM employees e, XMLTABLE('/Employee/Skills/Skill' PASSING e.employee_data COLUMNS skill_name VARCHAR2(100) PATH '.', skill_level VARCHAR2(20) PATH '@level') x WHERE e.employee_data IS NOT NULL GROUP BY e.employee_id, e.full_name",
+    "expected_tsql": "SELECT TOP 20 EmployeeID, FullName, (SELECT Skill.value('.', 'NVARCHAR(100)') AS '@name', Skill.value('@level', 'NVARCHAR(20)') AS '@level' FROM HR.Employees e2 CROSS APPLY e2.EmployeeData.nodes('/Employee/Skills/Skill') AS S(Skill) WHERE e2.EmployeeID = e.EmployeeID FOR XML PATH('Skill'), ROOT('Skills'), TYPE) AS SkillsXML FROM HR.Employees e WHERE EmployeeData IS NOT NULL;",
+    "key_constructs": ["XMLELEMENT", "XMLAGG", "XMLATTRIBUTES", "FOR XML PATH", "TYPE directive"]
+  },
+  {
+    "op_number": 9,
+    "category": "XML",
+    "oracle_sql": "CREATE INDEX idx_emp_data_xml ON employees(employee_data) INDEXTYPE IS XDB.XMLINDEX",
+    "expected_tsql": "SELECT TOP 50 EmployeeID, FullName, Department FROM HR.Employees WHERE EmployeeData.exist('/Employee/Skills/Skill[@level=\"Expert\"]') = 1;",
+    "key_constructs": ["XDB.XMLINDEX", "EXISTSNODE", ".exist()"]
+  },
+  {
+    "op_number": 10,
+    "category": "XML",
+    "oracle_sql": "SELECT XMLSERIALIZE(DOCUMENT XMLTYPE('<Employee><Skills><Skill level=\"Expert\">T-SQL</Skill></Skills></Employee>') AS CLOB) AS typed_xml FROM dual",
+    "expected_tsql": "DECLARE @typed XML; SET @typed = '<Employee><Skills><Skill level=\"Expert\">T-SQL</Skill></Skills></Employee>'; SELECT @typed.query('/Employee/Skills/Skill[@level=\"Expert\"]') AS TypedXml;",
+    "key_constructs": ["XMLTYPE with registered schema", "DBMS_XMLSCHEMA.REGISTERSCHEMA", "XML Schema Collection"]
+  },
+  {
+    "op_number": 11,
+    "category": "JSON",
+    "oracle_sql": "SELECT transaction_id, JSON_VALUE(transaction_details, '$.payment_method') AS payment_method, JSON_VALUE(transaction_details, '$.terms') AS terms, JSON_QUERY(transaction_details, '$.discount_code') AS discount_info, NVL(JSON_VALUE(transaction_details, '$.po_number'), 'N/A') AS po_number, JSON_VALUE(transaction_details, '$.currency') AS currency FROM transactions WHERE ROWNUM <= 50",
+    "expected_tsql": "SELECT TOP 50 TransactionID, JSON_VALUE(TransactionDetails, '$.payment_method') AS PaymentMethod, JSON_VALUE(TransactionDetails, '$.terms') AS Terms, JSON_QUERY(TransactionDetails, '$.discount_code') AS DiscountInfo, ISNULL(JSON_VALUE(TransactionDetails, '$.po_number'), 'N/A') AS PONumber, JSON_VALUE(TransactionDetails, '$.currency') AS Currency FROM Sales.Transactions;",
+    "key_constructs": ["JSON_VALUE", "JSON_QUERY", "NVL to ISNULL", "ROWNUM to TOP"]
+  },
+  {
+    "op_number": 12,
+    "category": "JSON",
+    "oracle_sql": "SELECT e.department, e.full_name AS employee_name, JSON_ARRAYAGG(JSON_OBJECT('TransactionID' VALUE t.transaction_id, 'TotalAmount' VALUE t.total_amount, 'TransactionDate' VALUE t.transaction_date, 'PaymentMethod' VALUE JSON_VALUE(t.transaction_details, '$.payment_method') FORMAT JSON) ORDER BY t.transaction_id) AS transactions_json FROM employees e JOIN transactions t ON t.employee_id = e.employee_id WHERE e.employee_id IN (SELECT DISTINCT employee_id FROM transactions) GROUP BY e.department, e.full_name",
+    "expected_tsql": "SELECT TOP 10 e.Department, e.FullName AS EmployeeName, (SELECT t.TransactionID, t.TotalAmount, t.TransactionDate, JSON_VALUE(t.TransactionDetails, '$.payment_method') AS PaymentMethod FROM Sales.Transactions t WHERE t.EmployeeID = e.EmployeeID FOR JSON PATH) AS TransactionsJSON FROM HR.Employees e WHERE e.EmployeeID IN (SELECT DISTINCT EmployeeID FROM Sales.Transactions) FOR JSON PATH, ROOT('SalesReport');",
+    "key_constructs": ["JSON_OBJECT", "JSON_ARRAYAGG", "FOR JSON PATH", "ROOT"]
+  },
+  {
+    "op_number": 13,
+    "category": "JSON",
+    "oracle_sql": "UPDATE transactions SET transaction_details = JSON_TRANSFORM(transaction_details, SET '$.processed' = 1) WHERE transaction_id = 1",
+    "expected_tsql": "UPDATE TOP (100) Sales.Transactions SET TransactionDetails = JSON_MODIFY(TransactionDetails, '$.processed', CAST(1 AS BIT)) WHERE JSON_VALUE(TransactionDetails, '$.processed') IS NULL;",
+    "key_constructs": ["JSON_TRANSFORM (Oracle 21c+)", "JSON_MODIFY"]
+  },
+  {
+    "op_number": 14,
+    "category": "JSON",
+    "oracle_sql": "SELECT * FROM JSON_TABLE((SELECT transaction_details FROM transactions WHERE transaction_id = 1), '$' COLUMNS (payment_method VARCHAR2(50) PATH '$.payment_method', terms VARCHAR2(20) PATH '$.terms', discount_code VARCHAR2(50) PATH '$.discount_code', po_number VARCHAR2(50) PATH '$.po_number', processed NUMBER(1) PATH '$.processed'))",
+    "expected_tsql": "SELECT TOP 20 * FROM OPENJSON((SELECT TOP 1 TransactionDetails FROM Sales.Transactions WHERE TransactionDetails IS NOT NULL)) WITH (payment_method NVARCHAR(50) '$.payment_method', terms NVARCHAR(20) '$.terms', discount_code NVARCHAR(50) '$.discount_code', po_number NVARCHAR(50) '$.po_number', processed BIT '$.processed');",
+    "key_constructs": ["JSON_TABLE", "COLUMNS PATH", "OPENJSON WITH schema"]
+  },
+  {
+    "op_number": 15,
+    "category": "JSON",
+    "oracle_sql": "SELECT * FROM JSON_TABLE('[{\"product\":\"Server\",\"qty\":2,\"price\":49999.99},{\"product\":\"Agent\",\"qty\":5,\"price\":4999.99}]', '$[*]' COLUMNS (product VARCHAR2(100) PATH '$.product', quantity NUMBER PATH '$.qty', price NUMBER PATH '$.price', line_total NUMBER GENERATED ALWAYS AS (quantity * price)))",
+    "expected_tsql": "DECLARE @orders NVARCHAR(MAX) = '[{\"product\": \"Server\", \"qty\": 2, \"price\": 49999.99}, {\"product\": \"Agent\", \"qty\": 5, \"price\": 4999.99}]'; SELECT * FROM OPENJSON(@orders) WITH (Product NVARCHAR(100) '$.product', Quantity INT '$.qty', Price DECIMAL(18,2) '$.price', LineTotal AS (Quantity * Price));",
+    "key_constructs": ["JSON_TABLE with $[*]", "GENERATED ALWAYS AS computed column", "OPENJSON WITH computed"]
+  },
+  {
+    "op_number": 16,
+    "category": "Temporal",
+    "oracle_sql": "SELECT transaction_id, employee_id, total_amount, transaction_date FROM transactions AS OF TIMESTAMP(SYSTIMESTAMP - INTERVAL '1' DAY) WHERE ROWNUM <= 50 ORDER BY transaction_id",
+    "expected_tsql": "SELECT TOP 50 TransactionID, EmployeeID, TotalAmount, TransactionDate, ValidFrom, ValidTo FROM Sales.Transactions FOR SYSTEM_TIME AS OF DATEADD(DAY, -1, SYSUTCDATETIME()) ORDER BY TransactionID;",
+    "key_constructs": ["AS OF TIMESTAMP (Flashback Query)", "FOR SYSTEM_TIME AS OF", "SYSTIMESTAMP to SYSUTCDATETIME"]
+  },
+  {
+    "op_number": 17,
+    "category": "Temporal",
+    "oracle_sql": "SELECT transaction_id, total_amount FROM transactions VERSIONS BETWEEN TIMESTAMP TO_TIMESTAMP_TZ('2026-01-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS') AND TO_TIMESTAMP_TZ('2026-12-31 23:59:59', 'YYYY-MM-DD HH24:MI:SS') ORDER BY transaction_id",
+    "expected_tsql": "SELECT TOP 50 TransactionID, TotalAmount, ValidFrom, ValidTo, CASE WHEN ValidTo = '9999-12-31 23:59:59.9999999' THEN 'Current' ELSE 'Historical' END AS RecordState FROM Sales.Transactions FOR SYSTEM_TIME BETWEEN '2026-01-01' AND '2026-12-31' ORDER BY TransactionID, ValidFrom;",
+    "key_constructs": ["VERSIONS BETWEEN (Flashback Version Query)", "FOR SYSTEM_TIME BETWEEN"]
+  },
+  {
+    "op_number": 18,
+    "category": "Temporal",
+    "oracle_sql": "SELECT h.transaction_id, h.total_amount FROM transactions_history h WHERE h.end_timestamp <> TO_TIMESTAMP_TZ('9999-12-31 23:59:59', 'YYYY-MM-DD HH24:MI:SS') ORDER BY h.start_timestamp DESC",
+    "expected_tsql": "SELECT TOP 50 h.TransactionID, h.TotalAmount, h.ValidFrom, h.ValidTo, DATEDIFF(SECOND, h.ValidFrom, h.ValidTo) AS DurationSeconds FROM Sales.TransactionsHistory h WHERE h.ValidTo <> '9999-12-31 23:59:59.9999999' ORDER BY h.ValidFrom DESC;",
+    "key_constructs": ["Flashback history table pattern", "DATEDIFF"]
+  },
+  {
+    "op_number": 19,
+    "category": "Temporal",
+    "oracle_sql": "DECLARE point_in_time TIMESTAMP := SYSTIMESTAMP - INTERVAL '2' HOUR; SELECT t.transaction_id, t.total_amount AS current_amount, (SELECT h.total_amount FROM transactions_history h WHERE h.transaction_id = t.transaction_id AND h.start_timestamp <= point_in_time ORDER BY h.start_timestamp DESC FETCH FIRST 1 ROW ONLY) AS amount_at_point FROM transactions t",
+    "expected_tsql": "DECLARE @PointInTime DATETIME2 = DATEADD(HOUR, -2, SYSUTCDATETIME()); SELECT TOP 20 t.TransactionID, t.TotalAmount AS CurrentAmount, (SELECT TOP 1 h.TotalAmount FROM Sales.TransactionsHistory h WHERE h.TransactionID = t.TransactionID AND h.ValidFrom <= @PointInTime ORDER BY h.ValidFrom DESC) AS AmountAtPointInTime FROM Sales.Transactions t;",
+    "key_constructs": ["AS OF TIMESTAMP", "FETCH FIRST 1 ROW ONLY to TOP 1"]
+  },
+  {
+    "op_number": 20,
+    "category": "Temporal",
+    "oracle_sql": "SELECT transaction_id, COUNT(*) AS version_count FROM transactions VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE GROUP BY transaction_id HAVING COUNT(*) > 1 ORDER BY version_count DESC",
+    "expected_tsql": "SELECT TOP 50 TransactionID, COUNT(*) AS VersionCount, MIN(ValidFrom) AS FirstVersion, MAX(ValidFrom) AS LastVersion, DATEDIFF(DAY, MIN(ValidFrom), MAX(ValidFrom)) AS LifespanDays FROM Sales.Transactions FOR SYSTEM_TIME ALL GROUP BY TransactionID HAVING COUNT(*) > 1 ORDER BY VersionCount DESC;",
+    "key_constructs": ["VERSIONS BETWEEN MINVALUE AND MAXVALUE", "FOR SYSTEM_TIME ALL", "ORA_ROWSCN"]
+  },
+  {
+    "op_number": 21,
+    "category": "Views",
+    "oracle_sql": "CREATE MATERIALIZED VIEW mv_monthly_revenue BUILD IMMEDIATE REFRESH COMPLETE ON COMMIT AS SELECT EXTRACT(YEAR FROM t.transaction_date) AS sale_year, EXTRACT(MONTH FROM t.transaction_date) AS sale_month, COUNT(*) AS transaction_count, SUM(NVL(t.total_amount, 0)) AS total_revenue FROM transactions t GROUP BY EXTRACT(YEAR FROM t.transaction_date), EXTRACT(MONTH FROM t.transaction_date)",
+    "expected_tsql": "SELECT * FROM Sales.vw_ProductSummary WITH (NOEXPAND) ORDER BY Category;",
+    "key_constructs": ["MATERIALIZED VIEW", "BUILD IMMEDIATE", "REFRESH COMPLETE ON COMMIT", "Indexed view WITH SCHEMABINDING", "WITH (NOEXPAND)"]
+  },
+  {
+    "op_number": 22,
+    "category": "Views",
+    "oracle_sql": "CREATE VIEW vw_all_transactions AS SELECT transaction_id, 'Current' AS source_table, transaction_date, total_amount FROM transactions UNION ALL SELECT transaction_id, 'Archive' AS source_table, TO_DATE(year || LPAD(month, 2, '0') || '-01', 'YYYY-MM-DD') AS transaction_date, amount AS total_amount FROM old_transactions",
+    "expected_tsql": "SELECT TOP 50 * FROM Sales.vw_AllTransactions WHERE TransactionDate >= '2025-01-01' ORDER BY TransactionDate DESC;",
+    "key_constructs": ["Partitioned view", "DATEFROMPARTS", "UNION ALL partition view"]
+  },
+  {
+    "op_number": 23,
+    "category": "Views",
+    "oracle_sql": "CREATE VIEW vw_active_employees AS SELECT employee_id, full_name, department, salary, hire_date FROM employees WHERE is_active = 1 WITH CHECK OPTION",
+    "expected_tsql": "SELECT TOP 50 * FROM HR.vw_ActiveEmployees ORDER BY HireDate DESC;",
+    "key_constructs": ["WITH CHECK OPTION (standard SQL, same in both)"]
+  },
+  {
+    "op_number": 24,
+    "category": "Views",
+    "oracle_sql": "CREATE VIEW vw_transaction_summary AS SELECT t.transaction_id, e.full_name AS employee_name, t.total_amount, t.transaction_date FROM transactions t JOIN employees e ON t.employee_id = e.employee_id",
+    "expected_tsql": "SELECT TOP 50 * FROM Sales.vw_TransactionSummary ORDER BY TransactionDate DESC;",
+    "key_constructs": ["INSTEAD OF trigger", "view DML through triggers"]
+  },
+  {
+    "op_number": 25,
+    "category": "Views",
+    "oracle_sql": "CREATE OR REPLACE FUNCTION fn_get_employee_sales(p_employee_id NUMBER, p_start_date DATE, p_end_date DATE) RETURN SYS_REFCURSOR AS v_cursor SYS_REFCURSOR; BEGIN OPEN v_cursor FOR SELECT t.transaction_id, t.total_amount, t.transaction_date FROM transactions t WHERE t.employee_id = p_employee_id AND t.transaction_date BETWEEN p_start_date AND p_end_date; RETURN v_cursor; END;",
+    "expected_tsql": "SELECT TOP 50 * FROM Sales.fn_GetEmployeeSales(6, '2026-01-01', '2026-12-31') ORDER BY TransactionDate;",
+    "key_constructs": ["SYS_REFCURSOR", "PL/SQL function to Inline TVF"]
+  },
+  {
+    "op_number": 26,
+    "category": "Views",
+    "oracle_sql": "CREATE VIEW vw_employee_quarterly_sales AS SELECT * FROM (SELECT employee_id, total_amount, 'Q' || TO_CHAR(transaction_date, 'Q') AS quarter FROM transactions WHERE transaction_date >= TRUNC(SYSDATE, 'YEAR')) PIVOT (SUM(total_amount) FOR quarter IN ('Q1' AS first_quarter, 'Q2' AS second_quarter, 'Q3' AS third_quarter, 'Q4' AS fourth_quarter))",
+    "expected_tsql": "SELECT * FROM Sales.vw_EmployeeQuarterlySales ORDER BY EmployeeID;",
+    "key_constructs": ["PIVOT (Oracle 11g+)", "TO_CHAR Q format", "TRUNC SYSDATE YEAR"]
+  },
+  {
+    "op_number": 27,
+    "category": "Views",
+    "oracle_sql": "SELECT employee_id, quarter, amount FROM vw_employee_quarterly_sales UNPIVOT (amount FOR quarter IN (first_quarter AS 'Q1', second_quarter AS 'Q2', third_quarter AS 'Q3', fourth_quarter AS 'Q4')) WHERE amount IS NOT NULL ORDER BY employee_id, quarter",
+    "expected_tsql": "SELECT TOP 50 * FROM Sales.vw_NormalizedQuarterlySales WHERE Amount IS NOT NULL ORDER BY EmployeeID, Quarter;",
+    "key_constructs": ["UNPIVOT (Oracle 11g+)", "column-to-row normalization"]
+  },
+  {
+    "op_number": 28,
+    "category": "Views",
+    "oracle_sql": "SELECT m.employee_id AS manager_id, m.full_name AS manager_name, s.employee_id AS subordinate_id, s.full_name AS subordinate_name FROM employees m, TABLE(fn_get_subordinates(m.employee_id)) s WHERE m.manager_id IS NULL",
+    "expected_tsql": "SELECT TOP 100 * FROM HR.vw_ManagerHierarchy ORDER BY ManagerID, Level;",
+    "key_constructs": ["TABLE() function call", "CROSS APPLY"]
+  },
+  {
+    "op_number": 29,
+    "category": "Views",
+    "oracle_sql": "SELECT NVL(e.department, 'ALL') AS department, NVL(e.full_name, 'ALL') AS employee, NVL(p.category, 'ALL') AS category, SUM(t.total_amount) AS total_sales, GROUPING_ID(e.department, e.full_name, p.category) AS grouping_level FROM transactions t JOIN employees e ON t.employee_id = e.employee_id JOIN products p ON t.product_id = p.product_id GROUP BY GROUPING SETS ((e.department, e.full_name, p.category), (e.department, e.full_name), (e.department), (p.category), ())",
+    "expected_tsql": "SELECT TOP 100 * FROM Sales.vw_MultiDimensionalSales ORDER BY GroupingLevel, Department, Employee;",
+    "key_constructs": ["GROUPING SETS", "GROUPING_ID", "NVL to COALESCE"]
+  },
+  {
+    "op_number": 30,
+    "category": "Views",
+    "oracle_sql": "SELECT t.transaction_id, e.full_name, t.total_amount, t.transaction_date, SUM(t.total_amount) OVER (PARTITION BY t.employee_id ORDER BY t.transaction_date ROWS UNBOUNDED PRECEDING) AS running_total, RANK() OVER (PARTITION BY t.employee_id ORDER BY t.total_amount DESC) AS amount_rank, LAG(t.total_amount, 1, 0) OVER (PARTITION BY t.employee_id ORDER BY t.transaction_date) AS previous_amount, LEAD(t.total_amount, 1, 0) OVER (PARTITION BY t.employee_id ORDER BY t.transaction_date) AS next_amount FROM transactions t JOIN employees e ON t.employee_id = e.employee_id",
+    "expected_tsql": "SELECT TOP 100 * FROM Sales.vw_RunningTotalsAndRanks ORDER BY FullName, TransactionDate;",
+    "key_constructs": ["Window functions (standard SQL, same in both)", "ROWS framing"]
+  },
+  {
+    "op_number": 31,
+    "category": "Spatial",
+    "oracle_sql": "SELECT t1.transaction_id AS from_transaction, t2.transaction_id AS to_transaction, SDO_GEOM.SDO_DISTANCE(t1.region, t2.region, 0.005) / 1000 AS distance_km, SDO_UTIL.TO_WKTGEOMETRY(t1.region) AS from_location FROM transactions t1, transactions t2 WHERE t1.transaction_id < t2.transaction_id AND SDO_GEOM.SDO_DISTANCE(t1.region, t2.region, 0.005) IS NOT NULL ORDER BY distance_km",
+    "expected_tsql": "SELECT TOP 50 t1.TransactionID AS FromTransaction, t2.TransactionID AS ToTransaction, t1.Region.STDistance(t2.Region) / 1000 AS DistanceKm, t1.Region.STAsText() AS FromLocation, t2.Region.STAsText() AS ToLocation FROM Sales.Transactions t1 CROSS JOIN Sales.Transactions t2 WHERE t1.TransactionID < t2.TransactionID AND t1.Region.STDistance(t2.Region) IS NOT NULL ORDER BY DistanceKm;",
+    "key_constructs": ["SDO_GEOMETRY", "SDO_GEOM.SDO_DISTANCE", "SDO_UTIL.TO_WKTGEOMETRY", "GEOGRAPHY.STDistance", "STAsText"]
+  },
+  {
+    "op_number": 32,
+    "category": "Spatial",
+    "oracle_sql": "DECLARE nyc SDO_GEOMETRY := SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(-74.0060, 40.7128, NULL), NULL, NULL); BEGIN SELECT transaction_id, total_amount, SDO_GEOM.SDO_DISTANCE(region, nyc, 0.005) / 1000 AS distance_from_nyc_km FROM transactions WHERE region IS NOT NULL; END;",
+    "expected_tsql": "DECLARE @nyc GEOGRAPHY = geography::Point(40.7128, -74.0060, 4326); SELECT TOP 50 TransactionID, TotalAmount, Region.Lat AS Latitude, Region.Long AS Longitude, Region.STDistance(@nyc) / 1000 AS DistanceFromNYCKm FROM Sales.Transactions WHERE Region IS NOT NULL;",
+    "key_constructs": ["SDO_GEOMETRY point constructor", "geography::Point", "STDistance"]
+  },
+  {
+    "op_number": 33,
+    "category": "Spatial",
+    "oracle_sql": "SELECT SDO_GEOM.SDO_LENGTH(SDO_GEOMETRY(2002, 4326, NULL, SDO_ELEM_INFO_ARRAY(1,2,1), SDO_ORDINATE_ARRAY(-74.0060,40.7128,-0.1278,51.5074,139.6503,35.6762)), 0.005) / 1000 AS route_length_km FROM dual",
+    "expected_tsql": "DECLARE @route GEOGRAPHY = geography::STGeomFromText('LINESTRING(-74.0060 40.7128, -0.1278 51.5074, 139.6503 35.6762)', 4326); SELECT @route.STLength() / 1000 AS RouteLengthKm, @route.STNumPoints() AS NumberOfPoints;",
+    "key_constructs": ["SDO_GEOMETRY with SDO_ELEM_INFO_ARRAY", "SDO_ORDINATE_ARRAY", "SDO_GEOM.SDO_LENGTH", "STGeomFromText", "STLength", "STNumPoints"]
+  },
+  {
+    "op_number": 34,
+    "category": "Spatial",
+    "oracle_sql": "SELECT transaction_id, total_amount FROM transactions WHERE SDO_WITHIN_DISTANCE(region, SDO_GEOMETRY(2001, 4326, SDO_POINT_TYPE(40.7128, -74.0060, NULL), NULL, NULL), 'distance=10000000 unit=meter') = 'TRUE'",
+    "expected_tsql": "SELECT TOP 50 TransactionID, TotalAmount FROM Sales.Transactions WHERE Region.STDistance(geography::Point(40.7128, -74.0060, 4326)) <= 10000000;",
+    "key_constructs": ["MDSYS.SPATIAL_INDEX", "SDO_WITHIN_DISTANCE", "SPATIAL INDEX"]
+  },
+  {
+    "op_number": 35,
+    "category": "Spatial",
+    "oracle_sql": "SELECT t.transaction_id, t.total_amount, CASE WHEN SDO_CONTAINS(SDO_GEOMETRY(2007, 4326, NULL, SDO_ELEM_INFO_ARRAY(1,1003,1), SDO_ORDINATE_ARRAY(-125,25,-125,50,-100,50,-100,25,-125,25)), t.region) = 'TRUE' THEN 1 ELSE 0 END AS is_in_territory FROM transactions t WHERE t.region IS NOT NULL",
+    "expected_tsql": "DECLARE @salesTerritory GEOGRAPHY = geography::STGeomFromText('POLYGON((-125 25, -125 50, -100 50, -100 25, -125 25))', 4326); SELECT TOP 50 t.TransactionID, t.TotalAmount, @salesTerritory.STContains(t.Region) AS IsInTerritory FROM Sales.Transactions t WHERE t.Region IS NOT NULL;",
+    "key_constructs": ["SDO_GEOMETRY multi-polygon", "SDO_CONTAINS", "STGeomFromText MULTIPOLYGON", "STContains"]
+  },
+  {
+    "op_number": 36,
+    "category": "Columnstore",
+    "oracle_sql": "CREATE BITMAP INDEX bm_idx_txn ON transactions(employee_id)",
+    "expected_tsql": "SELECT TOP 50 EmployeeID, SUM(TotalAmount) AS TotalSales, AVG(TotalAmount) AS AvgSales, COUNT(*) AS TransactionCount, MAX(TransactionDate) AS LastTransaction FROM Sales.Transactions GROUP BY EmployeeID ORDER BY TotalSales DESC;",
+    "key_constructs": ["Bitmap index", "COLUMNSTORE INDEX", "analytical aggregation"]
+  },
+  {
+    "op_number": 37,
+    "category": "Columnstore",
+    "oracle_sql": "CREATE OR REPLACE PACKAGE pk_customer_cache AS PROCEDURE get_customer_cache; END;",
+    "expected_tsql": "EXEC Sales.usp_GetCustomerCache;",
+    "key_constructs": ["PL/SQL package", "PRAGMA AUTONOMOUS_TRANSACTION", "NATIVE_COMPILATION", "SCHEMABINDING"]
+  },
+  {
+    "op_number": 38,
+    "category": "Columnstore",
+    "oracle_sql": "CREATE TABLE high_speed_lookup (lookup_key NUMBER PRIMARY KEY, data_value VARCHAR2(200), ts TIMESTAMP DEFAULT SYSTIMESTAMP) INMEMORY",
+    "expected_tsql": "SELECT TOP 50 * FROM Sales.HighSpeedLookup WHERE LookupKey BETWEEN 100 AND 200 ORDER BY LookupKey;",
+    "key_constructs": ["INMEMORY clause", "MEMORY_OPTIMIZED", "HASH index", "BUCKET_COUNT"]
+  },
+  {
+    "op_number": 39,
+    "category": "Columnstore",
+    "oracle_sql": "ALTER TABLE old_transactions INMEMORY INMEMORY_PRIORITY CRITICAL MEMCOMPRESS FOR QUERY LOW",
+    "expected_tsql": "SELECT TOP 50 Year, SUM(Amount) AS YearTotal, COUNT(*) AS TransactionCount FROM Archive.OldTransactions GROUP BY Year ORDER BY Year;",
+    "key_constructs": ["INMEMORY column store", "CLUSTERED COLUMNSTORE INDEX", "COLUMNSTORE_ARCHIVE"]
+  },
+  {
+    "op_number": 40,
+    "category": "Columnstore",
+    "oracle_sql": "SELECT /*+ PARALLEL(t 4) */ t.employee_id, e.full_name, SUM(t.total_amount) AS total_sales, COUNT(*) OVER (PARTITION BY t.employee_id) AS employee_transaction_count FROM transactions t JOIN employees e ON t.employee_id = e.employee_id GROUP BY t.employee_id, e.full_name ORDER BY total_sales DESC",
+    "expected_tsql": "SELECT TOP 50 t.EmployeeID, e.FullName, SUM(t.TotalAmount) AS TotalSales, COUNT(*) OVER (PARTITION BY t.EmployeeID) AS EmployeeTransactionCount FROM Sales.Transactions t JOIN HR.Employees e ON t.EmployeeID = e.EmployeeID GROUP BY t.EmployeeID, e.FullName ORDER BY TotalSales DESC OPTION (USE HINT('ALLOW_BATCH_MODE'));",
+    "key_constructs": ["PARALLEL hint", "OPTION (USE HINT)", "batch mode on rowstore"]
+  },
+  {
+    "op_number": 41,
+    "category": "Security",
+    "oracle_sql": "SELECT s.data_id, e.full_name, s.ssn, s.credit_card, s.salary_encrypted FROM sensitive_data s JOIN employees e ON s.employee_id = e.employee_id",
+    "expected_tsql": "OPEN SYMMETRIC KEY EmployeeSymKey DECRYPTION BY CERTIFICATE EmployeeDataCert; SELECT TOP 50 s.DataID, e.FullName, CONVERT(VARCHAR, DecryptByKey(s.SSN)) AS DecryptedSSN, CONVERT(VARCHAR, DecryptByKey(s.CreditCard)) AS DecryptedCard, CONVERT(VARCHAR, DecryptByKey(s.SalaryEncrypted)) AS DecryptedSalary, '****-**-' + RIGHT(CONVERT(VARCHAR, DecryptByKey(s.SSN)), 4) AS MaskedSSN FROM Security.SensitiveData s JOIN HR.Employees e ON s.EmployeeID = e.EmployeeID; CLOSE SYMMETRIC KEY EmployeeSymKey;",
+    "key_constructs": ["DBMS_CRYPTO", "UTL_I18N", "Symmetric key", "Certificate", "DecryptByKey"]
+  },
+  {
+    "op_number": 42,
+    "category": "Security",
+    "oracle_sql": "EXEC DBMS_SESSION.SET_CONTEXT('SecurityCtx', 'UserEmployeeID', 4)",
+    "expected_tsql": "EXEC sp_set_session_context 'UserEmployeeID', 4; SELECT TOP 50 EmployeeID, FullName, Department, Salary FROM HR.Employees;",
+    "key_constructs": ["DBMS_RLS (VPD)", "DBMS_SESSION.SET_CONTEXT", "Row-Level Security predicate", "sp_set_session_context"]
+  },
+  {
+    "op_number": 43,
+    "category": "Security",
+    "oracle_sql": "BEGIN DBMS_REDACT.ADD_POLICY(object_schema => 'HR', object_name => 'EMPLOYEES', policy_name => 'redact_emp_data', column_name => 'EMAIL', function_type => DBMS_REDACT.FULL, expression => '1=1'); END;",
+    "expected_tsql": "SELECT TOP 50 EmployeeID, FullName, Email, Salary FROM HR.Employees;",
+    "key_constructs": ["DBMS_REDACT (Data Redaction)", "Dynamic Data Masking", "MASKED WITH FUNCTION"]
+  },
+  {
+    "op_number": 44,
+    "category": "Security",
+    "oracle_sql": "BEGIN DBMS_FGA.ADD_POLICY(object_schema => 'HR', object_name => 'EMPLOYEES', policy_name => 'emp_select_audit', audit_column => 'SALARY', enable => TRUE); END;",
+    "expected_tsql": "SELECT TOP 50 * FROM sys.server_audits;",
+    "key_constructs": ["DBMS_FGA (Fine-Grained Auditing)", "SERVER AUDIT", "AUDIT SPECIFICATION"]
+  },
+  {
+    "op_number": 45,
+    "category": "Security",
+    "oracle_sql": "CREATE OR REPLACE PROCEDURE usp_get_sensitive_employee_data AUTHID DEFINER AS BEGIN NULL; END;",
+    "expected_tsql": "EXEC HR.usp_GetSensitiveEmployeeData;",
+    "key_constructs": ["AUTHID DEFINER", "Certificate-based signing", "EXECUTE AS OWNER"]
+  },
+  {
+    "op_number": 46,
+    "category": "Programmability",
+    "oracle_sql": "CREATE OR REPLACE PROCEDURE usp_bulk_insert_orders(p_items IN SYS.ODCIVARCHAR2LIST, p_employee_id NUMBER, p_customer_id NUMBER) AS BEGIN FORALL i IN 1..p_items.COUNT INSERT INTO transactions (employee_id, customer_id, transaction_details) VALUES (p_employee_id, p_customer_id, p_items(i)); COMMIT; END;",
+    "expected_tsql": "DECLARE @items Sales.OrderItemType; INSERT INTO @items VALUES (1, 2, 49999.99, 0), (3, 5, 4999.99, 0.1); EXEC Sales.usp_BulkInsertOrders @items, 6, 999;",
+    "key_constructs": ["OBJECT type", "TABLE OF", "FORALL bulk DML", "Table-valued parameter", "User-defined table type"]
+  },
+  {
+    "op_number": 47,
+    "category": "Programmability",
+    "oracle_sql": "MERGE INTO products target USING (SELECT 1 AS product_id, 'Quantum Database Server Enterprise v2' AS product_name, 'Software' AS category, 54999.99 AS base_price FROM dual UNION ALL SELECT 1001, 'New AI Module 2026', 'Software', 9999.99 FROM dual) source ON (target.product_id = source.product_id) WHEN MATCHED THEN UPDATE SET product_name = source.product_name, base_price = source.base_price WHEN NOT MATCHED THEN INSERT (product_name, category, base_price) VALUES (source.product_name, source.category, source.base_price)",
+    "expected_tsql": "MERGE Sales.Products AS target USING (VALUES (1, 'Quantum Database Server Enterprise v2', 'Software', 54999.99), (1001, 'New AI Module 2026', 'Software', 9999.99)) AS source (ProductID, ProductName, Category, BasePrice) ON target.ProductID = source.ProductID WHEN MATCHED THEN UPDATE SET ProductName = source.ProductName, BasePrice = source.BasePrice WHEN NOT MATCHED THEN INSERT (ProductName, Category, BasePrice) VALUES (source.ProductName, source.Category, source.BasePrice) OUTPUT $action AS ActionTaken, INSERTED.ProductID, DELETED.ProductName AS OldName;",
+    "key_constructs": ["MERGE (Oracle syntax)", "FROM dual", "VALUES source (MSSQL)", "OUTPUT clause", "$action"]
+  },
+  {
+    "op_number": 48,
+    "category": "Programmability",
+    "oracle_sql": "SELECT transaction_id, CASE WHEN VALIDATE_CONVERSION(JSON_VALUE(transaction_details, '$.seats') AS NUMBER) = 1 THEN TO_NUMBER(JSON_VALUE(transaction_details, '$.seats')) END AS parsed_seats FROM transactions WHERE ROWNUM <= 50",
+    "expected_tsql": "SELECT TOP 50 TransactionID, TRY_CONVERT(INT, JSON_VALUE(TransactionDetails, '$.seats')) AS ParsedSeats, TRY_CONVERT(DECIMAL(18,2), JSON_VALUE(TransactionDetails, '$.discount_amount')) AS ParsedDiscount, TRY_CAST(JSON_VALUE(TransactionDetails, '$.processed') AS BIT) AS IsProcessed, IIF(TRY_CONVERT(INT, JSON_VALUE(TransactionDetails, '$.seats')) IS NULL, 'Invalid', 'Valid') AS ConversionStatus FROM Sales.Transactions;",
+    "key_constructs": ["VALIDATE_CONVERSION (Oracle 12c+)", "TRY_CONVERT", "TRY_CAST", "IIF"]
+  },
+  {
+    "op_number": 49,
+    "category": "Programmability",
+    "oracle_sql": "SELECT SYS_CONTEXT('SecurityCx', 'UserEmployeeID') AS current_user_id, SYS_CONTEXT('SecurityCx', 'Department') AS current_dept, SYS_CONTEXT('USERENV', 'SESSION_USER') AS server_login FROM dual",
+    "expected_tsql": "EXEC sp_set_session_context 'UserEmployeeID', 4; EXEC sp_set_session_context 'Department', 'Engineering'; EXEC sp_set_session_context 'SecurityLevel', 3; SELECT SESSION_CONTEXT(N'UserEmployeeID') AS CurrentUserID, SESSION_CONTEXT(N'Department') AS CurrentDept, SESSION_CONTEXT(N'SecurityLevel') AS CurrentSecLevel, SUSER_SNAME() AS ServerLogin, ORIGINAL_LOGIN() AS OriginalLogin, APP_NAME() AS ApplicationName;",
+    "key_constructs": ["DBMS_SESSION.SET_CONTEXT", "SYS_CONTEXT", "sp_set_session_context", "SESSION_CONTEXT", "SUSER_SNAME"]
+  },
+  {
+    "op_number": 50,
+    "category": "Programmability",
+    "oracle_sql": "SELECT product_id, versions_startscn AS change_version, CASE versions_operation WHEN 'I' THEN 'INSERT' WHEN 'U' THEN 'UPDATE' WHEN 'D' THEN 'DELETE' END AS operation FROM products VERSIONS BETWEEN SCN MINVALUE AND MAXVALUE WHERE versions_operation IS NOT NULL AND ROWNUM <= 50",
+    "expected_tsql": "SELECT TOP 50 CT.ProductID, CT.SYS_CHANGE_VERSION AS ChangeVersion, CT.SYS_CHANGE_OPERATION AS Operation, p.ProductName, p.BasePrice FROM CHANGETABLE(CHANGES Sales.Products, 0) CT LEFT JOIN Sales.Products p ON CT.ProductID = p.ProductID;",
+    "key_constructs": ["VERSIONS BETWEEN SCN (Flashback Version Query)", "versions_operation", "CHANGETABLE", "CHANGE_TRACKING", "SYS_CHANGE_VERSION"]
+  }
+]
