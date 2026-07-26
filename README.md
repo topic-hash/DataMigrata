@@ -139,7 +139,3 @@ DataMigrata/
 - **Docker** for containerized local development
 
 ---
-
-## License
-
-MIT — Free for educational and non-commercial use. SQL Server Developer Edition is free for non-production environments.
