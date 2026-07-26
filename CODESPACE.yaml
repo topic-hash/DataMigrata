@@ -9,14 +9,18 @@ metadata:
 environment:
   workingDir: /workspaces/DataMigrata
   healthChecks:
-    - name: cargo
-      command: cargo --version
+    - name: repo
+      command: ls /workspaces/DataMigrata/Cargo.toml
       expectExitCode: 0
-      timeoutSecs: 10
+      timeoutSecs: 5
     - name: sql-files
       command: ls /workspaces/DataMigrata/sql/00_COMPLETE_MSSQL_Deployment.sql
       expectExitCode: 0
       timeoutSecs: 5
+    - name: cargo
+      command: command -v cargo && cargo --version
+      expectExitCode: 0
+      timeoutSecs: 10
   secrets:
     - name: MSSQL_SA_PASSWORD
       required: false
@@ -25,41 +29,50 @@ environment:
         charset: alnum+symbols
 
 commands:
+  setup-rust:
+    description: Install Rust stable via rustup (one-time, idempotent)
+    command: |
+      if ! command -v cargo >/dev/null 2>&1; then
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal --no-modify-path
+        . "$HOME/.cargo/env"
+      fi
+      cargo --version
+    timeoutSecs: 300
+
   build:
     description: Build the DataMigrata Rust pipeline (release)
-    command: cd {{workingDir}} && cargo build --release
+    command: . "$HOME/.cargo/env" 2>/dev/null; cd {{workingDir}} && cargo build --release
     timeoutSecs: 600
-    requiresHealth: [cargo]
+    requiresHealth: [repo]
 
   test:
     description: Run the 50-operation integration test suite
-    command: cd {{workingDir}} && cargo test --test operations_50
+    command: . "$HOME/.cargo/env" 2>/dev/null; cd {{workingDir}} && cargo test --test operations_50
     timeoutSecs: 600
-    requiresHealth: [cargo]
+    requiresHealth: [repo]
 
   bench:
     description: Run the pipeline benchmarks
-    command: cd {{workingDir}} && cargo bench
+    command: . "$HOME/.cargo/env" 2>/dev/null; cd {{workingDir}} && cargo bench
     timeoutSecs: 1200
-    requiresHealth: [cargo]
+    requiresHealth: [repo]
 
   clippy:
     description: Run clippy with warnings as errors
-    command: cd {{workingDir}} && cargo clippy -- -D warnings
+    command: . "$HOME/.cargo/env" 2>/dev/null; cd {{workingDir}} && cargo clippy -- -D warnings
     timeoutSecs: 300
-    requiresHealth: [cargo]
+    requiresHealth: [repo]
 
   fmt-check:
     description: Verify code formatting
-    command: cd {{workingDir}} && cargo fmt --check
+    command: . "$HOME/.cargo/env" 2>/dev/null; cd {{workingDir}} && cargo fmt --check
     timeoutSecs: 60
-    requiresHealth: [cargo]
+    requiresHealth: [repo]
 
   docker-up:
     description: Start the MSSQL Docker container
     command: cd {{workingDir}}/docker && docker compose up -d
     timeoutSecs: 120
-    requiresHealth: [cargo]
 
   docker-status:
     description: Check Docker container status
@@ -73,7 +86,7 @@ commands:
       /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U sa -P "{{secret.MSSQL_SA_PASSWORD}}" \
         -i sql/00_COMPLETE_MSSQL_Deployment.sql
     timeoutSecs: 600
-    requiresHealth: [cargo, sql-files]
+    requiresHealth: [repo, sql-files]
 
   run-50-ops:
     description: Run the 50 sophisticated MSSQL operations against the deployed DB
@@ -82,7 +95,7 @@ commands:
       /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U sa -P "{{secret.MSSQL_SA_PASSWORD}}" \
         -i sql/02_MSSQL_50_Operations_Expanded.sql
     timeoutSecs: 600
-    requiresHealth: [cargo, sql-files]
+    requiresHealth: [repo, sql-files]
 
   ls:
     description: List repo root
@@ -100,9 +113,6 @@ commands:
     timeoutSecs: 5
 
 hooks:
-  postStart:
-    - command: cd {{workingDir}} && cargo fetch
-      timeoutSecs: 300
   preStop:
     - command: cd {{workingDir}}/docker && docker compose down 2>/dev/null || true
       timeoutSecs: 30
