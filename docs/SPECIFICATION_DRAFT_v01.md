@@ -875,36 +875,30 @@ FOR SYSTEM_TIME AS OF DATEADD(DAY, -7, SYSUTCDATETIME());
 
 ### 5.1 Core Components
 
-**Language: TypeScript/Node.js (recommended)**
+**Language: Rust (1.75+)**
 
-The middleware core should be implemented in TypeScript/Node.js for the following reasons:
-- The `tedious` npm package provides a mature, well-maintained TDS (Tabular Data Stream) client for connecting to MSSQL. This eliminates the need to implement TDS protocol handling.
-- Apache Calcite has a Node.js binding available through the `calcite` community project, though the primary Calcite implementation is Java. An alternative approach is to run Calcite as a Java microservice (using Calcite's JSON/HTTP API) and communicate with it from the Node.js middleware via HTTP.
-- Node.js's asynchronous I/O model is well-suited for a proxy/middleware that must handle many concurrent connections without blocking.
-- The TypeScript type system provides compile-time safety for the complex data structures involved in AST and IR manipulation.
-- The npm ecosystem provides libraries for protocol parsing, netowrking, and object storage interaction (MinIO JavaScript Client).
+The middleware core is implemented in Rust. This decision is final and is supported by the [Technology Knowledge Base](TECHNOLOGY_KNOWLEDGE_BASE.md) — 87 sources across 7 research domains. The reasoning, in summary:
 
-**Alternative: Python** would provide access to Apache Calcite's Java API via JPype or Pyjnius, strong SQL parsing libraries (sqlparse, sqlglot), and the PyODBC library for MSSQL connectivity. However, Python's threading model (GIL) is less suited for high-concurrency proxy workloads.
+- **No GC pauses:** Java GC pauses (even ZGC's sub-ms pauses) compound across thousands of concurrent connections, causing tail latency spikes. Rust's ownership model eliminates GC entirely. Source 10 of the knowledge base documents that JVM-based middleware shows 2-5x lower tail latency and 3-4x lower memory per connection vs C-based — but Rust eliminates both the GC pauses *and* the C-class memory safety CVEs.
+- **Memory safety without runtime cost:** Safe Rust eliminates ~70% of memory safety CVEs compared to C/C++ (SEI/CMU, Sources 47-49) at compile time. `Rc<RefCell>` is forbidden in the IR/AST layers because it negates compile-time safety for graph-structured data; we use arena allocation (`bumpalo`) where graph cycles exist.
+- **Production-proven at scale:** RisingWave (~200K lines of Rust) demonstrates a production SQL database system in Rust with 5-10x lower memory than equivalent Java systems (Sources 73-74). Apache DataFusion, InfluxDB IOx, Ballista, and GlueSQL all use the same Rust stack we adopt here.
+- **Rust-native compiler stack:** `sqlparser-rs` (production Oracle dialect support — DECODE, NVL, ROWNUM, (+) outer joins, DUAL, CONNECT BY) + Apache DataFusion (Rust-native equivalent of Apache Calcite — SQL frontend, logical plan, rule-based + cost-based optimizer, physical plan generation).
 
-**Alternative: Java** would provide native access to Apache Calcite (since Calcite itself is Java) and the JDBC API for MSSQL connectivity. However, the middleware does not need the full Java EE stack, and the deployment complexity of a Java application is higher than a Node.js application.
+**IR Engine: Apache DataFusion**
 
-**Decision needed:** The final language choice should be made in Phase 0 based on prototype performance benchmarks with the Calcite integration layer.
-
-**IR Engine: Apache Calcite**
-
-Apache Calcite is the industry-standard open-source framework for SQL parsing and optimization. It provides:
-- SQL parsers for multiple dialects (Oracle, MySQL, PostgreSQL, MSSQL, etc.) that produce a canonical AST.
-- Relational algebra representation (RelNode tree) as the database-agnostic intermediate representation.
-- Built-in optimization rules (predicate pushdown, join reordering, projection pruning, subquery unnesting).
+Apache DataFusion is the Rust-native equivalent of Apache Calcite. It provides:
+- SQL frontend (uses `sqlparser-rs`) that produces a canonical AST.
+- Relational algebra representation (`LogicalPlan` tree) as the database-agnostic intermediate representation.
+- Built-in optimization rules (predicate pushdown, join reordering, projection pruning, subquery unnesting, expression simplification, single-distinct-to-groupby).
 - Cost-based optimizer with configurable statistics.
-- Extensibility for custom optimization rules.
+- Extensibility for custom optimization rules via the `OptimizerRule` trait.
 
-Calcite's Oracle parser handles most Oracle-specific syntax (CONNECT BY, DECODE, NVL, ROWNUM, DUAL), reducing the amount of custom parsing the middleware must implement. The middleware extends Calcite with custom rules for Oracle-to-MSSQL semantic conversions (CONNECT BY to HIERARCHYID, VPD to RLS, etc.).
+DataFusion's Oracle dialect support (via `sqlparser-rs`) handles most Oracle-specific syntax (CONNECT BY, DECODE, NVL, ROWNUM, DUAL) directly. The middleware extends DataFusion with custom rules for Oracle-to-MSSQL semantic conversions (CONNECT BY → HIERARCHYID, VPD → RLS, Flashback → Temporal, etc.).
 
 **Protocol Layer:**
 
-- **Incoming (TNS):** Custom TNS server implementation. This is the highest-risk component. The middleware must implement enough of the TNS protocol to accept connections from standard Oracle JDBC drivers. Reference: the TNS protocol specification (available in Oracle Net Services documentation) and Babelfish for PostgreSQL's implementation (which implements a subset of TDS).
-- **Outgoing (MSSQL):** The `tedious` npm package for Node.js or `pyodbc` for Python. This encapsulates TDS protocol handling and provides a high-level API for executing SQL and retrieving results.
+- **Incoming (TNS):** Custom TNS server implementation using `winnow` for zero-copy binary protocol parsing. This is the highest-risk component and is greenfield work — no production Rust TNS implementation exists (knowledge base Appendix C, gap #4). Reference: the TNS protocol specification (Oracle Net Services documentation) and Babelfish for PostgreSQL's implementation (which implements a subset of TDS for the inverse direction).
+- **Outgoing (MSSQL):** The `tiberius` crate — pure-Rust, async, tokio-native TDS client. This encapsulates TDS protocol handling and provides a high-level API for executing SQL and retrieving results.
 
 **Target Database: MSSQL 2022 Developer (Docker)**
 

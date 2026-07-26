@@ -1,32 +1,19 @@
-# SQL Server backups
-*.bak
-*.trn
-*.diff
-
-# SQL Server data files
-*.mdf
-*.ldf
-*.ndf
-
-# Connection files / credentials
-*.connection
-sqlconnections.json
-
-# Logs
-*.log
-logs/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/settings.json
-.idea/
-
-# Docker volumes
-volumes/
-
-# Temp files
-*.tmp
+# DataMigrata — Rust build artifacts
+/target/
+**/*.rs.bk
+*.pdb
 *.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+
+# Generated snapshots (insta)
+*.snap.new
+
+# Local env
+.env
+.env.local
+
+# Existing (preserved from prior .gitignore)
+sql/*.log
