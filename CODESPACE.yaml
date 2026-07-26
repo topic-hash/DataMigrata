@@ -1,0 +1,108 @@
+# CODESPACE.yaml — codespacectl manifest for DataMigrata
+# https://github.com/topic-hash/codespacectl
+apiVersion: v1
+metadata:
+  name: datamigrata
+  description: Oracle→MSSQL semantic translation middleware (Rust + DataFusion + sqlparser-rs)
+  repo: topic-hash/DataMigrata
+
+environment:
+  workingDir: /workspaces/DataMigrata
+  healthChecks:
+    - name: cargo
+      command: cargo --version
+      expectExitCode: 0
+      timeoutSecs: 10
+    - name: sql-files
+      command: ls /workspaces/DataMigrata/sql/00_COMPLETE_MSSQL_Deployment.sql
+      expectExitCode: 0
+      timeoutSecs: 5
+  secrets:
+    - name: MSSQL_SA_PASSWORD
+      required: false
+      generateIfMissing:
+        length: 24
+        charset: alnum+symbols
+
+commands:
+  build:
+    description: Build the DataMigrata Rust pipeline (release)
+    command: cd {{workingDir}} && cargo build --release
+    timeoutSecs: 600
+    requiresHealth: [cargo]
+
+  test:
+    description: Run the 50-operation integration test suite
+    command: cd {{workingDir}} && cargo test --test operations_50
+    timeoutSecs: 600
+    requiresHealth: [cargo]
+
+  bench:
+    description: Run the pipeline benchmarks
+    command: cd {{workingDir}} && cargo bench
+    timeoutSecs: 1200
+    requiresHealth: [cargo]
+
+  clippy:
+    description: Run clippy with warnings as errors
+    command: cd {{workingDir}} && cargo clippy -- -D warnings
+    timeoutSecs: 300
+    requiresHealth: [cargo]
+
+  fmt-check:
+    description: Verify code formatting
+    command: cd {{workingDir}} && cargo fmt --check
+    timeoutSecs: 60
+    requiresHealth: [cargo]
+
+  docker-up:
+    description: Start the MSSQL Docker container
+    command: cd {{workingDir}}/docker && docker compose up -d
+    timeoutSecs: 120
+    requiresHealth: [cargo]
+
+  docker-status:
+    description: Check Docker container status
+    command: docker ps
+    timeoutSecs: 10
+
+  deploy-sql:
+    description: Deploy the full MSSQL schema + 20K rows (~2 minutes)
+    command: |
+      cd {{workingDir}}
+      /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U sa -P "{{secret.MSSQL_SA_PASSWORD}}" \
+        -i sql/00_COMPLETE_MSSQL_Deployment.sql
+    timeoutSecs: 600
+    requiresHealth: [cargo, sql-files]
+
+  run-50-ops:
+    description: Run the 50 sophisticated MSSQL operations against the deployed DB
+    command: |
+      cd {{workingDir}}
+      /opt/mssql-tools/bin/sqlcmd -S localhost,1433 -U sa -P "{{secret.MSSQL_SA_PASSWORD}}" \
+        -i sql/02_MSSQL_50_Operations_Expanded.sql
+    timeoutSecs: 600
+    requiresHealth: [cargo, sql-files]
+
+  ls:
+    description: List repo root
+    command: ls -la {{workingDir}}
+    timeoutSecs: 5
+
+  git-status:
+    description: Git status inside codespace
+    command: cd {{workingDir}} && git status
+    timeoutSecs: 10
+
+  uname:
+    description: Codespace OS info
+    command: uname -a
+    timeoutSecs: 5
+
+hooks:
+  postStart:
+    - command: cd {{workingDir}} && cargo fetch
+      timeoutSecs: 300
+  preStop:
+    - command: cd {{workingDir}}/docker && docker compose down 2>/dev/null || true
+      timeoutSecs: 30

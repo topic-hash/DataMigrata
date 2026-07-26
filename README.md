@@ -6,6 +6,52 @@
 
 ---
 
+## Codespace Operations (agent-driven via `codespacectl`)
+
+This repo ships a [`CODESPACE.yaml`](CODESPACE.yaml) manifest for
+[`codespacectl`](https://github.com/topic-hash/codespacectl) — a single-binary
+Rust CLI that lets AI agents drive GitHub Codespaces reliably.
+
+### One-time setup
+
+```bash
+# Install codespacectl
+curl -L https://github.com/topic-hash/codespacectl/releases/latest/download/codespacectl-linux-amd64 \
+  -o /usr/local/bin/codespacectl && chmod +x $_
+
+# Set your GitHub PAT (fine-grained, `codespace` scope)
+export CODESPACECTL_TOKEN=ghp_xxx
+
+# Tell codespacectl where the vendored gh binary lives (codespacectl ships one too,
+# but if you're running from a clone of DataMigrata, use the one in tools/bin/)
+export CODESPACECTL_GH_BIN=/path/to/codespacectl/tools/bin/gh
+```
+
+### Workflow
+
+```bash
+codespacectl --manifest ./CODESPACE.yaml connect --codespace <name>
+codespacectl exec build         # cargo build --release
+codespacectl exec test          # cargo test --test operations_50
+codespacectl exec bench         # cargo bench
+codespacectl exec clippy        # cargo clippy -- -D warnings
+codespacectl exec fmt-check     # cargo fmt --check
+codespacectl exec docker-up     # docker compose up -d
+codespacectl exec deploy-sql    # ~2 minutes, deploys 20K rows
+codespacectl exec run-50-ops     # 50 sophisticated MSSQL operations
+codespacectl stop
+```
+
+All commands support `--json` for structured output. See
+[the codespacectl docs](https://github.com/topic-hash/codespacectl/blob/main/docs/CLI_REFERENCE.md)
+for the full envelope schema.
+
+The legacy Python tooling (`tools/codespace_ssh.py`, `tools/setup.py`,
+`AGENT_CODESPACE_PROMPT.md`) is preserved for backward compatibility but
+should be considered deprecated — `codespacectl` replaces it.
+
+---
+
 ## Quick Start
 
 ### Prerequisites
