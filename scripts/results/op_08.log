@@ -1,0 +1,22 @@
+=== OP 8 ===
+STATUS: PASS  exit=0  elapsed=0.1s  rows=20
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+level="Intermediate"/><Skill name="Project Management" level="Advanced"/><Skill name="Project Management" level="Advanced"/><Skill name="Project
+10,Winifred Bender,<Skills><Skill name="T-SQL" level="Expert"/><Skill name="PowerShell" level="Advanced"/><Skill name="Angular" level="Intermediate"/><Skill name="Project Management" level="Advanced"/><Skill name="Project Management" level="Advanced"/><Skill name="Project Ma
+11,Catherine Hughes,<Skills><Skill name="T-SQL" level="Expert"/><Skill name="Azure" level="Advanced"/><Skill name="Angular" level="Intermediate"/></Skills>
+12,Reba Tyler,<Skills><Skill name="C#" level="Expert"/><Skill name="Azure" level="Advanced"/><Skill name="Vue" level="Intermediate"/></Skills>
+13,Juanita Krueger,<Skills><Skill name="Cloud Architecture" level="Expert"/><Skill name="Azure" level="Advanced"/><Skill name="React" level="Intermediate"/></Skills>
+14,Sondra Bean,<Skills><Skill name="T-SQL" level="Expert"/><Skill name="PowerShell" level="Advanced"/><Skill name="Angular" level="Intermediate"/></Skills>
+15,Jennie Salinas,<Skills><Skill name="Data Modeling" level="Expert"/><Skill name="Azure" level="Advanced"/><Skill name="Node.js" level="Intermediate"/></Skills>
+16,Lucy Nash,<Skills><Skill name="Python" level="Expert"/><Skill name="PowerShell" level="Advanced"/><Skill name="Go" level="Intermediate"/></Skills>
+17,Celia Franco,<Skills><Skill name="Python" level="Expert"/><Skill name="Azure" level="Advanced"/><Skill name="React" level="Intermediate"/></Skills>
+18,Mona Bender,<Skills><Skill name="Cloud Architecture" level="Expert"/><Skill name="Kubernetes" level="Advanced"/><Skill name="Go" level="Intermediate"/></Skills>
+19,Bradford Mcclure,<Skills><Skill name="C#" level="Expert"/><Skill name="Kubernetes" level="Advanced"/><Skill name="Node.js" level="Intermediate"/></Skills>
+20,Sherman Bass,<Skills><Skill name="T-SQL" level="Expert"/><Skill name="PowerShell" level="Advanced"/><Skill name="Vue" level="Intermediate"/></Skills>
+
+(20 rows affected)
+

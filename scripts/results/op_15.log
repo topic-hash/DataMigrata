@@ -1,0 +1,12 @@
+=== OP 15 ===
+STATUS: PASS  exit=0  elapsed=0.09s  rows=2
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+Server,2,49999.99,99999.98
+Agent,5,4999.99,24999.95
+
+(2 rows affected)
+

@@ -1,0 +1,19 @@
+=== OP 1 ===
+STATUS: PASS  exit=0  elapsed=2.64s  rows=100
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+ > Sterling Glass > Velma Brennan > Mildred Snyder > Chase Fernandez,1529389.00,                Chase Fernandez
+4177,Shelley Ericksen,Marketing,Specialist,90213.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Mildred Snyder > Chase Fernandez > Shelley Ericksen,1619602.00,                  Shelley Ericksen
+3129,Rocco Brennan,Operations,Engineer,171313.00,7,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan,1364619.00,              Rocco Brennan
+3228,Rod Gallagher,Finance,Engineer,199304.00,8,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher,1563923.00,                Rod Gallagher
+3485,Marsha Fleming,HR,Analyst,89472.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher > Marsha Fleming,1653395.00,                  Marsha Fleming
+4877,Darius Bullock,IT,Senior Engineer,235661.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher > Darius Bullock,1799584.00,                  Darius Bullock
+3130,Dylan Bradley,Sales,Coordinator,219331.00,6,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Dylan Bradley,1202202.00,            Dylan Bradley
+3210,Elsa Novak,Sales,Consultant,234737.00,7,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Dylan Bradley > Elsa Novak,1436939.00,              Elsa Novak
+694,Joanna Floyd,Finance,Specialist,123633.00,6,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Joanna Floyd,1106504.00,            Joanna Floyd
+
+(100 rows affected)
+

@@ -1,0 +1,37 @@
+=== OP 29 ===
+STATUS: PASS  exit=0  elapsed=0.15s  rows=100
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+Success,Elijah Andrews,Detail,1,2302789.65000000,2302789.65000000
+Customer Success,Elizabeth Martinez,Detail,1,2243396.59000000,2243396.59000000
+Customer Success,Elva Roach,Detail,1,1214817.78000000,1214817.78000000
+Customer Success,Emmett Barber,Detail,2,2843188.42000000,1421594.21000000
+Customer Success,Erich Floyd,Detail,1,84947.28300000,84947.28300000
+Customer Success,Esperanza Middleton,Detail,1,750419.91000000,750419.91000000
+Customer Success,Essie Orr,Detail,1,744351.92000000,744351.92000000
+Customer Success,Felix Whitehead,Detail,5,4511110.07000000,902222.01400000
+Customer Success,Francisca Ware,Detail,1,1919249.55000000,1919249.55000000
+Customer Success,Freddie Rubio,Detail,3,1827014.15000000,609004.71666666
+Customer Success,Gary Stewart,Detail,2,5069900.27000000,2534950.13500000
+Customer Success,Genevieve Horn,Detail,2,3552417.08000000,1776208.54000000
+Customer Success,Gerald Bryant,Detail,6,7145020.40000000,1190836.73333333
+Customer Success,Gilbert Doyle,Detail,1,116223.98000000,116223.98000000
+Customer Success,Glenda Reid,Detail,1,1242903.63000000,1242903.63000000
+Customer Success,Grace Fox,Detail,1,2482647.72000000,2482647.72000000
+Customer Success,Graham Pitts,Detail,2,1986590.52000000,993295.26000000
+Customer Success,Gretchen Barrera,Detail,1,123095.96000000,123095.96000000
+Customer Success,Guadalupe Stanley,Detail,1,2449523.67000000,2449523.67000000
+Customer Success,Guillermo Gates,Detail,1,2097039.56000000,2097039.56000000
+Customer Success,Gustavo Pitts,Detail,5,6135073.51800000,1227014.70360000
+Customer Success,Hannah Graham,Detail,5,8185877.52350000,1637175.50470000
+Customer Success,Harold Reynolds,Detail,1,1960991.52000000,1960991.52000000
+Customer Success,Hector Lambert,Detail,1,579014.91000000,579014.91000000
+Customer Success,Henry Perry,Detail,1,1813779.54000000,1813779.54000000
+Customer Success,Imogene Conley,Detail,1,1652429.74000000,1652429.74000000
+Customer Success,Inez Rollins,Detail,1,262383.84000000,262383.84000000
+
+(100 rows affected)
+

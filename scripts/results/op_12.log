@@ -1,0 +1,13 @@
+=== OP 12 ===
+STATUS: PASS  exit=0  elapsed=0.11s  rows=3
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+{"SalesReport":[{"Department":"Finance","EmployeeName":"Jane Ryan","TransactionsJSON":[{"TransactionID":1,"TotalAmount":643947.63000000,"TransactionDate":"2026-07-26T17:54:01.7781368","PaymentMethod":"crypto"},{"TransactionID":3311,"TotalAmount":108000.830
+,{"Department":"Sales","EmployeeName":"Velma Brennan","TransactionsJSON":[{"TransactionID":6,"TotalAmount":77065.87050000,"TransactionDate":"2026-07-26T17:54:01.8279898","PaymentMethod":"sepa"},{"TransactionID":1545,"TotalAmount":53613.98000000,"Transactio
+99.50000000,"TransactionDate":"2026-07-26T17:54:22.4370312","PaymentMethod":"credit_card"},{"TransactionID":4671,"TotalAmount":474759.90000000,"TransactionDate":"2026-07-26T17:54:37.2467906","PaymentMethod":"credit_card"}]}]}
+
+(3 rows affected)
+

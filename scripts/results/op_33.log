@@ -1,0 +1,11 @@
+=== OP 33 ===
+STATUS: PASS  exit=0  elapsed=0.14s  rows=1
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+15167.390843443118,3,POINT (-0.1278 51.5074)
+
+(1 rows affected)
+

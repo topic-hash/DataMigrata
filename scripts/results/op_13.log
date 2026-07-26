@@ -1,0 +1,22 @@
+=== OP 13 ===
+STATUS: PASS  exit=0  elapsed=0.16s  rows=20
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+_value"]}
+10,577659.66000000,{"payment_method":"ach","terms":"net_60","po_number":"PO-2026-0010","processed":true,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+11,3054831.66000000,{"payment_method":"wire_transfer","terms":"immediate","po_number":"PO-2026-0011","processed":true,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+12,2094255.62000000,{"payment_method":"ach","terms":"net_45","po_number":"PO-2026-0012","processed":true,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+13,455069.78000000,{"payment_method":"sepa","terms":"net_30","po_number":"PO-2026-0013","processed":false,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+14,470949.90000000,{"payment_method":"wire_transfer","terms":"net_30","po_number":"PO-2026-0014","processed":true,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+15,1952612.73000000,{"payment_method":"credit_card","terms":"net_45","po_number":"PO-2026-0015","processed":false,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+16,1809095.57000000,{"payment_method":"ach","terms":"net_30","po_number":"PO-2026-0016","processed":false,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+17,258291.69000000,{"payment_method":"crypto","terms":"net_60","po_number":"PO-2026-0017","processed":true,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+18,792419.80000000,{"payment_method":"crypto","terms":"immediate","po_number":"PO-2026-0018","processed":false,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+19,1506327.28750000,{"payment_method":"ach","terms":"net_60","po_number":"PO-2026-0019","processed":true,"discount_code":"SAVE15","tags":["high_value","high_value","high_value"]}
+20,591293.94000000,{"payment_method":"sepa","terms":"net_60","po_number":"PO-2026-0020","processed":false,"discount_code":null,"tags":["high_value","high_value","high_value"]}
+
+(20 rows affected)
+

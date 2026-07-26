@@ -625,9 +625,10 @@ SELECT
     OBJECT_NAME(p.object_id) AS TableName,
     p.partition_number,
     prv.value AS BoundaryValue,
-    p.rows AS RowCount
+    p.rows AS [RowCount]
 FROM sys.partitions p
-JOIN sys.partition_schemes ps ON p.data_space_id = ps.data_space_id
+JOIN sys.indexes i ON p.object_id = i.object_id AND p.index_id = i.index_id
+JOIN sys.partition_schemes ps ON i.data_space_id = ps.data_space_id
 JOIN sys.partition_functions pf ON ps.function_id = pf.function_id
 LEFT JOIN sys.partition_range_values prv ON pf.function_id = prv.function_id 
     AND p.partition_number = prv.boundary_id + 1

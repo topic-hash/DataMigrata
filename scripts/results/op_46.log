@@ -1,0 +1,11 @@
+=== OP 46 ===
+STATUS: PASS  exit=0  elapsed=0.1s  rows=2
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+
+(2 rows affected)
+15002
+

@@ -1,0 +1,20 @@
+=== OP 4 ===
+STATUS: PASS  exit=0  elapsed=3.09s  rows=100
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+elds -> Darlene Soto -> Sterling Glass -> Velma Brennan,1,10,15,159,408,529,1078,7
+1322,Francisca Ware,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware,1,10,15,159,408,529,1078,1322,8
+1927,Kirk Hurst,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Kirk Hurst,1,10,15,159,408,529,1078,1322,1927,9
+2016,Dolores Pena,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Dolores Pena,1,10,15,159,408,529,1078,1322,2016,9
+3005,Velma Brennan,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Velma Brennan,1,10,15,159,408,529,1078,1322,3005,9
+2104,Mildred Snyder,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder,1,10,15,159,408,529,1078,2104,8
+3533,Chase Fernandez,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder -> Chase Fernandez,1,10,15,159,408,529,1078,2104,3533,9
+4177,Shelley Ericksen,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder -> Chase Fernandez -> Shelley Ericksen,1,10,15,159,408,529,1078,2104,3533,4177,10
+3129,Rocco Brennan,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Rocco Brennan,1,10,15,159,408,529,1078,3129,8
+3228,Rod Gallagher,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Rocco Brennan -> Rod Gallagher,1,10,15,159,408,529,1078,3129,3228,9
+
+(100 rows affected)
+

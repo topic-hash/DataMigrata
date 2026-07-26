@@ -1,0 +1,49 @@
+=== OP 5 ===
+STATUS: PASS  exit=0  elapsed=0.4s  rows=100
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+ Jimenez,Operations,2,Indirect
+Rodolfo Gallagher,Shawn Tate,Finance,2,Indirect
+Rodolfo Gallagher,Miles Wong,Finance,2,Indirect
+Rodolfo Gallagher,Eric Cook,Marketing,2,Indirect
+Rodolfo Gallagher,Nora Andersen,Marketing,2,Indirect
+Rodolfo Gallagher,Denise Lawrence,Marketing,2,Indirect
+Rodolfo Gallagher,Willie Nichols,HR,2,Indirect
+Rodolfo Gallagher,Elvira Mclean,Marketing,2,Indirect
+Rodolfo Gallagher,Madeline Mays,R&D,2,Indirect
+Rodolfo Gallagher,Deborah Mitchell,Marketing,2,Indirect
+Rodolfo Gallagher,Robert Johnson,Engineering,2,Indirect
+Rodolfo Gallagher,Clifford Doyle,Sales,2,Indirect
+Rodolfo Gallagher,Reba Tyler,Customer Success,2,Indirect
+Rodolfo Gallagher,Thaddeus Conway,IT,2,Indirect
+Rodolfo Gallagher,Matthew Thompson,HR,2,Indirect
+Rodolfo Gallagher,Grant Sutton,Marketing,2,Indirect
+Rodolfo Gallagher,Timothy Gomez,R&D,2,Indirect
+Rodolfo Gallagher,Claude Blackburn,Operations,2,Indirect
+Rodolfo Gallagher,Alan Pierce,Sales,2,Indirect
+Rodolfo Gallagher,Joanna Floyd,Engineering,2,Indirect
+Rodolfo Gallagher,Rolando Hammond,IT,2,Indirect
+Rodolfo Gallagher,Jimmie Hooper,Operations,2,Indirect
+Rodolfo Gallagher,Patricia Davis,R&D,2,Indirect
+Rodolfo Gallagher,Wayne Wagner,IT,2,Indirect
+Rodolfo Gallagher,Catherine Hughes,Operations,2,Indirect
+Rodolfo Gallagher,Lucile Sheppard,HR,2,Indirect
+Rodolfo Gallagher,Sterling Glass,Customer Success,2,Indirect
+Rodolfo Gallagher,Verna Krause,Customer Success,2,Indirect
+Rodolfo Gallagher,Willie Nichols,Sales,2,Indirect
+Rodolfo Gallagher,Hannah Graham,HR,2,Indirect
+Rodolfo Gallagher,Rene Ware,Sales,2,Indirect
+Rodolfo Gallagher,Myron Sexton,Operations,2,Indirect
+Rodolfo Gallagher,Velma Brennan,Sales,2,Indirect
+Rodolfo Gallagher,Elvira Mclean,Engineering,2,Indirect
+Rodolfo Gallagher,Ralph Olson,Sales,2,Indirect
+Rodolfo Gallagher,Nadine Grimes,Legal,2,Indirect
+Rodolfo Gallagher,Maria Garcia,Customer Success,2,Indirect
+Rodolfo Gallagher,Robert Johnson,Operations,2,Indirect
+Rodolfo Gallagher,Bret Hays,Finance,2,Indirect
+
+(100 rows affected)
+
