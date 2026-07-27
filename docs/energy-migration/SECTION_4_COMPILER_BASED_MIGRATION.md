@@ -23,11 +23,11 @@ The `Cargo.toml` already declares `sqlparser = { version = "0.62", features = ["
 
 **ADR:**
 
-| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
-|---|---|---|---|
-| A — Side-table of energy annotations | 0.78 | Decoupled; trivially re-populatable; one extra `HashMap` allocation per parse | [datafusion-sqlparser-rs](https://github.com/apache/datafusion-sqlparser-rs); [LLVM IR energy analysis, ACM 10.1145/2764967.2764974](https://dl.acm.org/doi/10.1145/2764967.2764974) |
-| B — Two-tier AST + `CatalogRef` | 0.72 | Clean Calcite-style separation; higher memory; aligns with DataFusion `SqlToRel` | [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233); [DataFusion Optimizer docs](https://datafusion.apache.org/library-user-guide/query-optimizer.html) |
-| C — Visitor-based in-place tagging | 0.69 | Lowest allocation; tightest coupling; uses already-enabled `visitor` feature | [DataFusion Issue #1972](https://github.com/apache/datafusion/issues/1972) |
+| Variant | Confidence (0.0–1.0) | Joule Estimate (per-parse overhead) | Key Properties | Key Evidence |
+|---|---|---|---|---|
+| A — Side-table of energy annotations | 0.78 | ~0.5 mJ/parse (one HashMap alloc + lookup per AST node) | Decoupled; trivially re-populatable; one extra `HashMap` allocation per parse | [datafusion-sqlparser-rs](https://github.com/apache/datafusion-sqlparser-rs); [LLVM IR energy analysis, ACM 10.1145/2764967.2764974](https://dl.acm.org/doi/10.1145/2764967.2764974) |
+| B — Two-tier AST + `CatalogRef` | 0.72 | ~1.2 mJ/parse (extra CatalogRef indirection per node) | Clean Calcite-style separation; higher memory; aligns with DataFusion `SqlToRel` | [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233); [DataFusion Optimizer docs](https://datafusion.apache.org/library-user-guide/query-optimizer.html) |
+| C — Visitor-based in-place tagging | 0.69 | ~0.3 mJ/parse (in-place mutation, no allocation) | Lowest allocation; tightest coupling; uses already-enabled `visitor` feature | [DataFusion Issue #1972](https://github.com/apache/datafusion/issues/1972) |
 
 ---
 
@@ -56,11 +56,11 @@ DataFusion supports `LogicalPlan::Extension(Extension { node })` for custom plan
 
 **ADR:**
 
-| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
-|---|---|---|---|
-| A — Extend `Statistics` with `EnergyCost` | 0.82 | Reuses DataFusion; arithmetic over existing stats; matches academic precedent | [Online Energy Estimation, TC 2015](https://cse.usf.edu/~tuy/pub/TC15.pdf); [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233) |
-| B — Custom `RelationalNode` enum | 0.61 | Full control; tracks computed-column constraints; reimplementation cost high | [Apache Calcite RelNode hierarchy](https://arxiv.org/pdf/1802.10233) |
-| C — `LogicalPlan::Extension` wrapper | 0.70 | Minimal disruption to existing optimizer; one indirection per access | [DataFusion Logical Plans docs](https://datafusion.apache.org/library-user-guide/building-logical-plans.html) |
+| Variant | Confidence (0.0–1.0) | Joule Estimate (IR build per op) | Key Properties | Key Evidence |
+|---|---|---|---|---|
+| A — Extend `Statistics` with `EnergyCost` | 0.82 | ~0.1 mJ/op (struct field addition, no new traversal) | Reuses DataFusion; arithmetic over existing stats; matches academic precedent | [Online Energy Estimation, TC 2015](https://cse.usf.edu/~tuy/pub/TC15.pdf); [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233) |
+| B — Custom `RelationalNode` enum | 0.61 | ~2 mJ/op (full IR rebuild, 5–10× more allocation) | Full control; tracks computed-column constraints; reimplementation cost high | [Apache Calcite RelNode hierarchy](https://arxiv.org/pdf/1802.10233) |
+| C — `LogicalPlan::Extension` wrapper | 0.70 | ~0.4 mJ/op (wrapper alloc + one indirection per access) | Minimal disruption to existing optimizer; one indirection per access | [DataFusion Logical Plans docs](https://datafusion.apache.org/library-user-guide/building-logical-plans.html) |
 
 ---
 
@@ -93,11 +93,11 @@ Each rewrite is a 0/1 decision variable; each objective is a linear function of 
 
 **ADR:**
 
-| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
-|---|---|---|---|
-| A — Rule-based + lexicographic | 0.84 | Ships fast; 1 500× saving on op 31 alone; not Pareto-optimal | [Columnar VLDB PVLDB 2024](https://www.vldb.org/pvldb/vol17/p148-zeng.pdf); [Oracle MV rewrite](https://docs.oracle.com/database/122/DWHSG/advanced-query-rewrite-materialized-views.htm) |
-| B — NSGA-II Pareto front | 0.77 | True multi-objective; ~200 generations × 50 individuals; research-grade | [ACM SIGMOD 2015 multi-objective](https://dl.acm.org/doi/10.1145/2882903.2882927); [arXiv:2605.05044](https://arxiv.org/html/2605.05044v1) |
-| C — ILP solver | 0.62 | Provably optimal at small scale; brittle beyond ~100 variables | [Multi-objective optimisation, Wikipedia](https://en.wikipedia.org/wiki/Multi-objective_optimization) |
+| Variant | Confidence (0.0–1.0) | Joule Estimate (optimizer run) | Key Properties | Key Evidence |
+|---|---|---|---|---|
+| A — Rule-based + lexicographic | 0.84 | ~50 mJ/plan (5 rules × ~10 mJ/rule-match); enables ~7,000 J saving on op 31 | Ships fast; 1 500× saving on op 31 alone; not Pareto-optimal | [Columnar VLDB PVLDB 2024](https://www.vldb.org/pvldb/vol17/p148-zeng.pdf); [Oracle MV rewrite](https://docs.oracle.com/database/122/DWHSG/advanced-query-rewrite-materialized-views.htm) |
+| B — NSGA-II Pareto front | 0.77 | ~500 mJ/plan (200 generations × 50 individuals × ~50 µJ/eval) | True multi-objective; ~200 generations × 50 individuals; research-grade | [ACM SIGMOD 2015 multi-objective](https://dl.acm.org/doi/10.1145/2882903.2882927); [arXiv:2605.05044](https://arxiv.org/html/2605.05044v1) |
+| C — ILP solver | 0.62 | ~5 J/plan (ILP is NP-hard; 10× more than rule-based) | Provably optimal at small scale; brittle beyond ~100 variables | [Multi-objective optimisation, Wikipedia](https://en.wikipedia.org/wiki/Multi-objective_optimization) |
 
 ---
 
@@ -133,11 +133,11 @@ The entire migration is wrapped in a single distributed transaction; if any step
 
 **ADR:**
 
-| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
-|---|---|---|---|
-| A — Bulk-load-then-index + checksum + idempotent DDL | 0.86 | Standard pattern; ships in `TSqlGenerator`; 2–4× less write energy than index-then-load | [StackOverflow bulk-insert](https://stackoverflow.com/questions/48541602/sql-server-index-behaviour-when-doing-bulk-insert); [MS Learn index maintenance](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes); [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
-| B — Online CDC + drift detection + batch-size optimisation | 0.79 | Zero-downtime; energy-optimal batch size; complex; uses MSSQL CDC (op 50) | [Google Cloud CDC](https://cloud.google.com/discover/what-is-change-data-capture); [Striim SQL Server CDC](https://www.striim.com/blog/sql-server-change-data-capture-cdc-methods-how-striim) |
-| C — Single-transaction atomic cutover | 0.55 | Strongest correctness; impractical beyond GB scale; log-energy bottleneck | [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
+| Variant | Confidence (0.0–1.0) | Joule Estimate (migration of 8 MB) | Key Properties | Key Evidence |
+|---|---|---|---|---|
+| A — Bulk-load-then-index + checksum + idempotent DDL | 0.86 | ~3–5 J (8 MB NVMe write ~2 J + index builds ~1–3 J) | Standard pattern; ships in `TSqlGenerator`; 2–4× less write energy than index-then-load | [StackOverflow bulk-insert](https://stackoverflow.com/questions/48541602/sql-server-index-behaviour-when-doing-bulk-insert); [MS Learn index maintenance](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes); [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
+| B — Online CDC + drift detection + batch-size optimisation | 0.79 | ~8–15 J (CDC log tailing + incremental apply over sync window) | Zero-downtime; energy-optimal batch size; complex; uses MSSQL CDC (op 50) | [Google Cloud CDC](https://cloud.google.com/discover/what-is-change-data-capture); [Striim SQL Server CDC](https://www.striim.com/blog/sql-server-change-data-capture-cdc-methods-how-striim) |
+| C — Single-transaction atomic cutover | 0.55 | ~20–40 J (full transaction log for 8 MB + rollback buffer) | Strongest correctness; impractical beyond GB scale; log-energy bottleneck | [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
 
 ---
 

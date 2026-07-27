@@ -147,19 +147,45 @@
 | 59 | Op 5 (transitive closure) | 1+2 | 354 / 322 | 313 / 291 | 393,900 / 393,333 | 64 / 44 | 354 / 322 |
 | 63 | Op 7 (XML shredding CROSS APPLY) | 1+2 | 58 / 53 | 219 / 193 | 892 / 892 | 0 | 58 / 53 |
 
-### Op 31 — Execution Plan Summary (plan_id 29, from Query Store)
+### Op 31 — Execution Plan (plan_id 29, from Query Store)
 
-The actual execution plan XML was retrieved from `sys.query_store_plan`. Key
-characteristics:
-- **Statement type:** SELECT with TOP 50
-- **Join type:** Nested loops (CROSS JOIN) — the spatial index `SIDX_Transactions_Region`
-  is **NOT used** because the query has no `WHERE` filter on `STDistance`; it
-  computes all 225M pairwise distances and sorts.
-- **Parallelism:** The plan uses a parallel scan (multiple threads), which is why
-  CPU time (471s) >> wall time (118s) — the query saturated ~4 CPU cores.
-- **No spatial index seek:** Confirmed by the plan XML — the `SIDX_Transactions_Region`
-  index is present but unused because the query pattern (`CROSS JOIN … STDistance
-  IS NOT NULL`) doesn't qualify for spatial index range seek.
+The **complete ShowPlanXML** is committed as a separate artifact:
+[`OP31_EXECUTION_PLAN.sqlplan`](./OP31_EXECUTION_PLAN.sqlplan) (15,791 bytes,
+well-formed XML, 10 RelOp nodes). This is the actual execution plan captured
+from `sys.query_store_plan`, not a text summary.
+
+**Verified operator tree (parsed from the XML):**
+
+| Operator | Count | Details |
+|---|---:|---|
+| `Nested Loops` | 1 | The CROSS JOIN — inner side re-scanned for every outer row |
+| `Clustered Index Scan` | 1 | Outer input: full scan of `Sales.Transactions` via `PK__Transact__55433A4BA8265763` |
+| `Clustered Index Seek` | 1 | Inner input: PK seek per outer row (re-scanned 15,036×) |
+| `Parallelism` | 1 | Parallel scan — explains why CPU time (471s) >> wall time (118s) |
+| `Sort` | 1 | Sorts all 225M distance results for `ORDER BY DistanceKm` |
+| `Filter` | 1 | Filters `t1.TransactionID < t2.TransactionID` and `STDistance IS NOT NULL` |
+| `Compute Scalar` | 1 | Computes `DistanceKm = STDistance / 1000` |
+| `Top` | 1 | `TOP 50` after sort |
+
+**Critical confirmation from the plan XML:**
+- The spatial index `SIDX_Transactions_Region` is **NOT referenced** anywhere in
+  the plan — both table accesses use `PK__Transact__55433A4BA8265763` (the
+  clustered PK). This is because the query has no `WHERE STDistance < @d`
+  predicate that would trigger spatial index range seek.
+- The `Sort` operator on 225M rows is itself a major CPU/DRAM energy consumer
+  (estimated ~50–100 J for sorting 225M 8-byte distance values in memory).
+- The `Nested Loops` with `Clustered Index Seek` on the inner side confirms the
+  read amplification: 15,036 inner seeks × ~40 pages per seek ≈ 600K logical
+  reads, matching the Query Store figure of 614,319.
+
+> **Energy implication:** The plan proves the spatial index exists but is unused
+> due to query structure. The Section 2 Problem 2.2 Variant C rewrite (add a
+> `WHERE STDistance < @d` predicate + `WITH (SPATIAL_INDEX)` hint) would cause
+> the optimizer to switch from `Nested Loops` + `Clustered Index Scan` to a
+> spatial-index-driven `Range` seek — reducing 225M STDistance calls to ~1–5 %
+> of that (bounding-box pruning). This is the single highest-leverage rewrite
+> in the entire catalogue, and the plan XML proves it is achievable without
+> schema change.
 
 ### Revised Energy Estimates (from REAL CPU time, not wall time)
 

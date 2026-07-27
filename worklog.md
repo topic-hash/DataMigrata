@@ -297,3 +297,21 @@ Stage Summary:
 - All claims cite named sources; all extrapolations explicitly labelled with constants used
 - Confidence scores honestly reflect evidentiary gaps (no direct TPC-H energy results exist per Rabl 2018)
 - Next: Section 2 (Join Operators) must keep op 31 as primary optimization target
+
+---
+Task ID: W2
+Agent: Section-2-Operations (sub-agent, retroactively logged during gap-fix)
+Task: Produce Section 2: Most Energy-Efficient Database Operations of the Problem Catalogue
+
+Work Log:
+- Read CODESPACE_CONTEXT.md for live MSSQL data (table sizes, index gaps, op characteristics)
+- Produced 4 problem entries (2.1 scan/seek, 2.2 joins, 2.3 aggregation, 2.4 compression/SIMD)
+- Each entry has Goal, 3 variants (A/B/C), Integration cross-references, and ADR table
+- Key finding: Op 31 (spatial CROSS JOIN) is the single largest joule consumer (~1,080 J wall-time estimate, later revised to ~7,072-28,289 J based on real Query Store CPU time)
+- Cited sources: Tsiatsis et al. SIGMOD 2010, Abadi et al. UMD, Boncz MonetDB/X100, Microsoft Docs, SQLShack, arXiv 2024
+- NOTE (gap-fix): This worklog entry was missing from the original delivery and is added retroactively. The sub-agent's work was complete; only the worklog record was omitted.
+
+Stage Summary:
+- Section 2 delivered at docs/energy-migration/SECTION_2_ENERGY_EFFICIENT_OPERATIONS.md (~3,660 words)
+- Top recommendation: spatial-index pre-filter for Op 31 (confidence 0.97, ~1,500x joule reduction)
+- Hallucination audit (CLAIMS_VERIFICATION.md): Section 2 has 0 URLs, sources cited by name only — MEDIUM risk, core claims trace to verified sources but specific figures unconfirmed
