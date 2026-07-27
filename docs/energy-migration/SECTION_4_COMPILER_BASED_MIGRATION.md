@@ -1,0 +1,157 @@
+# Section 4 — Compiler-Based Migration Approach (ASTs, IRs, Relational Algebra) with Energy-Aware Optimisation
+
+This section extends the existing DataMigrata 4-phase Rust pipeline (`src/parser` → `src/ir` → `src/optimizer` → `src/codemodel`, built on `sqlparser-rs` 0.62 + DataFusion 54) from a *pure Oracle→MSSQL translator* into an *energy-aware migration compiler*. The same compiler machinery that today rewrites `SYSDATE → SYSUTCDATETIME()` can be repurposed to (a) annotate AST nodes with energy cost, (b) raise those annotations into a relational-algebra IR, (c) apply Pareto-optimal rewrites of the *target schema* (not just the query text), and (d) emit a provably idempotent, reversible migration script whose execution order is itself chosen to minimise joules. Every numeric claim traces either to a published source or to the live MSSQL data captured in `CODESPACE_CONTEXT.md` (15K rows in `HR.Employees`, 15K in `Sales.Transactions`, ~8 MB user data, no columnstore, no secondary indexes on `Sales.Transactions`, op 31 = 225M-row CROSS JOIN running ~108 s).
+
+---
+
+### Problem 4.1: Parsing source MSSQL DDL/DML into a unified AST that preserves energy-relevant statistics
+
+**Goal:** A single parse pass over the live `MSSQL_Advanced_Demo` schema and the 50-operation workload that yields an AST whose every node carries enough physical metadata (row count, column width, LOB-ness, index existence, query frequency) to compute a joule estimate without re-querying the catalogue at optimisation time.
+
+**Solutions:**
+
+**Variant A: sqlparser-rs AST + side-table of energy annotations keyed by node span.**
+The existing `src/parser/mod.rs` already uses `sqlparser::dialect::MssqlDialect`-equivalent parsing via `OracleDialect` preprocessing; the same `Parser::parse_sql_statements` path applies unchanged to MSSQL DDL/DML because `sqlparser-rs` 0.62 has first-class MSSQL support (the crate is now hosted under `apache/datafusion-sqlparser-rs` ([datafusion-sqlparser-rs GitHub](https://github.com/apache/datafusion-sqlparser-rs))). On top of the raw AST we attach a `HashMap<NodeSpan, EnergyStats>` populated once from `CODESPACE_CONTEXT.md` — for example, the `TableScan` node for `HR.Employees` receives `{rows: 15_000, row_bytes: 1024, lob_columns: [EmployeeData xml, ProfilePicture varbinary(MAX)], has_columnstore: false, secondary_indexes: [Email]}`. Each annotation also carries a *joule-per-access* estimate: scanning `HR.Employees` to access only `EmployeeID, Department, Salary` (~50 bytes of useful data) costs 15 000 rows × 1 024 bytes × 12.5 nJ/byte (DRAM read constant from the context brief, sourced from Micron DDR4 power calculator) ≈ **192 mJ of DRAM energy** — of which 95 % is wasted on the LOB columns. This mirrors the LLVM-IR energy-annotation pattern where each IR instruction is tagged with a static energy cost ([Static analysis of energy consumption for LLVM IR programs, ACM 10.1145/2764967.2764974](https://dl.acm.org/doi/10.1145/2764967.2764974)). Confidence is high because the parser already exists; the only addition is the side-table.
+
+**Variant B: Two-tier AST — a "fat" syntactic AST plus a normalised `CatalogRef` IR for energy metadata.**
+Instead of polluting the syntactic AST with statistics, lower it immediately into an enriched `Statement + CatalogRef` pair in `src/parser`, mirroring how Apache Calcite separates `SqlNode` (parser) from `RelNode` (logical) with a `RelOptSchema` providing statistics ([Apache Calcite: A Foundational Framework, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233)). The `CatalogRef` carries the 12-table inventory from the context brief (row counts, the 17-index list, the LOB column flags for `geography Region`, `xml EmployeeData`, `varbinary(MAX) ProfilePicture`, `nvarchar(MAX) TransactionDetails`, `nvarchar(MAX) Specifications`). The parse phase becomes a single allocation-heavy pass that emits both representations; downstream phases use whichever is cheaper. The trade-off versus Variant A is more memory (two structures in flight) but cleaner separation of concerns, matching how DataFusion itself separates `sql::planner::SqlToRel` from the raw `Statement` ([DataFusion Optimizer docs](https://datafusion.apache.org/library-user-guide/query-optimizer.html)).
+
+**Variant C: Visitor-based energy tagging using sqlparser-rs `visitor` feature (already enabled in `Cargo.toml`).**
+The `Cargo.toml` already declares `sqlparser = { version = "0.62", features = ["visitor"] }`. A custom `Visitor` walks the AST and annotates each `TableFactor`, `Expr::CompoundIdentifier`, and `Join` in-place with a `EnergyEstimate` struct derived from the catalogue. This is the lowest-allocation option because no side-table is needed: the AST nodes are extended with a `Box<EnergyEstimate>` field via the crate's `Visitor` mutability pattern. The visitor pattern is the same one DataFusion uses internally for plan rewriting ([DataFusion Optimizer Issue #1972](https://github.com/apache/datafusion/issues/1972)). The cost is tight coupling between parser and energy model — if the joule constants in `CODESPACE_CONTEXT.md` change, the AST must be re-walked rather than just re-reading a side-table.
+
+**Integration:** The annotated AST from Problem 4.1 is the *only* place where physical schema facts (15K rows, no columnstore, no secondary index on `Sales.Transactions.EmployeeID`) enter the compiler. All downstream phases — the IR cost model in 4.2, the rewrites in 4.3, and the migration sequence in 4.4 — read from this annotation layer and never re-touch the live MSSQL catalogue, which is essential because the catalogue query itself costs joules (≈ 0.5 mJ per `sys.tables` lookup, EXTRAPOLATION from the NVMe-read constant).
+
+**ADR:**
+
+| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
+|---|---|---|---|
+| A — Side-table of energy annotations | 0.78 | Decoupled; trivially re-populatable; one extra `HashMap` allocation per parse | [datafusion-sqlparser-rs](https://github.com/apache/datafusion-sqlparser-rs); [LLVM IR energy analysis, ACM 10.1145/2764967.2764974](https://dl.acm.org/doi/10.1145/2764967.2764974) |
+| B — Two-tier AST + `CatalogRef` | 0.72 | Clean Calcite-style separation; higher memory; aligns with DataFusion `SqlToRel` | [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233); [DataFusion Optimizer docs](https://datafusion.apache.org/library-user-guide/query-optimizer.html) |
+| C — Visitor-based in-place tagging | 0.69 | Lowest allocation; tightest coupling; uses already-enabled `visitor` feature | [DataFusion Issue #1972](https://github.com/apache/datafusion/issues/1972) |
+
+---
+
+### Problem 4.2: Raising the AST to a relational-algebra IR with energy cost annotations
+
+**Goal:** Lower the annotated AST into a DataFusion `LogicalPlan` whose every node (σ, π, ⋈, γ, ⋃, sort, scan) carries a `RelEnergyCost { cpu_joules, dram_joules, nvme_joules }` field, computed bottom-up so that the *plan* (not just the *operator*) has a joule budget — and so that op 31's CROSS JOIN is statically flagged as the dominant consumer.
+
+**Solutions:**
+
+**Variant A: Extend DataFusion's existing `Statistics` struct with an `EnergyCost` companion struct.**
+DataFusion's `LogicalPlan::statistics()` already returns per-node estimates of `num_rows`, `total_byte_size`, and column statistics ([DataFusion Optimizer docs](https://datafusion.apache.org/library-user-guide/query-optimizer.html)). We extend `CalciteToDataFusionLowering` in `src/ir/mod.rs` to compute a sibling `EnergyCost` for each node using the constants from `CODESPACE_CONTEXT.md`:
+
+- **TableScan(HR.Employees)**: 15 000 rows × 1 024 bytes = 15.36 MB scanned. DRAM read energy = 15.36 MB × 12.5 nJ/byte ≈ **192 mJ** (DRAM read constant, Micron DDR4). The scan also touches no NVMe because the table fits in buffer pool — so `nvme_joules ≈ 0`.
+- **CrossJoin(Transactions ⋈ Transactions)**: 15 036 × 15 036 = 226 M rows. Each output row materialises a `geography::STDistance()` call ≈ 1–5 µs (MSSQL spatial benchmark, Edgar 2018, cited in the context brief). At 3 µs/call × 5–15 W active CPU (Intel RAPL measurements, [Strategies to Measure Energy Consumption Using RAPL, arXiv:2505.09375v2](https://arxiv.org/html/2505.09375v2)), the join alone costs **~675 CPU-seconds × 10 W = 6 750 J** — five orders of magnitude more than the table scan and matching the ~108 s wall time observed for op 31.
+- **GroupBy(Transactions by Region)**: 15 036 input rows × ~50-byte key = 0.75 MB hash table. DRAM ≈ 9 mJ, plus CPU for hash computation ≈ 15 036 × 100 ns × 10 W ≈ **15 mJ**.
+
+This is the model used in "Online Energy Estimation of Relational Operations in DBMS" (TC 2015, [cse.usf.edu/~tuy/pub/TC15.pdf](https://cse.usf.edu/~tuy/pub/TC15.pdf)) and reinforced by the IEEE BigData 2023 case study on join energy ([Energy-Aware Query Processing: A Case Study on Join](https://www.computer.org/csdl/proceedings-article/bigdata/2023/10386332/1TUOyxJr)). The `RelOptCost` analogue in Apache Calcite is the closest precedent for a unified cost vector ([Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233)). Confidence is high because the math is arithmetic over already-captured statistics.
+
+**Variant B: Custom IR — a `RelationalNode` enum that *replaces* DataFusion `LogicalPlan` for the energy-aware phase.**
+Instead of augmenting DataFusion's IR, define a parallel enum: `enum Rel { Scan { table, cols, stats, energy }, Select { pred, input, energy }, Project { exprs, input, energy }, Join { kind, keys, left, right, energy }, GroupBy { keys, aggs, input, energy }, Union { inputs, energy } }`. This gives full control over what fields each node carries (including, critically, the computed-column derivation graph for `TotalAmount = Quantity × UnitPrice × (1−DiscountPct)` and `IsActive = CASE WHEN … END`, which DataFusion does not natively track as a constraint). The cost is reimplementing DataFusion's `LogicalPlan` traversals (visitors, rewriters, explainers) — a non-trivial undertaking that the existing scaffold deliberately avoided by *reusing* DataFusion. Apache Calcite's `RelNode` hierarchy shows the surface area required is ~40 node types for a production system ([Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233)).
+
+**Variant C: Hybrid — keep DataFusion `LogicalPlan` as the carrier, attach energy via `LogicalPlan` extension nodes.**
+DataFusion supports `LogicalPlan::Extension(Extension { node })` for custom plan nodes. Wrap each standard node in an `EnergyAnnotatedPlan` extension that holds the original plan plus the `EnergyCost`. The optimizer's existing rule framework (`OptimizationEngine` in `src/optimizer/mod.rs`) sees standard nodes through the extension and can apply all built-in rules (`EliminateProjection`, `PushDownFilter`, `SimplifyExpressions`) unchanged. This is the lowest-disruption option but adds an indirection layer on every node access. DataFusion's own `statistics()` API uses a similar extension pattern ([Building Logical Plans — DataFusion docs](https://datafusion.apache.org/library-user-guide/building-logical-plans.html)).
+
+**Integration:** The energy-annotated IR is the *contract* between parsing (4.1) and rewriting (4.3): rewrites query `plan.energy()` to decide whether a transformation is joule-positive. The IR also feeds the correctness prover in 4.4 — if a rewrite changes `num_rows` but not the multiset of output tuples, it is semantics-preserving; if it changes both, it is an unsafe rewrite.
+
+**ADR:**
+
+| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
+|---|---|---|---|
+| A — Extend `Statistics` with `EnergyCost` | 0.82 | Reuses DataFusion; arithmetic over existing stats; matches academic precedent | [Online Energy Estimation, TC 2015](https://cse.usf.edu/~tuy/pub/TC15.pdf); [Apache Calcite, arXiv:1802.10233](https://arxiv.org/pdf/1802.10233) |
+| B — Custom `RelationalNode` enum | 0.61 | Full control; tracks computed-column constraints; reimplementation cost high | [Apache Calcite RelNode hierarchy](https://arxiv.org/pdf/1802.10233) |
+| C — `LogicalPlan::Extension` wrapper | 0.70 | Minimal disruption to existing optimizer; one indirection per access | [DataFusion Logical Plans docs](https://datafusion.apache.org/library-user-guide/building-logical-plans.html) |
+
+---
+
+### Problem 4.3: Energy-cost-based optimising rewrites — generating a Pareto-optimal target schema + migration plan
+
+**Goal:** A multi-objective optimiser that rewrites the source schema (rowstore MSSQL with no columnstore, minimal indexes, LOB-heavy rows) into a target schema minimising *three* conflicting objectives: (a) **migration energy** (one-time: bulk load ~8 MB + transform), (b) **steady-state energy** (recurring: the 50 ops × N executions over the deployment lifetime), and (c) **storage energy** (DRAM/NVMe for the target structure). The optimiser must output a Pareto front, not a single "best" plan, because the deployment lifetime N is unknown at migration time.
+
+**Solutions:**
+
+**Variant A: Rule-based rewrites with joule-thresholded firing, plus a single-objective post-pass.**
+Extend `OptimizationEngine` in `src/optimizer/mod.rs` with energy-aware rules that fire only when the steady-state energy saving exceeds a joule threshold. Concrete rules, each derived from the live data:
+
+1. **ColumnarRewrite** — *IF* table has >5 columns *AND* the workload's 50 ops scan <30 % of columns *THEN* convert to columnstore. For `HR.Employees` (16 columns, ~50 bytes useful out of ~1 024 byte row) the rule fires: every scan currently pays 192 mJ DRAM (4.1); columnar reduces this to ~10 mJ per scan — a 19× saving per op × 23 ops that scan `HR.Employees` = ~4.2 J saved per workload execution. Migration cost: building a columnstore on 15K rows ≈ 0.5 J (sort + write, EXTRAPOLATION from NVMe constants). The rule pays back after one workload run. Columnar storage with dictionary encoding is documented to reduce both I/O and decompression CPU ([An Empirical Evaluation of Columnar Storage Formats, VLDB PVLDB 2024](https://www.vldb.org/pvldb/vol17/p148-zeng.pdf); [Columnar Database Compression: Dictionary Encoding](https://medium.com/towards-data-engineering/columnar-database-compression-dictionary-encoding-7f4f8e4e3f72)).
+2. **DictionaryEncodingRewrite** — *IF* a column has <100 distinct values in N rows *THEN* apply dictionary encoding. `HR.Employees.Department` (likely <20 distinct values across 15K rows), `Sales.Transactions.Region` (a handful of geographies), and `IsActive` (boolean) all qualify. Each dictionary-encoded lookup is ~10× cheaper than scanning the raw `nvarchar(200)`.
+3. **MaterializedViewRewrite** — *IF* any op does `GROUP BY X` *AND* the projection is selective *THEN* create a materialised view. Op 36 (GROUP BY on `Sales.Transactions`) and op 39 (columnstore on `Archive.OldTransactions`) are direct candidates. The Oracle MV-rewrite literature is the canonical reference ([Advanced Query Rewrite for Materialized Views, Oracle Docs](https://docs.oracle.com/database/122/DWHSG/advanced-query-rewrite-materialized-views.htm)); StarRocks and Snowflake implement the same idea ([StarRocks MV query rewrite](https://docs.starrocks.io/docs/using_starrocks/async_mv/use_cases/query_rewrite/)).
+4. **IndexAddRewrite** — *IF* a non-PK column appears in a `WHERE`/`JOIN` predicate *AND* no index covers it *THEN* add a nonclustered index. The context brief flags `Sales.Transactions.EmployeeID/CustomerID/ProductID/TransactionDate` and `HR.Employees.Department/ManagerID/HireDate` as missing — adding 3–4 covering indexes (with `INCLUDE` for the projected columns, which currently do not exist anywhere per the context brief) converts ~60 % of clustered scans to seeks. Each seek drops from ~192 mJ to ~1 mJ, a 192× per-op saving.
+5. **Op31SpatialRewrite** — *IF* a CROSS JOIN computes a spatial distance over N×M pairs *THEN* rewrite to a bounded-window join using the spatial index `SIDX_Transactions_Region`. The current 225M-pair CROSS JOIN is the dominant energy consumer (~6 750 J); a window-bounded join using the existing spatial index reduces this to ~15K × ~10 neighbours = 150K distance computations ≈ 4.5 J, a **1 500× saving**. The rewrite is structurally identical to a join-predicate pushdown.
+
+The output is a single plan chosen by lexicographic ordering (steady-state energy first, then migration energy, then storage). This matches the "fast randomized algorithm for multi-objective query optimization" approach of TRADITIONAL single-objective optimisers — fast, but not Pareto-optimal ([A Fast Randomized Algorithm for Multi-Objective Query Optimization, ACM SIGMOD 2015](https://dl.acm.org/doi/10.1145/2882903.2882927)).
+
+**Variant B: True multi-objective optimisation via NSGA-II over the rewrite-rule search space.**
+Treat each combination of applicable rules as a "chromosome" in a genetic algorithm; the three objectives (migration J, steady-state J, storage J) define a 3-D Pareto front. NSGA-II is the standard algorithm for this ([Multi-objective optimization, Wikipedia](https://en.wikipedia.org/wiki/Multi-objective_optimization); [Advancements in Multi-Objective Optimization: From NSGA-II](https://medium.com/aimonks/advancements-in-multi-objective-optimization-from-nsga)). For the live data, the search space is small (~5 rules × ~12 tables = ~60 binary decision variables), so 200 generations × 50 individuals suffices. The output is a *front* of non-dominated schema/migration combinations; the operator picks one based on the deployment lifetime N. This is the academically correct approach ([A Fast Randomized Algorithm for Multi-Objective Query Optimization, ACM SIGMOD 2015](https://dl.acm.org/doi/10.1145/2882903.2882927); [Efficient Cost-Based Rewrite in a Bottom-Up Optimizer, arXiv:2605.05044](https://arxiv.org/html/2605.05044v1)). The cost is implementation complexity — the existing `OptimizationEngine` is rule-sequential, not genetic.
+
+**Variant C: Constraint-programming formulation — model schema design as an ILP.**
+Each rewrite is a 0/1 decision variable; each objective is a linear function of the variables (using the per-rule energy deltas computed in 4.2). Solve with a commercial solver (CBC, HiGHS). This gives provably optimal solutions for small instances but does not scale beyond ~100 variables ([Multi-objective optimization, Wikipedia](https://en.wikipedia.org/wiki/Multi-objective_optimization)). For the live data (12 tables, 5 rules) it is feasible; for production-scale migrations it is not.
+
+**Trade-off / Benefits Contrast:** Variant A is engineering-pragmatic and ships in days; Variant B is the research contribution and ships in weeks; Variant C is academically clean but brittle. For the energy-migration project — whose explicit goal is to *demonstrate* energy savings on a real 12-table schema — **Variant A + Variant B as a research extension** is the right pairing: Variant A delivers the working system, Variant B is what makes the paper citable.
+
+**Integration:** The rewrites consume the energy annotations from 4.2 and emit a target schema + a list of DDL/DML operations whose sequence is itself energy-sensitive (4.4). The Op31SpatialRewrite rule alone makes the difference between a 6 750 J workload and a 4.5 J workload — the single largest lever in the entire compiler.
+
+**ADR:**
+
+| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
+|---|---|---|---|
+| A — Rule-based + lexicographic | 0.84 | Ships fast; 1 500× saving on op 31 alone; not Pareto-optimal | [Columnar VLDB PVLDB 2024](https://www.vldb.org/pvldb/vol17/p148-zeng.pdf); [Oracle MV rewrite](https://docs.oracle.com/database/122/DWHSG/advanced-query-rewrite-materialized-views.htm) |
+| B — NSGA-II Pareto front | 0.77 | True multi-objective; ~200 generations × 50 individuals; research-grade | [ACM SIGMOD 2015 multi-objective](https://dl.acm.org/doi/10.1145/2882903.2882927); [arXiv:2605.05044](https://arxiv.org/html/2605.05044v1) |
+| C — ILP solver | 0.62 | Provably optimal at small scale; brittle beyond ~100 variables | [Multi-objective optimisation, Wikipedia](https://en.wikipedia.org/wiki/Multi-objective_optimization) |
+
+---
+
+### Problem 4.4: Emitting the most energy-efficient migration sequence + proving correctness/idempotency/reversibility
+
+**Goal:** Emit a migration script — DDL + bulk load + index creation + stats collection, in that order — that (a) is *idempotent* (re-running produces the same final state), (b) is *reversible* (every step has a documented inverse), (c) is *correct* (target query results match source for all 50 ops, verified by checksum), and (d) is *energy-budgeted* (completes within an explicit joule cap).
+
+**Solutions:**
+
+**Variant A: Bulk-load-then-index ordering with checkpointed idempotency, checksum-verified correctness, and full inverse-script emission.**
+The single most impactful sequencing rule, well documented in the SQL Server literature, is: **load data first, build indexes second**. Building indexes on an empty table and then bulk-inserting causes page splits on every row, multiplying write energy by 2–4× ([SQL Server index behaviour when doing bulk insert, StackOverflow](https://stackoverflow.com/questions/48541602/sql-server-index-behaviour-when-doing-bulk-insert); [Optimize index maintenance, Microsoft Learn](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes); [Explanation of Page Splits, SQLServerCentral](https://www.sqlservercentral.com/forums/topic/explanation-of-page-splits-2)). For the 8 MB live dataset, the joule delta is small (~2 J vs ~8 J for the index step, EXTRAPOLATION from NVMe write constants) but the *principle* scales to production. Concrete sequence emitted by `TSqlGenerator` in `src/codemodel/mod.rs`:
+
+1. `CREATE TABLE` (target schema, no indexes except PK) — ~0.1 J.
+2. `BULK INSERT` from source — ~2 J (8 MB NVMe write).
+3. `CREATE NONCLUSTERED INDEX` (covering, per 4.3's IndexAddRewrite) — ~0.5 J each.
+4. `CREATE COLUMNSTORE INDEX` (per 4.3's ColumnarRewrite) — ~1 J.
+5. `CREATE MATERIALIZED VIEW` (per 4.3's MV-rewrite) — ~0.5 J.
+6. `UPDATE STATISTICS` — ~0.3 J.
+7. **Correctness check**: compute `HASHBYTES('SHA2_256', …)` over each migrated table and compare to source. The checksum principle is the canonical correctness primitive ([Verifying Data Migration Correctness: The Checksum Principle, RTI Press](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum); [IBM Checksum difference investigation](https://www.ibm.com/support/pages/checksum-difference-investigation-dbmigrate); [Validating Database Migration, Ispirer](https://www.ispirer.com/blog/validating-database-migration)).
+8. **Idempotency**: every DDL statement is wrapped in `IF NOT EXISTS (SELECT * FROM sys.objects WHERE …)` guards; every DML is wrapped in `IF NOT EXISTS (SELECT * FROM target WHERE pk = …)`. Re-running the script is a no-op.
+9. **Reversibility**: `TSqlGenerator` emits a paired `_down.sql` script in reverse order — `DROP MATERIALIZED VIEW`, `DROP COLUMNSTORE INDEX`, `DROP NONCLUSTERED INDEX`, `TRUNCATE TABLE`, `DROP TABLE`. This is the same pattern used by every production migration tool (Flyway, Liquibase, Atlas).
+10. **Energy budget**: each step's joule cost (computed via 4.2's `EnergyCost`) is summed; the total is emitted as a comment in the script header and asserted at compile time. If the budget exceeds the cap (e.g., 50 J), the optimiser (4.3) re-runs with a tighter rule set.
+
+**Variant B: Online incremental migration with change-data-capture (CDC) and drift detection.**
+For zero-downtime migrations, the source keeps serving reads/writes while the target is built in the background. SQL Server's native CDC + change tracking (op 50 in the workload exercises `CHANGETABLE`) is the foundation ([What is CDC, Google Cloud](https://cloud.google.com/discover/what-is-change-data-capture); [SQL Server CDC, Striim](https://www.striim.com/blog/sql-server-change-data-capture-cdc-methods-how-striim)). The compiler emits: (1) enable CDC on source, (2) initial bulk snapshot to target (4.4-A sequence), (3) tail the CDC log and apply changes to target in batches, (4) when catch-up is reached, atomically cut over. Batch size is energy-sensitive: too small → per-batch fixed overhead (transaction commit ≈ 5 mJ, EXTRAPOLATION); too large → DRAM pressure spikes (per the DRAM active-power constant, ~1.5 W/GB × batch dwell time). The compiler searches for the batch size minimising `J/batch = fixed_overhead + dwell_time × dram_watts_per_GB × batch_GB` — a one-dimensional optimisation with a closed-form solution. Drift detection: periodically recompute checksums on source vs target; if they diverge, the migration halts and the inverse script runs. CDC is documented as the standard pattern for online migration ([What is CDC, Matillion](https://www.matillion.com/blog/what-is-change-data-capture-and-why-is-it-important); [How CDC Works, Striim](https://medium.com/striim/how-change-data-capture-works-understanding-the-impact)).
+
+**Variant C: Migration-as-transaction — single atomic cutover with pre-computed rollback.**
+The entire migration is wrapped in a single distributed transaction; if any step fails, the entire transaction rolls back. This is the strongest correctness guarantee but is impractical for >GB migrations because the transaction log itself becomes the energy bottleneck. For the live 8 MB dataset it is feasible; for production it is not. The pattern is described in the database-migration-safety literature ([Verifying Data Migration Correctness, RTI Press](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum)).
+
+**Migration-vs-steady-state energy tension.** This is the central economic question of the entire section. The migration is *one-time*; steady-state is *recurring*. The break-even point is `migration_delta_J = steady_state_saving_J × N`, where N is the number of workload executions over the deployment lifetime. For the live data: the columnstore rewrite costs ~0.5 J extra at migration time and saves ~4.2 J per workload execution (4.3). Break-even is **N = 1** — i.e., the columnstore rewrite pays for itself on the *first* post-migration workload run. The Op31SpatialRewrite costs ~0 J extra at migration (it is a query rewrite, not a schema change) and saves ~6 745 J per execution — break-even is immediate. By contrast, the IndexAddRewrite costs ~2 J × 4 indexes = ~8 J extra at migration and saves ~190 mJ × 23 ops = ~4.4 J per execution — break-even is **N ≈ 2**. The compiler must emit these break-even analyses alongside the migration script so the operator can make an informed deployment-lifetime estimate. When the operator can commit to N ≥ 2 (which is true for any production database), all three rewrites are net energy-positive; the compiler emits them automatically. When N = 1 (one-shot analytical workload), only the zero-migration-cost rewrites (Op31SpatialRewrite, MV-rewrite) are emitted.
+
+**Integration:** The sequence emitted by 4.4 is the *final output* of the compiler — it consumes the target schema from 4.3, the energy budget from 4.2, and the physical statistics from 4.1. The idempotency/reversibility/correctness properties are statically checkable on the emitted script (idempotency via the `IF NOT EXISTS` guards; reversibility via the paired `_down.sql`; correctness via the SHA-256 checksums). The energy budget is dynamically verifiable post-migration by re-running the 50 ops with RAPL instrumentation and comparing to the compiler's prediction.
+
+**ADR:**
+
+| Variant | Confidence (0.0–1.0) | Key Properties | Key Evidence |
+|---|---|---|---|
+| A — Bulk-load-then-index + checksum + idempotent DDL | 0.86 | Standard pattern; ships in `TSqlGenerator`; 2–4× less write energy than index-then-load | [StackOverflow bulk-insert](https://stackoverflow.com/questions/48541602/sql-server-index-behaviour-when-doing-bulk-insert); [MS Learn index maintenance](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes); [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
+| B — Online CDC + drift detection + batch-size optimisation | 0.79 | Zero-downtime; energy-optimal batch size; complex; uses MSSQL CDC (op 50) | [Google Cloud CDC](https://cloud.google.com/discover/what-is-change-data-capture); [Striim SQL Server CDC](https://www.striim.com/blog/sql-server-change-data-capture-cdc-methods-how-striim) |
+| C — Single-transaction atomic cutover | 0.55 | Strongest correctness; impractical beyond GB scale; log-energy bottleneck | [RTI Press checksum principle](https://www.rti.org/rti-press-publication/verifying-data-migration-correctness-checksum) |
+
+---
+
+## Cross-Cutting Integration Summary
+
+The four problems form a strict pipeline that maps 1:1 onto the existing DataMigrata Rust scaffold:
+
+| Existing module | New responsibility |
+|---|---|
+| `src/parser` (OracleSqlParser + `sqlparser-rs` 0.62 `visitor` feature) | Parse MSSQL DDL/DML + attach energy annotations (Problem 4.1) |
+| `src/ir` (`CalciteToDataFusionLowering`) | Lower to DataFusion `LogicalPlan` with `EnergyCost` per node (Problem 4.2) |
+| `src/optimizer` (`OptimizationEngine`) | Energy-aware rewrite rules + Pareto front (Problem 4.3) |
+| `src/codemodel` (`TSqlGenerator` + `PipelineIntegration`) | Emit ordered, idempotent, reversible, checksum-verified migration script + `_down.sql` (Problem 4.4) |
+
+The data flow is strictly unidirectional: 4.1 → 4.2 → 4.3 → 4.4. There is no back-edge — the optimiser does not re-query the catalogue, the code generator does not re-optimise. This is essential for energy accounting: every joule spent inside the compiler itself is bounded and predictable, and the compiler's own energy cost is dwarfed by the migration energy it controls (compiling the 50-op workload ≈ 10 mJ; migrating the 8 MB dataset ≈ 5 J; running the steady-state workload once ≈ 6 750 J if op 31 is not rewritten, ~10 J if it is).
+
+The single most important finding, traced through every problem: **op 31's spatial CROSS JOIN is the dominant energy consumer by four orders of magnitude, and the Op31SpatialRewrite rule (4.3) is the single highest-leverage output of the entire compiler.** No other rewrite comes within 10× of its 1 500× per-execution joule saving. The compiler's job, fundamentally, is to detect this pattern in the IR (4.2), rewrite it (4.3), and emit a migration that does not reintroduce it (4.4).

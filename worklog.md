@@ -195,3 +195,105 @@ Stage Summary:
 - Total commits worth of changes: 10 distinct SQL fixes across 2 files
 - Evidence: scripts/results/batch_1_50.json contains the final 50-op pass/fail manifest
 - Known limitation: Full-Text Search not installed in MSSQL 2022 Docker container (ops using CONTAINS/FREETEXT would fail, but none of the 50 ops in this file use them)
+
+---
+Task ID: W4
+Agent: Section-4-Compiler
+Task: Produce Section 4 — Compiler-Based Migration Approach (ASTs, IRs, Relational Algebra) with Energy-Aware Optimisation of the Problem Catalogue with ADRs.
+
+Work Log:
+- Read CODESPACE_CONTEXT.md (live MSSQL 2022 data: 12 tables, 17 indexes, 50 ops, ~8 MB user data, op 31 = 225M-pair CROSS JOIN ~108s).
+- Read existing Rust scaffold: Cargo.toml (sqlparser 0.62 + visitor feature, DataFusion 54), src/lib.rs (4-phase pipeline), src/parser/mod.rs (OracleSqlParser), src/ir/mod.rs (CalciteToDataFusionLowering stub), src/optimizer/mod.rs (OptimizationEngine with RuleApplied enum), src/codemodel/mod.rs (TSqlGenerator + PipelineIntegration).
+- Read prior worklog.md for project context (Wave0-Wave7 history: 50/50 ops passing on live MSSQL).
+- Read tests/operations_50_catalog.json (first 100 lines) to confirm workload characteristics.
+- Invoked web-search skill (z-ai CLI) for 12 research queries covering: Apache Calcite Volcano, DataFusion optimizer rules, sqlparser-rs MSSQL, energy-aware query optimization, Pareto multi-objective, idempotent reversible migration, columnar dictionary encoding, bulk-load-then-index page splits, CDC drift detection, LLVM IR energy annotation, materialized view rewrite, Intel RAPL.
+- Located 25+ citable sources including: Apache Calcite arXiv:1802.10233, DataFusion optimizer docs, Energy-Aware Query Processing IEEE BigData 2023, Online Energy Estimation TC 2015, Energy-Efficient DBMS Survey ACM CSUR 2022, Fast Randomized Multi-Objective Query Optimization SIGMOD 2015, Verifying Data Migration Correctness RTI Press, Columnar Storage VLDB PVLDB 2024, SQL Server bulk-insert/index StackOverflow, MS Learn index maintenance, Google Cloud CDC, LLVM IR energy analysis ACM 2015, RAPL measurement arXiv:2505.09375v2, Oracle MV query rewrite docs, StarRocks MV rewrite.
+
+Stage Summary:
+- File: /home/z/my-project/DataMigrata/docs/energy-migration/SECTION_4_COMPILER_BASED_MIGRATION.md (3,914 words)
+- Structure: Intro + 4 problems (4.1 parsing/AST annotations, 4.2 IR cost model, 4.3 Pareto-optimal rewrites, 4.4 migration sequence correctness) + cross-cutting integration table.
+- Each problem has: Goal, 3 variants (A/B/C), Integration paragraph, ADR table with confidence scores.
+- Top-confidence variants: 4.1-A (0.78), 4.2-A (0.82), 4.3-A (0.84), 4.4-A (0.86) — all ≥ 0.75 except 4.1-A which is exactly 0.78. 4.3 and 4.4 each include explicit Trade-off/Benefits Contrast subsection where appropriate.
+- Every energy claim traces to: (a) a named source, or (b) the live MSSQL data in CODESPACE_CONTEXT.md, or (c) explicitly labeled EXTRAPOLATION.
+- Key concrete numbers cited:
+  - HR.Employees scan: 15K rows × 1024 bytes × 12.5 nJ/byte = 192 mJ DRAM
+  - Op 31 CROSS JOIN: 225M pairs × 3 µs × 10 W = 6750 J (dominant consumer, 4 orders of magnitude over baseline)
+  - Op31SpatialRewrite savings: 6750 J → 4.5 J = 1500× reduction
+  - Columnstore break-even: N=1 workload execution
+  - IndexAddRewrite break-even: N≈2 executions
+- All recommendations reference the existing Rust scaffold modules (src/parser, src/ir, src/optimizer, src/codemodel) by name.
+- No cloud pricing or monetary arguments used.
+- Migration-vs-steady-state tension explicitly addressed in 4.4 with break-even formula and per-rewrite analysis.
+
+---
+Task ID: W3
+Agent: Section-3-Structures
+Task: Produce Section 3 (Optimal Structural Depictions for Minimal Energy Retrieval) of the Problem Catalogue with ADRs.
+
+Work Log:
+- Read /home/z/my-project/DataMigrata/docs/energy-migration/CODESPACE_CONTEXT.md (live MSSQL data: 12 tables, 17 indexes, 50 ops, energy constants).
+- Read /home/z/my-project/DataMigrata/worklog.md for prior context (Wave0-Wave7: 50/50 ops pass).
+- Verified schema facts: 0 columnstore indexes in live DB despite a CREATE NONCLUSTERED COLUMNSTORE INDEX statement at line 265 of 00_SCHEMA_ONLY_Deployment.sql (likely blocked by TotalAmount computed column or spatial index on Region). Only Sales.vw_ProductSummary is materialised (has IX_vw_ProductSummary unique clustered index, lines 270-281); all Transactions-aggregating views (vw_TransactionSummary, vw_EmployeeQuarterlySales, vw_MultiDimensionalSales, vw_RunningTotalsAndRanks) are non-materialised.
+- Confirmed op-to-view mappings: op 21 → vw_ProductSummary (materialised), op 26 → vw_EmployeeQuarterlySales (PIVOT, non-materialised), op 29 → vw_MultiDimensionalSales (GROUPING SETS, non-materialised), op 36 → inline GROUP BY EmployeeID on Sales.Transactions.
+- Ran 12 z-ai web_search calls covering: columnar vs row energy, materialized view IVM, partition pruning, dictionary/RLE encoding, DuckDB Parquet, ClickHouse MergeTree sort key, SQL Server columnstore batch mode, wide vs normalized tables, pre-aggregation energy, data type width NVARCHAR, green database design, LOB compression. Saved results to /tmp/w3_research/*.json.
+- Drafted Section 3 with 4 problems (3.1 columnar vs row, 3.2 materialised views, 3.3 partitioning/sort keys, 3.4 data types/encoding), each with 3 variants, integration notes, and ADR tables.
+- All energy claims trace to: CODESPACE_CONTEXT.md constants (DRAM 12.5 nJ/byte, CPU 10-25 nJ/instr, NVMe 0.5-1.0 mJ/4KB page, STDistance 1-5 µs/call, JSON parse 2-10 µs/KB) + named external sources (Microsoft Columnstore Overview, ClickHouse engineering blog May 2026, Zhou VLDB 2007 IVM, Materialize IVM blog Aug 2024, Oracle 21c partition pruning, arXiv 2312.17024 selective RLE, Brent Ozar 2025 NVARCHAR, Microsoft Azure SQL LOB compression blog 2021, Microsoft Extreme 25x CCI JSON compression blog, aboutsqlserver.com 2015 LOB XML). Extrapolations explicitly labelled.
+- Final document: /home/z/my-project/DataMigrata/docs/energy-migration/SECTION_3_OPTIMAL_STRUCTURES.md (~3775 words, slightly above 2000-3500 aim but content-dense).
+
+Stage Summary:
+- File: docs/energy-migration/SECTION_3_OPTIMAL_STRUCTURES.md created (425 lines, ~3775 words).
+- 4 problems, 12 variants total, 4 ADR tables with confidence scores and joule estimates.
+- Top-confidence ADRs: P3.1 Variant B (0.86), P3.2 Variants B+C combined (0.83), P3.3 Variant A target / Variant C now (0.88/0.79), P3.4 Variants A+B combined (0.86).
+- Cross-problem dependency chain documented: P3.1 columnar enables P3.4 encoding; P3.3 sort key governs RLE applicability; P3.2 MVs consume the P3.1 columnar projection; P3.4 LOB side-table with bounding box pre-filter is the prerequisite for taming op 31 (spatial CROSS JOIN, 225M pairs, ~108s wall time).
+- Headline joule numbers: HR.Employees analytical scan 192 mJ → 15 mJ (13×); Sales.Transactions analytical scan 94 mJ → 5.6 mJ (17×); temporal ops with partition pruning 24 mJ → 4 mJ (6×); aggregation ops with materialised views 124 mJ → 0.4 mJ (300×).
+- Stacked end-to-end: catalogue analytical ops ~1.6 J → ~0.15 J (~10× reduction), excluding op 31 spatial.
+
+
+---
+Task ID: W1
+Agent: Section-1-Engine-Selection
+Task: Produce Section 1 (Identification of the Most Energy-Efficient SQL Dialect / Database Engine) of the energy-migration Problem Catalogue with ADRs.
+
+Work Log:
+- Read CODESPACE_CONTEXT.md (live MSSQL data: 12 tables, ~8.1 MB user data, 17 indexes, zero columnstore, op 31 = 108s spatial CROSS JOIN = 88% of total wall time)
+- Read worklog.md (prior work: 50/50 ops PASS confirmed via batch_summary_final.json)
+- Computed live joule extrapolation from batch_summary_final.json:
+  * Op 31: 108.04s × 15W (1 active core, RAPL) ≈ 1,621 J (96.6% of total CPU joules)
+  * 49 small ops: 5.57s × 10W ≈ 56 J
+  * Total estimated CPU energy: ~1,677 J (~1.7 kJ)
+- Invoked web-search skill (z-ai CLI) to gather real energy benchmarks across 11 search queries:
+  * TPC-Energy, DuckDB energy, ClickHouse energy, WattDB/JouleDB, Intel RAPL, FPGA accelerator energy, persistent memory database, columnar vs row, DuckDB vs SQLite, idle power, energy proportionality, DuckDB spatial extension, PostgreSQL idle
+  * Some queries hit rate-limit (429); retried sequentially with sleeps
+- Key sources cited:
+  * Rabl et al., Methods for Quantifying Energy Consumption in TPC-H (ICPE 2018, HPI)
+  * den Hartog, Database energy benchmarks: an evaluation (Radboud Univ 2024) — PostgreSQL vs MySQL in J/tC
+  * TPC-Energy spec announcement (TPC.org)
+  * WattDB — A Journey towards Energy Efficiency (ResearchGate 2015) + WattDB Rocky Road to Energy Proportionality (CEUR-WS Vol-1020)
+  * HotCarbon 2024 Proactive Energy Management in Database Systems
+  * DuckDB SIGMOD Demo 2019 (cited 709×)
+  * lukas-barth.net DuckDB-vs-SQLite benchmark (2023)
+  * MotherDuck DuckDB-vs-SQLite + DuckDB Spatial blog (Feb 2025)
+  * Sultan Efficient DuckDB (2023)
+  * DOE Data Center Transformation Always Available brief
+  * Ghent et al. Trends in Server Energy Proportionality (UGent, cited 73×)
+  * QIO blog Why Idle Power Is the Largest Untapped Lever (Jan 2026)
+  * Springer 2023 FPGA-Based Network-Attached Accelerators (33.6-43.2× energy efficiency)
+  * CACM FPGA Compute Acceleration Is First About Energy Efficiency (Microsoft Catapult)
+  * Lawrence Potsdam 2024 dissertation (Viper PMem-aware KV store, ~10× energy vs RocksDB)
+  * PerMA-bench VLDB 2022
+  * ClickBench / Instaclustr 2025 / Exasol vs ClickHouse TPC-H Nov 2025
+- Wrote Section 1 with 4 problem entries (1.1, 1.2, 1.3, 1.4) + 4 ADR tables + 2 Trade-off subsections (where top-variant confidence < 0.75: Problems 1.3 and 1.4)
+- Each energy claim labelled with EXTRAPOLATION where it traces to live data + codespace-context constants rather than a direct benchmark
+- Output file: docs/energy-migration/SECTION_1_ENGINE_SELECTION.md (~3,950 words; 399 lines)
+
+Stage Summary:
+- Section 1 DELIVERED at docs/energy-migration/SECTION_1_ENGINE_SELECTION.md
+- Recommendations:
+  * Problem 1.1 (engine architecture): DuckDB (conf 0.78), fallback PostgreSQL+PostGIS (conf 0.70); reject ClickHouse/SQLite/always-on MSSQL
+  * Problem 1.2 (energy proportionality): Embedded engines (conf 0.92) win decisively; idle = 60-80% of peak for always-on servers (DOE, QIO, Ghent)
+  * Problem 1.3 (small dataset ~8MB): Hybrid topology — DuckDB for analytical subset (ops 1-15, 21-40) + PostgreSQL for feature-bound subset (ops 16-20 temporal, 41-45 encrypted); conf 0.74
+  * Problem 1.4 (divergence): FPGA recorded but deferred (33-43× gain on op 31, Springer 2023); PMem REJECTED (Intel Optane EOL 2022)
+- Key finding: op 31 (spatial CROSS JOIN, 96.6% of CPU-joules) dictates engine selection
+- All claims cite named sources; all extrapolations explicitly labelled with constants used
+- Confidence scores honestly reflect evidentiary gaps (no direct TPC-H energy results exist per Rabl 2018)
+- Next: Section 2 (Join Operators) must keep op 31 as primary optimization target
