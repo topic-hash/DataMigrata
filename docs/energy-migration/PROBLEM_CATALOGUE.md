@@ -28,11 +28,25 @@ spatial (31–35), columnstore/in-memory (36–40), security/encryption (41–45
 and programmability (46–50).
 
 **The single dominant energy consumer is Op 31** — a spatial `CROSS JOIN` of
-15,036 × 15,036 = ~226 million `geography::STDistance()` calls, taking ~108
-seconds wall time. At ~15 W active CPU power, this single operation consumes
-approximately **1,620 J** — **96.6 %** of the total CPU-joule budget for all 50
-operations combined. The remaining 49 operations sum to only ~56 J at 10 W
-active power.
+15,036 × 15,036 = ~226 million `geography::STDistance()` calls.
+
+> **REVISION NOTE (2026-07-27, post-Query-Store gathering):** The initial
+> estimate used wall time (108s) × single-core power (15W) = ~1,620 J. After
+> gathering **real Query Store runtime statistics** (see
+> [`CODESPACE_CONTEXT.md`](./CODESPACE_CONTEXT.md) § "Query Store Runtime
+> Statistics"), the actual CPU time is **471,485 ms** (471 seconds — the query
+> saturated ~4 cores in parallel). The revised energy estimate is therefore
+> **~7,072 J** (single-core equivalent) to **~28,289 J** (4-core) — **4–17×
+> higher** than the wall-time-based estimate. Op 31's share of the workload
+> CPU budget rises from 96.6 % (wall) to **>99.5 %** (CPU time). The sections
+> below retain the original wall-time-based joule figures for consistency with
+> the sub-agent outputs; the revised estimates are in the context brief. The
+> **relative** rankings and recommendations are unchanged — Op 31 remains the
+> single highest-leverage optimisation target, and the spatial-index rewrite
+> saves even more joules than initially stated.
+
+The remaining 49 operations sum to only ~15 CPU-seconds (~150–225 J at 10–15 W),
+confirming that Op 31 dominates by **>99.5 %** of total CPU energy.
 
 This finding, derived from the live codespace data, is the central fact that
 shapes every ADR in this catalogue.

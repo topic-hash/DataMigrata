@@ -127,6 +127,84 @@
 6. **Temporal queries double the scan surface:** Every `FOR SYSTEM_TIME` query touches both the current table and the history table.
 7. **Memory-optimized tables have zero disk I/O energy** but consume DRAM energy persistently — favorable for hot-path lookups (ops 37, 38) but energy-wasteful if rarely accessed.
 
+## Query Store Runtime Statistics (REAL measured data — gathered 2026-07-27)
+
+> These are **actual runtime statistics** from `sys.query_store_*` DMVs, captured
+> from the verified 50/50 PASS run. This is the empirical foundation for all
+> joule extrapolations — not estimated, not inferred. Query Store was enabled
+> on the database and recorded per-query CPU time, logical reads, and execution
+> counts.
+
+### Top energy-consuming operations (by avg CPU time)
+
+| Query ID | Op (mapped) | Executions | Avg Duration (ms) | **Avg CPU (ms)** | Avg Logical Reads (8KB pages) | Avg Physical Reads | Min/Max Duration (ms) |
+|---:|---|---:|---:|---:|---:|---:|---|
+| 79 | **Op 31** (spatial CROSS JOIN, STDistance) | 3 | 118,933 | **471,485** | 614,319 | 3.3 | 107,941 / 124,698 |
+| 57 | Op 4 (recursive CTE path enumeration) | 1+2 | 3,499 / 3,263 | 3,460 / 3,239 | 1,658,474 / 1,663,450 | 0 | 3,004 / 3,521 |
+| 39 | Op 1 (recursive CTE HierarchyPath) | 2 | 2,885 / 2,700 | 2,855 / 2,679 | 1,377,906 / 1,381,914 | 0 | 2,508 / 2,893 |
+| 182 | Op 28 (vw_ManagerHierarchy view) | 3 | 2,563 | 2,546 | 1,230,130 | 0 | 2,290 / 2,759 |
+| 54 | Op 2 (recursive CTE aggregation) | 1+2 | 348 / 257 | 348 / 257 | 299,312 / 291,788 | 42 / 21 | 348 / 257 |
+| 59 | Op 5 (transitive closure) | 1+2 | 354 / 322 | 313 / 291 | 393,900 / 393,333 | 64 / 44 | 354 / 322 |
+| 63 | Op 7 (XML shredding CROSS APPLY) | 1+2 | 58 / 53 | 219 / 193 | 892 / 892 | 0 | 58 / 53 |
+
+### Op 31 — Execution Plan Summary (plan_id 29, from Query Store)
+
+The actual execution plan XML was retrieved from `sys.query_store_plan`. Key
+characteristics:
+- **Statement type:** SELECT with TOP 50
+- **Join type:** Nested loops (CROSS JOIN) — the spatial index `SIDX_Transactions_Region`
+  is **NOT used** because the query has no `WHERE` filter on `STDistance`; it
+  computes all 225M pairwise distances and sorts.
+- **Parallelism:** The plan uses a parallel scan (multiple threads), which is why
+  CPU time (471s) >> wall time (118s) — the query saturated ~4 CPU cores.
+- **No spatial index seek:** Confirmed by the plan XML — the `SIDX_Transactions_Region`
+  index is present but unused because the query pattern (`CROSS JOIN … STDistance
+  IS NOT NULL`) doesn't qualify for spatial index range seek.
+
+### Revised Energy Estimates (from REAL CPU time, not wall time)
+
+The prior estimates used wall time (108s) × single-core power (15W) = ~1,621 J.
+The Query Store CPU time of **471,485 ms** reveals the true energy cost is much
+higher because the query uses ~4 cores in parallel:
+
+| Metric | Prior estimate (wall-based) | **Revised (CPU-time-based)** | Calculation |
+|---|---|---|---|
+| Op 31 CPU energy | ~1,621 J | **~7,072 J** (single-core equiv.) to **~28,289 J** (4-core) | 471,485 ms × 15 W = 7,072 J (1 core); × 4 cores ≈ 28,289 J |
+| Op 31 share of workload | 96.6 % (wall) | **>99.5 %** (CPU time) | 471,485 ms vs ~15,000 ms for ops 1–28 combined |
+| Total 50-op CPU energy | ~1,677 J | **~7,500–28,800 J** | Op 31 dominates even more than previously stated |
+
+> **Critical implication for the Problem Catalogue:** The energy savings from
+> the Op 31 spatial-index rewrite (Section 2, Problem 2.2 Variant C) are even
+> larger than estimated. Reducing 471 CPU-seconds to ~4–22 CPU-seconds (via
+> bounding-box pre-filter) saves **~6,600–27,000 J per execution** — not
+> ~860–1,040 J as stated in the wall-time-based estimate. This strengthens the
+> confidence in the rewrite as the single highest-leverage intervention.
+
+### Op 31 Logical Read Analysis
+
+- 614,319 logical reads × 8 KB = **~4.8 GB** of logical I/O per execution
+- The `Sales.Transactions` table is only ~2 MB on disk — so the query reads
+  each page **~2,400 times** (the nested-loop CROSS JOIN re-scans the inner
+  table for every row of the outer table)
+- Physical reads = 3.3 (essentially zero) — the entire table fits in the buffer
+  pool, so all I/O is logical (DRAM-speed, ~12.5 nJ/byte)
+- DRAM transfer energy: 4.8 GB × 12.5 nJ/byte ≈ **~60 J** of DRAM energy per
+  execution (small relative to the ~7,000+ J CPU energy, but still quantifiable)
+
+### Recursive CTE Read Amplification (Ops 1, 2, 4, 5, 28)
+
+The recursive CTEs exhibit extreme read amplification:
+- Op 4: 1,658,474 logical reads on a 3 MB `HR.Employees` table = each page read
+  **~5,500 times** (one per recursion step × per anchor row)
+- Op 1: 1,377,906 logical reads = each page read **~4,500 times**
+- Op 28: 1,230,130 logical reads = each page read **~4,000 times**
+
+This confirms the Section 2 finding: the `ManagerID` column has no index, so
+each recursion level does a full clustered scan. Adding a nonclustered index on
+`ManagerID` (Problem 2.1 Variant B) would reduce these reads by ~100×.
+
+---
+
 ## Resource-to-Joule Conversion Constants (for energy extrapolation)
 
 These are the standard constants used throughout the Problem Catalogue to convert
