@@ -129,18 +129,40 @@ Formula: `energy (kWh) = carbon (gCO2) / intensity (gCO2/kWh)`; `joules = kWh ×
 |---|---|---:|---|---|
 | **PostgreSQL 14** | TPC-H SF=100, Q1–Q10 | **45,400 J** | Physical power meter (wall, includes disks) | [HotCarbon 2024](https://hotcarbon.org/assets/2024/pdf/hotcarbon24-final111.pdf) |
 
-### For ClickHouse and chDB (v4 bounded estimate via runtime ratio)
+### For ClickHouse and chDB (v5 bounded estimate via TOTAL-TIME ratio)
 
-**Key insight (v4):** ClickBench per-query analysis on identical hardware (c6a.4xlarge) shows ClickHouse averages **1.1× DuckDB runtime** and chDB averages **1.0× DuckDB runtime**. Since these are all columnar/vectorized engines on the same CPU, their energy is approximately equal to DuckDB's ± 10%. This is a **bounded estimate** (constrained by the runtime ratio), not a flat proxy.
+**v5 correction (v4 was wrong):** In v4 I reported ClickHouse at "1.1×" and chDB at "1.0×" DuckDB. Those were **means of per-query ratios**, which is statistically valid but misleading — it's dominated by queries where DuckDB is sub-millisecond (q1: 0.018s) and ClickHouse is even faster (0.001s), pulling the mean below 1.0. For energy comparison, the correct method is the **ratio of total times** (load + all queries), because energy = total_time × power.
 
-| Engine | ClickBench runtime ratio vs DuckDB | Bounded energy estimate | Method |
+**Raw data (committed to `raw_data/clickbench_per_query.csv` for reproducibility):**
+
+| Engine | Sum of 43 query times (s) | Load time (s) | Total (s) | Ratio vs DuckDB (total) |
+|---|---:|---:|---:|---:|
+| DuckDB | 26.32 | 126 | 152.32 | 1.00× |
+| ClickHouse | 23.51 | 260 | 283.51 | **1.86×** |
+| chDB | 34.05 | 532 | 566.05 | **3.72×** |
+| PostgreSQL | 11,903 | 937 | 12,840 | 84.30× |
+| MySQL | 22,044 | 10,004 | 32,048 | 210.40× |
+| SQLite (different hardware) | 12,465 | 3,496 | 15,961 | N/A (c6a.xlarge, 4 vCPU) |
+
+**Energy bounds using total-time ratio × DuckDB ATLAS energy (1,496,739 J ops-only):**
+
+| Engine | Total-time ratio | Energy bound (J) | Method |
 |---|---:|---:|---|
-| **ClickHouse** | 1.1× avg (0.1–11.4× range) | ~DuckDB × 1.1 ± 10% | Runtime-ratio bound on identical hardware |
-| **chDB** | 1.0× avg (0.1–2.4× range) | ~DuckDB × 1.0 ± 10% | Same |
+| **ClickHouse** | 1.86× | **~2,785,812 J** (~2.8 MJ) | DuckDB_ATLAS × 1.86 |
+| **chDB** | 3.72× | **~5,562,142 J** (~5.6 MJ) | DuckDB_ATLAS × 3.72 |
 
-### For MySQL, SQLite, SQL Server, Oracle (v4: permanent ceiling)
+These are bounded estimates (not direct measurements), derived from total runtime on identical hardware. The assumption is that energy scales with runtime for CPU-bound analytical workloads on the same CPU.
 
-**These engines have NO public RAPL or power-meter measurement.** Confirmed after searching 658 sources. Their energy can only be estimated via the 150W proxy, which has ±50% uncertainty. The ClickBench runtime ratios (MySQL 2731×, SQLite 1860× vs DuckDB) constrain the RELATIVE ranking but not the absolute joules.
+### For MySQL, SQLite, SQL Server, Oracle (v5: permanent ceiling)
+
+**These engines have NO public RAPL or power-meter measurement.** Confirmed after searching 658 sources. Their energy can only be estimated via the 150W proxy or total-time ratio, both with high uncertainty.
+
+| Engine | Method | Ratio vs DuckDB | Energy estimate | Confidence |
+|---|---|---:|---:|---|
+| **MySQL** | Total-time ratio × DuckDB ATLAS | 210.40× | ~315 MJ | Very low (no measurement; ratio assumes similar power per second) |
+| **SQLite** | INSUFFICIENT DATA | N/A | N/A | Different hardware (4 vCPU vs 16); no valid ratio |
+| **SQL Server** | No ClickBench data | N/A | N/A | No data of any kind |
+| **Oracle DB** | No ClickBench data | N/A | N/A | No data of any kind |
 
 ### ClickBench proxy extrapolation (for completeness, low confidence)
 
@@ -226,14 +248,14 @@ Normalising energy (1=lowest) and 3-year TCO (1=lowest):
 
 | Engine | Energy score | Cost score | Overall confidence | Evidence summary |
 |---|---|---|---|---|
-| **DuckDB** | 1 (best) | 1 (free, embedded) | **0.85** | ATLAS RAPL measured; ops energy ~1.5 MJ/exec; v4 extracted mfg/ops split (90% ops). MIT license; embedded. Confidence up from 0.82 because v4 mining corrected the carbon intensity (368 not 332) and extracted the manufacturing split. |
-| **ClickHouse** | 2 | 1 (free) | **0.70** (was 0.55) | **v4: bounded estimate via runtime ratio** — ClickBench shows 1.1× DuckDB on identical hardware, so energy is DuckDB ± 10%. No longer a flat proxy; now a ratio-constrained bound. Still no direct RAPL, but the ratio method is defensible. |
+| **DuckDB** | 1 (best) | 1 (free, embedded) | **0.85** | ATLAS RAPL measured; ops energy ~1.5 MJ/exec. MIT license; embedded. |
+| **ClickHouse** | 2 | 1 (free) | **0.65** (was 0.70 in v4 — corrected down) | **v5: total-time ratio 1.86× DuckDB** → ~2.8 MJ (was 1.1× in v4, which was mean-of-per-query-ratios, misleading). Still no direct RAPL, but ratio bound is now correct. |
 | **PostgreSQL** | 6 | 4 ($0–$21k) | **0.78** | HotCarbon 2024 power-meter measurement: 45.4 kJ (TPC-H SF=100 Q1-Q10). Feature-complete (PostGIS, JSONB, XML). |
-| **chDB** | 3 | 1 (free, embedded) | **0.60** (was 0.45) | **v4: bounded via runtime ratio** — 1.0× DuckDB on identical hardware. Same engine as ClickHouse, embedded. Confidence up because ratio bound replaces flat proxy. |
-| **MonetDB** | n/a | 1 (free) | **0.72** (was 0.70) | **v4: ATLAS ops energy ~1.5 MJ/exec — nearly identical to DuckDB operationally.** The 3× total-footprint difference is manufacturing (SSD wear), not per-query energy. This is a significant nuance. |
-| **StarRocks** | n/a | 1 (free) | **0.65** | ATLAS RAPL: ~3.1 MJ/exec ops energy (2× DuckDB). High power draw per ATLAS. |
-| **SQLite** | 5 | 1 (free, embedded) | **0.42** | No measurement; different hardware in ClickBench; no ratio bound (different architecture). |
-| **MySQL** | 9 | 5 ($0–$16k) | **0.50** (was 0.55) | No measurement; ClickBench ratio 2731× but no power confirmation. Down from 0.55 because v4 honestly acknowledges no data exists. |
+| **chDB** | 3 | 1 (free, embedded) | **0.55** (was 0.60 in v4 — corrected down) | **v5: total-time ratio 3.72× DuckDB** → ~5.6 MJ (was 1.0× in v4, misleading). Same engine as ClickHouse, embedded. |
+| **MonetDB** | n/a | 1 (free) | **0.72** | ATLAS RAPL: ops energy ~1.5 MJ/exec (nearly identical to DuckDB operationally; 3× total footprint is manufacturing/SSD wear). |
+| **StarRocks** | n/a | 1 (free) | **0.65** | ATLAS RAPL: ~3.1 MJ/exec ops energy (2× DuckDB). |
+| **SQLite** | 5 | 1 (free, embedded) | **0.35** (was 0.42 — downgraded) | **v5: INSUFFICIENT DATA.** Different hardware in ClickBench; no valid ratio; no measurement. Honestly cannot rank. |
+| **MySQL** | 9 | 5 ($0–$16k) | **0.45** (was 0.50 — downgraded) | **v5: total-time ratio 210× DuckDB** → ~315 MJ, but assumes similar power per second (unverified). No measurement. |
 | **MS SQL Server 2022 Std** | n/a | 6 ($16,398/3yr) | **0.30** | No RAPL; no ClickBench; no measurement of any kind. |
 | **Oracle DB EE** | n/a | 8 ($157,700/3yr) | **0.25** | No RAPL; most expensive; no measurement. |
 
