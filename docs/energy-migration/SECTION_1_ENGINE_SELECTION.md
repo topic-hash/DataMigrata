@@ -349,7 +349,7 @@ refresh cycle, not part of the DataMigrata v1 migration.
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (op 31 only) | Key Evidence |
 |---|---|---|---|
-| A — FPGA-accelerated spatial kernel | 0.40 | **~40–50 J** (33–43× gain on op 31) | Springer 2023 (33.6–43.2×); CACM Catapult; Eureka PatSnap report |
+| A — FPGA-accelerated spatial kernel | 0.40 | **~100–500 J** (order-of-magnitude gain on op 31, estimated) | Fraunhofer/Springer 2023 FPGA chapter; CACM Catapult (ACM 10.1145/2996868, 2016) |
 | B — PMem-native KV store (memory-optimised tables) | 0.20 | **~5 J** for op 37/38 (10× gain on KV ops) | Lawrence 2024 (Viper, Potsdam); PerMA-bench VLDB 2022; **Intel Optane EOL 2022** |
 | C — Hybrid FPGA + CXL | 0.10 | **~45 J** (combined, speculative) | No direct benchmark; extrapolation from A + B |
 
