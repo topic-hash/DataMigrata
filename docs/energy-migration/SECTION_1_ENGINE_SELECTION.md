@@ -155,11 +155,10 @@ An embedded database is a library linked into the application process. When the
 application is not running queries, the engine consumes **0 W** of dedicated
 power (the host process may still draw baseline OS power, but no DBMS-specific
 draw exists). This is the **energy-proportionality ideal**: joules scale
-linearly with work, with zero fixed cost. The QIO blog *Why "Idle Power" Is the
-Largest Untapped Lever in Data Centers* (Jan 2026) and the DOE *Data Center
-Transformation* brief (eere.energy.gov) both report idle servers drawing
-**40–70 % (QIO)** or **60–80 % (DOE)** of peak power even when no useful work
-is done; Ghent et al., *Trends in Server Energy Proportionality* (UGent,
+linearly with work, with zero fixed cost. The DOE *Data Center
+Transformation* brief (eere.energy.gov) reports idle servers drawing
+**60–80 % of peak power** even when no useful work is done; Ghent et al.,
+*Trends in Server Energy Proportionality* (UGent, IEEE Computer 2011,
 cited 73×), add that typical datacentre servers operate at only 10–50 %
 utilization, so the idle tail is the largest energy bucket. Embedded engines
 eliminate this tail entirely.
@@ -206,7 +205,7 @@ PostgreSQL, "deploy" must include scale-to-zero to be energy-competitive.
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (24 h, workload run once) | Key Evidence |
 |---|---|---|---|
-| A — Embedded (zero idle) | **0.92** | **~810 J** (active only) | Energy proportionality literature (DOE, QIO, Ghent); embedded semantics |
+| A — Embedded (zero idle) | **0.92** | **~810 J** (active only) | Energy proportionality literature (DOE, Ghent UGent IEEE Computer 2011); embedded semantics |
 | B — Server + dynamic scaling | 0.55 | **~730 J** (active + hysteresis) | WattDB (Härder CEUR-WS Vol-1020); HotCarbon 2024 (proactive energy mgmt) |
 | C — Server always-on | 0.85 | **~4.3–6.9 MJ** (idle-dominated) | DOE *Always Available* brief; PostgreSQL idle thread (pgsql-hackers 2022); homelab measurements |
 
@@ -309,18 +308,14 @@ above, justifying their inclusion as a research divergence path.
 **Variant A: FPGA-accelerated database (Catapult-style)**
 The Springer chapter *FPGA-Based Network-Attached Accelerators — An
 Environmental Perspective* (2023) reports network-attached FPGAs achieving
-**33.6×–43.2× energy-efficiency improvement** over CPU baselines for
-tightly-bounded kernels, with tightly-coupled FPGAs achieving a more modest
-10×–14×. The CACM technical perspective *FPGA Compute Acceleration Is First
-About Energy Efficiency* (referencing Microsoft's Bing Catapult deployment)
-confirms the primary motivation for production FPGA adoption is joules per
-operation. Applied to op 31 (spatial STDistance CROSS JOIN, ~225M pairwise
-calls), an FPGA implementation of the Haversine or Vincenty distance kernel
-could plausibly cut the ~1,621 J CPU cost to **~40–50 J** — a >30× reduction.
-**However**: FPGA development for a *single* query in a 50-op workload is not
-economical; this only makes sense if op 31 is a dominant recurring cost across
-many invocations. The Eureka PatSnap report notes FPGA targets of 10–100
-operations/joule — three orders above typical CPU efficiency.
+**significant energy-efficiency improvement** over CPU baselines for
+tightly-bounded kernels. The CACM article *A Reconfigurable Fabric for
+Accelerating Large-Scale Datacenter Services* (Microsoft Catapult, ACM
+10.1145/2996868, 2016, cited 72×) confirms the primary motivation for production
+FPGA adoption is joules per operation. Applied to op 31 (spatial STDistance
+CROSS JOIN, ~225M pairwise calls), an FPGA implementation of the Haversine or
+Vincenty distance kernel could plausibly cut the CPU energy cost substantially —
+an order-of-magnitude reduction is consistent with the FPGA literature.
 
 **Variant B: Persistent-memory-native database (PMEM KV store)**
 Intel Optane DC Persistent Memory (PMem 200 series, per Intel product brief)
@@ -363,7 +358,7 @@ Both variants have confidence well below 0.75, so a contrast is mandatory.
 
 | Dimension | Variant A — FPGA | Variant B — PMem |
 |---|---|---|
-| **Strengths** | 33–43× energy gain on the workload's dominant op (op 31 = 96.6 % of joules); production precedent (Microsoft Catapult) | 10× energy gain on memory-table ops (37, 38); transparent to SQL layer |
+| **Strengths** | Order-of-magnitude energy gain on the workload's dominant op (op 31 = 96.6 % of joules); production precedent (Microsoft Catapult, CACM 2016) | 10× energy gain on memory-table ops (37, 38); transparent to SQL layer |
 | **Weaknesses** | Requires bespoke HDL for STDistance; only benefits one op; FPGA deployment is operationally heavy | Optane hardware end-of-life (Intel exited 2022–2023); no production successor with published energy benchmarks |
 | **Risks** | FPGA development cost > energy savings for a one-time migration workload; CXL-attached FPGAs are still maturing | Future hardware unavailability; benchmark numbers are on hardware that can no longer be purchased new |
 

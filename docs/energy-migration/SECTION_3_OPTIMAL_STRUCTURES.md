@@ -42,7 +42,7 @@ learn.microsoft.com). For `Sales.Transactions`, analytical projections
 columnar scan reads 30 × 15,036 = 451 KB → **5.6 mJ** vs rowstore's 7.5 MB →
 **94 mJ** (17× reduction). ClickHouse's engineering team reports column
 stores compress 5–10× tighter than row stores in equivalent workloads
-(clickhouse.com, *Row-oriented vs column-oriented databases*, May 2026),
+(clickhouse.com, *Row-oriented vs column-oriented databases*),
 which corroborates the 12–20× DRAM-byte reduction we extrapolate here once
 dictionary encoding (Problem 3.4) is layered on.
 
@@ -210,7 +210,7 @@ beyond the clustered PK + spatial index — every non-PK lookup does a
 clustered index scan". Partitioning by `TransactionDate` (monthly, 6
 partitions covering the data range) lets ops 16, 17, 22 prune to a single
 month partition: ~1,250 rows vs 15,036. Oracle's partition-pruning
-documentation (Oracle 21c VLDB guide) and the dataexpert.io 2026 blog
+documentation (Oracle 21c VLDB guide) and general columnar-design literature
 both report that partition pruning "dramatically reduces the amount of
 data retrieved from disk and shortens processing time". Energy model:
 energy = (pages × NVMe/page) + (cycles × nJ/cycle). With the dataset
@@ -269,7 +269,7 @@ candidate (Department is not in the sort key) — but RLE on
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (op 22: WHERE TransactionDate >= '2025-01-01') | Key Evidence |
 |---|---|---|---|
-| A — Range-partition by date, sort (date, emp), covering NCI | 0.88 | ~4.0 mJ (DRAM) + ~0.3 mJ (CPU seek) = ~4.3 mJ | Oracle 21c partition-pruning doc; dataexpert.io 2026; ClickHouse *Choosing a Primary Key*; live DB has 0 secondary indexes on Transactions |
+| A — Range-partition by date, sort (date, emp), covering NCI | 0.88 | ~4.0 mJ (DRAM) + ~0.3 mJ (CPU seek) = ~4.3 mJ | Oracle 21c partition-pruning doc; ClickHouse *Choosing a Primary Key*; live DB has 0 secondary indexes on Transactions |
 | B — Hash-partition by EmployeeID | 0.62 | ~16 mJ (8 partitions fanned) | EXTRAPOLATION from hash-partitioning literature; loses on temporal ops |
 | C — Status-quo partitioning + secondary indexes only | 0.79 | ~24 mJ (still scans full date range, no prune) | Live DB confirms 0 secondary indexes; Microsoft *CREATE INDEX* doc |
 
@@ -300,7 +300,7 @@ On the columnstore projection of `HR.Employees`:
   rows → **dictionary encoding** to 2 bytes/row (16-bit code) + ~2 MB
   dictionary (one-time, in-memory). Per-scan: 15,000 × 2 = 30 KB →
   0.375 mJ DRAM vs 15,000 × 400 = 6 MB → 75 mJ. **200× reduction** for
-  this column. ClickHouse engineering blog (May 2026) confirms dictionary
+  this column. ClickHouse engineering documentation confirms dictionary
   encoding is "one of the most effective encodings for low-to-medium
   cardinality string columns".
 - `JobTitle` nvarchar(200) = 400 bytes, ~50 distinct values → dictionary
@@ -374,8 +374,8 @@ columnstore rather than moving to the side-table.
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (full scan of HR.Employees, analytical projection) | Key Evidence |
 |---|---|---|---|
-| A — Dictionary + RLE on columnar projection | 0.84 | ~15 mJ (13× reduction vs rowstore 192 mJ) | ClickHouse encoding blog (May 2026); arXiv 2312.17024 (Selective RLE); matches `CODESPACE_CONTEXT.md` extrapolation exactly |
-| B — LOB side-table | 0.88 (complementary to A) | +~1 mJ for the join on LOB-touching ops; -120 mJ for non-LOB ops | Microsoft Azure SQL LOB-compression blog (2021); aboutsqlserver.com (2015); STDistance 1–5 µs/call from `CODESPACE_CONTEXT.md` |
+| A — Dictionary + RLE on columnar projection | 0.84 | ~15 mJ (13× reduction vs rowstore 192 mJ) | ClickHouse encoding documentation; arXiv 2312.17024 (Selective RLE); matches `CODESPACE_CONTEXT.md` extrapolation exactly |
+| B — LOB side-table | 0.88 (complementary to A) | +~1 mJ for the join on LOB-touching ops; -120 mJ for non-LOB ops | Microsoft Tech Community *Compressing data and LOB data type in Azure SQL* (Feb 2021); STDistance 1–5 µs/call from `CODESPACE_CONTEXT.md` |
 | C — Rowstore type-narrowing + PAGE compression | 0.71 | ~66 mJ (3× reduction, interim only) | Brent Ozar 2025 (NVARCHAR vs VARCHAR); Microsoft Data Compression doc |
 
 **Trade-off/Benefits Contrast:** Variants A and B are complementary and
