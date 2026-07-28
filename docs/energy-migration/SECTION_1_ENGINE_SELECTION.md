@@ -71,7 +71,7 @@ that reduce energy consumption within 5 % of peak throughput. Because DuckDB
 is embedded, it pays **zero network round-trip joules and zero TDS/serialisation
 joules** — significant when 49 of 50 ops are <110 ms each. Its vectorised
 executor should reduce op 31's per-call constant on `STDistance` from MSSQL's
-~1–5 µs (Edgar 2018, per codespace context) toward GEOS's ~0.5–1 µs/call,
+~1–5 µs (estimated, per codespace context — see CLAIMS_VERIFICATION.md) toward GEOS's ~0.5–1 µs/call,
 plausibly halving op 31's wall time.
 
 **Variant B: ClickHouse (server, vectorised columnar)**

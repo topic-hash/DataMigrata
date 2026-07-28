@@ -245,5 +245,5 @@ resource consumption into joules. All are cited from published measurements.
 | NVMe SSD read | ~2–4 µs/4KB page, ~3 W active | Samsung 980 Pro specs, Linux `iostat` |
 | NVMe energy per 4KB read | ~0.5–1.0 mJ | Samsung PM9A1 power data |
 | SATA SSD read | ~6 W active, ~50 µs/4KB | Intel D3-S4520 specs |
-| Geography STDistance (SQL Server) | ~1–5 µs/call (CPU-bound) | MSSQL spatial benchmark (Edgar, 2018) |
+| Geography STDistance (SQL Server) | ~1–5 µs/call (CPU-bound) | ESTIMATE — derived from Haversine inverse-Vincenty algorithm complexity on modern x86; no single published benchmark confirmed (see CLAIMS_VERIFICATION.md). The constant is consistent with Microsoft Docs STDistance description and general spatial-computation literature. |
 | JSON parse (SQL Server) | ~2–10 µs/KB | Microsoft JSON perf blog (2017) |

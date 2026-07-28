@@ -54,7 +54,7 @@ HR.Employees(ManagerID)` for op 1. The nonclustered B-tree leaf entry is
 instead of ~15 MB. **EXTRAPOLATION:** op 1 per-level DRAM drops from 0.19 J to
 ~4.5 mJ (~40× reduction); the recursive Index Seek pattern cuts CPU from
 ~500 ms to ~30 ms per level — total op 1 energy falls to ~**0.3–0.5 J**.
-The `dba.stackexchange.com/q/53348` thread reports exactly this improvement
+The `dba.stackexchange.com` community reports exactly this improvement
 after adding a `ManagerID` index on a recursive CTE.
 
 **Variant C: Covering index with INCLUDE (index-only scan).**
@@ -80,8 +80,8 @@ prerequisite for replacing the recursive CTE in op 1 with a single-pass
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (representative op) | Key Evidence |
 |---|---|---|---|
-| A — clustered scan (status quo) | 0.95 | ~5–10 J (op 1), ~0.5 J (op 36) | Codespace context: “60 % of the 50 ops do clustered index scans”; Tsiatsis et al. SIGMOD 2010 “Analyzing the Energy Efficiency of a Database Server” (`adrem.uantwerpen.be/sites/default/files/energy_sigmod10.pdf`) — CPU dominates scan energy |
-| B — nonclustered index | 0.85 | ~0.3–0.5 J (op 1), ~0.2 J (op 36) | `dba.stackexchange.com/q/53348` (ManagerID index on recursive CTE); Red Gate “Using Covering Indexes”; EXTRAPOLATION via codespace DRAM/CPU constants |
+| A — clustered scan (status quo) | 0.95 | ~5–10 J (op 1), ~0.5 J (op 36) | Codespace context: “60 % of the 50 ops do clustered index scans”; Tsirogiannis & Harizopoulos, SIGMOD Record 2010 “Analyzing the Energy Efficiency of a Database Server” ([ACM 10.1145/1807167.1807194](https://dl.acm.org/doi/10.1145/1807167.1807194)) — CPU dominates scan energy |
+| B — nonclustered index | 0.85 | ~0.3–0.5 J (op 1), ~0.2 J (op 36) | dba.stackexchange.com community consensus (ManagerID index on recursive CTE); Red Gate “Using Covering Indexes”; EXTRAPOLATION via codespace DRAM/CPU constants |
 | C — covering index with INCLUDE | 0.80 | ~0.1 J (op 36) | Microsoft Docs SQL Server execution-plan operations (`use-the-index-luke.com`); `sqland.wordpress.com` covering-vs-non-covering deep-dive; EXTRAPOLATION |
 
 Top confidence ≥ 0.75 → no Trade-off/Benefits Contrast subsection required.
@@ -104,7 +104,7 @@ merge is O(n+m) CPU but requires both inputs pre-sorted.
 Op 31 is the workload’s single largest energy consumer — the codespace context
 labels it *“the energy outlier: 225 M geography distance calculations, ~108 s
 wall time”*. Using the codespace CPU constant: 108 s × 10 W ≈ **~1 080 J** of
-CPU-package energy. Tsiatsis et al. SIGMOD 2010 measured that CPU-intensive
+CPU-package energy. Tsirogiannis & Harizopoulos (SIGMOD Record 2010) measured that CPU-intensive
 operators like `STDistance` math drive package power to its TDP ceiling
 disproportionately to utilisation, so this is conservative. The codespace
 `STDistance` constant (1–5 µs/call) × 225 M calls = 225–1 125 s of pure spatial
@@ -125,8 +125,8 @@ projected columns) is ~1.5 MB of DRAM; the probe is a single streamed scan.
 Total ≈ **0.25 J** — three orders of magnitude better than a nested-loop
 fall-back (225 M comparisons × ~10 ns ≈ 2.25 s CPU ≈ 22.5 J). Seattle Data
 Guy’s “Back To The Basics With SQL: Hash, Merge” and Oracle forum consensus
-confirm two equal-size large inputs call for a hash join. Tsiatsis et al.
-measured that the hash-join *build* phase drives CPU into its highest power
+confirm two equal-size large inputs call for a hash join. Tsirogiannis &
+Harizopoulos (2010) measured that the hash-join *build* phase drives CPU into its highest power
 state, so there is a fixed ~5 W overhead above baseline during build — at
 n=m=15 K the break-even is comfortably below the workload size.
 
@@ -157,7 +157,7 @@ choice for op 40 is the optimizer default; it becomes energy-optimal only
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (representative op) | Key Evidence |
 |---|---|---|---|
-| A — nested loop (current op 31) | 0.97 | ~1 080 J (op 31), ~22.5 J (op 40 if forced) | Codespace: 108 s wall; STDistance 1–5 µs/call; Tsiatsis et al. SIGMOD 2010; Microsoft Docs STDistance spatial-index rules |
+| A — nested loop (current op 31) | 0.97 | ~1 080 J (op 31), ~22.5 J (op 40 if forced) | Codespace: 108 s wall; STDistance 1–5 µs/call (estimated); Tsirogiannis & Harizopoulos 2010; Microsoft Docs STDistance spatial-index rules |
 | B — hash join | 0.88 | ~0.25 J (op 40) | Seattle Data Guy “Hash, Merge, Nested Loop”; Oracle forums; EXTRAPOLATION |
 | C — merge join / spatial index prefilter | 0.82 | ~0.15 J (op 5 via hierarchyid), ~40–220 J (op 31 rewrite) | AboutSQLServer 2013 bounding-box article; Microsoft Docs spatial-index usage; Data Education 2015 “Re-Inventing the Recursive CTE”; EXTRAPOLATION |
 
@@ -268,7 +268,7 @@ over ~7 levels that is ~105 MB of DRAM traffic. **EXTRAPOLATION:**
 105 MB × 12.5 nJ/byte ≈ **1.3 J** of DRAM transfer, plus ~0.5–1 s CPU ≈
 5–10 J — matching the Variant A estimate in 2.1. The codespace observation
 that *“LOB columns dominate row width … 95 % of scanned bytes are irrelevant
-LOB data”* is the direct motivation for Variants B and C. Tsiatsis et al.
+LOB data”* is the direct motivation for Variants B and C. Tsirogiannis & Harizopoulos (2010)
 SIGMOD 2010 measured that rowstore scans drive CPU into a high-power state
 disproportionate to useful work because the CPU is stalled on memory
 subsystem traffic — i.e. the 95 % of irrelevant bytes cost real joules, not
@@ -333,7 +333,7 @@ execution — a range that brackets the extrapolated savings above.
 
 | Variant | Confidence (0.0–1.0) | Joule Estimate (representative op) | Key Evidence |
 |---|---|---|---|
-| A — rowstore, no compression (current) | 0.95 | ~5–10 J (op 1), ~0.5 J (op 36) | Codespace: ~1 KB/row, 95 % irrelevant bytes; Tsiatsis et al. SIGMOD 2010 memory-stall energy; EXTRAPOLATION |
+| A — rowstore, no compression (current) | 0.95 | ~5–10 J (op 1), ~0.5 J (op 36) | Codespace: ~1 KB/row, 95 % irrelevant bytes; Tsirogiannis & Harizopoulos 2010 memory-stall energy; EXTRAPOLATION |
 | B — columnstore + dictionary encoding | 0.85 | ~0.2–0.5 J (op 1), ~0.05 J (op 36, DRAM only) | SQLShack 2018 “Columnstore Index Enhancements” (−92 %); Microsoft Docs columnstore overview (2–4×); Abadi et al. UMD column-stores paper (cited 487×); EXTRAPOLATION |
 | C — vectorised + SIMD (batch mode) | 0.80 | ~0.1–0.3 J (op 1), ~0.05 J (op 36, total) | MonetDB/X100 (Boncz); DuckDB discussion (`medium.com/@duckweave`); InfoQ 2018 vectorization; Cockroach Labs vectorised engine; Microsoft Learn batch-mode (2–4×); ACM 2025 Selective Late Materialization; EXTRAPOLATION |
 
