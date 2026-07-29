@@ -1,0 +1,835 @@
+================================================================================
+OP 1: Recursive CTE with HIERARCHYID path building and cycle detection
+ERROR: Binder Error: No function matches the given name and argument types '+(VARCHAR, STRING_LITERAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	+(TINYINT) -> TINYINT
+	+(TINYINT, TINYINT) -> TINYINT
+	+(SMALLINT) -> SMALLINT
+	+(SMALLINT, SMALLINT) -> SMALLINT
+	+(INTEGER) -> INTEGER
+	+(INTEGER, INTEGER) -> INTEGER
+	+(BIGINT) -> BIGINT
+	+(BIGINT, BIGINT) -> BIGINT
+	+(HUGEINT) -> HUGEINT
+	+(HUGEINT, HUGEINT) -> HUGEINT
+	+(FLOAT) -> FLOAT
+	+(FLOAT, FLOAT) -> FLOAT
+	+(DOUBLE) -> DOUBLE
+	+(DOUBLE, DOUBLE) -> DOUBLE
+	+(DECIMAL) -> DECIMAL
+	+(DECIMAL, DECIMAL) -> DECIMAL
+	+(UTINYINT) -> UTINYINT
+	+(UTINYINT, UTINYINT) -> UTINYINT
+	+(USMALLINT) -> USMALLINT
+	+(USMALLINT, USMALLINT) -> USMALLINT
+	+(UINTEGER) -> UINTEGER
+	+(UINTEGER, UINTEGER) -> UINTEGER
+	+(UBIGINT) -> UBIGINT
+	+(UBIGINT, UBIGINT) -> UBIGINT
+	+(UHUGEINT) -> UHUGEINT
+	+(UHUGEINT, UHUGEINT) -> UHUGEINT
+	+(DATE, INTEGER) -> DATE
+	+(INTEGER, DATE) -> DATE
+	+(INTERVAL, INTERVAL) -> INTERVAL
+	+(DATE, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, DATE) -> TIMESTAMP
+	+(TIME, INTERVAL) -> TIME
+	+(INTERVAL, TIME) -> TIME
+	+(TIMESTAMP, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, TIMESTAMP) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, INTERVAL) -> TIME WITH TIME ZONE
+	+(INTERVAL, TIME WITH TIME ZONE) -> TIME WITH TIME ZONE
+	+(TIME, DATE) -> TIMESTAMP
+	+(DATE, TIME) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, DATE) -> TIMESTAMP WITH TIME ZONE
+	+(DATE, TIME WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+	+([ANY[]...]) -> ANY[]
+	+(BIGNUM, BIGNUM) -> BIGNUM
+	+(TIMESTAMP WITH TIME ZONE, INTERVAL) -> TIMESTAMP WITH TIME ZONE
+	+(INTERVAL, TIMESTAMP WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+
+
+LINE 13:         CAST(h.HierarchyPath + ' > ' + e.FullName AS TEXT),
+                                      ^
+--- Original T-SQL (first 500 chars) ---
+WITH EmployeeHierarchy AS (
+    SELECT 
+        EmployeeID, ManagerID, FullName, Department, Salary, JobTitle,
+        CAST(FullName AS NVARCHAR(MAX)) AS HierarchyPath,
+        0 AS Level,
+        CAST(EmployeeID AS VARCHAR(MAX)) AS PathString,
+        CAST(Salary AS DECIMAL(18,2)) AS CumulativeSalary
+    FROM HR.Employees
+    WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT 
+        e.EmployeeID, e.ManagerID, e.FullName, e.Department, e.Salary, e.JobTitle,
+        CAST(h.HierarchyPath + ' > ' +
+--- Translated DuckDB (first 500 chars) ---
+WITH RECURSIVE EmployeeHierarchy AS (
+    SELECT 
+        EmployeeID, ManagerID, FullName, Department, Salary, JobTitle,
+        CAST(FullName AS TEXT) AS HierarchyPath,
+        0 AS Level,
+        CAST(EmployeeID AS TEXT) AS PathString,
+        CAST(Salary AS DECIMAL(18,2)) AS CumulativeSalary
+    FROM HR.Employees
+    WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT 
+        e.EmployeeID, e.ManagerID, e.FullName, e.Department, e.Salary, e.JobTitle,
+        CAST(h.HierarchyPath + ' > ' + e.Full
+
+================================================================================
+OP 4: Recursive CTE with path enumeration and string aggregation
+ERROR: Binder Error: No function matches the given name and argument types '+(VARCHAR, STRING_LITERAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	+(TINYINT) -> TINYINT
+	+(TINYINT, TINYINT) -> TINYINT
+	+(SMALLINT) -> SMALLINT
+	+(SMALLINT, SMALLINT) -> SMALLINT
+	+(INTEGER) -> INTEGER
+	+(INTEGER, INTEGER) -> INTEGER
+	+(BIGINT) -> BIGINT
+	+(BIGINT, BIGINT) -> BIGINT
+	+(HUGEINT) -> HUGEINT
+	+(HUGEINT, HUGEINT) -> HUGEINT
+	+(FLOAT) -> FLOAT
+	+(FLOAT, FLOAT) -> FLOAT
+	+(DOUBLE) -> DOUBLE
+	+(DOUBLE, DOUBLE) -> DOUBLE
+	+(DECIMAL) -> DECIMAL
+	+(DECIMAL, DECIMAL) -> DECIMAL
+	+(UTINYINT) -> UTINYINT
+	+(UTINYINT, UTINYINT) -> UTINYINT
+	+(USMALLINT) -> USMALLINT
+	+(USMALLINT, USMALLINT) -> USMALLINT
+	+(UINTEGER) -> UINTEGER
+	+(UINTEGER, UINTEGER) -> UINTEGER
+	+(UBIGINT) -> UBIGINT
+	+(UBIGINT, UBIGINT) -> UBIGINT
+	+(UHUGEINT) -> UHUGEINT
+	+(UHUGEINT, UHUGEINT) -> UHUGEINT
+	+(DATE, INTEGER) -> DATE
+	+(INTEGER, DATE) -> DATE
+	+(INTERVAL, INTERVAL) -> INTERVAL
+	+(DATE, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, DATE) -> TIMESTAMP
+	+(TIME, INTERVAL) -> TIME
+	+(INTERVAL, TIME) -> TIME
+	+(TIMESTAMP, INTERVAL) -> TIMESTAMP
+	+(INTERVAL, TIMESTAMP) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, INTERVAL) -> TIME WITH TIME ZONE
+	+(INTERVAL, TIME WITH TIME ZONE) -> TIME WITH TIME ZONE
+	+(TIME, DATE) -> TIMESTAMP
+	+(DATE, TIME) -> TIMESTAMP
+	+(TIME WITH TIME ZONE, DATE) -> TIMESTAMP WITH TIME ZONE
+	+(DATE, TIME WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+	+([ANY[]...]) -> ANY[]
+	+(BIGNUM, BIGNUM) -> BIGNUM
+	+(TIMESTAMP WITH TIME ZONE, INTERVAL) -> TIMESTAMP WITH TIME ZONE
+	+(INTERVAL, TIMESTAMP WITH TIME ZONE) -> TIMESTAMP WITH TIME ZONE
+
+
+LINE 8:            p.Path + ' -> ' + e.FullName,
+                          ^
+--- Original T-SQL (first 500 chars) ---
+WITH OrgPath AS (
+    SELECT EmployeeID, ManagerID, FullName, 
+           CAST(FullName AS NVARCHAR(MAX)) AS Path,
+           CAST(CAST(EmployeeID AS VARCHAR(10)) AS VARCHAR(MAX)) AS IdPath
+    FROM HR.Employees WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT e.EmployeeID, e.ManagerID, e.FullName,
+           p.Path + ' -> ' + e.FullName,
+           p.IdPath + ',' + CAST(e.EmployeeID AS VARCHAR(10))
+    FROM HR.Employees e
+    JOIN OrgPath p ON e.ManagerID = p.EmployeeID
+)
+SELECT TOP 100 Employe
+--- Translated DuckDB (first 500 chars) ---
+WITH RECURSIVE OrgPath AS (
+    SELECT EmployeeID, ManagerID, FullName, 
+           CAST(FullName AS TEXT) AS Path,
+           CAST(CAST(EmployeeID AS VARCHAR(10)) AS TEXT) AS IdPath
+    FROM HR.Employees WHERE ManagerID IS NULL
+    UNION ALL
+    SELECT e.EmployeeID, e.ManagerID, e.FullName,
+           p.Path + ' -> ' + e.FullName,
+           p.IdPath + ',' + CAST(e.EmployeeID AS VARCHAR(10))
+    FROM HR.Employees e
+    JOIN OrgPath p ON e.ManagerID = p.EmployeeID
+)
+SELECT EmployeeID, FullName, 
+
+================================================================================
+OP 6: XML data modification using modify() method with XML DML
+ERROR: Parser Error: syntax error at or near "("
+
+LINE 1: UPDATE TOP (10) HR.Employees
+                   ^
+--- Original T-SQL (first 500 chars) ---
+UPDATE TOP (10) HR.Employees
+SET EmployeeData.modify('insert <Skill level="Advanced">Project Management</Skill> 
+                         into (/Employee/Skills)[1]')
+WHERE EmployeeData IS NOT NULL;
+
+SELECT TOP 20 EmployeeID, FullName, EmployeeData.query('/Employee/Skills/Skill') AS Skills
+FROM HR.Employees WHERE EmployeeData IS NOT NULL;
+GO
+--- Translated DuckDB (first 500 chars) ---
+UPDATE TOP (10) HR.Employees
+SET EmployeeData.modify('insert <Skill level="Advanced">Project Management</Skill> 
+                         into (/Employee/Skills)"1"')
+WHERE EmployeeData IS NOT NULL;
+SELECT EmployeeID, FullName, EmployeeData.query('/Employee/Skills/Skill') AS Skills
+FROM HR.Employees WHERE EmployeeData IS NOT NULL
+LIMIT 20
+
+================================================================================
+OP 7: XML shredding with nodes() method and cross apply
+ERROR: Parser Error: syntax error at or near "WHERE"
+
+LINE 7: WHERE e.EmployeeData IS NOT NULL
+        ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50
+    e.EmployeeID,
+    e.FullName,
+    skill.value('@level', 'NVARCHAR(20)') AS SkillLevel,
+    skill.value('.', 'NVARCHAR(100)') AS SkillName
+FROM HR.Employees e
+CROSS APPLY e.EmployeeData.nodes('/Employee/Skills/Skill') AS Skills(skill)
+WHERE e.EmployeeData IS NOT NULL
+ORDER BY e.EmployeeID, SkillLevel;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     e.EmployeeID,
+    e.FullName,
+    skill.value('NULL', 'VARCHAR(20)') AS SkillLevel,
+    skill.value('.', 'VARCHAR(100)') AS SkillName
+FROM HR.Employees e
+JOIN LATERAL e.EmployeeData.nodes('/Employee/Skills/Skill') AS Skills(skill)
+WHERE e.EmployeeData IS NOT NULL
+ORDER BY e.EmployeeID, SkillLevel
+LIMIT 50
+
+================================================================================
+OP 8: XML aggregation using FOR XML EXPLICIT with TYPE directive
+ERROR: Parser Error: syntax error at or near "WHERE"
+
+LINE 8:      WHERE e2.EmployeeID = e.EmployeeID
+             ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 20
+    EmployeeID,
+    FullName,
+    (SELECT 
+        Skill.value('.', 'NVARCHAR(100)') AS '@name',
+        Skill.value('@level', 'NVARCHAR(20)') AS '@level'
+     FROM HR.Employees e2
+     CROSS APPLY e2.EmployeeData.nodes('/Employee/Skills/Skill') AS S(Skill)
+     WHERE e2.EmployeeID = e.EmployeeID
+     FOR XML PATH('Skill'), ROOT('Skills'), TYPE
+    ) AS SkillsXML
+FROM HR.Employees e
+WHERE EmployeeData IS NOT NULL;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     EmployeeID,
+    FullName,
+    (SELECT 
+        Skill.value('.', 'VARCHAR(100)') AS 'NULL',
+        Skill.value('NULL', 'VARCHAR(20)') AS 'NULL'
+     FROM HR.Employees e2
+     JOIN LATERAL e2.EmployeeData.nodes('/Employee/Skills/Skill') AS S(Skill)
+     WHERE e2.EmployeeID = e.EmployeeID
+     FOR XML PATH('Skill'), ROOT('Skills'), TYPE
+    ) AS SkillsXML
+FROM HR.Employees e
+WHERE EmployeeData IS NOT NULL
+LIMIT 20
+
+================================================================================
+OP 9: XML index optimization demonstration
+ERROR: Catalog Error: Scalar Function with name exist does not exist!
+Did you mean "main.list"?
+
+LINE 4: WHERE EmployeeData.exist('/Employee/Skills/Skill[NULL="Expert...
+              ^
+--- Original T-SQL (first 500 chars) ---
+-- (Indexes created during migration, query leverages them)
+SELECT TOP 50 EmployeeID, FullName, Department
+FROM HR.Employees
+WHERE EmployeeData.exist('/Employee/Skills/Skill[@level="Expert"]') = 1;
+GO
+--- Translated DuckDB (first 500 chars) ---
+-- (Indexes created during migration, query leverages them)
+SELECT EmployeeID, FullName, Department
+FROM HR.Employees
+WHERE EmployeeData.exist('/Employee/Skills/Skill[NULL="Expert"]') = 1
+LIMIT 50
+
+================================================================================
+OP 10: Typed XML with XML Schema Collections
+ERROR: Parser Error: syntax error at or near "."
+
+LINE 3: SELECT NULL.query('/Employee/Skills/Skill[NULL="Expert"]');
+                   ^
+--- Original T-SQL (first 500 chars) ---
+-- (Schema collection created during migration)
+DECLARE @typed XML;
+SET @typed = '<Employee><Skills><Skill level="Expert">T-SQL</Skill></Skills></Employee>';
+SELECT @typed.query('/Employee/Skills/Skill[@level="Expert"]');
+GO
+
+-- ============================================================================
+-- CATEGORY 3: JSON OPERATIONS (Operations 11-15)
+-- ============================================================================
+--- Translated DuckDB (first 500 chars) ---
+-- (Schema collection created during migration)
+
+SELECT NULL.query('/Employee/Skills/Skill[NULL="Expert"]');
+-- ============================================================================
+-- CATEGORY 3: JSON OPERATIONS (Operations 11-15)
+-- ============================================================================
+
+================================================================================
+OP 12: JSON aggregation with FOR JSON (hierarchical nested JSON)
+ERROR: Parser Error: syntax error at or near "JSON"
+
+LINE 10:      FOR JSON PATH
+                  ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 10
+    e.Department,
+    e.FullName AS EmployeeName,
+    (SELECT 
+        t.TransactionID,
+        t.TotalAmount,
+        t.TransactionDate,
+        JSON_VALUE(t.TransactionDetails, '$.payment_method') AS PaymentMethod
+     FROM Sales.Transactions t
+     WHERE t.EmployeeID = e.EmployeeID
+     FOR JSON PATH
+    ) AS TransactionsJSON
+FROM HR.Employees e
+WHERE e.EmployeeID IN (SELECT DISTINCT EmployeeID FROM Sales.Transactions)
+FOR JSON PATH, ROOT('SalesReport');
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     e.Department,
+    e.FullName AS EmployeeName,
+    (SELECT 
+        t.TransactionID,
+        t.TotalAmount,
+        t.TransactionDate,
+        json_extract_string(t.TransactionDetails::JSON, '$.payment_method') AS PaymentMethod
+     FROM Sales.Transactions t
+     WHERE t.EmployeeID = e.EmployeeID
+     FOR JSON PATH
+    ) AS TransactionsJSON
+FROM HR.Employees e
+WHERE e.EmployeeID IN (SELECT DISTINCT EmployeeID FROM Sales.Transactions)
+FOR JSON PATH, ROOT('SalesReport')
+LIMIT 10
+
+================================================================================
+OP 13: JSON data modification with JSON_MODIFY
+ERROR: Parser Error: syntax error at or near "("
+
+LINE 1: UPDATE TOP (100) Sales.Transactions
+                   ^
+--- Original T-SQL (first 500 chars) ---
+UPDATE TOP (100) Sales.Transactions
+SET TransactionDetails = JSON_MODIFY(TransactionDetails, '$.processed', CAST(1 AS BIT))
+WHERE JSON_VALUE(TransactionDetails, '$.processed') IS NULL;
+
+UPDATE TOP (50) Sales.Transactions
+SET TransactionDetails = JSON_MODIFY(TransactionDetails, 'append $.tags', 'high_value')
+WHERE TotalAmount > 50000;
+
+SELECT TOP 20 TransactionID, TotalAmount, TransactionDetails FROM Sales.Transactions;
+GO
+--- Translated DuckDB (first 500 chars) ---
+UPDATE TOP (100) Sales.Transactions
+SET TransactionDetails = JSON_MODIFY(TransactionDetails, '$.processed', CAST(1 AS BIT))
+WHERE json_extract_string(TransactionDetails::JSON, '$.processed') IS NULL;
+UPDATE TOP (50) Sales.Transactions
+SET TransactionDetails = JSON_MODIFY(TransactionDetails, 'append $.tags', 'high_value')
+WHERE TotalAmount > 50000;
+SELECT TransactionID, TotalAmount, TransactionDetails FROM Sales.Transactions
+LIMIT 20
+
+================================================================================
+OP 14: OpenJSON with explicit schema for table-valued parsing
+ERROR: Parser Error: syntax error at or near "1"
+
+LINE 2: FROM OPENJSON((SELECT TOP 1 TransactionDetails FROM Sales.Transactions WHERE Transact...
+                                  ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 20 *
+FROM OPENJSON((SELECT TOP 1 TransactionDetails FROM Sales.Transactions WHERE TransactionDetails IS NOT NULL))
+WITH (
+    payment_method NVARCHAR(50) '$.payment_method',
+    terms NVARCHAR(20) '$.terms',
+    discount_code NVARCHAR(50) '$.discount_code',
+    po_number NVARCHAR(50) '$.po_number',
+    processed BIT '$.processed'
+);
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT *
+FROM OPENJSON((SELECT TOP 1 TransactionDetails FROM Sales.Transactions WHERE TransactionDetails IS NOT NULL))
+WITH (
+    payment_method VARCHAR(50) '$.payment_method',
+    terms VARCHAR(20) '$.terms',
+    discount_code VARCHAR(50) '$.discount_code',
+    po_number VARCHAR(50) '$.po_number',
+    processed BIT '$.processed'
+)
+LIMIT 20
+
+================================================================================
+OP 15: JSON array aggregation and decomposition
+ERROR: Parser Error: syntax error at or near "WITH"
+
+LINE 7: WITH (
+        ^
+--- Original T-SQL (first 500 chars) ---
+DECLARE @orders NVARCHAR(MAX) = '[
+    {"product": "Server", "qty": 2, "price": 49999.99},
+    {"product": "Agent", "qty": 5, "price": 4999.99}
+]';
+
+SELECT
+    Product,
+    Quantity,
+    Price,
+    Quantity * Price AS LineTotal
+FROM OPENJSON(@orders)
+WITH (
+    Product NVARCHAR(100) '$.product',
+    Quantity INT '$.qty',
+    Price DECIMAL(18,2) '$.price'
+);
+GO
+
+-- ============================================================================
+-- CATEGORY 4: TEMPORAL TABLES (Operations 16-20)
+-- ===
+--- Translated DuckDB (first 500 chars) ---
+SELECT
+    Product,
+    Quantity,
+    Price,
+    Quantity * Price AS LineTotal
+FROM OPENJSON(NULL)
+WITH (
+    Product VARCHAR(100) '$.product',
+    Quantity INT '$.qty',
+    Price DECIMAL(18,2) '$.price'
+);
+-- ============================================================================
+-- CATEGORY 4: TEMPORAL TABLES (Operations 16-20)
+-- ============================================================================
+
+================================================================================
+OP 19: Temporal data reconstruction (point-in-time recovery simulation)
+ERROR: Parser Error: syntax error at or near "1"
+
+LINE 3:     (SELECT TOP 1 h.TotalAmount 
+                        ^
+--- Original T-SQL (first 500 chars) ---
+DECLARE @PointInTime DATETIME2 = DATEADD(HOUR, -2, SYSUTCDATETIME());
+
+SELECT TOP 20
+    t.TransactionID,
+    t.TotalAmount AS CurrentAmount,
+    (SELECT TOP 1 h.TotalAmount 
+     FROM Sales.TransactionsHistory h 
+     WHERE h.TransactionID = t.TransactionID 
+     AND h.ValidFrom <= @PointInTime
+     ORDER BY h.ValidFrom DESC) AS AmountAtPointInTime
+FROM Sales.Transactions t;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     t.TransactionID,
+    t.TotalAmount AS CurrentAmount,
+    (SELECT TOP 1 h.TotalAmount 
+     FROM Sales.TransactionsHistory h 
+     WHERE h.TransactionID = t.TransactionID 
+     AND h.ValidFrom <= CURRENT_TIMESTAMP
+     ORDER BY h.ValidFrom DESC) AS AmountAtPointInTime
+FROM Sales.Transactions t
+LIMIT 20
+
+================================================================================
+OP 21: Indexed (Materialized) View with SCHEMABINDING and aggregation
+ERROR: Parser Error: syntax error at or near "query"
+
+LINE 2: query it directly
+        ^
+--- Original T-SQL (first 500 chars) ---
+-- Already created during migration; query it directly
+SELECT * FROM Sales.vw_ProductSummary
+ORDER BY Category;
+GO
+--- Translated DuckDB (first 500 chars) ---
+-- Already created during migration;
+query it directly
+SELECT * FROM Sales.vw_ProductSummary
+ORDER BY Category
+
+================================================================================
+OP 25: Inline Table-Valued Function (parameterized view equivalent)
+ERROR: Catalog Error: Table Function with name fn_getemployeesales does not exist!
+Did you mean "main.generate_series"?
+
+LINE 1: SELECT * FROM Sales.fn_GetEmployeeSales(6, '2026-01-01', '2026-12-31')
+                      ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50 * FROM Sales.fn_GetEmployeeSales(6, '2026-01-01', '2026-12-31')
+ORDER BY TransactionDate;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT * FROM Sales.fn_GetEmployeeSales(6, '2026-01-01', '2026-12-31')
+ORDER BY TransactionDate
+LIMIT 50
+
+================================================================================
+OP 27: View with UNPIVOT for normalization
+ERROR: Catalog Error: Table with name vw_NormalizedQuarterlySales does not exist!
+Did you mean "vw_EmployeeQuarterlySales"?
+
+LINE 1: SELECT * FROM Sales.vw_NormalizedQuarterlySales 
+                      ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50 * FROM Sales.vw_NormalizedQuarterlySales 
+WHERE Amount IS NOT NULL
+ORDER BY EmployeeID, Quarter;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT * FROM Sales.vw_NormalizedQuarterlySales 
+WHERE Amount IS NOT NULL
+ORDER BY EmployeeID, Quarter
+LIMIT 50
+
+================================================================================
+OP 31: Geography spatial queries with SRID awareness
+ERROR: Binder Error: No function matches the given name and argument types '/(VARCHAR, INTEGER_LITERAL)'. You might need to add explicit type casts.
+	Candidate functions:
+	/(FLOAT, FLOAT) -> FLOAT
+	/(DOUBLE, DOUBLE) -> DOUBLE
+	/(INTERVAL, DOUBLE) -> INTERVAL
+
+
+LINE 3:     t1.Region / 1000 AS DistanceKm,
+                      ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50
+    t1.TransactionID AS FromTransaction,
+    t2.TransactionID AS ToTransaction,
+    t1.Region.STDistance(t2.Region) / 1000 AS DistanceKm,
+    t1.Region.STAsText() AS FromLocation,
+    t2.Region.STAsText() AS ToLocation
+FROM Sales.Transactions t1
+CROSS JOIN Sales.Transactions t2
+WHERE t1.TransactionID < t2.TransactionID
+AND t1.Region.STDistance(t2.Region) IS NOT NULL
+ORDER BY DistanceKm;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     t1.TransactionID AS FromTransaction,
+    t2.TransactionID AS ToTransaction,
+    t1.Region / 1000 AS DistanceKm,
+    t1.Region AS FromLocation,
+    t2.Region AS ToLocation
+FROM Sales.Transactions t1
+CROSS JOIN Sales.Transactions t2
+WHERE t1.TransactionID < t2.TransactionID
+AND t1.Region IS NOT NULL
+ORDER BY DistanceKm
+LIMIT 50
+
+================================================================================
+OP 32: Spatial buffer and intersection calculations
+ERROR: Parser Error: syntax error at or near "="
+
+LINE 6:     CASE WHEN NULL= TRUE = 1 THEN 'Within Range' ELSE 'Outside Range' END AS Proximi...
+                                 ^
+--- Original T-SQL (first 500 chars) ---
+DECLARE @nyc GEOGRAPHY = geography::Point(40.7128, -74.0060, 4326);
+DECLARE @bufferRadius INT = 5000000;
+
+SELECT TOP 50
+    TransactionID,
+    TotalAmount,
+    Region.Lat AS Latitude,
+    Region.Long AS Longitude,
+    Region.STDistance(@nyc) / 1000 AS DistanceFromNYCKm,
+    CASE WHEN @nyc.STBuffer(@bufferRadius).STIntersects(Region) = 1 THEN 'Within Range' ELSE 'Outside Range' END AS Proximity
+FROM Sales.Transactions
+WHERE Region IS NOT NULL;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     TransactionID,
+    TotalAmount,
+    Region AS Latitude,
+    Region AS Longitude,
+    Region / 1000 AS DistanceFromNYCKm,
+    CASE WHEN NULL= TRUE = 1 THEN 'Within Range' ELSE 'Outside Range' END AS Proximity
+FROM Sales.Transactions
+WHERE Region IS NOT NULL
+LIMIT 50
+
+================================================================================
+OP 33: Geometry collections and complex spatial objects
+ERROR: Binder Error: Referenced column "NULL0" was not found because the FROM clause is missing
+
+LINE 2:     NULL0 / 1000 AS RouteLengthKm,
+            ^
+--- Original T-SQL (first 500 chars) ---
+DECLARE @route GEOGRAPHY = geography::STGeomFromText(
+    'LINESTRING(-74.0060 40.7128, -0.1278 51.5074, 139.6503 35.6762)', 4326);
+
+SELECT 
+    @route.STLength() / 1000 AS RouteLengthKm,
+    @route.STNumPoints() AS NumberOfPoints,
+    @route.STPointN(2).STAsText() AS SecondPoint;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT 
+    NULL0 / 1000 AS RouteLengthKm,
+    NULL0 AS NumberOfPoints,
+    NULLNULL AS SecondPoint
+
+================================================================================
+OP 34: Spatial index query optimization
+ERROR: Parser Error: syntax error at or near "WITH"
+
+LINE 2: FROM Sales.Transactions WITH(INDEX(SIDX_Transactions_Region))
+                                ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50 TransactionID, TotalAmount
+FROM Sales.Transactions WITH(INDEX(SIDX_Transactions_Region))
+WHERE Region.STDistance(geography::Point(40.7128, -74.0060, 4326)) <= 10000000;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT TransactionID, TotalAmount
+FROM Sales.Transactions WITH(INDEX(SIDX_Transactions_Region))
+WHERE Region <= 10000000
+LIMIT 50
+
+================================================================================
+OP 40: Batch mode on rowstore
+ERROR: Parser Error: syntax error at or near ")"
+
+LINE 9: )
+        ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50
+    t.EmployeeID,
+    e.FullName,
+    SUM(t.TotalAmount) AS TotalSales,
+    COUNT(*) OVER (PARTITION BY t.EmployeeID) AS EmployeeTransactionCount
+FROM Sales.Transactions t
+JOIN HR.Employees e ON t.EmployeeID = e.EmployeeID
+GROUP BY t.EmployeeID, e.FullName
+ORDER BY TotalSales DESC
+OPTION (USE HINT('ALLOW_BATCH_MODE'));
+GO
+
+-- ============================================================================
+-- CATEGORY 8: SECURITY & ENCRYPTION (Operations 41-45)
+-- ======================
+--- Translated DuckDB (first 500 chars) ---
+SELECT     t.EmployeeID,
+    e.FullName,
+    SUM(t.TotalAmount) AS TotalSales,
+    COUNT(*) OVER (PARTITION BY t.EmployeeID) AS EmployeeTransactionCount
+FROM Sales.Transactions t
+JOIN HR.Employees e ON t.EmployeeID = e.EmployeeID
+GROUP BY t.EmployeeID, e.FullName
+ORDER BY TotalSales DESC
+)
+LIMIT 50;
+-- ============================================================================
+-- CATEGORY 8: SECURITY & ENCRYPTION (Operations 41-45)
+-- ============================================================
+
+================================================================================
+OP 41: Always Encrypted with secure enclaves pattern
+ERROR: Parser Error: syntax error at or near "OPEN"
+
+LINE 1: OPEN SYMMETRIC KEY EmployeeSymKey
+        ^
+--- Original T-SQL (first 500 chars) ---
+OPEN SYMMETRIC KEY EmployeeSymKey
+    DECRYPTION BY CERTIFICATE EmployeeDataCert;
+
+SELECT TOP 50
+    s.DataID,
+    e.FullName,
+    CONVERT(VARCHAR, DecryptByKey(s.SSN)) AS DecryptedSSN,
+    CONVERT(VARCHAR, DecryptByKey(s.CreditCard)) AS DecryptedCard,
+    CONVERT(VARCHAR, DecryptByKey(s.SalaryEncrypted)) AS DecryptedSalary,
+    '****-**-' + RIGHT(CONVERT(VARCHAR, DecryptByKey(s.SSN)), 4) AS MaskedSSN
+FROM Security.SensitiveData s
+JOIN HR.Employees e ON s.EmployeeID = e.EmployeeID;
+
+CLOSE SYMMET
+--- Translated DuckDB (first 500 chars) ---
+OPEN SYMMETRIC KEY EmployeeSymKey
+    DECRYPTION BY CERTIFICATE EmployeeDataCert;
+SELECT     s.DataID,
+    e.FullName,
+    CAST(DecryptByKey(s.SSN AS VARCHAR)) AS DecryptedSSN,
+    CAST(DecryptByKey(s.CreditCard AS VARCHAR)) AS DecryptedCard,
+    CAST(DecryptByKey(s.SalaryEncrypted AS VARCHAR)) AS DecryptedSalary,
+    '****-**-' + RIGHT(CAST(DecryptByKey(s.SSN AS VARCHAR)), 4) AS MaskedSSN
+FROM Security.SensitiveData s
+JOIN HR.Employees e ON s.EmployeeID = e.EmployeeID
+LIMIT 50;
+CLOSE SYMMETRIC 
+
+================================================================================
+OP 43: Dynamic Data Masking
+ERROR: Parser Error: syntax error at or near "query"
+
+LINE 2: query shows masked values for non-privileged users)
+        ^
+--- Original T-SQL (first 500 chars) ---
+-- (Masking applied during migration; query shows masked values for non-privileged users)
+SELECT TOP 50 EmployeeID, FullName, Email, Salary 
+FROM HR.Employees;
+GO
+--- Translated DuckDB (first 500 chars) ---
+-- (Masking applied during migration;
+query shows masked values for non-privileged users)
+SELECT EmployeeID, FullName, Email, Salary 
+FROM HR.Employees
+LIMIT 50
+
+================================================================================
+OP 44: Audit specification for compliance
+ERROR: Parser Error: syntax error at or near "query"
+
+LINE 2: query the audit file if configured)
+        ^
+--- Original T-SQL (first 500 chars) ---
+-- (Audit created during migration; query the audit file if configured)
+SELECT TOP 50 * FROM sys.server_audits;
+GO
+--- Translated DuckDB (first 500 chars) ---
+-- (Audit created during migration;
+query the audit file if configured)
+SELECT * FROM sys.server_audits
+LIMIT 50
+
+================================================================================
+OP 46: Table-valued parameters for bulk operations
+ERROR: Parser Error: syntax error at or near "DECLARE"
+
+LINE 1: DECLARE NULL Sales.OrderItemType;
+        ^
+--- Original T-SQL (first 500 chars) ---
+DECLARE @items Sales.OrderItemType;
+INSERT INTO @items VALUES (1, 2, 49999.99, 0), (3, 5, 4999.99, 0.1);
+EXEC Sales.usp_BulkInsertOrders @items, 6, 999;
+GO
+--- Translated DuckDB (first 500 chars) ---
+DECLARE NULL Sales.OrderItemType;
+INSERT INTO NULL VALUES (1, 2, 49999.99, 0), (3, 5, 4999.99, 0.1);
+EXEC Sales.usp_BulkInsertOrders NULL, 6, 999
+
+================================================================================
+OP 47: MERGE statement with OUTPUT clause and $action
+ERROR: Parser Error: syntax error at or near "Sales"
+
+LINE 1: MERGE Sales.Products AS target
+              ^
+--- Original T-SQL (first 500 chars) ---
+MERGE Sales.Products AS target
+USING (VALUES 
+    (1, 'Quantum Database Server Enterprise v2', 'Software', 54999.99),
+    (1001, 'New AI Module 2026', 'Software', 9999.99)
+) AS source (ProductID, ProductName, Category, BasePrice)
+ON target.ProductID = source.ProductID
+WHEN MATCHED THEN
+    UPDATE SET ProductName = source.ProductName, BasePrice = source.BasePrice
+WHEN NOT MATCHED THEN
+    INSERT (ProductName, Category, BasePrice) 
+    VALUES (source.ProductName, source.Category, source.BasePrice)
+--- Translated DuckDB (first 500 chars) ---
+MERGE Sales.Products AS target
+USING (VALUES 
+    (1, 'Quantum Database Server Enterprise v2', 'Software', 54999.99),
+    (1001, 'New AI Module 2026', 'Software', 9999.99)
+) AS source (ProductID, ProductName, Category, BasePrice)
+ON target.ProductID = source.ProductID
+WHEN MATCHED THEN
+    UPDATE SET ProductName = source.ProductName, BasePrice = source.BasePrice
+WHEN NOT MATCHED THEN
+    INSERT (ProductName, Category, BasePrice) 
+    VALUES (source.ProductName, source.Category, source.BasePrice)
+
+================================================================================
+OP 48: TRY_CONVERT with error handling for data type conversion
+ERROR: Parser Error: syntax error at or near "AS"
+
+LINE 2:     TRY_CAST(JSON_VALUE(TransactionDetails, '$.seats' AS INTEGER)) AS ParsedSeats,
+                                                              ^
+--- Original T-SQL (first 500 chars) ---
+SELECT TOP 50
+    TransactionID,
+    TRY_CONVERT(INT, JSON_VALUE(TransactionDetails, '$.seats')) AS ParsedSeats,
+    TRY_CONVERT(DECIMAL(18,2), JSON_VALUE(TransactionDetails, '$.discount_amount')) AS ParsedDiscount,
+    TRY_CAST(JSON_VALUE(TransactionDetails, '$.processed') AS BIT) AS IsProcessed,
+    IIF(TRY_CONVERT(INT, JSON_VALUE(TransactionDetails, '$.seats')) IS NULL, 'Invalid', 'Valid') AS ConversionStatus
+FROM Sales.Transactions;
+GO
+--- Translated DuckDB (first 500 chars) ---
+SELECT     TransactionID,
+    TRY_CAST(JSON_VALUE(TransactionDetails, '$.seats' AS INTEGER)) AS ParsedSeats,
+    TRY_CAST(JSON_VALUE(TransactionDetails, '$.discount_amount' AS DECIMAL(18,2))) AS ParsedDiscount,
+    TRY_CAST(json_extract_string(TransactionDetails::JSON, '$.processed') AS BIT) AS IsProcessed,
+    CASE WHEN TRY_CAST(JSON_VALUE(TransactionDetails THEN '$.seats' AS INTEGER)) IS NULL ELSE 'Invalid', 'Valid' END AS ConversionStatus
+FROM Sales.Transactions
+LIMIT 50
+
+================================================================================
+OP 50: System-versioned temporal with CHANGETABLE
+ERROR: Parser Error: syntax error at or near "Sales"
+
+LINE 7: FROM CHANGETABLE(CHANGES Sales.Products, 0) CT
+                                 ^
+--- Original T-SQL (first 500 chars) ---
+-- Query change tracking information
+SELECT TOP 50
+    CT.ProductID,
+    CT.SYS_CHANGE_VERSION AS ChangeVersion,
+    CT.SYS_CHANGE_OPERATION AS Operation,
+    p.ProductName,
+    p.BasePrice
+FROM CHANGETABLE(CHANGES Sales.Products, 0) CT
+LEFT JOIN Sales.Products p ON CT.ProductID = p.ProductID;
+GO
+
+-- ============================================================================
+-- BONUS: QUERY STORE ANALYSIS (MSSQL Unique Monitoring)
+-- =============================================================
+--- Translated DuckDB (first 500 chars) ---
+-- Query change tracking information
+SELECT     CT.ProductID,
+    CT.SYS_CHANGE_VERSION AS ChangeVersion,
+    CT.SYS_CHANGE_OPERATION AS Operation,
+    p.ProductName,
+    p.BasePrice
+FROM CHANGETABLE(CHANGES Sales.Products, 0) CT
+LEFT JOIN Sales.Products p ON CT.ProductID = p.ProductID
+LIMIT 50;
+-- ============================================================================
+-- BONUS: QUERY STORE ANALYSIS (MSSQL Unique Monitoring)
+-- ===============================================================
+
