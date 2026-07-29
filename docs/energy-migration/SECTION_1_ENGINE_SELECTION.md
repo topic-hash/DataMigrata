@@ -303,6 +303,30 @@ All 15 engines ran the same 43-query ClickBench workload on the same AWS c6a.4xl
 
 **Energy methodology for the ADR:** We use the ClickBench 15-engine table (§10.1) as the primary energy comparison. The ranking is defensible because all engines ran on identical hardware. Absolute joules use a 150W estimated system power (±30% uncertainty). A custom RAPL measurement on bare-metal is deferred to a later phase — it would tighten absolute accuracy to ±10% but would not change the ranking or the decision.
 
+### 10.4 Corroborating Evidence: TPC-H Harvest
+
+The ClickBench finding (DuckDB = best free engine) is **independently corroborated** by a separate TPC-H benchmark harvest ([topic-hash/tpch-harvest](https://github.com/topic-hash/tpch-harvest)) — a multi-agent research effort that collected 30 publicly reported TPC-H results where multiple engines ran on identical hardware, yielding 18 hardware clusters (11 with 3+ engines).
+
+**Normalized cross-cluster ranking** (geometric mean of ratio-to-fastest within each same-hardware cluster):
+
+| Rank | Engine | Geo Mean Ratio | Clusters | License |
+|---:|---|---:|---:|---|
+| 1 | Exasol | 1.00× | 2 | Commercial |
+| **2** | **DuckDB** | **1.99×** | **8** | **MIT (free)** |
+| 3 | StarRocks | 2.13× | 3 | Elastic 2.0 (free) |
+| 4 | ClickHouse | 6.75× | 2 | Apache 2.0 (free) |
+| 5 | PostgreSQL | 169× | 2 | PostgreSQL (free) |
+
+**DuckDB is the most-represented engine** across same-hardware TPC-H comparisons (8 of 12 qualifying clusters), is the fastest engine in 4 of those clusters (SF=10–100), and is the best-performing free/open-source engine on both ClickBench (analytical scan) and TPC-H (multi-table join) workloads. This dual-benchmark convergence strengthens the decision: DuckDB is not just fast on one benchmark — it consistently outperforms across both major analytical benchmark suites.
+
+**Key TPC-H clusters confirming the ClickBench ranking:**
+- **C08** (6 engines, SF=10): DuckDB 594ms vs PostgreSQL 52,473ms (88× gap — same order of magnitude as ClickBench's 84×)
+- **C06** (5 engines, SF=50): DuckDB 81.5s vs ClickHouse 95.5s (DuckDB faster; ClickHouse failed 5/22 queries)
+- **C15** (2 engines, SF=100): DuckDB 4.6× faster than ClickHouse on AWS c8i.8xlarge
+- **ClickHouse consistently fails on TPC-H joins** (5+ queries DNF in multiple clusters) — confirming that ClickBench (single-table) is ClickHouse's strength, while TPC-H (multi-table) exposes its weakness
+
+**MSSQL remains absent from same-hardware TPC-H comparisons** — no public TPC-H benchmark exists where MSSQL ran on the same hardware as another engine with extractable numbers. The ClickBench result (MSSQL rank #11, 92.66× DuckDB) remains the best same-hardware comparison available for MSSQL.
+
 ### Trade-off / Benefits Contrast (DuckDB vs PostgreSQL for feature-bound workloads)
 
 | Dimension | DuckDB (conf 0.80) | PostgreSQL (conf 0.50) |
