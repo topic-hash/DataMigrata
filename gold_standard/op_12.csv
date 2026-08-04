@@ -1,0 +1,2 @@
+{"SalesReport":[{"Department":"Marketing","EmployeeName":"Judith Bryant","TransactionsJSON":[{"TransactionID":1,"TotalAmount":2499567.71000000,"TransactionDate":"2026-08-04T16:52:36.5949721","PaymentMethod":"crypto"},{"TransactionID":4287,"TotalAmount":623
+00000,"TransactionDate":"2026-08-04T16:52:45.6396815","PaymentMethod":"credit_card"},{"TransactionID":4357,"TotalAmount":4298975.54000000,"TransactionDate":"2026-08-04T16:52:56.7626191","PaymentMethod":"crypto"}]},{"Department":"HR","EmployeeName":"Brenda

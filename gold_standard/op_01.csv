@@ -1,0 +1,100 @@
+1,Lottie Duffy,Sales,Specialist,125050.00,0,Lottie Duffy,125050.00,Lottie Duffy
+10,Ellen Carr,Customer Success,Director,204016.00,1,Lottie Duffy > Ellen Carr,329066.00,  Ellen Carr
+1021,Rex Booker,Operations,Analyst,188149.00,2,Lottie Duffy > Ellen Carr > Rex Booker,517215.00,    Rex Booker
+1051,Faye Higgins,Customer Success,Analyst,77341.00,3,Lottie Duffy > Ellen Carr > Rex Booker > Faye Higgins,594556.00,      Faye Higgins
+1787,Nannie Roth,R&D,Analyst,116340.00,4,Lottie Duffy > Ellen Carr > Rex Booker > Faye Higgins > Nannie Roth,710896.00,        Nannie Roth
+3217,Olive Bean,Marketing,Senior Engineer,166335.00,5,Lottie Duffy > Ellen Carr > Rex Booker > Faye Higgins > Nannie Roth > Olive Bean,877231.00,          Olive Bean
+1816,Donna Scott,R&D,Consultant,202233.00,4,Lottie Duffy > Ellen Carr > Rex Booker > Faye Higgins > Donna Scott,796789.00,        Donna Scott
+21,Moshe Stein,Finance,Manager,160263.00,2,Lottie Duffy > Ellen Carr > Moshe Stein,489329.00,    Moshe Stein
+1049,Imogene Conley,Sales,Coordinator,191229.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Imogene Conley,680558.00,      Imogene Conley
+3266,Luther Heath,Sales,Manager,70491.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Imogene Conley > Luther Heath,751049.00,        Luther Heath
+1158,Garry Huff,HR,Engineer,112729.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Garry Huff,602058.00,      Garry Huff
+2467,Rosemarie Dickerson,Finance,Engineer,193264.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Garry Huff > Rosemarie Dickerson,795322.00,        Rosemarie Dickerson
+168,Christian Carpenter,Sales,VP,54816.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter,544145.00,      Christian Carpenter
+249,Jeremy Harrison,Legal,Analyst,71486.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison,615631.00,        Jeremy Harrison
+286,Clayton Hess,Customer Success,Coordinator,205126.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Clayton Hess,820757.00,          Clayton Hess
+1047,Samuel Watson,Legal,Coordinator,49965.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Clayton Hess > Samuel Watson,870722.00,            Samuel Watson
+1290,Colleen Richards,Sales,Senior Engineer,131851.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Clayton Hess > Colleen Richards,952608.00,            Colleen Richards
+2427,Michael Brown,Customer Success,Architect,92263.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Clayton Hess > Colleen Richards > Michael Brown,1044871.00,              Michael Brown
+3405,Jessica Wilson,Operations,Specialist,179994.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Clayton Hess > Colleen Richards > Jessica Wilson,1132602.00,              Jessica Wilson
+330,Rosie Mora,R&D,Analyst,138061.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora,753692.00,          Rosie Mora
+1558,Andre Hampton,Sales,Coordinator,202059.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton,955751.00,            Andre Hampton
+1946,Jackie Higgins,Sales,VP,222572.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Jackie Higgins,1178323.00,              Jackie Higgins
+2134,Daryl Larsen,Engineering,Specialist,88456.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Daryl Larsen,1044207.00,              Daryl Larsen
+2309,Andre Hampton,HR,Architect,59515.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Daryl Larsen > Andre Hampton,1103722.00,                Andre Hampton
+3343,Diana Watkins,Legal,Architect,208991.00,9,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Daryl Larsen > Andre Hampton > Diana Watkins,1312713.00,                  Diana Watkins
+3738,Kendrick Glass,Engineering,Coordinator,172152.00,10,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Daryl Larsen > Andre Hampton > Diana Watkins > Kendrick Glass,1484865.00,                    Kendrick Glass
+2833,Dwayne Conway,Operations,Coordinator,45511.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Dwayne Conway,1001262.00,              Dwayne Conway
+3231,Sally Payne,Legal,VP,117895.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Sally Payne,1073646.00,              Sally Payne
+3499,Mark Clark,HR,Coordinator,137545.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Sally Payne > Mark Clark,1211191.00,                Mark Clark
+4290,Karen Moore,HR,Senior Engineer,114218.00,9,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Sally Payne > Mark Clark > Karen Moore,1325409.00,                  Karen Moore
+4456,Billie Wiggins,R&D,Architect,209522.00,10,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Andre Hampton > Sally Payne > Mark Clark > Karen Moore > Billie Wiggins,1534931.00,                    Billie Wiggins
+1936,Madeline Mays,Operations,VP,48382.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Madeline Mays,802074.00,            Madeline Mays
+2707,Rene Ware,R&D,Coordinator,85702.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Rene Ware,839394.00,            Rene Ware
+830,Socorro Bean,Marketing,Consultant,228425.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Rosie Mora > Socorro Bean,982117.00,            Socorro Bean
+653,Marcia Jennings,R&D,Engineer,220516.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Marcia Jennings,836147.00,          Marcia Jennings
+1413,Faye Higgins,Engineering,VP,202297.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Marcia Jennings > Faye Higgins,1038444.00,            Faye Higgins
+4095,Minnie Cisneros,Marketing,Consultant,89145.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Jeremy Harrison > Marcia Jennings > Minnie Cisneros,925292.00,            Minnie Cisneros
+2870,Tommy Oneal,Engineering,Consultant,173880.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Tommy Oneal,718025.00,        Tommy Oneal
+320,Kurt Fischer,Customer Success,Senior Engineer,61876.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer,606021.00,        Kurt Fischer
+1609,Hope Barrera,Customer Success,VP,48992.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera,655013.00,          Hope Barrera
+1805,Kyle Hamilton,Engineering,Specialist,52023.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Kyle Hamilton,707036.00,            Kyle Hamilton
+2965,Robert Williamson,Marketing,Consultant,146312.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Kyle Hamilton > Robert Williamson,853348.00,              Robert Williamson
+4879,Melissa Rivera,R&D,Senior Engineer,243906.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Kyle Hamilton > Robert Williamson > Melissa Rivera,1097254.00,                Melissa Rivera
+3598,Ross Stein,R&D,Specialist,127979.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Ross Stein,782992.00,            Ross Stein
+3995,Bobbie Mccarty,R&D,Specialist,140233.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Ross Stein > Bobbie Mccarty,923225.00,              Bobbie Mccarty
+3831,Richard Hernandez,R&D,Manager,72211.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Richard Hernandez,727224.00,            Richard Hernandez
+3979,Walter Patterson,Finance,Director,52673.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Richard Hernandez > Walter Patterson,779897.00,              Walter Patterson
+4203,Alma Hutchinson,Marketing,VP,72609.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Richard Hernandez > Walter Patterson > Alma Hutchinson,852506.00,                Alma Hutchinson
+4453,Lyle Ware,Legal,VP,53639.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Hope Barrera > Richard Hernandez > Walter Patterson > Lyle Ware,833536.00,                Lyle Ware
+3124,Lizzie Vance,IT,Specialist,111721.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Lizzie Vance,717742.00,          Lizzie Vance
+677,Marsha Fleming,Legal,Senior Engineer,86049.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming,692070.00,          Marsha Fleming
+1053,Robert Johnson,Marketing,Consultant,239734.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming > Robert Johnson,931804.00,            Robert Johnson
+1583,Darius Bullock,Operations,Director,248798.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming > Robert Johnson > Darius Bullock,1180602.00,              Darius Bullock
+2997,Pat Moran,HR,VP,174893.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming > Robert Johnson > Darius Bullock > Pat Moran,1355495.00,                Pat Moran
+3309,Judith Bryant,Legal,Manager,186893.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming > Robert Johnson > Darius Bullock > Judith Bryant,1367495.00,                Judith Bryant
+2832,Carroll Bullock,IT,Coordinator,242126.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Marsha Fleming > Robert Johnson > Carroll Bullock,1173930.00,              Carroll Bullock
+792,Mason Greene,IT,Consultant,221702.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Kurt Fischer > Mason Greene,827723.00,          Mason Greene
+3444,Larry Peterson,Customer Success,Senior Engineer,199550.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Larry Peterson,743695.00,        Larry Peterson
+4420,Hilda Blake,HR,Manager,235459.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Larry Peterson > Hilda Blake,979154.00,          Hilda Blake
+4901,Glenda Reid,Customer Success,Analyst,188517.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Christian Carpenter > Larry Peterson > Glenda Reid,932212.00,          Glenda Reid
+275,Effie Hale,Engineering,Specialist,101044.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale,590373.00,      Effie Hale
+1554,Rex Booker,Engineering,Specialist,92652.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Rex Booker,683025.00,        Rex Booker
+1804,Tammy Franklin,R&D,Senior Engineer,187970.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Rex Booker > Tammy Franklin,870995.00,          Tammy Franklin
+4513,Kendrick Glass,Operations,Consultant,109711.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Rex Booker > Tammy Franklin > Kendrick Glass,980706.00,            Kendrick Glass
+3069,Johnnie Valencia,R&D,Specialist,67858.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Rex Booker > Johnnie Valencia,750883.00,          Johnnie Valencia
+3119,Gertrude Shepard,R&D,Director,114667.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Rex Booker > Gertrude Shepard,797692.00,          Gertrude Shepard
+280,Bobby Cervantes,R&D,Specialist,138462.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes,728835.00,        Bobby Cervantes
+1995,Ollie Paul,Marketing,Analyst,98633.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Ollie Paul,827468.00,          Ollie Paul
+2442,Melinda Bradford,Engineering,Consultant,184013.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Ollie Paul > Melinda Bradford,1011481.00,            Melinda Bradford
+3156,Danielle Hudson,Engineering,VP,229666.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Ollie Paul > Danielle Hudson,1057134.00,            Danielle Hudson
+2611,Devin Burton,Engineering,Coordinator,170015.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Devin Burton,898850.00,          Devin Burton
+3077,Wayne Wagner,Operations,Specialist,46330.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Devin Burton > Wayne Wagner,945180.00,            Wayne Wagner
+3184,Christian Woods,Operations,Engineer,53920.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Devin Burton > Wayne Wagner > Christian Woods,999100.00,              Christian Woods
+3605,Carolyn Alvarez,Marketing,Architect,121647.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Devin Burton > Wayne Wagner > Christian Woods > Carolyn Alvarez,1120747.00,                Carolyn Alvarez
+476,Joshua Torres,Marketing,Director,227105.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Bobby Cervantes > Joshua Torres,955940.00,          Joshua Torres
+3007,Doris Ruiz,Finance,Analyst,216677.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Effie Hale > Doris Ruiz,807050.00,        Doris Ruiz
+304,Mabel Donaldson,R&D,Consultant,168956.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson,658285.00,      Mabel Donaldson
+2457,Jeremy Harrison,Legal,Director,127984.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Jeremy Harrison,786269.00,        Jeremy Harrison
+3307,Kayla Cunningham,Finance,Manager,223908.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Jeremy Harrison > Kayla Cunningham,1010177.00,          Kayla Cunningham
+3852,Rusty Berg,Customer Success,Specialist,54379.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Jeremy Harrison > Rusty Berg,840648.00,          Rusty Berg
+401,Fabian Joseph,R&D,Senior Engineer,137279.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph,795564.00,        Fabian Joseph
+824,Amber Chavez,HR,Coordinator,213880.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph > Amber Chavez,1009444.00,          Amber Chavez
+1159,Myrtle Yates,Engineering,Specialist,76978.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph > Amber Chavez > Myrtle Yates,1086422.00,            Myrtle Yates
+2072,Kathryn Hayes,Marketing,Coordinator,70176.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph > Amber Chavez > Myrtle Yates > Kathryn Hayes,1156598.00,              Kathryn Hayes
+3178,Alexander Gray,R&D,Manager,69115.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph > Amber Chavez > Myrtle Yates > Kathryn Hayes > Alexander Gray,1225713.00,                Alexander Gray
+4664,Leo Velasquez,Customer Success,VP,131033.00,8,Lottie Duffy > Ellen Carr > Moshe Stein > Mabel Donaldson > Fabian Joseph > Amber Chavez > Myrtle Yates > Kathryn Hayes > Leo Velasquez,1287631.00,                Leo Velasquez
+423,Richard Hernandez,R&D,Specialist,163871.00,3,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez,653200.00,      Richard Hernandez
+1229,Bobby Cervantes,Customer Success,Engineer,237902.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Bobby Cervantes,891102.00,        Bobby Cervantes
+2609,Blake Harvey,Customer Success,Senior Engineer,65848.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Bobby Cervantes > Blake Harvey,956950.00,          Blake Harvey
+2806,Dolores Pena,Marketing,Director,120449.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Bobby Cervantes > Blake Harvey > Dolores Pena,1077399.00,            Dolores Pena
+4710,Rashad Villarreal,Legal,Director,86130.00,7,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Bobby Cervantes > Blake Harvey > Dolores Pena > Rashad Villarreal,1163529.00,              Rashad Villarreal
+4808,Rena Eldridge,HR,Director,67537.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Bobby Cervantes > Rena Eldridge,958639.00,          Rena Eldridge
+1516,George Hall,Marketing,Manager,107086.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > George Hall,760286.00,        George Hall
+1955,Becky Ericksen,Operations,Senior Engineer,217736.00,4,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen,870936.00,        Becky Ericksen
+2239,Ellis Mcgee,Marketing,Specialist,143504.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Ellis Mcgee,1014440.00,          Ellis Mcgee
+3703,Dorian Serrano,HR,Director,247112.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Ellis Mcgee > Dorian Serrano,1261552.00,            Dorian Serrano
+4141,Isaiah Lawson,Finance,VP,158440.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Ellis Mcgee > Isaiah Lawson,1172880.00,            Isaiah Lawson
+4865,Lynne Hobbs,Legal,Analyst,109635.00,6,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Ellis Mcgee > Lynne Hobbs,1124075.00,            Lynne Hobbs
+2756,Colleen Russell,R&D,Engineer,92280.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Colleen Russell,963216.00,          Colleen Russell
+3070,Bertha Rivas,Customer Success,Coordinator,133503.00,5,Lottie Duffy > Ellen Carr > Moshe Stein > Richard Hernandez > Becky Ericksen > Bertha Rivas,1004439.00,          Bertha Rivas

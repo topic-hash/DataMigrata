@@ -1,0 +1,51 @@
+op_id,name,status,row_count,col_count,hash
+1,Recursive CTE with HIERARCHYID path building and cycle detection,OK,100,9,1b03d6fcc1e7e28301dd8b3d9319d04e
+2,Recursive CTE with aggregation up the hierarchy,OK,50,7,38afde783ffd14c77edebab248668a6a
+3,HIERARCHYID data type for optimized tree operations,OK,100,7,1db01780ba1c2cee7ed22a6eebe6a777
+4,Recursive CTE with path enumeration and string aggregation,OK,100,5,7d09de91b5996c2ef63ecefe127b5fbf
+5,Closure table pattern using recursive CTE for transitive relationships,OK,100,5,e9bb8df677c9c55c634051d6f7872aed
+6,XML data modification using modify() method with XML DML,OK,20,3,3a640253bd7700864f73e191f9496404
+7,XML shredding with nodes() method and cross apply,OK,50,4,d98aab59a753ad5c1625137212b0982d
+8,XML aggregation using FOR XML EXPLICIT with TYPE directive,OK,20,3,a0032fb9f1295bb131334b187790b036
+9,XML index optimization demonstration,OK,50,3,4992563896ff37aca61e82f985195807
+10,Typed XML with XML Schema Collections,OK,1,1,c00bbc903bf0437de1d585879919265d
+11,JSON path queries with lax/strict modes,OK,50,6,f0cdc3579418032ff37e88c4b6d4a3a4
+12,JSON aggregation with FOR JSON (hierarchical nested JSON),OK,2,8,6b1551438fa08d6bfcc4cbc4e957b22d
+13,JSON data modification with JSON_MODIFY,OK,20,11,b676bdaae13ff6bbb7f251284b067e99
+14,OpenJSON with explicit schema for table-valued parsing,OK,1,5,1f71735d3bd8354b259900bc3b237d56
+15,JSON array aggregation and decomposition,OK,2,4,a5621cefed6b9244b5a4beb3d575e30e
+16,Temporal querying - AS OF,NO_RESULTS,0,0,
+17,Temporal querying - BETWEEN,OK,50,5,908de77310a67dc7e71d2803197e42d0
+18,Temporal querying - CONTAINED IN,OK,50,5,6689ece17e41fbe81fcabf22a2aba76b
+19,Temporal data reconstruction (point-in-time recovery simulation),OK,20,3,3d6ae7e212aef495536ccb5edd6ddb2a
+20,Temporal table with versioning analytics,OK,50,5,398c50e95f27426e4999ae8b4866120b
+21,Indexed (Materialized) View with SCHEMABINDING and aggregation,OK,10,4,379dd574978d100cff07ccf1eeefec2f
+22,Partitioned View across multiple tables,OK,50,11,ce71ec902c462f1693829c7bf5e8a744
+23,View with CHECK OPTION for data integrity,OK,50,8,59520a459a10d6719c88e7b0d7349e65
+24,View with INSTEAD OF triggers for updatable complex views,OK,50,5,57286728c2808d1a085150a5aff74363
+25,Inline Table-Valued Function (parameterized view equivalent),OK,7,8,e783a0911b8ff8d11c124d8a7d5279bf
+26,View with PIVOT for cross-tabulation,OK,3124,7,0e9f45945b59acfe5342e229685c3e15
+27,View with UNPIVOT for normalization,OK,50,5,fc9caa4814d544c64e108e6b3c2da7fd
+28,View with CROSS APPLY and recursive TVF,OK,100,4,7a06b1273a254313c6fcbdf6276018a2
+29,View with GROUPING SETS for multi-dimensional aggregation,OK,100,6,affe0ecf8b149c9d5452f2861ae6dea0
+30,View with window functions and framing,OK,100,7,077176ff7c36f0554f622fc14df2e4fb
+31,Geography spatial queries with SRID awareness,OK,50,5,aec27599528b797f26e32a9ffb354435
+32,Spatial buffer and intersection calculations,OK,50,6,7c10ada59a3a54b029ca1b745c1d5a07
+33,Geometry collections and complex spatial objects,OK,1,3,63b43e328f26132451f85ceca6437b2b
+34,Spatial index query optimization,OK,50,2,bb3fd8318e3ff57d730a6c183bfb368a
+35,Multi-polygon territory analysis,OK,50,3,7c386f650e66b78e9d1e4ee8a67fb4e1
+36,Columnstore index for analytical workloads,OK,50,5,7e46aa8ace609b0583e20803cc448555
+37,Natively compiled stored procedure,OK,100,7,5406100fc8d84ca5f22cdfc1ff481ac7
+38,Memory-optimized table with hash index,OK,50,4,5619294816cfe97f1a077a0fbdf19a79
+39,Real-time operational analytics with columnstore,OK,6,3,476b1eb488afe49aad34db3cb551d5a8
+40,Batch mode on rowstore,OK,50,4,78bb254532f35bb383f93378702916e7
+41,Always Encrypted with secure enclaves pattern,OK,50,6,d9cb7bfb9d6d2fcfe42292657c09425b
+42,Row-Level Security (RLS) with predicate functions,OK,50,4,c37e9310a8a8fe5af596cfa1494061a3
+43,Dynamic Data Masking,OK,50,4,721847441f698486ec95026a19a5ddd9
+44,Audit specification for compliance,NO_RESULTS,0,0,
+45,Certificate-based signing for stored procedures,OK,100,8,e9b4c17afb0f2c655890d19ff00867f6
+46,Table-valued parameters for bulk operations,OK,1,1,f5dffc111454b227fbcdf36178dfe6ac
+47,MERGE statement with OUTPUT clause and $action,OK,2,6,bd79ebe954abebaa73d263aa4f61e6e2
+48,TRY_CONVERT with error handling for data type conversion,OK,50,5,ebe65ac7656029ee62149486201ea204
+49,SESSION_CONTEXT for cross-request state,OK,1,6,0cdc084b6e58cc1169e737d0270e6904
+50,System-versioned temporal with CHANGETABLE,OK,106,5,86c2207db2ae1ec7afb67cd4c696eb73
