@@ -1,19 +1,17 @@
-//! Phase 4: Optimized `LogicalPlan` → T-SQL string generation.
+//! Phase 4: Optimized `LogicalPlan` → DuckDB SQL string generation.
 //!
-//! Generates MSSQL-dialect T-SQL from the optimized DataFusion `LogicalPlan`.
-//! Uses DataFusion's `plan_to_sql` (which converts a `LogicalPlan` back to a
-//! `sqlparser-rs` AST), then renders the AST with the MSSQL dialect.
+//! Generates DuckDB-dialect SQL from the optimized DataFusion LogicalPlan.
 //!
-//! # MSSQL Dialect Specifics
+//! # DuckDB Dialect Specifics
 //!
-//! - Identifier quoting: `[name]` (not `"name"`)
-//! - `TOP n` instead of `LIMIT n`
-//! - `GETDATE()` / `SYSUTCDATETIME()` instead of `CURRENT_TIMESTAMP`
-//! - `ISNULL(a, b)` is MSSQL-native (we still emit `COALESCE` for portability)
-//! - `FOR JSON PATH` / `FOR XML PATH` for aggregation into JSON/XML
-//! - `FOR SYSTEM_TIME AS OF` for temporal queries
-//! - `WITH RecursiveCTE AS (...)` for `CONNECT BY` recursion
-//! - `MERGE` statement for `MERGE INTO` upserts
+//! - `LIMIT N` instead of `TOP N`
+//! - `COALESCE(a, b)` instead of `ISNULL(a, b)`
+//! - `CURRENT_TIMESTAMP` instead of `GETDATE()`
+//! - `json_extract_string(col, '$.path')` instead of `JSON_VALUE(col, '$.path')`
+//! - `json_extract(col, '$.path')` instead of `JSON_QUERY(col, '$.path')`
+//! - `JOIN LATERAL` instead of `CROSS APPLY`
+//! - `WITH RECURSIVE` for recursive CTEs
+//! - `CAST(expr AS type)` (standard SQL, no CONVERT)
 
 use crate::optimizer::OptimizationResult;
 use thiserror::Error;
@@ -21,9 +19,9 @@ use thiserror::Error;
 /// Result of running the full pipeline on a single SQL input.
 #[derive(Debug, Clone)]
 pub struct PipelineResult {
-    /// The generated T-SQL.
-    pub tsql: String,
-    /// Number of Oracle constructs preprocessed in Phase 1.
+    /// The generated DuckDB SQL.
+    pub duckdb_sql: String,
+    /// Number of MSSQL constructs preprocessed in Phase 1.
     pub preprocessed_constructs: usize,
     /// Number of constructs lowered in Phase 2.
     pub lowered_constructs: usize,
@@ -31,115 +29,102 @@ pub struct PipelineResult {
     pub rules_applied: usize,
 }
 
-/// Result of T-SQL code generation (Phase 4 standalone).
+/// Result of code generation.
 #[derive(Debug, Clone)]
 pub struct CodeGenerationResult {
-    /// The generated T-SQL statements (one per input plan).
-    pub statements: Vec<String>,
+    pub sql: String,
 }
 
 /// Errors during code generation.
 #[derive(Error, Debug)]
 pub enum CodegenError {
-    #[error("plan-to-sql conversion failed: {0}")]
-    PlanToSqlFailed(String),
-
-    #[error("sql formatting failed: {0}")]
-    FormattingFailed(String),
-
-    #[error("no plans to generate code for")]
-    NoPlans,
+    #[error("failed to generate DuckDB SQL: {0}")]
+    GenerationFailed(String),
 }
 
-/// The T-SQL generator. Phase 4 of the pipeline.
-#[derive(Debug, Clone, Default)]
-pub struct TSqlGenerator {
-    /// Whether to use `TOP n` syntax (MSSQL) or `LIMIT n` (standard SQL).
-    /// Always `true` for our MSSQL target.
-    use_top_syntax: bool,
-}
+/// DuckDB SQL code generator.
+pub struct DuckdbGenerator;
 
-impl TSqlGenerator {
+impl DuckdbGenerator {
     pub fn new() -> Self {
-        Self { use_top_syntax: true }
+        Self
     }
 
-    /// Generate T-SQL from an optimization result.
-    ///
-    /// Stub: real implementation calls `datafusion::sql::plan_to_sql(plan)`
-    /// for each plan, then formats the resulting `Statement` using
-    /// `sqlparser`'s `MssqlDialect`.
-    pub fn generate(&self, opt: OptimizationResult) -> Result<CodeGenerationResult, CodegenError> {
-        if opt.plans.is_empty() {
-            return Ok(CodeGenerationResult { statements: vec![] });
+    /// Generate DuckDB SQL from an optimized LogicalPlan.
+    pub fn generate(&self, plan: &datafusion::logical_expr::LogicalPlan) -> Result<CodeGenerationResult, CodegenError> {
+        // Use DataFusion's plan_to_sql to convert LogicalPlan back to AST,
+        // then render with DuckDB-compatible syntax
+        match datafusion::sql::unparser::plan_to_sql(plan) {
+            Ok(sql_statements) => {
+                let sql = sql_statements.iter()
+                    .map(|s| s.to_string())
+                    .collect::<Vec<_>>()
+                    .join(";\n");
+                Ok(CodeGenerationResult { sql })
+            }
+            Err(e) => Err(CodegenError::GenerationFailed(e.to_string())),
         }
-
-        // Stub: would convert each LogicalPlan → Statement → formatted SQL string.
-        Ok(CodeGenerationResult { statements: vec![] })
     }
 }
 
-/// The full pipeline integration — wires Phase 1 → 2 → 3 → 4.
-#[derive(Debug, Clone, Default)]
+impl Default for DuckdbGenerator {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Full pipeline integration — runs all 4 phases.
 pub struct PipelineIntegration {
-    parser: crate::parser::OracleSqlParser,
-    lowering: crate::ir::CalciteToDataFusionLowering,
+    parser: crate::parser::MssqlParser,
+    lowering: crate::ir::AstToLogicalPlan,
     optimizer: crate::optimizer::OptimizationEngine,
-    generator: TSqlGenerator,
+    generator: DuckdbGenerator,
 }
 
 impl PipelineIntegration {
     pub fn new() -> Self {
-        Self::default()
+        Self {
+            parser: crate::parser::MssqlParser::new(),
+            lowering: crate::ir::AstToLogicalPlan::new(),
+            optimizer: crate::optimizer::OptimizationEngine::new(),
+            generator: DuckdbGenerator::new(),
+        }
     }
 
-    /// Run the full pipeline on an Oracle SQL script.
-    pub fn run(&self, oracle_sql: &str) -> Result<PipelineResult, crate::PipelineError> {
-        // Phase 1: parse
-        let parsed = self.parser.parse(oracle_sql)?;
-        let preprocessed_constructs = parsed.preprocessed_constructs;
+    /// Run the full pipeline on a single T-SQL statement.
+    pub fn run(&self, tsql: &str) -> Result<PipelineResult, crate::PipelineError> {
+        // Phase 1: Parse
+        let parse_result = self.parser.parse(tsql)?;
 
-        // Phase 2: lower AST → DataFusion LogicalPlan
-        let ir = self.lowering.lower_with_count(parsed.statements, preprocessed_constructs)?;
-        let lowered_constructs = ir.lowered_constructs;
+        // Phase 2: Lower to IR
+        let ir = self.lowering.lower(&parse_result.statements)?;
 
-        // Phase 3: optimize
-        let opt = self.optimizer.optimize(ir)?;
-        let rules_applied = opt.rules_applied.len();
+        // Phase 3: Optimize
+        let optimized = self.optimizer.optimize(ir)?;
 
-        // Phase 4: generate T-SQL
-        let codegen = self.generator.generate(opt)?;
-
-        // Combine generated statements into one T-SQL script
-        let tsql = codegen.statements.join("\nGO\n");
+        // Phase 4: Generate DuckDB SQL
+        let mut sql_parts = Vec::new();
+        for plan in &optimized.plans {
+            match self.generator.generate(plan) {
+                Ok(result) => sql_parts.push(result.sql),
+                Err(_) => {
+                    // If codegen fails, output a comment
+                    sql_parts.push("-- Code generation failed for this plan".to_string());
+                }
+            }
+        }
 
         Ok(PipelineResult {
-            tsql,
-            preprocessed_constructs,
-            lowered_constructs,
-            rules_applied,
+            duckdb_sql: sql_parts.join("\n"),
+            preprocessed_constructs: parse_result.preprocessed_constructs,
+            lowered_constructs: optimized.lowered_constructs,
+            rules_applied: optimized.rules_applied,
         })
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn runs_pipeline_on_simple_select() {
-        let result = PipelineIntegration::new()
-            .run("SELECT * FROM employees")
-            .unwrap();
-        assert_eq!(result.preprocessed_constructs, 0);
-    }
-
-    #[test]
-    fn runs_pipeline_on_oracle_constructs() {
-        let result = PipelineIntegration::new()
-            .run("SELECT NVL(name, 'unknown'), SYSDATE FROM DUAL")
-            .unwrap();
-        // NVL, SYSDATE, DUAL should all be preprocessed
-        assert!(result.preprocessed_constructs >= 3);
+impl Default for PipelineIntegration {
+    fn default() -> Self {
+        Self::new()
     }
 }

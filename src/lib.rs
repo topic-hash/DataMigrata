@@ -1,40 +1,41 @@
-//! DataMigrata — Intelligent Oracle-to-MSSQL Semantic Translation Middleware
+//! DataMigrata — Energy-Optimal MSSQL-to-DuckDB Migration Compiler
 //!
-//! Rust-native implementation. No Java. No TypeScript. No GC pauses.
+//! Rust-native implementation. Translates MSSQL T-SQL operations to DuckDB SQL,
+//! minimizing energy consumption through schema optimization and query rewrites.
 //!
 //! # Pipeline
 //!
-//! 1. [`parser`] — Oracle SQL → AST using `sqlparser-rs` (with Oracle dialect extensions)
-//! 2. [`ir`] — AST → DataFusion `LogicalPlan` (Rust-native IR, replaces Calcite RelNode)
-//! 3. [`optimizer`] — `LogicalPlan` → optimized `LogicalPlan` (rule-based + cost-based)
-//! 4. [`codemodel`] — optimized `LogicalPlan` → T-SQL string (MSSQL dialect)
-//! 5. [`protocol`] — TNS server (incoming, Oracle clients) + TDS client (outgoing, MSSQL)
+//! 1. [`parser`] — MSSQL T-SQL → AST using `sqlparser-rs` (MSSQL dialect)
+//! 2. [`ir`] — AST → DataFusion `LogicalPlan` (engine-agnostic relational algebra IR)
+//! 3. [`optimizer`] — `LogicalPlan` → optimized `LogicalPlan` (energy-aware rewrite rules)
+//! 4. [`codemodel`] — optimized `LogicalPlan` → DuckDB SQL string
+//! 5. [`catalog`] — Logical MSSQL schema → physical DuckDB schema mapping (multiple variants)
 //!
 //! # Design Principles
 //!
-//! - **Zero-copy parsing** wherever feasible (`winnow` for binary TNS, `sqlparser-rs` for SQL text)
-//! - **No GC pauses** — Rust ownership model eliminates GC-induced tail latency spikes
-//! - **Memory safety without runtime cost** — safe Rust eliminates ~70% of memory safety CVEs
-//!   without the runtime overhead of RC<RefCell> or GC
-//! - **Async-first** — `tokio` for concurrent connection handling, proven at RisingWave scale
-//!   (~200K lines of Rust, 5-10x lower memory than equivalent Java systems)
+//! - **Energy-first**: every transformation is evaluated for joule impact
+//! - **Deterministic**: all transformations are pure functions
+//! - **Complete IR**: DataFusion LogicalPlan captures all T-SQL semantics
+//! - **Multiple physical alternatives**: at least 3 rewrite strategies per feature gap
+//! - **Correctness gate**: output validated against MSSQL gold-standard result sets
 
 pub mod parser;
 pub mod ir;
 pub mod optimizer;
 pub mod codemodel;
-pub mod protocol;
+pub mod catalog;
 
-pub use parser::{OracleDialect, ParseError, ParseResult, OracleSqlParser};
-pub use ir::{IrError, IrResult, CalciteToDataFusionLowering};
+pub use parser::{MssqlDialect, ParseError, ParseResult, MssqlParser};
+pub use ir::{IrError, IrResult, AstToLogicalPlan};
 pub use optimizer::{OptimizationEngine, OptimizationResult, RuleApplied};
-pub use codemodel::{TSqlGenerator, CodeGenerationResult, PipelineResult, PipelineIntegration};
+pub use codemodel::{DuckdbGenerator, CodeGenerationResult, PipelineResult, PipelineIntegration};
+pub use catalog::{Catalog, CatalogEntry, SchemaVariant};
 
-/// Run the full 4-phase pipeline on a single Oracle SQL statement.
+/// Run the full pipeline on a single MSSQL T-SQL statement.
 ///
-/// Returns the generated T-SQL string on success.
-pub fn run_pipeline(oracle_sql: &str) -> Result<PipelineResult, PipelineError> {
-    PipelineIntegration::new().run(oracle_sql)
+/// Returns the generated DuckDB SQL string on success.
+pub fn run_pipeline(tsql: &str) -> Result<PipelineResult, PipelineError> {
+    PipelineIntegration::new().run(tsql)
 }
 
 /// Top-level pipeline error — wraps all phase-specific errors.
@@ -51,4 +52,7 @@ pub enum PipelineError {
 
     #[error("code generation error: {0}")]
     Codegen(#[from] codemodel::CodegenError),
+
+    #[error("catalog error: {0}")]
+    Catalog(#[from] catalog::CatalogError),
 }

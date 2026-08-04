@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 rust-version = "1.75"
 authors = ["DataMigrata Team"]
-description = "Intelligent Oracle-to-MSSQL semantic translation middleware — Rust + DataFusion + sqlparser-rs"
+description = "Energy-optimal MSSQL-to-DuckDB migration compiler — Rust + DataFusion + sqlparser-rs"
 license = "MIT"
 repository = "https://github.com/topic-hash/DataMigrata"
 
@@ -17,7 +17,7 @@ name = "datamigrata"
 path = "src/lib.rs"
 
 [dependencies]
-# SQL parsing — Rust-native, supports Oracle constructs (CONNECT BY, DECODE, NVL, ROWNUM, (+) outer joins, DUAL)
+# SQL parsing — Rust-native, supports MSSQL dialect (TOP, ISNULL, GETDATE, MERGE, FOR JSON/XML, HIERARCHYID)
 sqlparser = { version = "0.62", features = ["visitor"] }
 
 # IR + optimizer — Rust-native equivalent of Apache Calcite
@@ -26,11 +26,8 @@ datafusion = "54"
 # Async runtime — proven at RisingWave scale, 5-10x lower memory than Java equivalents
 tokio = { version = "1", features = ["full"] }
 
-# Zero-copy binary parsing for TNS protocol (greenfield — no Rust TNS impl exists yet)
-winnow = "0.6"
-
-# Bytes / zero-copy buffer handling
-bytes = "1"
+# DuckDB embedded target (in-process, zero idle power)
+# NOTE: duckdb crate is added when codespace has Rust; for now we generate SQL strings
 
 # Tracing / structured logging
 tracing = "0.1"
@@ -47,10 +44,8 @@ serde_json = "1"
 # CLI argument parsing
 clap = { version = "4", features = ["derive"] }
 
-# NOTE: tiberius (TDS client) and async-trait are intentionally omitted for now.
-# tiberius 0.12 has a compile conflict with newer async-native-tls. We will
-# re-add it (or switch to raw TDS via winnow) when we wire up the outgoing
-# protocol layer. The 50-operations test does NOT need a live MSSQL connection.
+# NOTE: No TNS/TDS protocol needed. Source is MSSQL T-SQL (read from files).
+# Target is DuckDB (in-process, no network protocol).
 
 [dev-dependencies]
 # Property-based testing for IR invariants

@@ -1510,7 +1510,6 @@ name = "datamigrata"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bytes",
  "clap",
  "criterion",
  "datafusion",
@@ -1521,7 +1520,6 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
- "winnow",
 ]
 
 [[package]]
@@ -3421,15 +3419,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
 dependencies = [
  "windows-link",
-]
-
-[[package]]
-name = "winnow"
-version = "0.6.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e90edd2ac1aa278a5c4599b1d89cf03074b610800f866d4026dc199d7929a28"
-dependencies = [
- "memchr",
 ]
 
 [[package]]
