@@ -141,7 +141,7 @@ impl MssqlParser {
 
 /// Simple regex replacement using string operations (avoids regex crate dependency).
 /// For production, use the `regex` crate. For now, we use a lightweight approach.
-fn regex_lite_replace(input: &str, _pattern: &str, replacement: &str, count: &mut usize) -> String {
+fn regex_lite_replace(input: &str, _pattern: &str, _replacement: &str, count: &mut usize) -> String {
     // For the MSSQL preprocessing patterns, we use simple string matching
     // since the patterns are well-defined. In production, switch to regex crate.
     // For now, just return input unchanged — the sqlparser-rs MsSql dialect

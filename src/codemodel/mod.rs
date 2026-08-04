@@ -52,14 +52,9 @@ impl DuckdbGenerator {
 
     /// Generate DuckDB SQL from an optimized LogicalPlan.
     pub fn generate(&self, plan: &datafusion::logical_expr::LogicalPlan) -> Result<CodeGenerationResult, CodegenError> {
-        // Use DataFusion's plan_to_sql to convert LogicalPlan back to AST,
-        // then render with DuckDB-compatible syntax
         match datafusion::sql::unparser::plan_to_sql(plan) {
-            Ok(sql_statements) => {
-                let sql = sql_statements.iter()
-                    .map(|s| s.to_string())
-                    .collect::<Vec<_>>()
-                    .join(";\n");
+            Ok(sql_statement) => {
+                let sql = sql_statement.to_string();
                 Ok(CodeGenerationResult { sql })
             }
             Err(e) => Err(CodegenError::GenerationFailed(e.to_string())),
@@ -100,6 +95,7 @@ impl PipelineIntegration {
         let ir = self.lowering.lower(&parse_result.statements)?;
 
         // Phase 3: Optimize
+        let lowered_count = ir.lowered_constructs;
         let optimized = self.optimizer.optimize(ir)?;
 
         // Phase 4: Generate DuckDB SQL
@@ -117,7 +113,7 @@ impl PipelineIntegration {
         Ok(PipelineResult {
             duckdb_sql: sql_parts.join("\n"),
             preprocessed_constructs: parse_result.preprocessed_constructs,
-            lowered_constructs: optimized.lowered_constructs,
+            lowered_constructs: lowered_count,
             rules_applied: optimized.rules_applied,
         })
     }

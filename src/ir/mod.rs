@@ -77,7 +77,7 @@ impl AstToLogicalPlan {
     /// Lower a single AST statement to a LogicalPlan.
     fn lower_statement(&self, stmt: &SqlStatement) -> Result<LogicalPlan, IrError> {
         match stmt {
-            SqlStatement::Query(query) => {
+            SqlStatement::Query(_query) => {
                 // Use DataFusion's SqlToRel to convert AST → LogicalPlan
                 // For now, we create a placeholder plan
                 // Full implementation will use datafusion::sql::planner::SqlToRel
