@@ -1,51 +1,51 @@
 op_id,status,duck_rows,gold_rows,duck_hash,gold_hash,duckdb_joules,mssql_joules,energy_reduction_x,error
-1,PASS,100,100,e98ad195c498271f82def2fdba3a1f4f,e98ad195c498271f82def2fdba3a1f4f,0.078013,,,
-2,MISMATCH,50,50,29d42221064b04627b3b478de39de606,a3a8422ca41077e3d0e9e69e49e401f9,0.179251,,,"line 0: duck=1,Jeannie Krause,Marketing,Engineer,155385.00,24,2881477.00 | gold=1,Jeannie Krause,Marketing,Engineer,155385.00,60,2881477.00"
-3,PASS,100,100,9d88b6e04cc7c841e3d0116d1c513b36,9d88b6e04cc7c841e3d0116d1c513b36,0.011805,,,
-4,PASS,100,100,160aca41a67567eded5f019c798a189b,160aca41a67567eded5f019c798a189b,0.061693,,,
-5,MISMATCH,100,100,9ec102ba6e412d086802408cc624bb98,4c78b5e0a4c64d541d0312dfbcea2e47,0.059508,,,"line 19: duck=Jeannie Krause,Olive Bean,Legal,2,Indirect | gold=Jeannie Krause,Evelyn Fisher,Operations,2,Indirect"
-6,MISMATCH,20,20,173c3a59d5495d0994e6ea01cf1f8d21,08fa1428e6741a45e49f0c2bf717fedc,0.040701,,,"line 0: duck=1,Jeannie Krause,<Skills>['<Skill level=""Expert"">Python</Skill>', '<Skill level=""Advanced"">Docker</Skill>', '<Skill level=""Intermediate"">Vue | gold=1,Jeannie Krause,<Skill level=""Expert"">Python</Skill><Skill level=""Advanced"">Docker</Skill><Skill level=""Intermediate"">Vue</Skill><Skill lev"
-7,MISMATCH,50,50,de98ade02351ce6c56063f88204b3b01,6d32734b27cf257b52e6bff47a5a073e,0.049436,,,"line 0: duck=1,Jeannie Krause,Advanced,Project Management | gold=1,Jeannie Krause,Advanced,Docker"
-8,MISMATCH,20,20,5cd7415bc6014ade4b50857da8b761f9,54177d4c9ae631ee2471ded84fe4182c,0.064870,,,"line 0: duck=1,Jeannie Krause,<Skills><Skill name=""Project Management"" level=""Advanced""/><Skill name=""Vue"" level=""Intermediate""/><Skill name=""Docker"" lev | gold=1,Jeannie Krause,<Skills><Skill name=""Python"" level=""Expert""/><Skill name=""Docker"" level=""Advanced""/><Skill name=""Vue"" level=""Intermediate""/"
-9,PASS,50,50,8cc3c7d4bddac78dff0d2ef442c4a7e4,8cc3c7d4bddac78dff0d2ef442c4a7e4,0.009379,,,
-10,PASS,1,1,64541d93b3cf38f5c33667654237a8e2,64541d93b3cf38f5c33667654237a8e2,0.001833,,,
-11,PASS,50,50,7b70a9f7876e62f729a5f81cd654fdf4,7b70a9f7876e62f729a5f81cd654fdf4,0.011988,,,
-12,MISMATCH,10,2,7481aadcb777f8c5539d7efc3f099c2f,e1f3de8feaf1b3eccddcf1f8eb0576df,0.049786,,,"line 0: duck=[{""Department"":""Customer Success"",""EmployeeName"":""Kevin Green"",""TransactionsJSON"":[{""TransactionID"":1897,""TotalAmount"":1373449.74000000,""Tra | gold={""SalesReport"":[{""Department"":""Customer Success"",""EmployeeName"":""Solomon Wilkins"",""TransactionsJSON"":[{""TransactionID"":1,""TotalAmount"":54975"
-13,PASS,20,20,1c36e59b14679b0adb9e07fe90632e5a,1c36e59b14679b0adb9e07fe90632e5a,0.009080,,,
-14,PASS,1,1,10bc1317d9384e433cdb5959b6a249d7,10bc1317d9384e433cdb5959b6a249d7,0.012298,,,
-15,MISMATCH,0,2,d41d8cd98f00b204e9800998ecf8427e,10d89f917296aa81cdb015cfdf4c77d3,0.009056,,,"line 0: duck=<missing> | gold=Server,2,49999.99,99999.98"
-16,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.004390,,,
-17,PASS,50,50,c6dd9683c0bf759242fed77c699419b7,c6dd9683c0bf759242fed77c699419b7,0.013962,,,
-18,PASS,50,50,be3d010f2f82009bf7b1e3a28ee83761,be3d010f2f82009bf7b1e3a28ee83761,0.010087,,,
-19,PASS,20,20,2785059d2a7160977fdd2bb528e92b49,2785059d2a7160977fdd2bb528e92b49,0.012831,,,
-20,PASS,50,50,c573bd2ca741d1f769293ad8523a4ffd,c573bd2ca741d1f769293ad8523a4ffd,0.022709,,,
-21,MISMATCH,10,10,a72ac77ef5d5c580a59d36b4a4e02736,3d2930100b6d210e9072fc0013600494,0.007924,,,"line 4: duck=Infrastructure,100,5359869.0000,3185103.0000 | gold=Infrastructure,100,5308505.0000,3185103.0000"
-22,PASS,50,50,f8c314040253525f2b15765d663eb270,f8c314040253525f2b15765d663eb270,0.017812,,,
-23,MISMATCH,50,50,de7b2fb520cdde49cfac3e49c041508e,96e748c96d9ebc0958dd9be1902c7137,0.010110,,,"line 3: duck=158,Eleanor Vargas,eleanor.vargas158@corp.com,Marketing,Director,106759.00,2026-07-19,73 | gold=3737,Cesar Parrish,cesar.parrish3737@corp.com,Sales,Specialist,143745.00,2026-07-19,357"
-24,PASS,50,50,61c35058a88dfda8bd9cd427088b76b6,61c35058a88dfda8bd9cd427088b76b6,0.021564,,,
-25,PASS,1,1,ed8e459a1f2908d26e0acdd088d989d9,ed8e459a1f2908d26e0acdd088d989d9,0.008543,,,
-26,PASS,3117,3117,92e29894f9eb97764cf7e2463fe5c658,92e29894f9eb97764cf7e2463fe5c658,0.071398,,,
-27,PASS,50,50,2ab62b15a617cee439801dd982ebd9e1,2ab62b15a617cee439801dd982ebd9e1,0.052988,,,
-28,MISMATCH,100,100,17396a3fdf050ab90feb8c1a17757e0e,0a7d36ff3ef1cc2976a95a1725038414,0.027778,,,"line 20: duck=2,803,Leticia Klein,2 | gold=2,50,Samantha Richardson,2"
-29,PASS,100,100,c9559e0c921abd7522aa3e7e59a938e8,c9559e0c921abd7522aa3e7e59a938e8,0.038406,,,
-30,PASS,100,100,5e3cd352f4587dff56d176e278f86f08,5e3cd352f4587dff56d176e278f86f08,0.044143,,,
-31,EXEC_FAIL,0,0,,,0.008330,,,"Catalog Error: Scalar Function with name ""st_geomfromtext"" is not in the catalog, but it exists in the spatial extension."
-32,EXEC_FAIL,0,0,,,0.003400,,,"Catalog Error: Scalar Function with name ""st_geomfromtext"" is not in the catalog, but it exists in the spatial extension."
-33,MISMATCH,1,1,d55b6a8ad86e58dbdf42a066cbd75fbd,d595a3d36830e84834513e747ac80d58,0.009189,,,"line 0: duck=15128.783550544593,3,POINT (-0.1278 51.5074) | gold=15167.390843443118,3,POINT (-0.1278 51.5074)"
-34,EXEC_FAIL,0,0,,,0.002636,,,"Catalog Error: Scalar Function with name ""st_distance"" is not in the catalog, but it exists in the spatial extension."
-35,EXEC_FAIL,0,0,,,0.002440,,,"Catalog Error: Scalar Function with name ""st_contains"" is not in the catalog, but it exists in the spatial extension."
-36,PASS,50,50,3d6f82f3592d7f8b447f91979a98615c,3d6f82f3592d7f8b447f91979a98615c,0.029230,,,
-37,MISMATCH,100,100,f73c82fff03bb2014d50a7a70c69776b,702d71017dfbcc1b5078fd9b5c4ba9f0,0.006506,,,"line 4: duck=1058,Customer 58 Inc,contact58@customer.com,LATAM,2026-07-21 00:00:00.000000,352005.00,216 | gold=2413,Customer 1413 Ltd,contact1413@customer.com,NA,2026-07-21 00:00:00.000000,65639.00,334"
-38,PASS,50,50,627200b2776db217352c3e0eee54fbcd,627200b2776db217352c3e0eee54fbcd,0.007634,,,
-39,PASS,6,6,45da78135601b3f7d3284561924a6c72,45da78135601b3f7d3284561924a6c72,0.004812,,,
-40,PASS,50,50,29979530680b6229224b7068e7c5a0fa,29979530680b6229224b7068e7c5a0fa,0.021389,,,
-41,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.002405,,,
-42,PASS,50,50,cc499f9fb31ebaa6783f09038a60f1d8,cc499f9fb31ebaa6783f09038a60f1d8,0.006855,,,
-43,PASS,50,50,0205eab1fe8a0e7184b2e0a1a1135e01,0205eab1fe8a0e7184b2e0a1a1135e01,0.008050,,,
-44,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.002037,,,
-45,PASS,100,100,357d89c9caedfa4f1eb3738c9b2e304a,357d89c9caedfa4f1eb3738c9b2e304a,0.007088,,,
-46,PASS,1,1,2ce4528bfae3f2a0670a70f06fe620ee,2ce4528bfae3f2a0670a70f06fe620ee,0.002057,,,
-47,PASS,2,2,b784cbdad7d668ba0294773c355e4036,b784cbdad7d668ba0294773c355e4036,0.008000,,,
-48,PASS,50,50,5b262ac0fd227e1441e3848579772d54,5b262ac0fd227e1441e3848579772d54,0.009741,,,
-49,PASS,1,1,5b7d8850d0e260df31688ea3c5b3fdc4,5b7d8850d0e260df31688ea3c5b3fdc4,0.002032,,,
-50,MISMATCH,52,52,ba655b41f284ae9fb2301a62a5828a6c,2bcba49ede6fc49d15fbda9c783004e0,0.006063,,,"line 2: duck=2,1,U,Pro Services Solution 2,61223.9900 | gold=207,0x07B6DA3F9161485D,1,105472.258,418968.13099999999,614220.0,2026-08-12 20:13:12.8430000 +00:00"
+1,PASS,100,100,e98ad195c498271f82def2fdba3a1f4f,e98ad195c498271f82def2fdba3a1f4f,0.070891,,,
+2,MISMATCH,50,50,29d42221064b04627b3b478de39de606,a3a8422ca41077e3d0e9e69e49e401f9,0.171076,,,"line 0: duck=1,Jeannie Krause,Marketing,Engineer,155385.00,24,2881477.00 | gold=1,Jeannie Krause,Marketing,Engineer,155385.00,60,2881477.00"
+3,PASS,100,100,9d88b6e04cc7c841e3d0116d1c513b36,9d88b6e04cc7c841e3d0116d1c513b36,0.010178,,,
+4,PASS,100,100,160aca41a67567eded5f019c798a189b,160aca41a67567eded5f019c798a189b,0.054328,,,
+5,MISMATCH,100,100,9ec102ba6e412d086802408cc624bb98,4c78b5e0a4c64d541d0312dfbcea2e47,0.057981,,,"line 19: duck=Jeannie Krause,Olive Bean,Legal,2,Indirect | gold=Jeannie Krause,Evelyn Fisher,Operations,2,Indirect"
+6,PASS,20,20,08fa1428e6741a45e49f0c2bf717fedc,08fa1428e6741a45e49f0c2bf717fedc,0.022948,,,
+7,PASS,50,50,6d32734b27cf257b52e6bff47a5a073e,6d32734b27cf257b52e6bff47a5a073e,0.047185,,,
+8,PASS,20,20,54177d4c9ae631ee2471ded84fe4182c,54177d4c9ae631ee2471ded84fe4182c,0.145607,,,
+9,PASS,50,50,8cc3c7d4bddac78dff0d2ef442c4a7e4,8cc3c7d4bddac78dff0d2ef442c4a7e4,0.008858,,,
+10,PASS,1,1,64541d93b3cf38f5c33667654237a8e2,64541d93b3cf38f5c33667654237a8e2,0.001622,,,
+11,PASS,50,50,7b70a9f7876e62f729a5f81cd654fdf4,7b70a9f7876e62f729a5f81cd654fdf4,0.010331,,,
+12,MISMATCH,10,2,7481aadcb777f8c5539d7efc3f099c2f,e1f3de8feaf1b3eccddcf1f8eb0576df,0.047344,,,"line 0: duck=[{""Department"":""Customer Success"",""EmployeeName"":""Kevin Green"",""TransactionsJSON"":[{""TransactionID"":1897,""TotalAmount"":1373449.74000000,""Tra | gold={""SalesReport"":[{""Department"":""Customer Success"",""EmployeeName"":""Solomon Wilkins"",""TransactionsJSON"":[{""TransactionID"":1,""TotalAmount"":54975"
+13,PASS,20,20,1c36e59b14679b0adb9e07fe90632e5a,1c36e59b14679b0adb9e07fe90632e5a,0.008012,,,
+14,PASS,1,1,10bc1317d9384e433cdb5959b6a249d7,10bc1317d9384e433cdb5959b6a249d7,0.010123,,,
+15,PASS,2,2,10d89f917296aa81cdb015cfdf4c77d3,10d89f917296aa81cdb015cfdf4c77d3,0.006561,,,
+16,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.003609,,,
+17,PASS,50,50,c6dd9683c0bf759242fed77c699419b7,c6dd9683c0bf759242fed77c699419b7,0.011092,,,
+18,PASS,50,50,be3d010f2f82009bf7b1e3a28ee83761,be3d010f2f82009bf7b1e3a28ee83761,0.007486,,,
+19,PASS,20,20,2785059d2a7160977fdd2bb528e92b49,2785059d2a7160977fdd2bb528e92b49,0.011069,,,
+20,PASS,50,50,c573bd2ca741d1f769293ad8523a4ffd,c573bd2ca741d1f769293ad8523a4ffd,0.056070,,,
+21,MISMATCH,10,10,a72ac77ef5d5c580a59d36b4a4e02736,3d2930100b6d210e9072fc0013600494,0.007335,,,"line 4: duck=Infrastructure,100,5359869.0000,3185103.0000 | gold=Infrastructure,100,5308505.0000,3185103.0000"
+22,PASS,50,50,f8c314040253525f2b15765d663eb270,f8c314040253525f2b15765d663eb270,0.015900,,,
+23,MISMATCH,50,50,de7b2fb520cdde49cfac3e49c041508e,96e748c96d9ebc0958dd9be1902c7137,0.010054,,,"line 3: duck=158,Eleanor Vargas,eleanor.vargas158@corp.com,Marketing,Director,106759.00,2026-07-19,73 | gold=3737,Cesar Parrish,cesar.parrish3737@corp.com,Sales,Specialist,143745.00,2026-07-19,357"
+24,PASS,50,50,61c35058a88dfda8bd9cd427088b76b6,61c35058a88dfda8bd9cd427088b76b6,0.020506,,,
+25,PASS,1,1,ed8e459a1f2908d26e0acdd088d989d9,ed8e459a1f2908d26e0acdd088d989d9,0.007989,,,
+26,PASS,3117,3117,92e29894f9eb97764cf7e2463fe5c658,92e29894f9eb97764cf7e2463fe5c658,0.056747,,,
+27,PASS,50,50,2ab62b15a617cee439801dd982ebd9e1,2ab62b15a617cee439801dd982ebd9e1,0.047968,,,
+28,MISMATCH,100,100,17396a3fdf050ab90feb8c1a17757e0e,0a7d36ff3ef1cc2976a95a1725038414,0.029494,,,"line 20: duck=2,803,Leticia Klein,2 | gold=2,50,Samantha Richardson,2"
+29,PASS,100,100,c9559e0c921abd7522aa3e7e59a938e8,c9559e0c921abd7522aa3e7e59a938e8,0.037750,,,
+30,PASS,100,100,5e3cd352f4587dff56d176e278f86f08,5e3cd352f4587dff56d176e278f86f08,0.039862,,,
+31,EXEC_FAIL,0,0,,,0.007571,,,"Catalog Error: Scalar Function with name ""st_geomfromtext"" is not in the catalog, but it exists in the spatial extension."
+32,EXEC_FAIL,0,0,,,0.002928,,,"Catalog Error: Scalar Function with name ""st_geomfromtext"" is not in the catalog, but it exists in the spatial extension."
+33,MISMATCH,1,1,d55b6a8ad86e58dbdf42a066cbd75fbd,d595a3d36830e84834513e747ac80d58,0.008304,,,"line 0: duck=15128.783550544593,3,POINT (-0.1278 51.5074) | gold=15167.390843443118,3,POINT (-0.1278 51.5074)"
+34,EXEC_FAIL,0,0,,,0.002881,,,"Catalog Error: Scalar Function with name ""st_distance"" is not in the catalog, but it exists in the spatial extension."
+35,EXEC_FAIL,0,0,,,0.002417,,,"Catalog Error: Scalar Function with name ""st_contains"" is not in the catalog, but it exists in the spatial extension."
+36,PASS,50,50,3d6f82f3592d7f8b447f91979a98615c,3d6f82f3592d7f8b447f91979a98615c,0.028896,,,
+37,MISMATCH,100,100,f73c82fff03bb2014d50a7a70c69776b,702d71017dfbcc1b5078fd9b5c4ba9f0,0.005880,,,"line 4: duck=1058,Customer 58 Inc,contact58@customer.com,LATAM,2026-07-21 00:00:00.000000,352005.00,216 | gold=2413,Customer 1413 Ltd,contact1413@customer.com,NA,2026-07-21 00:00:00.000000,65639.00,334"
+38,PASS,50,50,627200b2776db217352c3e0eee54fbcd,627200b2776db217352c3e0eee54fbcd,0.007847,,,
+39,PASS,6,6,45da78135601b3f7d3284561924a6c72,45da78135601b3f7d3284561924a6c72,0.004782,,,
+40,PASS,50,50,29979530680b6229224b7068e7c5a0fa,29979530680b6229224b7068e7c5a0fa,0.021294,,,
+41,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.002192,,,
+42,PASS,50,50,cc499f9fb31ebaa6783f09038a60f1d8,cc499f9fb31ebaa6783f09038a60f1d8,0.006809,,,
+43,PASS,50,50,0205eab1fe8a0e7184b2e0a1a1135e01,0205eab1fe8a0e7184b2e0a1a1135e01,0.006957,,,
+44,PASS,0,0,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,0.001895,,,
+45,PASS,100,100,357d89c9caedfa4f1eb3738c9b2e304a,357d89c9caedfa4f1eb3738c9b2e304a,0.006219,,,
+46,PASS,1,1,2ce4528bfae3f2a0670a70f06fe620ee,2ce4528bfae3f2a0670a70f06fe620ee,0.001777,,,
+47,PASS,2,2,b784cbdad7d668ba0294773c355e4036,b784cbdad7d668ba0294773c355e4036,0.007584,,,
+48,PASS,50,50,5b262ac0fd227e1441e3848579772d54,5b262ac0fd227e1441e3848579772d54,0.009166,,,
+49,PASS,1,1,5b7d8850d0e260df31688ea3c5b3fdc4,5b7d8850d0e260df31688ea3c5b3fdc4,0.001687,,,
+50,MISMATCH,52,52,ba655b41f284ae9fb2301a62a5828a6c,2bcba49ede6fc49d15fbda9c783004e0,0.005335,,,"line 2: duck=2,1,U,Pro Services Solution 2,61223.9900 | gold=207,0x07B6DA3F9161485D,1,105472.258,418968.13099999999,614220.0,2026-08-12 20:13:12.8430000 +00:00"

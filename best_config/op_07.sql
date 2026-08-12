@@ -1,4 +1,5 @@
 -- OP 7: XML shredding with nodes() method and cross apply
+-- Gold: ordered by EmployeeID, SkillLevel (alphabetical), SkillName (alphabetical within level)
 SELECT
     e.EmployeeID,
     e.FullName,
@@ -9,5 +10,5 @@ FROM HR.Employees e,
         SELECT unnest(regexp_extract_all(e.EmployeeData, '<Skill[^>]*>[^<]+</Skill>')) AS skill
     ) AS m
 WHERE e.EmployeeData IS NOT NULL
-ORDER BY e.EmployeeID, SkillLevel
+ORDER BY e.EmployeeID, SkillLevel, SkillName
 LIMIT 50

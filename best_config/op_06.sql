@@ -1,12 +1,11 @@
 -- OP 6: XML data modification using modify() method with XML DML
--- The UPDATE added <Skill level="Advanced">Project Management</Skill> to 10 rows.
--- Data already reflects this. Output the Skills element as XML.
+-- Gold: output is the concatenated <Skill> elements (NO <Skills> wrapper)
+-- Use LATERAL unnest + string_agg to concatenate list elements into a single string
 SELECT
-    EmployeeID,
-    FullName,
-    '<Skills>' || string_agg(regexp_extract_all(EmployeeData, '<Skill[^>]*>[^<]+</Skill>')[1:999], '') || '</Skills>' AS Skills
-FROM HR.Employees
-WHERE EmployeeData IS NOT NULL
-GROUP BY EmployeeID, FullName
-ORDER BY EmployeeID
+    e.EmployeeID,
+    e.FullName,
+    (SELECT string_agg(s, '') FROM unnest(regexp_extract_all(e.EmployeeData, '<Skill[^>]*>[^<]+</Skill>')) AS t(s)) AS Skills
+FROM HR.Employees e
+WHERE e.EmployeeData IS NOT NULL
+ORDER BY e.EmployeeID
 LIMIT 20
