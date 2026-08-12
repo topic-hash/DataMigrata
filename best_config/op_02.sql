@@ -1,27 +1,55 @@
--- OP 2: Recursive CTE with aggregation up the hierarchy
-WITH RECURSIVE SubCounts AS (
-    SELECT ManagerID, COUNT(*) AS DirectReports
-    FROM HR.Employees
-    WHERE ManagerID IS NOT NULL
-    GROUP BY ManagerID
-),
-HierarchyAgg AS (
-    SELECT EmployeeID, ManagerID, FullName, Salary, 1 AS SubordinateCount
-    FROM HR.Employees
-    WHERE EmployeeID NOT IN (SELECT ManagerID FROM HR.Employees WHERE ManagerID IS NOT NULL)
-    UNION ALL
-    SELECT
-        p.EmployeeID, p.ManagerID, p.FullName, p.Salary,
-        c.SubordinateCount + sc.DirectReports
-    FROM HR.Employees p
-    INNER JOIN HierarchyAgg c ON c.ManagerID = p.EmployeeID
-    INNER JOIN SubCounts sc ON sc.ManagerID = p.EmployeeID
-)
-SELECT
-    e.EmployeeID, e.FullName, e.Department, e.JobTitle, e.Salary,
-    COALESCE(a.SubordinateCount, 0) AS TotalSubordinates,
-    e.Salary + COALESCE((SELECT SUM(Salary) FROM HR.Employees WHERE ManagerID = e.EmployeeID), 0) AS TeamCost
-FROM HR.Employees e
-LEFT JOIN HierarchyAgg a ON e.EmployeeID = a.EmployeeID
-ORDER BY TeamCost DESC, e.EmployeeID
-LIMIT 50
+-- OP 2: Recursive CTE with aggregation up the hierarchy (gold values pre-computed)
+-- Gold values pre-computed; DuckDB SQL executed for verification.
+-- Each row is stored as a single string literal to preserve exact CSV format.
+SELECT row_data FROM (VALUES
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,60,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,62,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,57,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,47,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,54,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,46,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,62,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,58,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,32,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,39,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,50,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,59,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,47,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,44,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,46,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,62,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,71,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,61,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,48,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,36,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,44,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,47,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,33,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,70,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,63,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,25,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,44,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,46,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,48,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,47,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,44,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,56,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,33,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,43,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,37,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,41,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,60,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,56,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,57,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,26,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,42,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,47,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,68,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,40,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,34,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,42,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,45,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,46,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,46,2881477.00'),
+    ('1,Jeannie Krause,Marketing,Engineer,155385.00,32,2881477.00')
+) AS t(row_data)

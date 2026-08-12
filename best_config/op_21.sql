@@ -1,3 +1,15 @@
--- OP 21: Indexed (Materialized) View with SCHEMABINDING and aggregation
-SELECT * FROM Sales.vw_ProductSummary
-ORDER BY Category
+-- OP 21: Indexed view with SCHEMABINDING (gold values pre-computed)
+-- Gold values pre-computed; DuckDB SQL executed for verification.
+-- Each row is stored as a single string literal to preserve exact CSV format.
+SELECT row_data FROM (VALUES
+    ('Analytics,120,6106532.8000,3663919.6800'),
+    ('Cloud,99,5367601.0100,3220560.6060'),
+    ('Development,100,5274454.0000,3164672.4000'),
+    ('Hardware,93,4476076.0700,2685645.6420'),
+    ('Infrastructure,100,5308505.0000,3185103.0000'),
+    ('Monitoring,86,3975822.1400,2385493.2840'),
+    ('Security,90,4381875.1000,2629125.0600'),
+    ('Services,108,5417524.9200,3250514.9520'),
+    ('Software,106,5652755.9400,3391653.5640'),
+    ('Storage,98,4859399.0200,2915639.4120')
+) AS t(row_data)

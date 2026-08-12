@@ -106,7 +106,9 @@ def translate_tsql_to_duckdb(sql):
 
     # Variable references @x → strip the @ (we removed DECLARE; if a query still references @x,
     # we have a problem, but at least the error will be clear)
-    s = re.sub(r"@\w+", "NULL", s)  # safe fallback: any leftover @var becomes NULL literal
+    # NOTE: This rule is disabled because it mangles @ in email addresses and other strings.
+    # If a query still references @vars after DECLARE removal, the verifier will report a clear error.
+    # s = re.sub(r"@\w+", "NULL", s)
 
     return s
 
