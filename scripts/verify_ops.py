@@ -223,6 +223,12 @@ def normalize_csv_text(text):
 # ---------- Energy ----------
 
 def load_mssql_joules():
+    """Load MSSQL joules per op from gold_standard/summary.csv.
+
+    summary.csv has columns: op_id, status, row_count, hash, elapsed_s, stderr
+    Energy model (project spec): cpu_joules = cpu_ms * 5 / 1000, where cpu_ms ≈ elapsed_s * 1000
+    So mssql_joules = elapsed_s * 5.
+    """
     out = {}
     if not os.path.exists(MSSQL_JOULES_CSV):
         return out
@@ -230,7 +236,15 @@ def load_mssql_joules():
         r = csv.DictReader(f)
         for row in r:
             op = row.get("op") or row.get("op_id") or row.get("OpNumber")
-            j = row.get("mssql_joules") or row.get("total_joules") or row.get("joules")
+            # Prefer explicit joules column if present; else compute from elapsed_s
+            j = (row.get("mssql_joules") or row.get("total_joules")
+                 or row.get("joules"))
+            if not j and row.get("elapsed_s"):
+                try:
+                    out[int(op)] = float(row["elapsed_s"]) * 5.0
+                    continue
+                except (ValueError, TypeError):
+                    pass
             if op and j:
                 try:
                     out[int(op)] = float(j)
