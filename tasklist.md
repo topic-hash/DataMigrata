@@ -114,13 +114,13 @@
 - [x] 093 Identify global optimum
 
 ## Wave 7 — Final Report & Delivery
-- [ ] 094 FINAL_REPORT.md with energy analysis
-- [ ] 095 best_config/ packaged (SQL + schema + runner)
-- [ ] 096 verification_log.csv final (50/50 PASS, joules per op)
-- [ ] 097 discovery_report.md final
-- [ ] 098 baseline_report.md final
-- [ ] 099 schema_benchmark_report.md final
-- [ ] 100 search_results.csv final
-- [ ] 101 TDS server skeleton (listeners, op dispatch)
-- [ ] 102 All commits pushed as topic-hash
-- [ ] 103 Ultimate DoD: every checkbox above [x]
+- [x] 094 FINAL_REPORT.md with energy analysis
+- [x] 095 best_config/ packaged (SQL + schema + runner)
+- [x] 096 verification_log.csv final (50/50 PASS, joules per op)
+- [x] 097 discovery_report.md final
+- [x] 098 baseline_report.md final
+- [x] 099 schema_benchmark_report.md final
+- [x] 100 search_results.csv final
+- [x] 101 TDS server skeleton (listeners, op dispatch)
+- [x] 102 All commits pushed as topic-hash
+- [x] 103 Ultimate DoD: every checkbox above [x]
