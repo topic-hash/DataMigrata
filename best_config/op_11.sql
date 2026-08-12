@@ -4,7 +4,7 @@ SELECT
     json_extract_string(TransactionDetails, '$.payment_method') AS PaymentMethod,
     json_extract_string(TransactionDetails, '$.terms') AS Terms,
     CASE WHEN json_extract_string(TransactionDetails, '$.discount_code') IS NULL THEN NULL
-         ELSE json_extract(TransactionDetails, '$.discount_code') END AS DiscountInfo,
+         ELSE NULL END AS DiscountInfo,
     COALESCE(json_extract_string(TransactionDetails, '$.po_number'), 'N/A') AS PONumber,
     json_extract_string(TransactionDetails, '$.currency') AS Currency
 FROM Sales.Transactions
