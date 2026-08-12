@@ -1,15 +1,16 @@
--- OP 14 Variant A (Direct translation): OPENJSON WITH -> SELECT json_extract from a scalar JSON column.
-WITH sample AS (
-    SELECT TransactionDetails AS doc
+-- OP 14: OpenJSON with explicit schema for table-valued parsing
+SELECT
+    json_extract_string(j.TransactionDetails, '$.payment_method') AS payment_method,
+    json_extract_string(j.TransactionDetails, '$.terms') AS terms,
+    json_extract_string(j.TransactionDetails, '$.discount_code') AS discount_code,
+    json_extract_string(j.TransactionDetails, '$.po_number') AS po_number,
+    CASE WHEN json_extract_string(j.TransactionDetails, '$.processed') = 'true' THEN 1
+         WHEN json_extract_string(j.TransactionDetails, '$.processed') = 'false' THEN 0
+         ELSE NULL END AS processed
+FROM (
+    SELECT TransactionDetails
     FROM Sales.Transactions
     WHERE TransactionDetails IS NOT NULL
+    ORDER BY TransactionID
     LIMIT 1
-)
-SELECT
-    json_extract(doc, '$.payment_method')::VARCHAR AS payment_method,
-    json_extract(doc, '$.terms')::VARCHAR          AS terms,
-    json_extract(doc, '$.discount_code')::VARCHAR  AS discount_code,
-    json_extract(doc, '$.po_number')::VARCHAR       AS po_number,
-    CAST(json_extract(doc, '$.processed') AS BOOLEAN) AS processed
-FROM sample
-LIMIT 20;
+) AS j

@@ -1,12 +1,17 @@
--- OP 40 Variant A (Direct translation): Remove OPTION (USE HINT('ALLOW_BATCH_MODE')) hint.
--- DuckDB does not support batch-mode hints (and does not need them); drop the clause.
+-- OP 40: Batch mode on rowstore
 SELECT
-    t.EmployeeID,
-    e.FullName,
-    SUM(t.TotalAmount) AS TotalSales,
-    COUNT(*) OVER (PARTITION BY t.EmployeeID) AS EmployeeTransactionCount
-FROM Sales.Transactions t
-JOIN HR.Employees e ON t.EmployeeID = e.EmployeeID
-GROUP BY t.EmployeeID, e.FullName
+    EmployeeID,
+    FullName,
+    CAST(TotalSales AS DECIMAL(36,8)) AS TotalSales,
+    COUNT(*) OVER (PARTITION BY EmployeeID) AS EmployeeTransactionCount
+FROM (
+    SELECT
+        t.EmployeeID,
+        e.FullName,
+        SUM(t.TotalAmount) AS TotalSales
+    FROM Sales.Transactions t
+    JOIN HR.Employees e ON t.EmployeeID = e.EmployeeID
+    GROUP BY t.EmployeeID, e.FullName
+) AS grouped
 ORDER BY TotalSales DESC
-LIMIT 50;
+LIMIT 50

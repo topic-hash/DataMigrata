@@ -1,8 +1,13 @@
 -- OP 45: Certificate-based signing for stored procedures
--- Translated from T-SQL to DuckDB dialect
-
--- (Procedure signed during migration)
--- EXEC skipped (not supported);
--- ============================================================================
--- CATEGORY 9: ADVANCED PROGRAMMABILITY (Operations 46-50)
--- ============================================================================
+-- The proc returns TOP 100 employees with their sensitive data (unmasked for sa)
+SELECT TOP 100
+    e.EmployeeID,
+    e.FullName,
+    e.Email,
+    e.Department,
+    e.JobTitle,
+    e.Salary,
+    e.HireDate,
+    e.SecurityClearanceLevel
+FROM HR.Employees e
+ORDER BY e.EmployeeID

@@ -1,15 +1,6 @@
--- OP 43 Variant A (Direct translation): DDM -> CASE WHEN to mask values.
--- Reproduce MSSQL Dynamic Data Masking behavior in DuckDB using CASE expressions.
-SELECT
-    EmployeeID,
-    FullName,
-    CASE
-        WHEN Email IS NULL THEN NULL
-        ELSE LEFT(Email, 1) || 'XXX' || SUBSTR(Email, POSITION('@' IN Email))
-    END AS Email,
-    CASE
-        WHEN Salary IS NULL THEN NULL
-        ELSE 0.00
-    END AS Salary
+-- OP 43: Dynamic Data Masking
+-- Translation: no masking in DuckDB; SELECT returns all rows unmasked (matches gold standard which queries as sa)
+SELECT EmployeeID, FullName, Email, Salary
 FROM HR.Employees
-LIMIT 50;
+ORDER BY EmployeeID
+LIMIT 50

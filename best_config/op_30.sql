@@ -1,9 +1,12 @@
 -- OP 30: View with window functions and framing
--- Translated from T-SQL to DuckDB dialect
-
-SELECT * FROM Sales.vw_RunningTotalsAndRanks 
+SELECT
+    FullName,
+    TransactionDate,
+    CAST(TotalAmount AS DECIMAL(36,8)) AS TotalAmount,
+    CAST(RunningTotal AS DECIMAL(36,8)) AS RunningTotal,
+    SalesRank,
+    CAST(PrevAmount AS DECIMAL(36,8)) AS PrevAmount,
+    CAST(NextAmount AS DECIMAL(36,8)) AS NextAmount
+FROM Sales.vw_RunningTotalsAndRanks
 ORDER BY FullName, TransactionDate
-LIMIT 100;
--- ============================================================================
--- CATEGORY 6: SPATIAL DATA (Operations 31-35)
--- ============================================================================
+LIMIT 100

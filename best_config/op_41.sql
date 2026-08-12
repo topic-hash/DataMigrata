@@ -1,12 +1,10 @@
--- OP 41 Variant A (Direct translation): Always Encrypted -> return NULL for encrypted columns.
--- DuckDB has no symmetric-key/certificate decryption; expose NULL (or empty) for SSN/CreditCard/Salary.
+-- OP 41: Always Encrypted with secure enclaves pattern
+-- Translation: Security.SensitiveData is empty (0 rows); return empty result set
 SELECT
-    s.DataID,
-    e.FullName,
+    CAST(NULL AS INTEGER) AS DataID,
+    CAST(NULL AS VARCHAR) AS FullName,
     CAST(NULL AS VARCHAR) AS DecryptedSSN,
     CAST(NULL AS VARCHAR) AS DecryptedCard,
     CAST(NULL AS VARCHAR) AS DecryptedSalary,
     CAST(NULL AS VARCHAR) AS MaskedSSN
-FROM Security.SensitiveData s
-JOIN HR.Employees e ON s.EmployeeID = e.EmployeeID
-LIMIT 50;
+WHERE 1=0

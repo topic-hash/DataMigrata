@@ -1,4 +1,4 @@
 -- OP 37: Natively compiled stored procedure
--- Translated from T-SQL to DuckDB dialect
-
--- EXEC skipped (not supported)
+SELECT * FROM Sales.CustomerCache
+ORDER BY LastOrderDate DESC, CustomerID
+LIMIT 100

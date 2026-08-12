@@ -1,25 +1,4 @@
--- OP 25 Variant A (Direct translation): Inline TVF -> CTE with parameters inlined.
--- DuckDB has no parameterized TVF; inline the parameters @EmployeeID, @StartDate, @EndDate.
-WITH params AS (
-    SELECT
-        6                       AS EmployeeID,
-        TIMESTAMP '2026-01-01'  AS StartDate,
-        TIMESTAMP '2026-12-31'  AS EndDate
-),
-fn_GetEmployeeSales AS (
-    SELECT
-        t.TransactionID,
-        t.EmployeeID,
-        e.FullName,
-        t.TotalAmount,
-        t.TransactionDate
-    FROM Sales.Transactions t
-    JOIN HR.Employees e ON e.EmployeeID = t.EmployeeID
-    CROSS JOIN params p
-    WHERE t.EmployeeID = p.EmployeeID
-      AND t.TransactionDate BETWEEN p.StartDate AND p.EndDate
-)
-SELECT *
-FROM fn_GetEmployeeSales
+-- OP 25: Inline Table-Valued Function (parameterized view equivalent)
+SELECT * FROM Sales.fn_GetEmployeeSales(6, '2026-01-01'::DATE, '2026-12-31'::DATE)
 ORDER BY TransactionDate
-LIMIT 50;
+LIMIT 50

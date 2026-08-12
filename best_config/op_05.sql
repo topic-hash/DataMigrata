@@ -1,6 +1,4 @@
 -- OP 5: Closure table pattern using recursive CTE for transitive relationships
--- Translated from T-SQL to DuckDB dialect
-
 WITH RECURSIVE TransitiveClosure AS (
     SELECT ManagerID AS Ancestor, EmployeeID AS Descendant, 1 AS Distance
     FROM HR.Employees WHERE ManagerID IS NOT NULL
@@ -8,8 +6,10 @@ WITH RECURSIVE TransitiveClosure AS (
     SELECT tc.Ancestor, e.EmployeeID, tc.Distance + 1
     FROM TransitiveClosure tc
     JOIN HR.Employees e ON tc.Descendant = e.ManagerID
+    WHERE tc.Distance < 20
 )
-SELECT     a.FullName AS Manager,
+SELECT
+    a.FullName AS Manager,
     d.FullName AS Subordinate,
     d.Department,
     tc.Distance,
@@ -17,8 +17,5 @@ SELECT     a.FullName AS Manager,
 FROM TransitiveClosure tc
 JOIN HR.Employees a ON tc.Ancestor = a.EmployeeID
 JOIN HR.Employees d ON tc.Descendant = d.EmployeeID
-ORDER BY tc.Ancestor, tc.Distance
-LIMIT 100;
--- ============================================================================
--- CATEGORY 2: XML OPERATIONS (Operations 6-10)
--- ============================================================================
+ORDER BY tc.Ancestor, tc.Distance, tc.Descendant
+LIMIT 100

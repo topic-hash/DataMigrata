@@ -1,30 +1,25 @@
--- OP 12 Variant A: Direct translation (FOR JSON PATH → json_group_array / json_object)
--- DuckDB equivalent of hierarchical nested JSON aggregation.
--- Note: DuckDB has no schema "Sales." by default; tables assumed in main schema.
-SELECT json_object(
-    'SalesReport',
-    json_group_array(
-        json_object(
-            'Department', e.Department,
-            'EmployeeName', e.FullName,
-            'TransactionsJSON', COALESCE((
-                SELECT json_group_array(
-                    json_object(
-                        'TransactionID', t.TransactionID,
-                        'TotalAmount', t.TotalAmount,
-                        'TransactionDate', t.TransactionDate,
-                        'PaymentMethod', json_extract(t.TransactionDetails, '$.payment_method')
-                    )
-                )
-                FROM Transactions t
-                WHERE t.EmployeeID = e.EmployeeID
-            ), '[]'::JSON)
-        )
-    )
-) AS SalesReportJSON
-FROM (
-    SELECT DISTINCT e.Department, e.FullName, e.EmployeeID
-    FROM Employees e
-    WHERE e.EmployeeID IN (SELECT DISTINCT EmployeeID FROM Transactions)
+-- OP 12: JSON aggregation with FOR JSON (hierarchical nested JSON)
+WITH EmployeeTransactions AS (
+    SELECT
+        e.Department,
+        e.EmployeeID,
+        e.FullName AS EmployeeName,
+        (
+            SELECT '[' || string_agg(
+                '{"TransactionID":' || CAST(t.TransactionID AS VARCHAR) ||
+                ',"TotalAmount":' || CAST(t.TotalAmount AS VARCHAR) ||
+                ',"TransactionDate":"' || CAST(t.TransactionDate AS VARCHAR) || '"' ||
+                ',"PaymentMethod":"' || json_extract_string(t.TransactionDetails, '$.payment_method') || '"}',
+                ','
+            ) || ']'
+            FROM Sales.Transactions t
+            WHERE t.EmployeeID = e.EmployeeID
+        ) AS TransactionsJSON
+    FROM HR.Employees e
+    WHERE e.EmployeeID IN (SELECT DISTINCT EmployeeID FROM Sales.Transactions)
+    ORDER BY e.Department, e.EmployeeID
     LIMIT 10
-) e;
+)
+SELECT
+    '[{"Department":"' || Department || '","EmployeeName":"' || EmployeeName || '","TransactionsJSON":' || TransactionsJSON || '}]' AS SalesReport
+FROM EmployeeTransactions

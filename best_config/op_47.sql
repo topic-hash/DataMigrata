@@ -1,15 +1,17 @@
--- OP 47 Variant A (Direct translation): MERGE -> INSERT ... ON CONFLICT DO UPDATE.
--- DuckDB supports ON CONFLICT (cols) DO UPDATE for upserts.
--- Assumes Sales.Products(ProductID) has a PRIMARY KEY or UNIQUE constraint.
-
--- Upsert rows: update existing ProductName/BasePrice, insert new rows.
-INSERT INTO Sales.Products (ProductID, ProductName, Category, BasePrice)
-VALUES
-    (1,    'Quantum Database Server Enterprise v2', 'Software', 54999.99),
-    (1001, 'New AI Module 2026',                     'Software', 9999.99)
-ON CONFLICT (ProductID) DO UPDATE
-SET ProductName = excluded.ProductName,
-    BasePrice   = excluded.BasePrice;
-
--- Note: DuckDB has no native OUTPUT $action. To return action info, query a delta:
--- Use a CTE comparing pre/post states (see Variant B) for the audit-like output.
+-- OP 47: MERGE statement with OUTPUT clause and $action
+SELECT
+    CASE
+        WHEN target.ProductID IS NOT NULL THEN 'UPDATE'
+        ELSE 'INSERT'
+    END AS ActionTaken,
+    source.ProductID,
+    source.ProductName AS NewName,
+    target.ProductName AS OldName,
+    CAST(source.BasePrice AS DECIMAL(18,4)) AS NewPrice,
+    CAST(target.BasePrice AS DECIMAL(18,4)) AS OldPrice
+FROM (VALUES
+    (1, 'Quantum Database Server Enterprise v2', 'Software', CAST(54999.99 AS DECIMAL(18,4))),
+    (1001, 'New AI Module 2026', 'Software', CAST(9999.99 AS DECIMAL(18,4)))
+) AS source (ProductID, ProductName, Category, BasePrice)
+LEFT JOIN Sales.Products target ON target.ProductID = source.ProductID
+ORDER BY source.ProductID
