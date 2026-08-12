@@ -99,13 +99,13 @@
 - [x] 082 3+ alternatives implemented per gap class (XML, spatial, temporal)
 
 ## Wave 5 — Schema Variants
-- [ ] 083 Schema A (baseline): tables as-is, no precomputation
-- [ ] 084 Schema A: 50/50 PASS
-- [ ] 085 Schema B (columnar-optimized): reorder columns, type tightening
-- [ ] 086 Schema B: 50/50 PASS
-- [ ] 087 Schema C (pre-computed): materialized paths, bbox, caches
-- [ ] 088 Schema C: 50/50 PASS
-- [ ] 089 schema_benchmark_report.md updated with all 3 variants
+- [x] 083 Schema A (baseline): tables as-is, no precomputation
+- [x] 084 Schema A: 50/50 PASS
+- [x] 085 Schema B (columnar-optimized): reorder columns, type tightening
+- [x] 086 Schema B: 50/50 PASS
+- [x] 087 Schema C (pre-computed): materialized paths, bbox, caches
+- [x] 088 Schema C: 50/50 PASS
+- [x] 089 schema_benchmark_report.md updated with all 3 variants
 
 ## Wave 6 — Combinatorial Optimization Search
 - [ ] 090 Search harness (op × schema × rewrite × alternative)
