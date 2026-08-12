@@ -169,8 +169,16 @@ def fmt_value(v):
         return str(v)
     if isinstance(v, float):
         if v == int(v) and abs(v) < 1e15:
-            return str(int(v))
-        return repr(v)
+            # MSSQL bcp prints integer-valued FLOATs as "N.0" (with .0 suffix)
+            return f"{int(v)}.0"
+        # MSSQL bcp prints floats with up to 17 significant digits, dropping trailing zeros
+        s = format(v, '.17g')
+        # Strip trailing zeros after decimal point (but keep at least one fractional digit)
+        if '.' in s and 'e' not in s and 'E' not in s:
+            s = s.rstrip('0')
+            if s.endswith('.'):
+                s = s[:-1]
+        return s
     if isinstance(v, datetime.datetime):
         # 6-digit microsecond precision (DuckDB native)
         return v.strftime("%Y-%m-%d %H:%M:%S") + f".{v.microsecond:06d}"
