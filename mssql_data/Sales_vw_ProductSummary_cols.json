@@ -1,0 +1,18 @@
+[
+  [
+    "Category",
+    "<class 'str'>"
+  ],
+  [
+    "ProductCount",
+    "<class 'int'>"
+  ],
+  [
+    "TotalBasePrice",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "TotalCostPrice",
+    "<class 'decimal.Decimal'>"
+  ]
+]

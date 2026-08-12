@@ -1,0 +1,18 @@
+[
+  [
+    "LookupKey",
+    "<class 'int'>"
+  ],
+  [
+    "DataValue",
+    "<class 'str'>"
+  ],
+  [
+    "Category",
+    "<class 'str'>"
+  ],
+  [
+    "Timestamp",
+    "<class 'datetime.datetime'>"
+  ]
+]

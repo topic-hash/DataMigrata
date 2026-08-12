@@ -1,0 +1,30 @@
+[
+  [
+    "SaleID",
+    "<class 'int'>"
+  ],
+  [
+    "SaleYear",
+    "<class 'int'>"
+  ],
+  [
+    "SaleMonth",
+    "<class 'int'>"
+  ],
+  [
+    "CustomerID",
+    "<class 'int'>"
+  ],
+  [
+    "ProductID",
+    "<class 'int'>"
+  ],
+  [
+    "Amount",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "Quantity",
+    "<class 'int'>"
+  ]
+]

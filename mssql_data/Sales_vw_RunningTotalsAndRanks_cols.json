@@ -1,0 +1,30 @@
+[
+  [
+    "FullName",
+    "<class 'str'>"
+  ],
+  [
+    "TransactionDate",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "TotalAmount",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "RunningTotal",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "SalesRank",
+    "<class 'int'>"
+  ],
+  [
+    "PrevAmount",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "NextAmount",
+    "<class 'decimal.Decimal'>"
+  ]
+]

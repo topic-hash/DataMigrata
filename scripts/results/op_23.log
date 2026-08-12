@@ -1,0 +1,33 @@
+=== OP 23 ===
+STATUS: PASS  exit=0  elapsed=0.09s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+ce,Specialist,183365.00,2026-07-05,1168
+1317,Gwendolyn Valdez,gwendolyn.valdez1317@corp.com,Finance,Senior Engineer,189986.00,2026-07-04,865
+800,Minnie Cisneros,minnie.cisneros800@corp.com,Customer Success,Director,87089.00,2026-07-04,245
+1402,Kendrick Glass,kendrick.glass1402@corp.com,R&D,VP,209914.00,2026-07-03,278
+3660,Wilbur Serrano,wilbur.serrano3660@corp.com,Legal,Specialist,209340.00,2026-07-02,2087
+1527,Wilbert Lambert,wilbert.lambert1527@corp.com,IT,Specialist,60985.00,2026-06-29,577
+4595,Dora Acosta,dora.acosta4595@corp.com,Customer Success,Architect,84019.00,2026-06-28,1924
+3447,Dylan Bradley,dylan.bradley3447@corp.com,IT,Senior Engineer,162561.00,2026-06-27,747
+523,Olivia Ross,olivia.ross523@corp.com,HR,Architect,145981.00,2026-06-25,79
+4941,Melissa Rivera,melissa.rivera4941@corp.com,Finance,Architect,239424.00,2026-06-24,339
+2230,Edward Campbell,edward.campbell2230@corp.com,Customer Success,Specialist,149844.00,2026-06-23,1772
+1870,Kayla Cunningham,kayla.cunningham1870@corp.com,Operations,Analyst,159856.00,2026-06-23,1766
+3564,Darin Pena,darin.pena3564@corp.com,R&D,Specialist,106728.00,2026-06-23,401
+3625,Tracey Johnston,tracey.johnston3625@corp.com,Finance,VP,64338.00,2026-06-23,1045
+1102,Henry Perry,henry.perry1102@corp.com,Finance,Engineer,64353.00,2026-06-21,275
+688,Luis Gutierrez,luis.gutierrez688@corp.com,Operations,Analyst,88560.00,2026-06-20,55
+3605,Rene Ware,rene.ware3605@corp.com,Marketing,Manager,190996.00,2026-06-20,142
+2373,Pablo Lynn,pablo.lynn2373@corp.com,HR,Architect,69313.00,2026-06-19,397
+2491,Jerry Long,jerry.long2491@corp.com,Operations,Coordinator,145945.00,2026-06-19,2052
+406,Lucia Mclean,lucia.mclean406@corp.com,Legal,Architect,179519.00,2026-06-15,354
+4852,Minnie Cisneros,minnie.cisneros4852@corp.com,R&D,Manager,225161.00,2026-06-15,2153
+4786,Faith Bender,faith.bender4786@corp.com,Operations,Analyst,139170.00,2026-06-15,554
+306,Maria Garcia,maria.garcia306@corp.com,IT,Senior Engineer,214667.00,2026-06-12,207
+
+(50 rows affected)
+

@@ -1,0 +1,119 @@
+op,status,duck_rows,gold_rows,error
+1,MISMATCH,100,100,""
+2,MISMATCH,50,50,""
+3,MISMATCH,100,100,""
+4,EXEC_FAIL,0,100,"Binder Error: No function matches the given name and argument types '+(VARCHAR, STRING_LITERAL)'. You might need to add "
+5,MISMATCH,100,100,""
+6,EXEC_FAIL,0,20,"Parser Error: syntax error at or near "("
+
+LINE 4: UPDATE TOP (10) HR.Employees
+                   ^"
+7,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "WHERE"
+
+LINE 10: WHERE e.EmployeeData IS NOT NULL
+         ^"
+8,EXEC_FAIL,0,20,"Parser Error: syntax error at or near "WHERE"
+
+LINE 11:      WHERE e2.EmployeeID = e.EmployeeID
+              ^"
+9,EXEC_FAIL,0,50,"Catalog Error: Scalar Function with name exist does not exist!
+Did you mean "main.list"?
+
+LINE 7: WHERE EmployeeData.exi"
+10,EXEC_FAIL,0,1,"Parser Error: syntax error at or near "."
+
+LINE 6: SELECT NULL.query('/Employee/Skills/Skill[NULL="Expert"]');
+         "
+11,MISMATCH,50,50,""
+12,EXEC_FAIL,0,2,"Parser Error: syntax error at or near "JSON"
+
+LINE 13:      FOR JSON PATH
+                  ^"
+13,EXEC_FAIL,0,20,"Parser Error: syntax error at or near "("
+
+LINE 4: UPDATE TOP (100) Sales.Transactions
+                   ^"
+14,EXEC_FAIL,0,1,"Parser Error: syntax error at or near "1"
+
+LINE 5: FROM OPENJSON((SELECT TOP 1 TransactionDetails FROM Sales.Transaction"
+15,EXEC_FAIL,0,2,"Parser Error: syntax error at or near "WITH"
+
+LINE 10: WITH (
+         ^"
+16,MISMATCH,50,0,""
+17,MISMATCH,50,50,""
+18,MISMATCH,50,50,""
+19,EXEC_FAIL,0,20,"Parser Error: syntax error at or near "1"
+
+LINE 6:     (SELECT TOP 1 h.TotalAmount 
+                        ^"
+20,MISMATCH,0,50,""
+21,EXEC_FAIL,0,10,"Parser Error: syntax error at or near "query"
+
+LINE 5: query it directly
+        ^"
+22,MISMATCH,50,50,""
+23,MISMATCH,50,50,""
+24,MISMATCH,50,50,""
+25,EXEC_FAIL,0,7,"Catalog Error: Table Function with name fn_getemployeesales does not exist!
+Did you mean "main.generate_series"?
+
+LINE 4"
+26,MISMATCH,5000,3124,""
+27,EXEC_FAIL,0,50,"Catalog Error: Table with name vw_NormalizedQuarterlySales does not exist!
+Did you mean "vw_EmployeeQuarterlySales"?
+
+LI"
+28,MISMATCH,100,100,""
+29,MISMATCH,100,100,""
+30,MISMATCH,100,100,""
+31,EXEC_FAIL,0,50,"Binder Error: No function matches the given name and argument types '/(VARCHAR, INTEGER_LITERAL)'. You might need to add"
+32,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "="
+
+LINE 9:     CASE WHEN NULL= TRUE = 1 THEN 'Within Range' ELSE 'Outside Range'"
+33,EXEC_FAIL,0,1,"Binder Error: Referenced column "NULL0" was not found because the FROM clause is missing
+
+LINE 5:     NULL0 / 1000 AS Ro"
+34,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "WITH"
+
+LINE 5: FROM Sales.Transactions WITH(INDEX(SIDX_Transactions_Region))
+    "
+35,MISMATCH,0,50,""
+36,MISMATCH,50,50,""
+37,EXEC_FAIL,0,100,"'NoneType' object has no attribute 'fetchall'"
+38,MISMATCH,50,50,""
+39,MISMATCH,1,6,""
+40,EXEC_FAIL,0,50,"Parser Error: syntax error at or near ")"
+
+LINE 12: )
+         ^"
+41,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "OPEN"
+
+LINE 4: OPEN SYMMETRIC KEY EmployeeSymKey
+        ^"
+42,MISMATCH,50,50,""
+43,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "query"
+
+LINE 5: query shows masked values for non-privileged users)
+        ^"
+44,EXEC_FAIL,0,0,"Parser Error: syntax error at or near "query"
+
+LINE 5: query the audit file if configured)
+        ^"
+45,EXEC_FAIL,0,100,"'NoneType' object has no attribute 'fetchall'"
+46,EXEC_FAIL,0,1,"Parser Error: syntax error at or near "DECLARE"
+
+LINE 4: DECLARE NULL Sales.OrderItemType;
+        ^"
+47,EXEC_FAIL,0,2,"Parser Error: syntax error at or near "Sales"
+
+LINE 4: MERGE Sales.Products AS target
+              ^"
+48,EXEC_FAIL,0,50,"Parser Error: syntax error at or near "AS"
+
+LINE 5:     TRY_CAST(JSON_VALUE(TransactionDetails, '$.seats' AS INTEGER)) A"
+49,MISMATCH,1,1,""
+50,EXEC_FAIL,0,106,"Parser Error: syntax error at or near "Sales"
+
+LINE 10: FROM CHANGETABLE(CHANGES Sales.Products, 0) CT
+                 "

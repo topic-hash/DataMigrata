@@ -1,0 +1,30 @@
+[
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "FullName",
+    "<class 'str'>"
+  ],
+  [
+    "SaleYear",
+    "<class 'int'>"
+  ],
+  [
+    "Q1",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "Q2",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "Q3",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "Q4",
+    "<class 'decimal.Decimal'>"
+  ]
+]

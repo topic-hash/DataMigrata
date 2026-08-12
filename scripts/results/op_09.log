@@ -1,0 +1,60 @@
+=== OP 9 ===
+STATUS: PASS  exit=0  elapsed=0.1s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+1,Rodolfo Gallagher,Sales
+2,Elma Salinas,Marketing
+3,Antoinette Barrera,R&D
+4,Lorenzo Munoz,Marketing
+5,Leigh Leach,Finance
+6,Russell Duncan,Engineering
+7,Stephen Morgan,Marketing
+8,Lori Marshall,Legal
+9,Pedro Espinoza,R&D
+10,Winifred Bender,Legal
+11,Catherine Hughes,Operations
+12,Reba Tyler,Customer Success
+13,Juanita Krueger,Customer Success
+14,Sondra Bean,R&D
+15,Jennie Salinas,Finance
+16,Lucy Nash,Engineering
+17,Celia Franco,Customer Success
+18,Mona Bender,Customer Success
+19,Bradford Mcclure,Marketing
+20,Sherman Bass,Operations
+21,Kendrick Glass,Marketing
+22,Rashad Villarreal,IT
+23,Alfonso Friedman,R&D
+24,Nicholas Morales,IT
+25,Steven Walker,Finance
+26,Wayne Wagner,Sales
+27,Thaddeus Conway,IT
+28,Cody Parsons,Operations
+29,Mariah Jimenez,Operations
+30,Bennie Duffy,Sales
+31,Dewayne Buck,Finance
+32,Cecilia Brock,Legal
+33,Victoria Willis,Sales
+34,Effie Hale,HR
+35,George Hall,HR
+36,Willie Nichols,HR
+37,Jennifer Williams,HR
+38,Lenore Gillespie,Operations
+39,Elva Roach,Legal
+40,Lucile Sheppard,HR
+41,Elvira Mclean,Marketing
+42,Ellen Carr,Engineering
+43,Dylan Bradley,R&D
+44,Cathleen Rosario,Legal
+45,Maria Garcia,Customer Success
+46,Ashley Robinson,Sales
+47,Maria Garcia,Legal
+48,Joyce Butler,IT
+49,Joseph Gonzalez,Operations
+50,Grace Fox,Sales
+
+(50 rows affected)
+

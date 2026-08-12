@@ -1,0 +1,18 @@
+[
+  [
+    "ManagerID",
+    "<class 'int'>"
+  ],
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "FullName",
+    "<class 'str'>"
+  ],
+  [
+    "Level",
+    "<class 'int'>"
+  ]
+]

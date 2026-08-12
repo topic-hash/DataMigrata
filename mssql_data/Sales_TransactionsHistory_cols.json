@@ -1,0 +1,58 @@
+[
+  [
+    "TransactionID",
+    "<class 'int'>"
+  ],
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "CustomerID",
+    "<class 'int'>"
+  ],
+  [
+    "ProductID",
+    "<class 'int'>"
+  ],
+  [
+    "Quantity",
+    "<class 'int'>"
+  ],
+  [
+    "UnitPrice",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "DiscountPct",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "TotalAmount",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "TransactionDate",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "Region",
+    "<class 'str'>"
+  ],
+  [
+    "TransactionDetails",
+    "<class 'str'>"
+  ],
+  [
+    "PaymentStatus",
+    "<class 'str'>"
+  ],
+  [
+    "ValidFrom",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "ValidTo",
+    "<class 'datetime.datetime'>"
+  ]
+]

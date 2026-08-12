@@ -1,0 +1,22 @@
+[
+  [
+    "OrgNode",
+    "<class 'str'>"
+  ],
+  [
+    "OrgLevel",
+    "<class 'int'>"
+  ],
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "PositionTitle",
+    "<class 'str'>"
+  ],
+  [
+    "Department",
+    "<class 'str'>"
+  ]
+]

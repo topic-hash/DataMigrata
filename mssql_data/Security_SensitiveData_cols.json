@@ -1,0 +1,34 @@
+[
+  [
+    "DataID",
+    "<class 'int'>"
+  ],
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "SSN",
+    "<class 'bytearray'>"
+  ],
+  [
+    "CreditCard",
+    "<class 'bytearray'>"
+  ],
+  [
+    "BankAccount",
+    "<class 'bytearray'>"
+  ],
+  [
+    "SalaryEncrypted",
+    "<class 'bytearray'>"
+  ],
+  [
+    "ConfidentialNote",
+    "<class 'str'>"
+  ],
+  [
+    "EncryptionDate",
+    "<class 'datetime.datetime'>"
+  ]
+]

@@ -1,0 +1,22 @@
+[
+  [
+    "TransactionDate",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "TransactionCount",
+    "<class 'int'>"
+  ],
+  [
+    "DailyTotal",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "AvgTransaction",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "ActiveEmployees",
+    "<class 'int'>"
+  ]
+]

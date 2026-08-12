@@ -1,0 +1,43 @@
+=== OP 2 ===
+STATUS: PASS  exit=0  elapsed=0.34s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+1,Rodolfo Gallagher,Sales,Architect,179366.00,49,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,53,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,54,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,42,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,67,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,71,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,27,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,60,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,46,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,51,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,60,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,55,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,58,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,49,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,34,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,47,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,54,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,47,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,55,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,48,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,52,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,44,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,52,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,38,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,38,2919427.00
+1,Rodolfo Gallagher,Sales,Architect,179366.00,66,2919427.00
+
+(50 rows affected)
+

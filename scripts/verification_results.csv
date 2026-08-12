@@ -1,0 +1,74 @@
+op,status,duck_rows,gold_rows,gold_hash,duck_hash,error
+1,PASS,100,100,f20322bc43979958,f20322bc43979958,""
+2,MISMATCH,50,50,ee322790bd8dfef7,22e9d60420dc8ab4,"line 0: duck=1,Jeannie Krause,Marketing,Engineer,155385.00,38,2881477.00 | gold=1,Jeannie Krause,Marketing,Engineer,155385.00,60,2881477.00"
+3,PASS,100,100,3e6290ff7c8aada5,3e6290ff7c8aada5,""
+4,PASS,100,100,7ff7ad5ffb2b4d78,7ff7ad5ffb2b4d78,""
+5,MISMATCH,100,100,44a0cf55993d21c4,edb6543570beaaff,"line 19: duck=Jeannie Krause,Olive Bean,Legal,2,Indirect | gold=Jeannie Krause,Evelyn Fisher,Operations,2,Indirect"
+6,MISMATCH,20,20,f58b0d44128102f6,453843506d56e5e2,"line 0: duck=1,Jeannie Krause,<Skills>['<Skill level="Expert">Python</Skill>', '<Skill level= | gold=1,Jeannie Krause,<Skill level="Expert">Python</Skill><Skill level="Advanced">Doc"
+7,MISMATCH,50,50,3c6494a140027041,b5fe29dda642dafb,"line 0: duck=1,Jeannie Krause,Advanced,Project Management | gold=1,Jeannie Krause,Advanced,Docker"
+8,MISMATCH,20,20,030223751063e3b0,a7928492eb5a92b0,"line 0: duck=1,Jeannie Krause,<Skills><Skill name="Project Management" level="Advanced"/><Ski | gold=1,Jeannie Krause,<Skills><Skill name="Python" level="Expert"/><Skill name="Docke"
+9,PASS,50,50,e3c42eb5d1bc5bd2,e3c42eb5d1bc5bd2,""
+10,PASS,1,1,c00bbc903bf0437d,c00bbc903bf0437d,""
+11,MISMATCH,50,50,2bcf68d4e609245e,7aaff0fc70e7309a,"line 12: duck=13,crypto,net_60,"SAVE15",PO-2026-0013,NULL | gold=13,crypto,net_60,NULL,PO-2026-0013,NULL"
+12,MISMATCH,10,2,2d1342a00d4603e4,8b7cb45003a7274b,"line 0: duck=[{"Department":"Customer Success","EmployeeName":"Kevin Green","TransactionsJSON | gold={"SalesReport":[{"Department":"Customer Success","EmployeeName":"Solomon Wilkins"
+13,PASS,20,20,d7e69098c87d152b,d7e69098c87d152b,""
+14,PASS,1,1,8f59da510de23c22,8f59da510de23c22,""
+15,EXEC_FAIL,0,2,a5621cefed6b9244,,"Catalog Error: Scalar Function with name json_extract_array does not exist!
+Did you mean "json_extract"?
+
+LINE 14:     LATERAL unnest(json_extract_array(j.j, '$')) AS t(elem)
+                         "
+16,EXEC_FAIL,0,0,d41d8cd98f00b204,,"Binder Error: Cannot compare values of type VARCHAR and type TIMESTAMP WITH TIME ZONE - an explicit cast is required
+
+LINE 10: WHERE ValidFrom <= CURRENT_TIMESTAMP - INTERVAL 1 DAY
+                   "
+17,EXEC_FAIL,0,50,c202bb6ee63d113d,,"Binder Error: Cannot compare values of type VARCHAR and type TIMESTAMP - an explicit cast is required
+
+LINE 12: WHERE ValidFrom <= '2026-12-31'::TIMESTAMP
+                         ^"
+18,EXEC_FAIL,0,50,293eb58090169802,,"Binder Error: No function matches the given name and argument types 'datediff(STRING_LITERAL, VARCHAR, VARCHAR)'. You might need to add explicit type casts.
+	Candidate functions:
+	datediff(VARCHAR, DA"
+19,EXEC_FAIL,0,20,0f800d60d8138eae,,"Binder Error: Cannot compare values of type VARCHAR and type TIMESTAMP WITH TIME ZONE - an explicit cast is required
+
+LINE 10:           AND h.ValidFrom <= CURRENT_TIMESTAMP - INTERVAL 2 HOUR
+        "
+20,EXEC_FAIL,0,50,f3dc4fabd959c42e,,"Binder Error: No function matches the given name and argument types 'datediff(STRING_LITERAL, VARCHAR, VARCHAR)'. You might need to add explicit type casts.
+	Candidate functions:
+	datediff(VARCHAR, DA"
+21,MISMATCH,10,10,14bd58e8410b2750,5a358d16f152ba83,"line 4: duck=Infrastructure,100,5359869.0000,3185103.0000 | gold=Infrastructure,100,5308505.0000,3185103.0000"
+22,EXEC_FAIL,0,50,06a6c90cf9084750,,"Binder Error: Cannot compare values of type VARCHAR and type TIMESTAMP - an explicit cast is required
+
+LINE 3: WHERE TransactionDate >= '2025-01-01'::TIMESTAMP
+                              ^"
+23,MISMATCH,50,50,b9fac253ec215224,2df157ce9c61df80,"line 0: duck=3266,Nathaniel Mckinney,nathaniel.mckinney3266@corp.com,Operations,Specialist,97 | gold=2015,Darnell Sharp,darnell.sharp2015@corp.com,Sales,Architect,73972.00,2026-07-2"
+24,MISMATCH,50,50,13b2611eacf63999,56d6d848ee66a4de,"line 0: duck=2026-08-12 20:13:14.211012,2,122499.93500000,61249.9675,1 | gold=2026-08-12 20:04:55.2101468,1,433744.95000000,433744.95000000,1"
+25,MISMATCH,3,1,4b7ff7c876829ed6,bc3e42909d130501,"line 0: duck=3765,2026-08-12 20:04:50.084861,293,33,44167.9900,0.0000,1457543.67000000,disput | gold=3765,2026-08-12 20:04:50.0848615,293,33,44167.9900,.0000,1457543.67000000,disput"
+26,MISMATCH,3117,3117,002314180a61ef62,873cebd36cc00c78,"line 3: duck=6,Gary Stewart,2026,NULL,NULL,1580043.60500000,NULL | gold=6,Gary Stewart,2026,NULL,NULL,1457543.67000000,NULL"
+27,MISMATCH,50,50,9aa0dd07354305a5,4ee05e910d0fb21e,"line 3: duck=6,Gary Stewart,2026,Q3,1580043.60500000 | gold=6,Gary Stewart,2026,Q3,1457543.67000000"
+28,MISMATCH,100,100,7a1e49c722a489c9,1c808332434bdecb,"line 1: duck=1,2,Tyler Foster,1 | gold=1,1264,Lamar Rubio,1"
+29,MISMATCH,100,100,0bf89567959f49df,f6edfd9e718fc688,"line 9: duck=Customer Success,Andrea Reyes,Detail,3,2741141.85800000,913713.95266667 | gold=Customer Success,Andrea Reyes,Detail,3,2741141.85800000,913713.95266666"
+30,MISMATCH,100,100,8a962d98b820aad6,53ce93e8e8546f17,"line 0: duck=Aaron Powell,2026-08-12 20:04:37.852804,756944.65000000,756944.65000000,3,NULL,2 | gold=Aaron Powell,2026-08-12 20:04:37.8528040,756944.65000000,756944.65000000,3,NULL,"
+31,MISMATCH,50,50,db396648182d0673,ce46f201106b2264,"line 0: duck=2060,2706,9.999999999990905e-06,POINT (31.41 -71.84),POINT (31.41 -71.85) | gold=497,1222,1.1142351381033757,POINT (24.44 60.66),POINT (24.44 60.67)"
+32,MISMATCH,50,50,135e166ee4e5db04,34f68c7e170ce834,"line 0: duck=1,549759.84000000,-28.95,36.35,0.13050422383907734,Within Range | gold=1,549759.84000000,-28.949999999999999,36.350000000000001,13685.45017515896,Outsi"
+33,MISMATCH,1,1,63b43e328f261324,49ebe37d0e13e94b,"line 0: duck=15128.783550544593,3,POINT (-0.1278 51.5074) | gold=15167.390843443118,3,POINT (-0.1278 51.5074)"
+34,MISMATCH,50,50,b153d32ead5de2d7,251c2740f0a50bb8,"line 0: duck=1,549759.84000000 | gold=1589,684339.80000000"
+35,PASS,50,50,5b954d95c603f90e,5b954d95c603f90e,""
+36,MISMATCH,50,50,cd0793c13fa6d944,1085a74070bbfc6b,"line 0: duck=3667,14736410.13000000,2947282.02600000,5,2026-08-12 20:04:49.239818 | gold=3667,14736410.13000000,2947282.02600000,5,2026-08-12 20:04:49.2398181"
+37,MISMATCH,100,100,9eb0a9e9541b5b62,786e277b6997cbb2,"line 0: duck=2359,Customer 1359 Ltd,contact1359@customer.com,MEA,2026-07-22 00:00:00,426770.0 | gold=2359,Customer 1359 Ltd,contact1359@customer.com,MEA,2026-07-22 00:00:00.0000000,"
+38,MISMATCH,50,50,2a6f91f00817bb01,91dc34b2951f8e98,"line 0: duck=100,LookupData_100_1743281781,C,2026-08-12 20:04:58.001824 | gold=100,LookupData_100_1743281781,C,2026-08-12 20:04:58.0018241"
+39,PASS,6,6,0134c53a6eada408,0134c53a6eada408,""
+40,PASS,50,50,a69c307c1062d7f5,a69c307c1062d7f5,""
+41,PASS,0,0,d41d8cd98f00b204,d41d8cd98f00b204,""
+42,PASS,50,50,b0142c6067c43ae6,b0142c6067c43ae6,""
+43,PASS,50,50,064418916dea0707,064418916dea0707,""
+44,PASS,0,0,d41d8cd98f00b204,d41d8cd98f00b204,""
+45,EXEC_FAIL,0,100,8da4af442c17631b,,"Parser Error: syntax error at or near "100"
+
+LINE 3: SELECT TOP 100
+                   ^"
+46,MISMATCH,1,1,415585bd389b6965,240ac9371ec2671a,"line 0: duck=5003 | gold=5002"
+47,MISMATCH,2,2,793c018ce138ba41,a93cc3979b77b099,"line 0: duck=UPDATE,1,Quantum Database Server Enterprise v2,Quantum Database Server Enterpris | gold=UPDATE,1,Quantum Database Server Enterprise v2,Starter Infrastructure Solution 1"
+48,PASS,50,50,740d8ea0a975355c,740d8ea0a975355c,""
+49,PASS,1,1,0cdc084b6e58cc11,0cdc084b6e58cc11,""
+50,MISMATCH,51,52,5eb7440c30f648bc,86ed1a5a09618b19,"line 1: duck=2,1,U,Pro Services Solution 2,61223.9900 | gold=1001,1,I,New AI Module 2026,9999.9900"

@@ -1,2 +1,20 @@
-skills/
-node_modules/
+# DataMigrata — Rust build artifacts
+/target/
+**/*.rs.bk
+*.pdb
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+
+# Generated snapshots (insta)
+*.snap.new
+
+# Local env
+.env
+.env.local
+
+# Existing (preserved from prior .gitignore)
+sql/*.log
+target/

@@ -1,0 +1,201 @@
+======================================================================
+DuckDB Migration Runner — 50 T-SQL Operations
+======================================================================
+
+Connecting to DuckDB at /home/codespace/duckdb_data/analytics.duckdb...
+  Connected.
+  Health check: SELECT 1 → OK
+
+--- Creating Schema ---
+  Schema created (18 statements)
+
+--- Creating Views ---
+  Views created (8 attempted)
+
+--- Loading Synthetic Data ---
+  Loaded 5000 employees
+  Loaded 3000 products
+  Loaded 5000 transactions
+  Loaded 990 history rows
+  Loaded 100 orgchart rows
+  Loaded 3000 archive rows
+  Loaded 3000 audit rows
+  Loaded 2000 cache rows
+  Loaded 1000 lookup rows
+  Loaded 2000 partitioned sales
+  SensitiveData: 0 rows (matches MSSQL)
+  Loaded 500 ETL rows
+
+--- Translating and Executing 50 Operations ---
+
+Found 50 operations to translate and execute
+
+  OP 01: FAIL — Recursive CTE with HIERARCHYID path building and cycle detec
+  OP 02: PASS — Recursive CTE with aggregation up the hierarchy
+  OP 03: PASS — HIERARCHYID data type for optimized tree operations
+  OP 04: FAIL — Recursive CTE with path enumeration and string aggregation
+  OP 05: PASS — Closure table pattern using recursive CTE for transitive rel
+  OP 06: FAIL — XML data modification using modify() method with XML DML
+  OP 07: FAIL — XML shredding with nodes() method and cross apply
+  OP 08: FAIL — XML aggregation using FOR XML EXPLICIT with TYPE directive
+  OP 09: FAIL — XML index optimization demonstration
+  OP 10: FAIL — Typed XML with XML Schema Collections
+  OP 11: PASS — JSON path queries with lax/strict modes
+  OP 12: FAIL — JSON aggregation with FOR JSON (hierarchical nested JSON)
+  OP 13: FAIL — JSON data modification with JSON_MODIFY
+  OP 14: FAIL — OpenJSON with explicit schema for table-valued parsing
+  OP 15: FAIL — JSON array aggregation and decomposition
+  OP 16: PASS — Temporal querying - AS OF
+  OP 17: PASS — Temporal querying - BETWEEN
+  OP 18: PASS — Temporal querying - CONTAINED IN
+  OP 19: FAIL — Temporal data reconstruction (point-in-time recovery simulat
+  OP 20: PASS — Temporal table with versioning analytics
+  OP 21: FAIL — Indexed (Materialized) View with SCHEMABINDING and aggregati
+  OP 22: PASS — Partitioned View across multiple tables
+  OP 23: PASS — View with CHECK OPTION for data integrity
+  OP 24: PASS — View with INSTEAD OF triggers for updatable complex views
+  OP 25: FAIL — Inline Table-Valued Function (parameterized view equivalent)
+  OP 26: PASS — View with PIVOT for cross-tabulation
+  OP 27: FAIL — View with UNPIVOT for normalization
+  OP 28: PASS — View with CROSS APPLY and recursive TVF
+  OP 29: PASS — View with GROUPING SETS for multi-dimensional aggregation
+  OP 30: PASS — View with window functions and framing
+  OP 31: FAIL — Geography spatial queries with SRID awareness
+  OP 32: FAIL — Spatial buffer and intersection calculations
+  OP 33: FAIL — Geometry collections and complex spatial objects
+  OP 34: FAIL — Spatial index query optimization
+  OP 35: PASS — Multi-polygon territory analysis
+  OP 36: PASS — Columnstore index for analytical workloads
+  OP 37: PASS — Natively compiled stored procedure
+  OP 38: PASS — Memory-optimized table with hash index
+  OP 39: PASS — Real-time operational analytics with columnstore
+  OP 40: FAIL — Batch mode on rowstore
+  OP 41: FAIL — Always Encrypted with secure enclaves pattern
+  OP 42: PASS — Row-Level Security (RLS) with predicate functions
+  OP 43: FAIL — Dynamic Data Masking
+  OP 44: FAIL — Audit specification for compliance
+  OP 45: PASS — Certificate-based signing for stored procedures
+  OP 46: FAIL — Table-valued parameters for bulk operations
+  OP 47: FAIL — MERGE statement with OUTPUT clause and $action
+  OP 48: FAIL — TRY_CONVERT with error handling for data type conversion
+  OP 49: PASS — SESSION_CONTEXT for cross-request state
+  OP 50: FAIL — System-versioned temporal with CHANGETABLE
+
+======================================================================
+FINAL REPORT
+======================================================================
+  Operations translated and executed: 50 of 50
+  PASS: 23
+  FAIL: 27
+  Database file: /home/codespace/duckdb_data/analytics.duckdb
+  Error log: /home/codespace/duckdb_data/errors.log
+  Migrated SQL files: /workspaces/DataMigrata/duckdb_migrated/
+  DB health check: HR.Employees count = 5000 → RUNNING
+
+  Results JSON: /home/codespace/duckdb_data/results.json
+
+--- Failed Operations (27) ---
+  OP 01: Recursive CTE with HIERARCHYID path building and c
+        Error: Binder Error: No function matches the given name and argument types '+(VARCHAR, 
+  OP 04: Recursive CTE with path enumeration and string agg
+        Error: Binder Error: No function matches the given name and argument types '+(VARCHAR, 
+  OP 06: XML data modification using modify() method with X
+        Error: Parser Error: syntax error at or near "("
+
+LINE 1: UPDATE TOP (10) HR.Employees
+
+  OP 07: XML shredding with nodes() method and cross apply
+        Error: Parser Error: syntax error at or near "WHERE"
+
+LINE 7: WHERE e.EmployeeData IS N
+  OP 08: XML aggregation using FOR XML EXPLICIT with TYPE d
+        Error: Parser Error: syntax error at or near "WHERE"
+
+LINE 8:      WHERE e2.EmployeeID 
+  OP 09: XML index optimization demonstration
+        Error: Catalog Error: Scalar Function with name exist does not exist!
+Did you mean "mai
+  OP 10: Typed XML with XML Schema Collections
+        Error: Parser Error: syntax error at or near "."
+
+LINE 3: SELECT NULL.query('/Employee/
+  OP 12: JSON aggregation with FOR JSON (hierarchical neste
+        Error: Parser Error: syntax error at or near "JSON"
+
+LINE 10:      FOR JSON PATH
+      
+  OP 13: JSON data modification with JSON_MODIFY
+        Error: Parser Error: syntax error at or near "("
+
+LINE 1: UPDATE TOP (100) Sales.Transa
+  OP 14: OpenJSON with explicit schema for table-valued par
+        Error: Parser Error: syntax error at or near "1"
+
+LINE 2: FROM OPENJSON((SELECT TOP 1 T
+  OP 15: JSON array aggregation and decomposition
+        Error: Parser Error: syntax error at or near "WITH"
+
+LINE 7: WITH (
+        ^
+  OP 19: Temporal data reconstruction (point-in-time recove
+        Error: Parser Error: syntax error at or near "1"
+
+LINE 3:     (SELECT TOP 1 h.TotalAmou
+  OP 21: Indexed (Materialized) View with SCHEMABINDING and
+        Error: Parser Error: syntax error at or near "query"
+
+LINE 2: query it directly
+       
+  OP 25: Inline Table-Valued Function (parameterized view e
+        Error: Catalog Error: Table Function with name fn_getemployeesales does not exist!
+Did 
+  OP 27: View with UNPIVOT for normalization
+        Error: Catalog Error: Table with name vw_NormalizedQuarterlySales does not exist!
+Did y
+  OP 31: Geography spatial queries with SRID awareness
+        Error: Binder Error: No function matches the given name and argument types '/(VARCHAR, 
+  OP 32: Spatial buffer and intersection calculations
+        Error: Parser Error: syntax error at or near "="
+
+LINE 6:     CASE WHEN NULL= TRUE = 1 
+  OP 33: Geometry collections and complex spatial objects
+        Error: Binder Error: Referenced column "NULL0" was not found because the FROM clause is
+  OP 34: Spatial index query optimization
+        Error: Parser Error: syntax error at or near "WITH"
+
+LINE 2: FROM Sales.Transactions WI
+  OP 40: Batch mode on rowstore
+        Error: Parser Error: syntax error at or near ")"
+
+LINE 9: )
+        ^
+  OP 41: Always Encrypted with secure enclaves pattern
+        Error: Parser Error: syntax error at or near "OPEN"
+
+LINE 1: OPEN SYMMETRIC KEY Employe
+  OP 43: Dynamic Data Masking
+        Error: Parser Error: syntax error at or near "query"
+
+LINE 2: query shows masked values
+  OP 44: Audit specification for compliance
+        Error: Parser Error: syntax error at or near "query"
+
+LINE 2: query the audit file if c
+  OP 46: Table-valued parameters for bulk operations
+        Error: Parser Error: syntax error at or near "DECLARE"
+
+LINE 1: DECLARE NULL Sales.Orde
+  OP 47: MERGE statement with OUTPUT clause and $action
+        Error: Parser Error: syntax error at or near "Sales"
+
+LINE 1: MERGE Sales.Products AS t
+  OP 48: TRY_CONVERT with error handling for data type conv
+        Error: Parser Error: syntax error at or near "AS"
+
+LINE 2:     TRY_CAST(JSON_VALUE(Tran
+  OP 50: System-versioned temporal with CHANGETABLE
+        Error: Parser Error: syntax error at or near "Sales"
+
+LINE 7: FROM CHANGETABLE(CHANGES 
+
+Done.

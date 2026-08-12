@@ -1,0 +1,10 @@
+#!/bin/bash
+# Fake ssh binary — exits 0 for "ssh -V" check, otherwise ignores args.
+# Used to satisfy gh's "could not find ssh executable" check when running
+# `gh cs ssh --stdio` (which doesn't actually need ssh).
+if [[ "$1" == "-V" ]]; then
+  echo "OpenSSH_9.0p1, OpenSSL 3.0.0" >&2
+  exit 0
+fi
+# Otherwise just exit 0 — gh won't actually exec this; it just checks LookPath.
+exit 0

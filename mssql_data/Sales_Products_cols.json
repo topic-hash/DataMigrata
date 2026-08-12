@@ -1,0 +1,50 @@
+[
+  [
+    "ProductID",
+    "<class 'int'>"
+  ],
+  [
+    "ProductName",
+    "<class 'str'>"
+  ],
+  [
+    "Category",
+    "<class 'str'>"
+  ],
+  [
+    "SubCategory",
+    "<class 'str'>"
+  ],
+  [
+    "BasePrice",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "CostPrice",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "Specifications",
+    "<class 'str'>"
+  ],
+  [
+    "SearchVector",
+    "<class 'str'>"
+  ],
+  [
+    "StockLevel",
+    "<class 'int'>"
+  ],
+  [
+    "ReorderPoint",
+    "<class 'int'>"
+  ],
+  [
+    "IsDiscontinued",
+    "<class 'bool'>"
+  ],
+  [
+    "CreatedAt",
+    "<class 'datetime.datetime'>"
+  ]
+]

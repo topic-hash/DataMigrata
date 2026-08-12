@@ -1,0 +1,100 @@
+1,Jeannie Krause,Marketing,Engineer,155385.00,0,Jeannie Krause,155385.00,Jeannie Krause
+10,Joe Kim,Engineering,VP,75063.00,1,Jeannie Krause > Joe Kim,230448.00,  Joe Kim
+52,Paula Wheeler,HR,Analyst,122620.00,2,Jeannie Krause > Joe Kim > Paula Wheeler,353068.00,    Paula Wheeler
+3107,Alonzo Parrish,Legal,VP,190217.00,3,Jeannie Krause > Joe Kim > Paula Wheeler > Alonzo Parrish,543285.00,      Alonzo Parrish
+4168,Mona Bender,Legal,Analyst,207544.00,3,Jeannie Krause > Joe Kim > Paula Wheeler > Mona Bender,560612.00,      Mona Bender
+726,Tracy Alvarez,Engineering,Architect,89653.00,3,Jeannie Krause > Joe Kim > Paula Wheeler > Tracy Alvarez,442721.00,      Tracy Alvarez
+741,Ina Savage,Finance,Analyst,223915.00,3,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage,576983.00,      Ina Savage
+1202,Samantha Richardson,Engineering,Director,165267.00,4,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Samantha Richardson,742250.00,        Samantha Richardson
+1472,Morgan Hansen,IT,Engineer,91966.00,4,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Morgan Hansen,668949.00,        Morgan Hansen
+1801,Monica Stanley,R&D,Architect,133036.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Morgan Hansen > Monica Stanley,801985.00,          Monica Stanley
+2311,Paul Allen,Operations,Engineer,188565.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Morgan Hansen > Monica Stanley > Paul Allen,990550.00,            Paul Allen
+2884,Colin Bowers,Legal,Director,233096.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Morgan Hansen > Monica Stanley > Paul Allen > Colin Bowers,1223646.00,              Colin Bowers
+4335,Emmett Barber,Marketing,VP,61270.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Morgan Hansen > Emmett Barber,730219.00,          Emmett Barber
+4073,Cathy Hobbs,Finance,Engineer,163191.00,4,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Cathy Hobbs,740174.00,        Cathy Hobbs
+962,Christina Ellis,Legal,Engineer,126271.00,4,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis,703254.00,        Christina Ellis
+1006,Jason Sims,R&D,Consultant,170792.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims,874046.00,          Jason Sims
+1129,Inez Rollins,IT,VP,199616.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins,1073662.00,            Inez Rollins
+1290,Kathy Cole,Engineering,Specialist,59548.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins > Kathy Cole,1133210.00,              Kathy Cole
+1770,Marsha Fleming,HR,Coordinator,194083.00,8,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins > Kathy Cole > Marsha Fleming,1327293.00,                Marsha Fleming
+4067,Angelo Nolan,Operations,Analyst,248651.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins > Angelo Nolan,1322313.00,              Angelo Nolan
+4619,Andre Hampton,Operations,Director,93020.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins > Andre Hampton,1166682.00,              Andre Hampton
+4731,Lyman Ware,R&D,Specialist,197594.00,8,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Inez Rollins > Andre Hampton > Lyman Ware,1364276.00,                Lyman Ware
+1766,Garry Huff,Customer Success,Specialist,218599.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Garry Huff,1092645.00,            Garry Huff
+3559,Jane Ryan,R&D,Analyst,104602.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Garry Huff > Jane Ryan,1197247.00,              Jane Ryan
+3655,Dewayne Trevino,Finance,Manager,65523.00,8,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Garry Huff > Jane Ryan > Dewayne Trevino,1262770.00,                Dewayne Trevino
+3578,Gustavo Pitts,Finance,Senior Engineer,57624.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Garry Huff > Gustavo Pitts,1150269.00,              Gustavo Pitts
+2972,Lanny Rubio,Legal,VP,231727.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Lanny Rubio,1105773.00,            Lanny Rubio
+3234,Eddie Barber,Customer Success,VP,138684.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Lanny Rubio > Eddie Barber,1244457.00,              Eddie Barber
+4075,Jenny Hardin,IT,Coordinator,117041.00,7,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Jason Sims > Lanny Rubio > Jenny Hardin,1222814.00,              Jenny Hardin
+1830,Elena Lyons,Marketing,VP,110981.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Elena Lyons,814235.00,          Elena Lyons
+2915,Ronald Carter,R&D,Consultant,101200.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Elena Lyons > Ronald Carter,915435.00,            Ronald Carter
+3406,Clifford Doyle,Marketing,Engineer,81354.00,6,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Elena Lyons > Clifford Doyle,895589.00,            Clifford Doyle
+3259,Reba Tyler,Sales,Coordinator,112192.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Reba Tyler,815446.00,          Reba Tyler
+3579,Nora Andersen,Operations,Analyst,161349.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Nora Andersen,864603.00,          Nora Andersen
+4036,Effie Hale,HR,Engineer,231075.00,5,Jeannie Krause > Joe Kim > Paula Wheeler > Ina Savage > Christina Ellis > Effie Hale,934329.00,          Effie Hale
+11,Jana Castaneda,HR,Engineer,230963.00,1,Jeannie Krause > Jana Castaneda,386348.00,  Jana Castaneda
+1746,Mable Norton,R&D,Coordinator,136836.00,2,Jeannie Krause > Jana Castaneda > Mable Norton,523184.00,    Mable Norton
+3233,Lynnette Donaldson,Engineering,Coordinator,203801.00,3,Jeannie Krause > Jana Castaneda > Mable Norton > Lynnette Donaldson,726985.00,      Lynnette Donaldson
+4339,Mariah Jimenez,R&D,Architect,150900.00,4,Jeannie Krause > Jana Castaneda > Mable Norton > Lynnette Donaldson > Mariah Jimenez,877885.00,        Mariah Jimenez
+19,Ryan Cruz,IT,Consultant,217651.00,2,Jeannie Krause > Jana Castaneda > Ryan Cruz,603999.00,    Ryan Cruz
+120,Andre Hampton,Sales,Manager,197552.00,3,Jeannie Krause > Jana Castaneda > Ryan Cruz > Andre Hampton,801551.00,      Andre Hampton
+3041,Rudy Black,Marketing,Architect,231528.00,4,Jeannie Krause > Jana Castaneda > Ryan Cruz > Andre Hampton > Rudy Black,1033079.00,        Rudy Black
+4202,Ronald Carter,Operations,Manager,245606.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Andre Hampton > Rudy Black > Ronald Carter,1278685.00,          Ronald Carter
+26,Winifred Bender,Legal,Specialist,174349.00,3,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender,778348.00,      Winifred Bender
+113,Leola Olsen,Engineering,Architect,98552.00,4,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen,876900.00,        Leola Olsen
+1791,Robert Johnson,Finance,Coordinator,78502.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Robert Johnson,955402.00,          Robert Johnson
+2386,Raul Morse,R&D,Architect,141668.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Robert Johnson > Raul Morse,1097070.00,            Raul Morse
+2501,Fernando Glass,Operations,Consultant,234956.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Robert Johnson > Fernando Glass,1190358.00,            Fernando Glass
+316,Maureen Fields,Customer Success,Engineer,173630.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields,1050530.00,          Maureen Fields
+2536,Billy Hawkins,R&D,Specialist,234735.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Billy Hawkins,1285265.00,            Billy Hawkins
+406,Connie Gross,Marketing,Senior Engineer,246882.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Connie Gross,1297412.00,            Connie Gross
+448,Jackie Higgins,IT,Senior Engineer,222108.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins,1272638.00,            Jackie Higgins
+1044,Essie Orr,Sales,Engineer,247599.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Essie Orr,1520237.00,              Essie Orr
+1904,Zachary Romero,Engineering,Coordinator,145461.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Essie Orr > Zachary Romero,1665698.00,                Zachary Romero
+4898,Lillie Castaneda,Legal,Consultant,244265.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Essie Orr > Zachary Romero > Lillie Castaneda,1909963.00,                  Lillie Castaneda
+4239,Brenda Cooper,IT,Engineer,200858.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Essie Orr > Brenda Cooper,1721095.00,                Brenda Cooper
+1447,Shelby Horn,R&D,Consultant,61022.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Shelby Horn,1333660.00,              Shelby Horn
+2571,Robert Williamson,R&D,Coordinator,114658.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Shelby Horn > Robert Williamson,1448318.00,                Robert Williamson
+2607,Marcie Franco,Engineering,VP,126764.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Shelby Horn > Robert Williamson > Marcie Franco,1575082.00,                  Marcie Franco
+4622,Jack Castillo,Engineering,VP,245193.00,10,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Shelby Horn > Robert Williamson > Marcie Franco > Jack Castillo,1820275.00,                    Jack Castillo
+2668,Shelia Horn,IT,Coordinator,174091.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Shelby Horn > Robert Williamson > Shelia Horn,1622409.00,                  Shelia Horn
+484,Susie Valencia,Operations,Consultant,236641.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Susie Valencia,1509279.00,              Susie Valencia
+2737,Lori Marshall,Engineering,Architect,219663.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Susie Valencia > Lori Marshall,1728942.00,                Lori Marshall
+4507,Dennis Patel,Marketing,Consultant,227172.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Susie Valencia > Lori Marshall > Dennis Patel,1956114.00,                  Dennis Patel
+572,Patsy Glover,HR,Engineer,168920.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Patsy Glover,1441558.00,              Patsy Glover
+1269,Dante Herman,Sales,Architect,205899.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Patsy Glover > Dante Herman,1647457.00,                Dante Herman
+2109,Elijah Andrews,HR,Consultant,142315.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Patsy Glover > Elijah Andrews,1583873.00,                Elijah Andrews
+4342,Dewey Villarreal,IT,VP,150208.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Patsy Glover > Elijah Andrews > Dewey Villarreal,1734081.00,                  Dewey Villarreal
+3700,Mandy Ware,Operations,Coordinator,90927.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Jackie Higgins > Patsy Glover > Mandy Ware,1532485.00,                Mandy Ware
+478,Lynette Donaldson,Finance,Manager,180150.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson,1230680.00,            Lynette Donaldson
+880,Cyrus Fuentes,Customer Success,Architect,217424.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes,1448104.00,              Cyrus Fuentes
+1724,Juanita Krueger,Legal,Consultant,173710.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Juanita Krueger,1621814.00,                Juanita Krueger
+4279,Johnnie Valencia,Operations,Senior Engineer,50586.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Juanita Krueger > Johnnie Valencia,1672400.00,                  Johnnie Valencia
+4766,Mable Norton,R&D,Manager,232520.00,10,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Juanita Krueger > Johnnie Valencia > Mable Norton,1904920.00,                    Mable Norton
+4830,Pablo Lynn,Marketing,Director,141382.00,10,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Juanita Krueger > Johnnie Valencia > Pablo Lynn,1813782.00,                    Pablo Lynn
+4950,Arthur Cole,Operations,Coordinator,160999.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Juanita Krueger > Arthur Cole,1782813.00,                  Arthur Cole
+3947,Forrest Brandt,Finance,Consultant,94077.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Forrest Brandt,1542181.00,                Forrest Brandt
+4741,Rebecca Phillips,R&D,Engineer,220841.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Rebecca Phillips,1668945.00,                Rebecca Phillips
+4798,Theresa Austin,Engineering,Senior Engineer,92031.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Lynette Donaldson > Cyrus Fuentes > Rebecca Phillips > Theresa Austin,1760976.00,                  Theresa Austin
+646,Erik Mclaughlin,R&D,VP,97238.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin,1147768.00,            Erik Mclaughlin
+1667,Yolanda Roth,Legal,Analyst,65823.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Yolanda Roth,1213591.00,              Yolanda Roth
+1735,Irene Glover,HR,VP,58289.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Yolanda Roth > Irene Glover,1271880.00,                Irene Glover
+1976,Winifred Bender,Operations,VP,211724.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Yolanda Roth > Winifred Bender,1425315.00,                Winifred Bender
+2078,Jeff Bass,IT,Engineer,61592.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Yolanda Roth > Winifred Bender > Jeff Bass,1486907.00,                  Jeff Bass
+2878,Sarah Thomas,Sales,VP,105230.00,10,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Yolanda Roth > Winifred Bender > Jeff Bass > Sarah Thomas,1592137.00,                    Sarah Thomas
+3145,Rex Baird,HR,Analyst,188060.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Rex Baird,1335828.00,              Rex Baird
+3849,Rachel Mendoza,Operations,Coordinator,214411.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Maureen Fields > Erik Mclaughlin > Rex Baird > Rachel Mendoza,1550239.00,                Rachel Mendoza
+3614,Agnes Farrell,Customer Success,Senior Engineer,120976.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Agnes Farrell,997876.00,          Agnes Farrell
+4384,Carmen Ware,R&D,Senior Engineer,204509.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Carmen Ware,1081409.00,          Carmen Ware
+496,Jenny Hardin,Customer Success,Analyst,164910.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin,1041810.00,          Jenny Hardin
+2931,Mildred Snyder,HR,Senior Engineer,55499.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Mildred Snyder,1097309.00,            Mildred Snyder
+944,Joann Sullivan,Operations,Manager,109541.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Joann Sullivan,1151351.00,            Joann Sullivan
+1340,Evelyn Fisher,Sales,Engineer,64072.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Joann Sullivan > Evelyn Fisher,1215423.00,              Evelyn Fisher
+1383,Sandra Ramirez,Legal,Architect,232399.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Joann Sullivan > Evelyn Fisher > Sandra Ramirez,1447822.00,                Sandra Ramirez
+2832,Iris Farrell,IT,Engineer,236621.00,9,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Joann Sullivan > Evelyn Fisher > Sandra Ramirez > Iris Farrell,1684443.00,                  Iris Farrell
+2467,Don Morse,Customer Success,VP,152821.00,8,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jenny Hardin > Joann Sullivan > Evelyn Fisher > Don Morse,1368244.00,                Don Morse
+616,Jill McCoy,HR,Engineer,110491.00,5,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jill McCoy,987391.00,          Jill McCoy
+1104,Marcus Kirk,Finance,Analyst,45460.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jill McCoy > Marcus Kirk,1032851.00,            Marcus Kirk
+2282,Gregory Chavez,HR,Manager,160598.00,6,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jill McCoy > Gregory Chavez,1147989.00,            Gregory Chavez
+2677,Lynnette Donaldson,Customer Success,Manager,158874.00,7,Jeannie Krause > Jana Castaneda > Ryan Cruz > Winifred Bender > Leola Olsen > Jill McCoy > Gregory Chavez > Lynnette Donaldson,1306863.00,              Lynnette Donaldson

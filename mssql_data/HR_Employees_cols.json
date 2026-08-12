@@ -1,0 +1,66 @@
+[
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "ManagerID",
+    "<class 'int'>"
+  ],
+  [
+    "FullName",
+    "<class 'str'>"
+  ],
+  [
+    "Email",
+    "<class 'str'>"
+  ],
+  [
+    "Department",
+    "<class 'str'>"
+  ],
+  [
+    "JobTitle",
+    "<class 'str'>"
+  ],
+  [
+    "Salary",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "HireDate",
+    "<class 'datetime.date'>"
+  ],
+  [
+    "TerminationDate",
+    "<class 'datetime.date'>"
+  ],
+  [
+    "IsActive",
+    "<class 'int'>"
+  ],
+  [
+    "SecurityClearanceLevel",
+    "<class 'int'>"
+  ],
+  [
+    "EmployeeData",
+    "<class 'str'>"
+  ],
+  [
+    "ProfilePicture",
+    "<class 'bytearray'>"
+  ],
+  [
+    "RowVersion",
+    "<class 'bytearray'>"
+  ],
+  [
+    "CreatedAt",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "ModifiedAt",
+    "<class 'datetime.datetime'>"
+  ]
+]

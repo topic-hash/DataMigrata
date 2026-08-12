@@ -1,0 +1,26 @@
+[
+  [
+    "Department",
+    "<class 'str'>"
+  ],
+  [
+    "Employee",
+    "<class 'str'>"
+  ],
+  [
+    "GroupingLevel",
+    "<class 'str'>"
+  ],
+  [
+    "TransactionCount",
+    "<class 'int'>"
+  ],
+  [
+    "TotalSales",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "AvgSales",
+    "<class 'decimal.Decimal'>"
+  ]
+]

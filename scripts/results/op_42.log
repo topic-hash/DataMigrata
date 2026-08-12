@@ -1,0 +1,60 @@
+=== OP 42 ===
+STATUS: PASS  exit=0  elapsed=0.1s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+1,Rodolfo Gallagher,Sales,179366.00
+2,Elma Salinas,Marketing,230622.00
+3,Antoinette Barrera,R&D,235184.00
+4,Lorenzo Munoz,Marketing,192367.00
+5,Leigh Leach,Finance,54222.00
+6,Russell Duncan,Engineering,80010.00
+7,Stephen Morgan,Marketing,222106.00
+8,Lori Marshall,Legal,227487.00
+9,Pedro Espinoza,R&D,154283.00
+10,Winifred Bender,Legal,214977.00
+11,Catherine Hughes,Operations,77204.00
+12,Reba Tyler,Customer Success,51914.00
+13,Juanita Krueger,Customer Success,78415.00
+14,Sondra Bean,R&D,53531.00
+15,Jennie Salinas,Finance,204510.00
+16,Lucy Nash,Engineering,220302.00
+17,Celia Franco,Customer Success,92857.00
+18,Mona Bender,Customer Success,176860.00
+19,Bradford Mcclure,Marketing,249805.00
+20,Sherman Bass,Operations,134017.00
+21,Kendrick Glass,Marketing,215549.00
+22,Rashad Villarreal,IT,99420.00
+23,Alfonso Friedman,R&D,127976.00
+24,Nicholas Morales,IT,243306.00
+25,Steven Walker,Finance,222981.00
+26,Wayne Wagner,Sales,166108.00
+27,Thaddeus Conway,IT,199665.00
+28,Cody Parsons,Operations,98384.00
+29,Mariah Jimenez,Operations,207473.00
+30,Bennie Duffy,Sales,241798.00
+31,Dewayne Buck,Finance,202857.00
+32,Cecilia Brock,Legal,246649.00
+33,Victoria Willis,Sales,235005.00
+34,Effie Hale,HR,122617.00
+35,George Hall,HR,180315.00
+36,Willie Nichols,HR,83097.00
+37,Jennifer Williams,HR,98999.00
+38,Lenore Gillespie,Operations,149985.00
+39,Elva Roach,Legal,59927.00
+40,Lucile Sheppard,HR,65178.00
+41,Elvira Mclean,Marketing,145740.00
+42,Ellen Carr,Engineering,103629.00
+43,Dylan Bradley,R&D,213731.00
+44,Cathleen Rosario,Legal,102469.00
+45,Maria Garcia,Customer Success,132422.00
+46,Ashley Robinson,Sales,95207.00
+47,Maria Garcia,Legal,156189.00
+48,Joyce Butler,IT,152387.00
+49,Joseph Gonzalez,Operations,200034.00
+50,Grace Fox,Sales,138895.00
+
+(50 rows affected)
+

@@ -1,0 +1,58 @@
+=== OP 11 ===
+STATUS: PASS  exit=0  elapsed=0.09s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+e,NULL,PO-2026-0003,NULL
+4,crypto,immediate,NULL,PO-2026-0004,NULL
+5,crypto,net_30,NULL,PO-2026-0005,NULL
+6,sepa,net_45,NULL,PO-2026-0006,NULL
+7,ach,net_45,NULL,PO-2026-0007,NULL
+8,sepa,net_45,NULL,PO-2026-0008,NULL
+9,crypto,net_45,NULL,PO-2026-0009,NULL
+10,ach,net_60,NULL,PO-2026-0010,NULL
+11,wire_transfer,immediate,NULL,PO-2026-0011,NULL
+12,ach,net_45,NULL,PO-2026-0012,NULL
+13,sepa,net_30,NULL,PO-2026-0013,NULL
+14,wire_transfer,net_30,NULL,PO-2026-0014,NULL
+15,credit_card,net_45,NULL,PO-2026-0015,NULL
+16,ach,net_30,NULL,PO-2026-0016,NULL
+17,crypto,net_60,NULL,PO-2026-0017,NULL
+18,crypto,immediate,NULL,PO-2026-0018,NULL
+19,ach,net_60,NULL,PO-2026-0019,NULL
+20,sepa,net_60,NULL,PO-2026-0020,NULL
+21,ach,net_60,NULL,PO-2026-0021,NULL
+22,credit_card,immediate,NULL,PO-2026-0022,NULL
+23,crypto,immediate,NULL,PO-2026-0023,NULL
+24,wire_transfer,net_60,NULL,PO-2026-0024,NULL
+25,crypto,net_45,NULL,PO-2026-0025,NULL
+26,credit_card,net_30,NULL,PO-2026-0026,NULL
+27,wire_transfer,immediate,NULL,PO-2026-0027,NULL
+28,crypto,immediate,NULL,PO-2026-0028,NULL
+29,sepa,net_30,NULL,PO-2026-0029,NULL
+30,crypto,net_30,NULL,PO-2026-0030,NULL
+31,sepa,net_45,NULL,PO-2026-0031,NULL
+32,wire_transfer,net_60,NULL,PO-2026-0032,NULL
+33,sepa,net_60,NULL,PO-2026-0033,NULL
+34,wire_transfer,net_30,NULL,PO-2026-0034,NULL
+35,wire_transfer,net_45,NULL,PO-2026-0035,NULL
+36,crypto,net_60,NULL,PO-2026-0036,NULL
+37,ach,net_60,NULL,PO-2026-0037,NULL
+38,sepa,net_60,NULL,PO-2026-0038,NULL
+39,wire_transfer,net_60,NULL,PO-2026-0039,NULL
+40,sepa,immediate,NULL,PO-2026-0040,NULL
+41,crypto,immediate,NULL,PO-2026-0041,NULL
+42,wire_transfer,net_30,NULL,PO-2026-0042,NULL
+43,ach,net_30,NULL,PO-2026-0043,NULL
+44,ach,net_60,NULL,PO-2026-0044,NULL
+45,credit_card,immediate,NULL,PO-2026-0045,NULL
+46,ach,net_45,NULL,PO-2026-0046,NULL
+47,credit_card,net_60,NULL,PO-2026-0047,NULL
+48,credit_card,net_30,NULL,PO-2026-0048,NULL
+49,credit_card,net_60,NULL,PO-2026-0049,NULL
+50,sepa,immediate,NULL,PO-2026-0050,NULL
+
+(50 rows affected)
+

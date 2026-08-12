@@ -1,0 +1,20 @@
+=== OP 22 ===
+STATUS: PASS  exit=0  elapsed=0.11s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+d":"wire_transfer","terms":"immediate","po_number":"PO-2026-4964","processed":false,"discount_code":null},pending
+4963,2427,61,6,69277.9900,.0000,415667.94000000,2026-07-26 17:54:39.4557814,0xE610,{"payment_method":"ach","terms":"net_45","po_number":"PO-2026-4963","processed":false,"discount_code":null},completed
+4962,419,719,27,48918.9900,.1500,1122690.82050000,2026-07-26 17:54:39.4516916,0xE610,{"payment_method":"crypto","terms":"net_60","po_number":"PO-2026-4962","processed":false,"discount_code":"SAVE15"},disputed
+4961,1554,84,12,86307.9900,.1500,880341.49800000,2026-07-26 17:54:39.4475988,0xE610,{"payment_method":"crypto","terms":"net_60","po_number":"PO-2026-4961","processed":true,"discount_code":"SAVE15"},refunded
+4960,3158,436,47,81258.9900,.0000,3819172.53000000,2026-07-26 17:54:39.4394245,0xE610,{"payment_method":"credit_card","terms":"immediate","po_number":"PO-2026-4960","processed":false,"discount_code":null},refunded
+4959,934,989,47,81297.9900,.0000,3821005.53000000,2026-07-26 17:54:39.4312375,0xE610,{"payment_method":"crypto","terms":"net_60","po_number":"PO-2026-4959","processed":false,"discount_code":null},disputed
+4958,3641,210,33,12266.9900,.1500,344089.06950000,2026-07-26 17:54:39.4230604,0xE610,{"payment_method":"crypto","terms":"net_60","po_number":"PO-2026-4958","processed":true,"discount_code":"SAVE15"},disputed
+4957,998,642,37,72318.9900,.0000,2675802.63000000,2026-07-26 17:54:39.4189692,0xE610,{"payment_method":"ach","terms":"immediate","po_number":"PO-2026-4957","processed":false,"discount_code":null},completed
+4956,4167,77,16,59903.9900,.0000,958463.84000000,2026-07-26 17:54:39.4107883,0xE610,{"payment_method":"sepa","terms":"net_30","po_number":"PO-2026-4956","processed":false,"discount_code":null},pending
+4955,780,604,31,13077.9900,.0000,405417.69000000,2026-07-26 17:54:39.4066965,0xE610,{"payment_method":"wire_transfer","terms":"immediate","po_number":"PO-2026-4955","processed":false,"discount_code":null},completed
+
+(50 rows affected)
+

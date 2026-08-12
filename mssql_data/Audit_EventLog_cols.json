@@ -1,0 +1,42 @@
+[
+  [
+    "LogID",
+    "<class 'int'>"
+  ],
+  [
+    "EventTime",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "EventType",
+    "<class 'str'>"
+  ],
+  [
+    "TableName",
+    "<class 'str'>"
+  ],
+  [
+    "RecordID",
+    "<class 'str'>"
+  ],
+  [
+    "OldValues",
+    "<class 'str'>"
+  ],
+  [
+    "NewValues",
+    "<class 'str'>"
+  ],
+  [
+    "ChangedBy",
+    "<class 'str'>"
+  ],
+  [
+    "SessionContext",
+    "<class 'str'>"
+  ],
+  [
+    "Severity",
+    "<class 'int'>"
+  ]
+]

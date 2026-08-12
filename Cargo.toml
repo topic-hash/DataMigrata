@@ -1,0 +1,73 @@
+[package]
+name = "datamigrata"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["DataMigrata Team"]
+description = "Energy-optimal MSSQL-to-DuckDB migration compiler — Rust + DataFusion + sqlparser-rs"
+license = "MIT"
+repository = "https://github.com/topic-hash/DataMigrata"
+
+[[bin]]
+name = "datamigrata"
+path = "src/main.rs"
+
+[lib]
+name = "datamigrata"
+path = "src/lib.rs"
+
+[dependencies]
+# SQL parsing — Rust-native, supports MSSQL dialect (TOP, ISNULL, GETDATE, MERGE, FOR JSON/XML, HIERARCHYID)
+sqlparser = { version = "0.62", features = ["visitor"] }
+
+# IR + optimizer — Rust-native equivalent of Apache Calcite
+datafusion = "54"
+
+# Async runtime — proven at RisingWave scale, 5-10x lower memory than Java equivalents
+tokio = { version = "1", features = ["full"] }
+
+# DuckDB embedded target (in-process, zero idle power)
+# NOTE: duckdb crate is added when codespace has Rust; for now we generate SQL strings
+
+# Tracing / structured logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling — anyhow for application errors, thiserror for library errors
+anyhow = "1"
+thiserror = "1"
+
+# Serde for config / IR serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# CLI argument parsing
+clap = { version = "4", features = ["derive"] }
+
+# NOTE: No TNS/TDS protocol needed. Source is MSSQL T-SQL (read from files).
+# Target is DuckDB (in-process, no network protocol).
+
+[dev-dependencies]
+# Property-based testing for IR invariants
+# (disabled to save build time — re-enable when needed)
+# proptest = "1"
+# Snapshot testing for the 50 SQL operations
+# (disabled to save build time — re-enable when needed)
+# insta = { version = "1", features = ["yaml"] }
+criterion = { version = "0.5", features = ["async_tokio"] }
+
+[[bench]]
+name = "pipeline_bench"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.bench]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

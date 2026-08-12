@@ -1,0 +1,1000 @@
+1,2026-08-12 20:05:06.778000,INSERT,Security.SensitiveData,3370,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+2,2026-08-12 20:05:06.778000,SELECT,HR.Employees,3840,,,sa,,3
+3,2026-08-12 20:05:06.782000,SELECT,Security.SensitiveData,6288,"{""old"": ""value""}",,sa,,2
+4,2026-08-12 20:05:06.782000,UPDATE,Sales.Products,285,,"{""new"": ""value""}",sa,,1
+5,2026-08-12 20:05:06.782000,LOGIN,HR.Employees,4712,,,sa,,4
+6,2026-08-12 20:05:06.786000,UPDATE,HR.Employees,2253,,,sa,,2
+7,2026-08-12 20:05:06.786000,DELETE,Security.SensitiveData,1144,,"{""new"": ""value""}",sa,,5
+8,2026-08-12 20:05:06.786000,INSERT,HR.Employees,2230,"{""old"": ""value""}",,sa,,2
+9,2026-08-12 20:05:06.790000,SELECT,Sales.Products,6841,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+10,2026-08-12 20:05:06.790000,DELETE,Sales.Products,9213,"{""old"": ""value""}",,sa,,1
+11,2026-08-12 20:05:06.790000,LOGIN,Security.SensitiveData,9811,"{""old"": ""value""}",,sa,,3
+12,2026-08-12 20:05:06.794000,SELECT,Sales.Products,3550,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+13,2026-08-12 20:05:06.794000,LOGIN,Sales.Products,5,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+14,2026-08-12 20:05:06.794000,DELETE,Sales.Products,9116,,"{""new"": ""value""}",sa,,3
+15,2026-08-12 20:05:06.798000,LOGIN,Sales.Transactions,4525,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+16,2026-08-12 20:05:06.798000,SELECT,Sales.Transactions,5188,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+17,2026-08-12 20:05:06.798000,LOGIN,Sales.Products,2277,,,sa,,5
+18,2026-08-12 20:05:06.802000,INSERT,Security.SensitiveData,2283,,,sa,,4
+19,2026-08-12 20:05:06.802000,DELETE,HR.Employees,2220,,,sa,,1
+20,2026-08-12 20:05:06.802000,SELECT,Sales.Products,5787,"{""old"": ""value""}",,sa,,5
+21,2026-08-12 20:05:06.806000,LOGIN,Sales.Products,8143,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+22,2026-08-12 20:05:06.806000,INSERT,HR.Employees,412,"{""old"": ""value""}",,sa,,1
+23,2026-08-12 20:05:06.806000,SELECT,Sales.Products,4211,"{""old"": ""value""}",,sa,,2
+24,2026-08-12 20:05:06.810000,UPDATE,Security.SensitiveData,4027,"{""old"": ""value""}",,sa,,2
+25,2026-08-12 20:05:06.810000,INSERT,Sales.Transactions,1032,"{""old"": ""value""}",,sa,,3
+26,2026-08-12 20:05:06.810000,LOGIN,Sales.Products,6094,,"{""new"": ""value""}",sa,,3
+27,2026-08-12 20:05:06.815000,UPDATE,Security.SensitiveData,2306,,"{""new"": ""value""}",sa,,2
+28,2026-08-12 20:05:06.815000,DELETE,Sales.Transactions,8446,,"{""new"": ""value""}",sa,,2
+29,2026-08-12 20:05:06.815000,SELECT,Sales.Products,6390,"{""old"": ""value""}",,sa,,4
+30,2026-08-12 20:05:06.819000,DELETE,Sales.Transactions,5930,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+31,2026-08-12 20:05:06.819000,INSERT,Sales.Products,4827,,,sa,,4
+32,2026-08-12 20:05:06.823000,UPDATE,Sales.Products,8577,,,sa,,4
+33,2026-08-12 20:05:06.831000,SELECT,Security.SensitiveData,8020,,"{""new"": ""value""}",sa,,1
+34,2026-08-12 20:05:06.835000,SELECT,Sales.Products,2899,"{""old"": ""value""}",,sa,,3
+35,2026-08-12 20:05:06.835000,UPDATE,Sales.Products,7829,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+36,2026-08-12 20:05:06.835000,INSERT,Security.SensitiveData,7477,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+37,2026-08-12 20:05:06.839000,DELETE,Sales.Transactions,5049,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+38,2026-08-12 20:05:06.839000,SELECT,Sales.Products,8743,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+39,2026-08-12 20:05:06.839000,SELECT,Sales.Products,4962,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+40,2026-08-12 20:05:06.843000,INSERT,Sales.Transactions,6018,,"{""new"": ""value""}",sa,,5
+41,2026-08-12 20:05:06.843000,LOGIN,Sales.Products,2114,,,sa,,2
+42,2026-08-12 20:05:06.843000,UPDATE,Sales.Products,5908,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+43,2026-08-12 20:05:06.847000,SELECT,Security.SensitiveData,8118,,"{""new"": ""value""}",sa,,4
+44,2026-08-12 20:05:06.847000,DELETE,Sales.Products,3037,,,sa,,2
+45,2026-08-12 20:05:06.847000,INSERT,Security.SensitiveData,3407,"{""old"": ""value""}",,sa,,1
+46,2026-08-12 20:05:06.851000,INSERT,HR.Employees,2200,,,sa,,4
+47,2026-08-12 20:05:06.851000,LOGIN,Sales.Products,4123,,"{""new"": ""value""}",sa,,2
+48,2026-08-12 20:05:06.855000,INSERT,HR.Employees,4661,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+49,2026-08-12 20:05:06.855000,INSERT,HR.Employees,5571,"{""old"": ""value""}",,sa,,2
+50,2026-08-12 20:05:06.855000,DELETE,Sales.Products,4529,,"{""new"": ""value""}",sa,,3
+51,2026-08-12 20:05:06.859000,LOGIN,Sales.Products,75,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+52,2026-08-12 20:05:06.859000,SELECT,Security.SensitiveData,9251,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+53,2026-08-12 20:05:06.863000,SELECT,Security.SensitiveData,1397,"{""old"": ""value""}",,sa,,5
+54,2026-08-12 20:05:06.863000,UPDATE,Security.SensitiveData,5037,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+55,2026-08-12 20:05:06.863000,SELECT,Security.SensitiveData,8914,"{""old"": ""value""}",,sa,,3
+56,2026-08-12 20:05:06.868000,INSERT,Security.SensitiveData,7411,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+57,2026-08-12 20:05:06.868000,SELECT,Security.SensitiveData,4659,"{""old"": ""value""}",,sa,,2
+58,2026-08-12 20:05:06.868000,DELETE,HR.Employees,311,,,sa,,4
+59,2026-08-12 20:05:06.872000,INSERT,HR.Employees,8354,"{""old"": ""value""}",,sa,,3
+60,2026-08-12 20:05:06.872000,DELETE,Security.SensitiveData,7587,"{""old"": ""value""}",,sa,,2
+61,2026-08-12 20:05:06.872000,SELECT,Security.SensitiveData,3385,,"{""new"": ""value""}",sa,,2
+62,2026-08-12 20:05:06.876000,DELETE,Security.SensitiveData,105,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+63,2026-08-12 20:05:06.876000,SELECT,Sales.Products,5207,,,sa,,2
+64,2026-08-12 20:05:06.876000,SELECT,HR.Employees,645,"{""old"": ""value""}",,sa,,5
+65,2026-08-12 20:05:06.880000,LOGIN,Sales.Transactions,4174,,"{""new"": ""value""}",sa,,1
+66,2026-08-12 20:05:06.880000,LOGIN,Security.SensitiveData,2948,,,sa,,3
+67,2026-08-12 20:05:06.880000,SELECT,HR.Employees,2835,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+68,2026-08-12 20:05:06.884000,UPDATE,HR.Employees,7369,,,sa,,2
+69,2026-08-12 20:05:06.884000,DELETE,HR.Employees,8393,,"{""new"": ""value""}",sa,,2
+70,2026-08-12 20:05:06.884000,DELETE,Sales.Products,2993,"{""old"": ""value""}",,sa,,1
+71,2026-08-12 20:05:06.888000,SELECT,Security.SensitiveData,7337,,,sa,,5
+72,2026-08-12 20:05:06.888000,UPDATE,Sales.Transactions,2100,,"{""new"": ""value""}",sa,,4
+73,2026-08-12 20:05:06.888000,INSERT,Security.SensitiveData,765,"{""old"": ""value""}",,sa,,1
+74,2026-08-12 20:05:06.892000,SELECT,HR.Employees,4725,,"{""new"": ""value""}",sa,,2
+75,2026-08-12 20:05:06.892000,INSERT,Sales.Transactions,3452,,,sa,,5
+76,2026-08-12 20:05:06.896000,SELECT,Sales.Products,3700,,"{""new"": ""value""}",sa,,1
+77,2026-08-12 20:05:06.896000,LOGIN,Sales.Transactions,3041,,,sa,,2
+78,2026-08-12 20:05:06.896000,UPDATE,Security.SensitiveData,2489,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+79,2026-08-12 20:05:06.900000,SELECT,Sales.Products,2221,"{""old"": ""value""}",,sa,,3
+80,2026-08-12 20:05:06.900000,LOGIN,Sales.Products,5324,,"{""new"": ""value""}",sa,,3
+81,2026-08-12 20:05:06.900000,INSERT,HR.Employees,5452,"{""old"": ""value""}",,sa,,1
+82,2026-08-12 20:05:06.904000,DELETE,Sales.Products,1451,,,sa,,5
+83,2026-08-12 20:05:06.904000,UPDATE,Security.SensitiveData,2345,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+84,2026-08-12 20:05:06.904000,DELETE,HR.Employees,1969,,,sa,,2
+85,2026-08-12 20:05:06.908000,INSERT,Sales.Transactions,8921,,"{""new"": ""value""}",sa,,1
+86,2026-08-12 20:05:06.908000,INSERT,Sales.Products,7194,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+87,2026-08-12 20:05:06.908000,DELETE,Security.SensitiveData,71,,"{""new"": ""value""}",sa,,4
+88,2026-08-12 20:05:06.912000,LOGIN,HR.Employees,6977,,"{""new"": ""value""}",sa,,2
+89,2026-08-12 20:05:06.912000,INSERT,HR.Employees,1260,"{""old"": ""value""}",,sa,,3
+90,2026-08-12 20:05:06.912000,SELECT,Security.SensitiveData,9671,,,sa,,5
+91,2026-08-12 20:05:06.917000,SELECT,Sales.Products,9178,"{""old"": ""value""}",,sa,,1
+92,2026-08-12 20:05:06.917000,INSERT,Sales.Products,3734,"{""old"": ""value""}",,sa,,4
+93,2026-08-12 20:05:06.917000,LOGIN,Security.SensitiveData,7676,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+94,2026-08-12 20:05:06.921000,INSERT,Security.SensitiveData,4338,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+95,2026-08-12 20:05:06.921000,DELETE,HR.Employees,3109,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+96,2026-08-12 20:05:06.921000,SELECT,Sales.Transactions,7322,"{""old"": ""value""}",,sa,,3
+97,2026-08-12 20:05:06.925000,UPDATE,HR.Employees,4245,,,sa,,1
+98,2026-08-12 20:05:06.925000,UPDATE,HR.Employees,7212,,"{""new"": ""value""}",sa,,4
+99,2026-08-12 20:05:06.925000,UPDATE,HR.Employees,378,,"{""new"": ""value""}",sa,,5
+100,2026-08-12 20:05:06.929000,INSERT,Sales.Products,9575,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+101,2026-08-12 20:05:06.929000,INSERT,Sales.Products,2123,,"{""new"": ""value""}",sa,,4
+102,2026-08-12 20:05:06.933000,SELECT,Security.SensitiveData,851,"{""old"": ""value""}",,sa,,2
+103,2026-08-12 20:05:06.933000,DELETE,HR.Employees,3577,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+104,2026-08-12 20:05:06.933000,DELETE,Sales.Transactions,8171,"{""old"": ""value""}",,sa,,4
+105,2026-08-12 20:05:06.937000,DELETE,Security.SensitiveData,7278,,"{""new"": ""value""}",sa,,5
+106,2026-08-12 20:05:06.937000,SELECT,Sales.Products,1872,,,sa,,5
+107,2026-08-12 20:05:06.937000,LOGIN,Sales.Transactions,379,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+108,2026-08-12 20:05:06.941000,SELECT,Sales.Transactions,3056,,"{""new"": ""value""}",sa,,3
+109,2026-08-12 20:05:06.941000,SELECT,HR.Employees,6192,"{""old"": ""value""}",,sa,,2
+110,2026-08-12 20:05:06.941000,LOGIN,HR.Employees,889,,,sa,,5
+111,2026-08-12 20:05:06.945000,LOGIN,Sales.Products,9028,,,sa,,1
+112,2026-08-12 20:05:06.945000,INSERT,Sales.Transactions,894,"{""old"": ""value""}",,sa,,4
+113,2026-08-12 20:05:06.945000,UPDATE,Sales.Products,2129,,"{""new"": ""value""}",sa,,4
+114,2026-08-12 20:05:06.949000,DELETE,Sales.Transactions,2855,"{""old"": ""value""}",,sa,,3
+115,2026-08-12 20:05:06.949000,UPDATE,Sales.Transactions,1979,,"{""new"": ""value""}",sa,,2
+116,2026-08-12 20:05:06.949000,INSERT,HR.Employees,2985,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+117,2026-08-12 20:05:06.953000,LOGIN,Security.SensitiveData,5628,,,sa,,3
+118,2026-08-12 20:05:06.953000,DELETE,Security.SensitiveData,5735,"{""old"": ""value""}",,sa,,2
+119,2026-08-12 20:05:06.953000,DELETE,Sales.Products,3119,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+120,2026-08-12 20:05:06.957000,SELECT,HR.Employees,4863,,,sa,,5
+121,2026-08-12 20:05:06.957000,DELETE,Security.SensitiveData,6590,,,sa,,1
+122,2026-08-12 20:05:06.957000,UPDATE,HR.Employees,9515,,"{""new"": ""value""}",sa,,1
+123,2026-08-12 20:05:06.961000,LOGIN,HR.Employees,1171,,"{""new"": ""value""}",sa,,4
+124,2026-08-12 20:05:06.961000,UPDATE,Sales.Transactions,3953,,,sa,,2
+125,2026-08-12 20:05:06.961000,UPDATE,Sales.Transactions,7737,,,sa,,4
+126,2026-08-12 20:05:06.966000,SELECT,Security.SensitiveData,9816,,"{""new"": ""value""}",sa,,4
+127,2026-08-12 20:05:06.966000,INSERT,HR.Employees,2611,,"{""new"": ""value""}",sa,,3
+128,2026-08-12 20:05:06.966000,SELECT,Sales.Products,2649,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+129,2026-08-12 20:05:06.970000,LOGIN,HR.Employees,4921,,"{""new"": ""value""}",sa,,2
+130,2026-08-12 20:05:06.970000,LOGIN,Sales.Products,8286,,"{""new"": ""value""}",sa,,3
+131,2026-08-12 20:05:06.970000,INSERT,Sales.Transactions,1597,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+132,2026-08-12 20:05:06.974000,DELETE,Sales.Transactions,9234,,"{""new"": ""value""}",sa,,4
+133,2026-08-12 20:05:06.974000,UPDATE,Sales.Products,1910,"{""old"": ""value""}",,sa,,1
+134,2026-08-12 20:05:06.974000,SELECT,Security.SensitiveData,969,,"{""new"": ""value""}",sa,,3
+135,2026-08-12 20:05:06.978000,LOGIN,Sales.Transactions,8292,"{""old"": ""value""}",,sa,,5
+136,2026-08-12 20:05:06.978000,UPDATE,Security.SensitiveData,8898,"{""old"": ""value""}",,sa,,2
+137,2026-08-12 20:05:06.982000,SELECT,Security.SensitiveData,9182,,"{""new"": ""value""}",sa,,3
+138,2026-08-12 20:05:06.982000,SELECT,HR.Employees,7868,,"{""new"": ""value""}",sa,,2
+139,2026-08-12 20:05:06.982000,SELECT,HR.Employees,4929,,"{""new"": ""value""}",sa,,3
+140,2026-08-12 20:05:06.986000,UPDATE,Security.SensitiveData,3678,,,sa,,2
+141,2026-08-12 20:05:06.986000,INSERT,Sales.Transactions,2862,,,sa,,4
+142,2026-08-12 20:05:06.986000,SELECT,Sales.Transactions,9532,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+143,2026-08-12 20:05:06.986000,UPDATE,Sales.Transactions,9329,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+144,2026-08-12 20:05:06.990000,UPDATE,Sales.Transactions,2597,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+145,2026-08-12 20:05:06.990000,UPDATE,Security.SensitiveData,6201,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+146,2026-08-12 20:05:06.990000,SELECT,Sales.Transactions,4425,,"{""new"": ""value""}",sa,,4
+147,2026-08-12 20:05:06.994000,DELETE,Sales.Transactions,7845,"{""old"": ""value""}",,sa,,2
+148,2026-08-12 20:05:06.994000,LOGIN,Security.SensitiveData,3461,"{""old"": ""value""}",,sa,,2
+149,2026-08-12 20:05:06.994000,UPDATE,Sales.Transactions,3093,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+150,2026-08-12 20:05:06.998000,SELECT,HR.Employees,2798,"{""old"": ""value""}",,sa,,3
+151,2026-08-12 20:05:06.998000,DELETE,Sales.Transactions,1863,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+152,2026-08-12 20:05:07.002000,INSERT,Sales.Products,4541,,,sa,,2
+153,2026-08-12 20:05:07.002000,INSERT,Sales.Products,8702,,,sa,,2
+154,2026-08-12 20:05:07.002000,DELETE,Security.SensitiveData,6839,,"{""new"": ""value""}",sa,,1
+155,2026-08-12 20:05:07.006000,SELECT,Sales.Products,4644,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+156,2026-08-12 20:05:07.006000,SELECT,Security.SensitiveData,5147,"{""old"": ""value""}",,sa,,1
+157,2026-08-12 20:05:07.006000,LOGIN,Sales.Products,5025,,,sa,,4
+158,2026-08-12 20:05:07.006000,UPDATE,HR.Employees,9527,,,sa,,2
+159,2026-08-12 20:05:07.011000,UPDATE,Sales.Products,9428,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+160,2026-08-12 20:05:07.011000,UPDATE,Security.SensitiveData,2389,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+161,2026-08-12 20:05:07.015000,INSERT,Sales.Transactions,6090,,,sa,,5
+162,2026-08-12 20:05:07.015000,INSERT,Sales.Transactions,8955,,,sa,,3
+163,2026-08-12 20:05:07.015000,INSERT,HR.Employees,4271,"{""old"": ""value""}",,sa,,3
+164,2026-08-12 20:05:07.019000,SELECT,HR.Employees,6232,,"{""new"": ""value""}",sa,,5
+165,2026-08-12 20:05:07.019000,DELETE,HR.Employees,2296,,,sa,,5
+166,2026-08-12 20:05:07.019000,UPDATE,HR.Employees,5207,,,sa,,2
+167,2026-08-12 20:05:07.023000,DELETE,HR.Employees,9751,,"{""new"": ""value""}",sa,,5
+168,2026-08-12 20:05:07.023000,INSERT,HR.Employees,5174,,"{""new"": ""value""}",sa,,3
+169,2026-08-12 20:05:07.023000,DELETE,Sales.Transactions,502,"{""old"": ""value""}",,sa,,1
+170,2026-08-12 20:05:07.027000,INSERT,Sales.Transactions,9785,,,sa,,3
+171,2026-08-12 20:05:07.027000,SELECT,Sales.Transactions,2241,"{""old"": ""value""}",,sa,,2
+172,2026-08-12 20:05:07.027000,DELETE,HR.Employees,4313,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+173,2026-08-12 20:05:07.027000,DELETE,Security.SensitiveData,2574,"{""old"": ""value""}",,sa,,1
+174,2026-08-12 20:05:07.031000,LOGIN,Sales.Products,4971,"{""old"": ""value""}",,sa,,2
+175,2026-08-12 20:05:07.031000,INSERT,Security.SensitiveData,7857,"{""old"": ""value""}",,sa,,5
+176,2026-08-12 20:05:07.031000,INSERT,HR.Employees,9,,"{""new"": ""value""}",sa,,3
+177,2026-08-12 20:05:07.035000,UPDATE,Sales.Products,5361,"{""old"": ""value""}",,sa,,5
+178,2026-08-12 20:05:07.035000,INSERT,Sales.Products,6709,"{""old"": ""value""}",,sa,,5
+179,2026-08-12 20:05:07.035000,UPDATE,Sales.Transactions,8609,,,sa,,1
+180,2026-08-12 20:05:07.039000,SELECT,Sales.Transactions,3902,"{""old"": ""value""}",,sa,,2
+181,2026-08-12 20:05:07.039000,SELECT,Sales.Transactions,4700,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+182,2026-08-12 20:05:07.039000,INSERT,Security.SensitiveData,340,"{""old"": ""value""}",,sa,,2
+183,2026-08-12 20:05:07.043000,LOGIN,Sales.Products,6338,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+184,2026-08-12 20:05:07.043000,LOGIN,HR.Employees,1434,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+185,2026-08-12 20:05:07.043000,SELECT,Sales.Products,3019,"{""old"": ""value""}",,sa,,2
+186,2026-08-12 20:05:07.047000,SELECT,HR.Employees,9972,"{""old"": ""value""}",,sa,,3
+187,2026-08-12 20:05:07.047000,LOGIN,Sales.Transactions,522,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+188,2026-08-12 20:05:07.047000,DELETE,HR.Employees,9355,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+189,2026-08-12 20:05:07.051000,DELETE,HR.Employees,1570,"{""old"": ""value""}",,sa,,3
+190,2026-08-12 20:05:07.051000,DELETE,Security.SensitiveData,4308,,"{""new"": ""value""}",sa,,1
+191,2026-08-12 20:05:07.051000,INSERT,Sales.Products,8392,,"{""new"": ""value""}",sa,,3
+192,2026-08-12 20:05:07.055000,INSERT,Sales.Products,4403,,"{""new"": ""value""}",sa,,3
+193,2026-08-12 20:05:07.055000,DELETE,Sales.Transactions,909,,,sa,,4
+194,2026-08-12 20:05:07.055000,INSERT,Security.SensitiveData,9609,,,sa,,2
+195,2026-08-12 20:05:07.060000,DELETE,Sales.Products,3675,"{""old"": ""value""}",,sa,,4
+196,2026-08-12 20:05:07.060000,SELECT,Sales.Products,1024,,"{""new"": ""value""}",sa,,5
+197,2026-08-12 20:05:07.060000,INSERT,HR.Employees,2771,,"{""new"": ""value""}",sa,,4
+198,2026-08-12 20:05:07.064000,INSERT,Sales.Transactions,7223,"{""old"": ""value""}",,sa,,2
+199,2026-08-12 20:05:07.064000,SELECT,HR.Employees,3266,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+200,2026-08-12 20:05:07.064000,INSERT,Sales.Products,336,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+201,2026-08-12 20:05:07.068000,INSERT,Security.SensitiveData,5969,"{""old"": ""value""}",,sa,,3
+202,2026-08-12 20:05:07.068000,SELECT,Sales.Products,8310,,"{""new"": ""value""}",sa,,1
+203,2026-08-12 20:05:07.072000,DELETE,Security.SensitiveData,2924,,,sa,,2
+204,2026-08-12 20:05:07.072000,SELECT,HR.Employees,9767,"{""old"": ""value""}",,sa,,4
+205,2026-08-12 20:05:07.072000,INSERT,Sales.Products,6084,,"{""new"": ""value""}",sa,,1
+206,2026-08-12 20:05:07.076000,INSERT,Security.SensitiveData,6072,,"{""new"": ""value""}",sa,,4
+207,2026-08-12 20:05:07.076000,UPDATE,HR.Employees,9207,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+208,2026-08-12 20:05:07.076000,DELETE,Sales.Transactions,4763,"{""old"": ""value""}",,sa,,5
+209,2026-08-12 20:05:07.080000,SELECT,Sales.Products,571,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+210,2026-08-12 20:05:07.080000,LOGIN,HR.Employees,325,,"{""new"": ""value""}",sa,,2
+211,2026-08-12 20:05:07.080000,LOGIN,Security.SensitiveData,192,,,sa,,3
+212,2026-08-12 20:05:07.084000,DELETE,Sales.Transactions,8779,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+213,2026-08-12 20:05:07.084000,LOGIN,HR.Employees,6770,,"{""new"": ""value""}",sa,,2
+214,2026-08-12 20:05:07.084000,UPDATE,Sales.Transactions,7358,"{""old"": ""value""}",,sa,,2
+215,2026-08-12 20:05:07.088000,DELETE,Sales.Products,6246,"{""old"": ""value""}",,sa,,5
+216,2026-08-12 20:05:07.088000,UPDATE,Sales.Products,4240,,"{""new"": ""value""}",sa,,3
+217,2026-08-12 20:05:07.092000,UPDATE,Sales.Products,7223,"{""old"": ""value""}",,sa,,3
+218,2026-08-12 20:05:07.092000,LOGIN,Sales.Transactions,7604,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+219,2026-08-12 20:05:07.092000,UPDATE,Sales.Transactions,985,"{""old"": ""value""}",,sa,,3
+220,2026-08-12 20:05:07.096000,DELETE,HR.Employees,6293,,"{""new"": ""value""}",sa,,4
+221,2026-08-12 20:05:07.096000,DELETE,Security.SensitiveData,7273,,"{""new"": ""value""}",sa,,1
+222,2026-08-12 20:05:07.096000,UPDATE,HR.Employees,6442,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+223,2026-08-12 20:05:07.100000,INSERT,Sales.Transactions,7461,"{""old"": ""value""}",,sa,,4
+224,2026-08-12 20:05:07.100000,INSERT,Security.SensitiveData,4576,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+225,2026-08-12 20:05:07.100000,SELECT,Sales.Products,2766,,,sa,,2
+226,2026-08-12 20:05:07.104000,UPDATE,Sales.Products,704,,,sa,,5
+227,2026-08-12 20:05:07.104000,INSERT,Security.SensitiveData,3446,,,sa,,4
+228,2026-08-12 20:05:07.104000,SELECT,Security.SensitiveData,4382,"{""old"": ""value""}",,sa,,3
+229,2026-08-12 20:05:07.109000,LOGIN,Sales.Transactions,8228,,,sa,,4
+230,2026-08-12 20:05:07.109000,SELECT,Sales.Products,9086,,"{""new"": ""value""}",sa,,5
+231,2026-08-12 20:05:07.109000,UPDATE,Sales.Transactions,6704,,,sa,,1
+232,2026-08-12 20:05:07.113000,DELETE,Sales.Transactions,3459,,"{""new"": ""value""}",sa,,3
+233,2026-08-12 20:05:07.113000,UPDATE,HR.Employees,9486,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+234,2026-08-12 20:05:07.113000,DELETE,Security.SensitiveData,7788,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+235,2026-08-12 20:05:07.117000,INSERT,Sales.Products,6490,"{""old"": ""value""}",,sa,,4
+236,2026-08-12 20:05:07.117000,DELETE,HR.Employees,6323,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+237,2026-08-12 20:05:07.117000,DELETE,Sales.Transactions,8006,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+238,2026-08-12 20:05:07.121000,UPDATE,HR.Employees,1887,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+239,2026-08-12 20:05:07.121000,INSERT,HR.Employees,1120,,,sa,,5
+240,2026-08-12 20:05:07.121000,DELETE,Security.SensitiveData,3970,,"{""new"": ""value""}",sa,,3
+241,2026-08-12 20:05:07.125000,SELECT,HR.Employees,6815,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+242,2026-08-12 20:05:07.125000,DELETE,Sales.Transactions,4869,,,sa,,4
+243,2026-08-12 20:05:07.125000,LOGIN,Security.SensitiveData,8754,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+244,2026-08-12 20:05:07.125000,DELETE,Security.SensitiveData,9131,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+245,2026-08-12 20:05:07.129000,LOGIN,Sales.Products,6418,,"{""new"": ""value""}",sa,,1
+246,2026-08-12 20:05:07.129000,UPDATE,Security.SensitiveData,9265,"{""old"": ""value""}",,sa,,2
+247,2026-08-12 20:05:07.129000,LOGIN,Security.SensitiveData,2730,,"{""new"": ""value""}",sa,,1
+248,2026-08-12 20:05:07.133000,SELECT,Sales.Products,5671,,"{""new"": ""value""}",sa,,3
+249,2026-08-12 20:05:07.133000,UPDATE,HR.Employees,2226,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+250,2026-08-12 20:05:07.133000,DELETE,Sales.Transactions,84,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+251,2026-08-12 20:05:07.137000,UPDATE,Sales.Products,730,,"{""new"": ""value""}",sa,,2
+252,2026-08-12 20:05:07.137000,UPDATE,Security.SensitiveData,658,"{""old"": ""value""}",,sa,,2
+253,2026-08-12 20:05:07.141000,DELETE,HR.Employees,7418,,"{""new"": ""value""}",sa,,1
+254,2026-08-12 20:05:07.141000,SELECT,HR.Employees,545,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+255,2026-08-12 20:05:07.141000,INSERT,HR.Employees,3599,,,sa,,4
+256,2026-08-12 20:05:07.145000,DELETE,Sales.Transactions,4927,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+257,2026-08-12 20:05:07.145000,UPDATE,HR.Employees,3226,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+258,2026-08-12 20:05:07.145000,LOGIN,HR.Employees,4260,,,sa,,1
+259,2026-08-12 20:05:07.149000,SELECT,HR.Employees,9470,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+260,2026-08-12 20:05:07.149000,SELECT,HR.Employees,9622,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+261,2026-08-12 20:05:07.153000,DELETE,Security.SensitiveData,1431,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+262,2026-08-12 20:05:07.153000,DELETE,Sales.Transactions,6129,"{""old"": ""value""}",,sa,,5
+263,2026-08-12 20:05:07.153000,LOGIN,Security.SensitiveData,1050,,"{""new"": ""value""}",sa,,1
+264,2026-08-12 20:05:07.157000,SELECT,HR.Employees,2323,"{""old"": ""value""}",,sa,,1
+265,2026-08-12 20:05:07.157000,UPDATE,HR.Employees,9814,,,sa,,2
+266,2026-08-12 20:05:07.157000,LOGIN,Sales.Transactions,6978,,"{""new"": ""value""}",sa,,5
+267,2026-08-12 20:05:07.162000,DELETE,Security.SensitiveData,9311,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+268,2026-08-12 20:05:07.162000,LOGIN,Sales.Products,9780,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+269,2026-08-12 20:05:07.162000,INSERT,Security.SensitiveData,1160,,,sa,,3
+270,2026-08-12 20:05:07.166000,LOGIN,Sales.Transactions,9135,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+271,2026-08-12 20:05:07.166000,LOGIN,HR.Employees,4609,,,sa,,2
+272,2026-08-12 20:05:07.166000,INSERT,Security.SensitiveData,7232,"{""old"": ""value""}",,sa,,5
+273,2026-08-12 20:05:07.170000,UPDATE,Security.SensitiveData,8433,,"{""new"": ""value""}",sa,,4
+274,2026-08-12 20:05:07.170000,UPDATE,Security.SensitiveData,4757,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+275,2026-08-12 20:05:07.170000,DELETE,Security.SensitiveData,7713,,"{""new"": ""value""}",sa,,3
+276,2026-08-12 20:05:07.174000,DELETE,Security.SensitiveData,3191,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+277,2026-08-12 20:05:07.174000,INSERT,Sales.Products,3398,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+278,2026-08-12 20:05:07.174000,LOGIN,HR.Employees,2687,,"{""new"": ""value""}",sa,,3
+279,2026-08-12 20:05:07.178000,SELECT,Security.SensitiveData,2640,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+280,2026-08-12 20:05:07.178000,UPDATE,HR.Employees,7817,"{""old"": ""value""}",,sa,,5
+281,2026-08-12 20:05:07.178000,LOGIN,Sales.Transactions,6868,,"{""new"": ""value""}",sa,,5
+282,2026-08-12 20:05:07.182000,LOGIN,Sales.Transactions,7187,,,sa,,5
+283,2026-08-12 20:05:07.182000,UPDATE,Security.SensitiveData,5116,"{""old"": ""value""}",,sa,,5
+284,2026-08-12 20:05:07.182000,SELECT,Sales.Products,1618,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+285,2026-08-12 20:05:07.186000,LOGIN,HR.Employees,3666,,,sa,,2
+286,2026-08-12 20:05:07.186000,SELECT,Security.SensitiveData,3224,,"{""new"": ""value""}",sa,,2
+287,2026-08-12 20:05:07.186000,DELETE,Sales.Products,5333,,"{""new"": ""value""}",sa,,3
+288,2026-08-12 20:05:07.190000,SELECT,HR.Employees,5667,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+289,2026-08-12 20:05:07.190000,LOGIN,Security.SensitiveData,2600,,,sa,,2
+290,2026-08-12 20:05:07.194000,SELECT,Sales.Products,7923,,,sa,,1
+291,2026-08-12 20:05:07.194000,SELECT,Sales.Products,6390,"{""old"": ""value""}",,sa,,1
+292,2026-08-12 20:05:07.194000,DELETE,Sales.Transactions,2122,,"{""new"": ""value""}",sa,,1
+293,2026-08-12 20:05:07.198000,UPDATE,Sales.Products,4455,,,sa,,4
+294,2026-08-12 20:05:07.198000,INSERT,Sales.Transactions,9646,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+295,2026-08-12 20:05:07.198000,INSERT,Sales.Transactions,9585,"{""old"": ""value""}",,sa,,3
+296,2026-08-12 20:05:07.202000,UPDATE,Sales.Transactions,1249,,"{""new"": ""value""}",sa,,5
+297,2026-08-12 20:05:07.202000,UPDATE,Sales.Products,5652,"{""old"": ""value""}",,sa,,2
+298,2026-08-12 20:05:07.202000,LOGIN,Security.SensitiveData,7183,"{""old"": ""value""}",,sa,,5
+299,2026-08-12 20:05:07.206000,SELECT,Sales.Products,7687,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+300,2026-08-12 20:05:07.206000,LOGIN,HR.Employees,7765,,"{""new"": ""value""}",sa,,4
+301,2026-08-12 20:05:07.206000,SELECT,Security.SensitiveData,2645,,"{""new"": ""value""}",sa,,5
+302,2026-08-12 20:05:07.210000,INSERT,Sales.Products,7336,,,sa,,2
+303,2026-08-12 20:05:07.210000,DELETE,Sales.Transactions,4037,,,sa,,3
+304,2026-08-12 20:05:07.215000,DELETE,Sales.Transactions,5257,,"{""new"": ""value""}",sa,,4
+305,2026-08-12 20:05:07.215000,UPDATE,Security.SensitiveData,418,,"{""new"": ""value""}",sa,,5
+306,2026-08-12 20:05:07.215000,UPDATE,Sales.Products,9917,,"{""new"": ""value""}",sa,,3
+307,2026-08-12 20:05:07.215000,INSERT,Sales.Transactions,5615,,"{""new"": ""value""}",sa,,1
+308,2026-08-12 20:05:07.219000,UPDATE,HR.Employees,1797,,,sa,,2
+309,2026-08-12 20:05:07.219000,DELETE,Security.SensitiveData,9818,,,sa,,4
+310,2026-08-12 20:05:07.219000,LOGIN,Sales.Products,1097,,,sa,,1
+311,2026-08-12 20:05:07.223000,DELETE,Sales.Transactions,7974,,,sa,,2
+312,2026-08-12 20:05:07.223000,UPDATE,HR.Employees,1894,,"{""new"": ""value""}",sa,,3
+313,2026-08-12 20:05:07.223000,UPDATE,HR.Employees,7159,,,sa,,1
+314,2026-08-12 20:05:07.227000,INSERT,HR.Employees,3517,,"{""new"": ""value""}",sa,,3
+315,2026-08-12 20:05:07.227000,DELETE,Security.SensitiveData,7108,"{""old"": ""value""}",,sa,,5
+316,2026-08-12 20:05:07.231000,SELECT,Security.SensitiveData,1969,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+317,2026-08-12 20:05:07.231000,UPDATE,Security.SensitiveData,3168,,,sa,,2
+318,2026-08-12 20:05:07.231000,INSERT,Sales.Transactions,9940,,,sa,,4
+319,2026-08-12 20:05:07.235000,LOGIN,Sales.Products,4484,,"{""new"": ""value""}",sa,,1
+320,2026-08-12 20:05:07.235000,DELETE,HR.Employees,124,"{""old"": ""value""}",,sa,,5
+321,2026-08-12 20:05:07.239000,UPDATE,Sales.Transactions,4464,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+322,2026-08-12 20:05:07.239000,LOGIN,HR.Employees,1045,"{""old"": ""value""}",,sa,,2
+323,2026-08-12 20:05:07.239000,DELETE,HR.Employees,291,,,sa,,5
+324,2026-08-12 20:05:07.243000,INSERT,HR.Employees,1985,,"{""new"": ""value""}",sa,,2
+325,2026-08-12 20:05:07.243000,INSERT,Security.SensitiveData,1055,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+326,2026-08-12 20:05:07.243000,LOGIN,Sales.Products,7658,"{""old"": ""value""}",,sa,,2
+327,2026-08-12 20:05:07.247000,INSERT,Security.SensitiveData,1275,,,sa,,5
+328,2026-08-12 20:05:07.247000,LOGIN,Security.SensitiveData,1925,,"{""new"": ""value""}",sa,,1
+329,2026-08-12 20:05:07.247000,LOGIN,Sales.Transactions,8067,,"{""new"": ""value""}",sa,,1
+330,2026-08-12 20:05:07.251000,LOGIN,Sales.Transactions,224,"{""old"": ""value""}",,sa,,5
+331,2026-08-12 20:05:07.251000,LOGIN,Security.SensitiveData,5518,"{""old"": ""value""}",,sa,,5
+332,2026-08-12 20:05:07.255000,DELETE,Sales.Transactions,3755,,"{""new"": ""value""}",sa,,3
+333,2026-08-12 20:05:07.255000,SELECT,Security.SensitiveData,2474,,,sa,,4
+334,2026-08-12 20:05:07.255000,INSERT,Security.SensitiveData,6187,,"{""new"": ""value""}",sa,,4
+335,2026-08-12 20:05:07.259000,INSERT,HR.Employees,2391,"{""old"": ""value""}",,sa,,2
+336,2026-08-12 20:05:07.259000,DELETE,HR.Employees,9476,,"{""new"": ""value""}",sa,,1
+337,2026-08-12 20:05:07.259000,LOGIN,Security.SensitiveData,4438,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+338,2026-08-12 20:05:07.263000,LOGIN,HR.Employees,137,"{""old"": ""value""}",,sa,,4
+339,2026-08-12 20:05:07.263000,SELECT,Sales.Transactions,3135,"{""old"": ""value""}",,sa,,5
+340,2026-08-12 20:05:07.268000,LOGIN,HR.Employees,2269,,,sa,,4
+341,2026-08-12 20:05:07.268000,DELETE,HR.Employees,837,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+342,2026-08-12 20:05:07.268000,UPDATE,Sales.Products,1998,,"{""new"": ""value""}",sa,,5
+343,2026-08-12 20:05:07.268000,DELETE,Sales.Products,4209,"{""old"": ""value""}",,sa,,5
+344,2026-08-12 20:05:07.272000,UPDATE,Security.SensitiveData,9353,,"{""new"": ""value""}",sa,,1
+345,2026-08-12 20:05:07.272000,INSERT,Security.SensitiveData,8026,,"{""new"": ""value""}",sa,,2
+346,2026-08-12 20:05:07.272000,DELETE,Sales.Transactions,198,,,sa,,4
+347,2026-08-12 20:05:07.276000,LOGIN,Sales.Transactions,2739,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+348,2026-08-12 20:05:07.276000,LOGIN,Security.SensitiveData,4063,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+349,2026-08-12 20:05:07.276000,UPDATE,Sales.Transactions,281,,"{""new"": ""value""}",sa,,1
+350,2026-08-12 20:05:07.280000,LOGIN,HR.Employees,7068,,"{""new"": ""value""}",sa,,3
+351,2026-08-12 20:05:07.280000,LOGIN,Sales.Transactions,7965,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+352,2026-08-12 20:05:07.284000,SELECT,Security.SensitiveData,6198,,"{""new"": ""value""}",sa,,4
+353,2026-08-12 20:05:07.284000,LOGIN,Security.SensitiveData,4392,,"{""new"": ""value""}",sa,,5
+354,2026-08-12 20:05:07.284000,INSERT,Sales.Products,8516,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+355,2026-08-12 20:05:07.288000,DELETE,Sales.Products,5395,,,sa,,3
+356,2026-08-12 20:05:07.288000,UPDATE,HR.Employees,2251,,,sa,,5
+357,2026-08-12 20:05:07.292000,SELECT,HR.Employees,3911,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+358,2026-08-12 20:05:07.292000,LOGIN,Sales.Products,8400,"{""old"": ""value""}",,sa,,2
+359,2026-08-12 20:05:07.292000,SELECT,Security.SensitiveData,8017,"{""old"": ""value""}",,sa,,3
+360,2026-08-12 20:05:07.296000,UPDATE,HR.Employees,3483,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+361,2026-08-12 20:05:07.296000,SELECT,HR.Employees,2071,"{""old"": ""value""}",,sa,,4
+362,2026-08-12 20:05:07.296000,DELETE,Security.SensitiveData,5244,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+363,2026-08-12 20:05:07.300000,LOGIN,Sales.Products,6501,"{""old"": ""value""}",,sa,,2
+364,2026-08-12 20:05:07.300000,LOGIN,Security.SensitiveData,7723,,,sa,,3
+365,2026-08-12 20:05:07.300000,SELECT,Sales.Products,2422,"{""old"": ""value""}",,sa,,3
+366,2026-08-12 20:05:07.304000,SELECT,Sales.Products,4928,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+367,2026-08-12 20:05:07.304000,SELECT,HR.Employees,3781,"{""old"": ""value""}",,sa,,2
+368,2026-08-12 20:05:07.304000,DELETE,HR.Employees,3349,,,sa,,2
+369,2026-08-12 20:05:07.308000,DELETE,Security.SensitiveData,6338,"{""old"": ""value""}",,sa,,4
+370,2026-08-12 20:05:07.308000,INSERT,Sales.Transactions,7525,,"{""new"": ""value""}",sa,,2
+371,2026-08-12 20:05:07.312000,UPDATE,HR.Employees,5783,,,sa,,5
+372,2026-08-12 20:05:07.312000,LOGIN,Security.SensitiveData,1264,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+373,2026-08-12 20:05:07.312000,INSERT,Sales.Products,8791,,"{""new"": ""value""}",sa,,2
+374,2026-08-12 20:05:07.316000,INSERT,HR.Employees,9582,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+375,2026-08-12 20:05:07.316000,UPDATE,Security.SensitiveData,6502,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+376,2026-08-12 20:05:07.316000,LOGIN,Sales.Transactions,3645,"{""old"": ""value""}",,sa,,5
+377,2026-08-12 20:05:07.321000,INSERT,HR.Employees,6206,,"{""new"": ""value""}",sa,,4
+378,2026-08-12 20:05:07.321000,LOGIN,Security.SensitiveData,1115,,,sa,,5
+379,2026-08-12 20:05:07.321000,LOGIN,Sales.Products,7020,"{""old"": ""value""}",,sa,,2
+380,2026-08-12 20:05:07.325000,LOGIN,Sales.Products,1676,,,sa,,3
+381,2026-08-12 20:05:07.325000,UPDATE,Sales.Products,4875,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+382,2026-08-12 20:05:07.325000,INSERT,Sales.Transactions,4492,"{""old"": ""value""}",,sa,,2
+383,2026-08-12 20:05:07.329000,DELETE,Security.SensitiveData,8336,"{""old"": ""value""}",,sa,,5
+384,2026-08-12 20:05:07.329000,SELECT,Sales.Products,8140,,"{""new"": ""value""}",sa,,4
+385,2026-08-12 20:05:07.329000,LOGIN,Sales.Transactions,7943,,,sa,,5
+386,2026-08-12 20:05:07.333000,INSERT,Sales.Transactions,3467,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+387,2026-08-12 20:05:07.333000,SELECT,HR.Employees,3991,,"{""new"": ""value""}",sa,,4
+388,2026-08-12 20:05:07.333000,LOGIN,Security.SensitiveData,211,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+389,2026-08-12 20:05:07.337000,UPDATE,Sales.Transactions,543,,,sa,,5
+390,2026-08-12 20:05:07.337000,UPDATE,Security.SensitiveData,193,,"{""new"": ""value""}",sa,,2
+391,2026-08-12 20:05:07.337000,INSERT,HR.Employees,1156,"{""old"": ""value""}",,sa,,5
+392,2026-08-12 20:05:07.341000,LOGIN,Sales.Transactions,5966,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+393,2026-08-12 20:05:07.341000,INSERT,Sales.Transactions,7674,"{""old"": ""value""}",,sa,,2
+394,2026-08-12 20:05:07.341000,DELETE,HR.Employees,6504,"{""old"": ""value""}",,sa,,4
+395,2026-08-12 20:05:07.345000,UPDATE,Sales.Products,615,,,sa,,3
+396,2026-08-12 20:05:07.345000,SELECT,HR.Employees,3842,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+397,2026-08-12 20:05:07.345000,UPDATE,Sales.Transactions,5238,,,sa,,1
+398,2026-08-12 20:05:07.349000,UPDATE,Security.SensitiveData,1713,,"{""new"": ""value""}",sa,,3
+399,2026-08-12 20:05:07.349000,INSERT,Security.SensitiveData,7505,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+400,2026-08-12 20:05:07.349000,UPDATE,Security.SensitiveData,2433,"{""old"": ""value""}",,sa,,1
+401,2026-08-12 20:05:07.353000,UPDATE,Sales.Transactions,876,,"{""new"": ""value""}",sa,,4
+402,2026-08-12 20:05:07.353000,INSERT,HR.Employees,9491,,,sa,,3
+403,2026-08-12 20:05:07.357000,SELECT,Sales.Products,6504,"{""old"": ""value""}",,sa,,4
+404,2026-08-12 20:05:07.357000,LOGIN,HR.Employees,6658,,,sa,,2
+405,2026-08-12 20:05:07.357000,DELETE,Sales.Transactions,179,"{""old"": ""value""}",,sa,,3
+406,2026-08-12 20:05:07.361000,LOGIN,Sales.Transactions,6883,"{""old"": ""value""}",,sa,,1
+407,2026-08-12 20:05:07.361000,INSERT,HR.Employees,6925,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+408,2026-08-12 20:05:07.361000,SELECT,Security.SensitiveData,4012,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+409,2026-08-12 20:05:07.365000,UPDATE,Security.SensitiveData,5538,"{""old"": ""value""}",,sa,,4
+410,2026-08-12 20:05:07.365000,UPDATE,Sales.Products,8667,"{""old"": ""value""}",,sa,,5
+411,2026-08-12 20:05:07.365000,DELETE,Security.SensitiveData,5423,,,sa,,4
+412,2026-08-12 20:05:07.370000,SELECT,Security.SensitiveData,2196,,"{""new"": ""value""}",sa,,3
+413,2026-08-12 20:05:07.370000,LOGIN,Sales.Transactions,5580,,,sa,,3
+414,2026-08-12 20:05:07.370000,SELECT,HR.Employees,1731,,,sa,,2
+415,2026-08-12 20:05:07.374000,SELECT,Sales.Products,6777,,,sa,,1
+416,2026-08-12 20:05:07.374000,INSERT,HR.Employees,4459,"{""old"": ""value""}",,sa,,2
+417,2026-08-12 20:05:07.374000,DELETE,Sales.Transactions,8782,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+418,2026-08-12 20:05:07.374000,INSERT,HR.Employees,4250,,"{""new"": ""value""}",sa,,5
+419,2026-08-12 20:05:07.378000,LOGIN,Sales.Products,2974,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+420,2026-08-12 20:05:07.378000,INSERT,Sales.Transactions,6358,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+421,2026-08-12 20:05:07.382000,DELETE,Sales.Transactions,7995,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+422,2026-08-12 20:05:07.382000,DELETE,HR.Employees,6833,,"{""new"": ""value""}",sa,,3
+423,2026-08-12 20:05:07.382000,LOGIN,HR.Employees,3220,,,sa,,5
+424,2026-08-12 20:05:07.386000,SELECT,Sales.Transactions,9940,,"{""new"": ""value""}",sa,,4
+425,2026-08-12 20:05:07.386000,INSERT,Security.SensitiveData,7484,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+426,2026-08-12 20:05:07.386000,LOGIN,Sales.Transactions,1044,"{""old"": ""value""}",,sa,,5
+427,2026-08-12 20:05:07.390000,INSERT,Sales.Transactions,6424,,,sa,,4
+428,2026-08-12 20:05:07.390000,DELETE,HR.Employees,6745,"{""old"": ""value""}",,sa,,4
+429,2026-08-12 20:05:07.390000,INSERT,Security.SensitiveData,6161,"{""old"": ""value""}",,sa,,3
+430,2026-08-12 20:05:07.394000,LOGIN,HR.Employees,6079,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+431,2026-08-12 20:05:07.394000,SELECT,HR.Employees,9262,,"{""new"": ""value""}",sa,,5
+432,2026-08-12 20:05:07.394000,SELECT,Security.SensitiveData,9172,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+433,2026-08-12 20:05:07.398000,INSERT,Sales.Products,6318,"{""old"": ""value""}",,sa,,1
+434,2026-08-12 20:05:07.398000,SELECT,Sales.Transactions,7757,"{""old"": ""value""}",,sa,,3
+435,2026-08-12 20:05:07.398000,DELETE,Security.SensitiveData,2490,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+436,2026-08-12 20:05:07.402000,LOGIN,HR.Employees,495,,"{""new"": ""value""}",sa,,2
+437,2026-08-12 20:05:07.402000,SELECT,Sales.Products,9928,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+438,2026-08-12 20:05:07.402000,DELETE,Security.SensitiveData,3001,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+439,2026-08-12 20:05:07.406000,DELETE,Security.SensitiveData,3148,"{""old"": ""value""}",,sa,,5
+440,2026-08-12 20:05:07.406000,DELETE,Sales.Transactions,1820,,"{""new"": ""value""}",sa,,1
+441,2026-08-12 20:05:07.406000,INSERT,HR.Employees,8373,,"{""new"": ""value""}",sa,,3
+442,2026-08-12 20:05:07.410000,DELETE,Sales.Products,1685,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+443,2026-08-12 20:05:07.410000,INSERT,Security.SensitiveData,678,,,sa,,3
+444,2026-08-12 20:05:07.410000,SELECT,Security.SensitiveData,369,,"{""new"": ""value""}",sa,,2
+445,2026-08-12 20:05:07.414000,INSERT,Sales.Transactions,5574,,,sa,,2
+446,2026-08-12 20:05:07.414000,LOGIN,HR.Employees,125,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+447,2026-08-12 20:05:07.414000,INSERT,Sales.Products,1474,"{""old"": ""value""}",,sa,,1
+448,2026-08-12 20:05:07.419000,INSERT,HR.Employees,8898,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+449,2026-08-12 20:05:07.419000,DELETE,HR.Employees,2741,,"{""new"": ""value""}",sa,,5
+450,2026-08-12 20:05:07.419000,INSERT,Sales.Products,9611,,,sa,,4
+451,2026-08-12 20:05:07.423000,LOGIN,Sales.Transactions,1878,,"{""new"": ""value""}",sa,,1
+452,2026-08-12 20:05:07.423000,INSERT,Security.SensitiveData,4577,,,sa,,2
+453,2026-08-12 20:05:07.423000,LOGIN,Sales.Transactions,9422,,,sa,,4
+454,2026-08-12 20:05:07.427000,LOGIN,Sales.Transactions,8020,,,sa,,3
+455,2026-08-12 20:05:07.427000,UPDATE,Sales.Transactions,5921,,,sa,,1
+456,2026-08-12 20:05:07.427000,SELECT,Sales.Products,3473,"{""old"": ""value""}",,sa,,1
+457,2026-08-12 20:05:07.431000,INSERT,Security.SensitiveData,1999,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+458,2026-08-12 20:05:07.431000,UPDATE,Sales.Transactions,6380,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+459,2026-08-12 20:05:07.431000,SELECT,Security.SensitiveData,9997,,"{""new"": ""value""}",sa,,1
+460,2026-08-12 20:05:07.435000,INSERT,Sales.Transactions,9405,,,sa,,4
+461,2026-08-12 20:05:07.435000,SELECT,Sales.Products,5775,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+462,2026-08-12 20:05:07.435000,SELECT,Sales.Transactions,7241,,,sa,,1
+463,2026-08-12 20:05:07.439000,INSERT,Security.SensitiveData,7609,,,sa,,5
+464,2026-08-12 20:05:07.439000,SELECT,Sales.Products,9104,,"{""new"": ""value""}",sa,,1
+465,2026-08-12 20:05:07.439000,DELETE,Sales.Products,2360,"{""old"": ""value""}",,sa,,5
+466,2026-08-12 20:05:07.443000,UPDATE,Sales.Products,8018,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+467,2026-08-12 20:05:07.443000,SELECT,HR.Employees,4521,"{""old"": ""value""}",,sa,,2
+468,2026-08-12 20:05:07.443000,UPDATE,Security.SensitiveData,9611,,,sa,,4
+469,2026-08-12 20:05:07.443000,LOGIN,Sales.Transactions,2735,,"{""new"": ""value""}",sa,,5
+470,2026-08-12 20:05:07.447000,DELETE,Sales.Transactions,9561,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+471,2026-08-12 20:05:07.447000,SELECT,HR.Employees,4107,,,sa,,5
+472,2026-08-12 20:05:07.447000,INSERT,Sales.Transactions,6873,,,sa,,5
+473,2026-08-12 20:05:07.451000,SELECT,Security.SensitiveData,9087,,"{""new"": ""value""}",sa,,4
+474,2026-08-12 20:05:07.451000,UPDATE,Sales.Transactions,4487,,"{""new"": ""value""}",sa,,5
+475,2026-08-12 20:05:07.451000,INSERT,Sales.Products,5314,"{""old"": ""value""}",,sa,,3
+476,2026-08-12 20:05:07.455000,LOGIN,Security.SensitiveData,1125,,,sa,,2
+477,2026-08-12 20:05:07.455000,SELECT,Sales.Products,6479,,,sa,,2
+478,2026-08-12 20:05:07.455000,LOGIN,Security.SensitiveData,4115,"{""old"": ""value""}",,sa,,2
+479,2026-08-12 20:05:07.459000,INSERT,Sales.Products,8119,,,sa,,1
+480,2026-08-12 20:05:07.459000,LOGIN,HR.Employees,4665,,,sa,,1
+481,2026-08-12 20:05:07.459000,UPDATE,Security.SensitiveData,2476,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+482,2026-08-12 20:05:07.464000,UPDATE,HR.Employees,1516,,"{""new"": ""value""}",sa,,2
+483,2026-08-12 20:05:07.464000,SELECT,Sales.Products,1531,"{""old"": ""value""}",,sa,,2
+484,2026-08-12 20:05:07.464000,LOGIN,Sales.Products,2762,"{""old"": ""value""}",,sa,,3
+485,2026-08-12 20:05:07.464000,LOGIN,Security.SensitiveData,869,,,sa,,1
+486,2026-08-12 20:05:07.468000,SELECT,Sales.Transactions,38,,"{""new"": ""value""}",sa,,1
+487,2026-08-12 20:05:07.468000,DELETE,Sales.Transactions,5287,,"{""new"": ""value""}",sa,,1
+488,2026-08-12 20:05:07.468000,UPDATE,Sales.Transactions,8924,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+489,2026-08-12 20:05:07.472000,DELETE,Sales.Transactions,62,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+490,2026-08-12 20:05:07.472000,UPDATE,Sales.Products,5731,"{""old"": ""value""}",,sa,,5
+491,2026-08-12 20:05:07.472000,DELETE,Sales.Transactions,1189,,"{""new"": ""value""}",sa,,3
+492,2026-08-12 20:05:07.476000,UPDATE,Sales.Transactions,9117,,"{""new"": ""value""}",sa,,5
+493,2026-08-12 20:05:07.476000,UPDATE,Security.SensitiveData,4495,"{""old"": ""value""}",,sa,,3
+494,2026-08-12 20:05:07.476000,DELETE,HR.Employees,1958,,"{""new"": ""value""}",sa,,3
+495,2026-08-12 20:05:07.480000,DELETE,Sales.Transactions,953,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+496,2026-08-12 20:05:07.480000,INSERT,HR.Employees,9408,"{""old"": ""value""}",,sa,,1
+497,2026-08-12 20:05:07.480000,INSERT,Sales.Transactions,9238,,"{""new"": ""value""}",sa,,2
+498,2026-08-12 20:05:07.484000,LOGIN,Sales.Transactions,5649,"{""old"": ""value""}",,sa,,5
+499,2026-08-12 20:05:07.484000,SELECT,Security.SensitiveData,1018,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+500,2026-08-12 20:05:07.484000,DELETE,HR.Employees,6474,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+501,2026-08-12 20:05:07.488000,DELETE,Security.SensitiveData,1840,"{""old"": ""value""}",,sa,,5
+502,2026-08-12 20:05:07.488000,SELECT,Sales.Transactions,1005,,"{""new"": ""value""}",sa,,5
+503,2026-08-12 20:05:07.492000,INSERT,Sales.Products,787,"{""old"": ""value""}",,sa,,5
+504,2026-08-12 20:05:07.492000,UPDATE,Sales.Transactions,113,,,sa,,3
+505,2026-08-12 20:05:07.492000,LOGIN,Sales.Products,391,"{""old"": ""value""}",,sa,,1
+506,2026-08-12 20:05:07.496000,DELETE,Sales.Products,7189,,,sa,,5
+507,2026-08-12 20:05:07.496000,INSERT,Sales.Products,8434,"{""old"": ""value""}",,sa,,4
+508,2026-08-12 20:05:07.496000,SELECT,Sales.Products,7,"{""old"": ""value""}",,sa,,2
+509,2026-08-12 20:05:07.500000,DELETE,HR.Employees,3345,,,sa,,2
+510,2026-08-12 20:05:07.500000,DELETE,Sales.Transactions,7904,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+511,2026-08-12 20:05:07.500000,UPDATE,Sales.Transactions,4574,"{""old"": ""value""}",,sa,,5
+512,2026-08-12 20:05:07.504000,INSERT,HR.Employees,5663,"{""old"": ""value""}",,sa,,2
+513,2026-08-12 20:05:07.504000,UPDATE,Security.SensitiveData,7829,,,sa,,4
+514,2026-08-12 20:05:07.504000,INSERT,HR.Employees,1679,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+515,2026-08-12 20:05:07.509000,LOGIN,Sales.Products,1569,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+516,2026-08-12 20:05:07.509000,LOGIN,HR.Employees,6261,,,sa,,3
+517,2026-08-12 20:05:07.509000,UPDATE,Sales.Transactions,4366,"{""old"": ""value""}",,sa,,2
+518,2026-08-12 20:05:07.513000,SELECT,HR.Employees,2796,"{""old"": ""value""}",,sa,,2
+519,2026-08-12 20:05:07.513000,SELECT,Security.SensitiveData,5134,,"{""new"": ""value""}",sa,,5
+520,2026-08-12 20:05:07.513000,SELECT,Sales.Products,5666,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+521,2026-08-12 20:05:07.517000,DELETE,Sales.Products,1403,,"{""new"": ""value""}",sa,,5
+522,2026-08-12 20:05:07.517000,SELECT,Security.SensitiveData,279,,,sa,,2
+523,2026-08-12 20:05:07.517000,INSERT,Sales.Transactions,4900,,"{""new"": ""value""}",sa,,5
+524,2026-08-12 20:05:07.521000,INSERT,HR.Employees,4029,"{""old"": ""value""}",,sa,,3
+525,2026-08-12 20:05:07.521000,LOGIN,Sales.Products,894,,"{""new"": ""value""}",sa,,4
+526,2026-08-12 20:05:07.521000,LOGIN,Sales.Products,5094,,,sa,,5
+527,2026-08-12 20:05:07.525000,DELETE,Sales.Products,8392,"{""old"": ""value""}",,sa,,5
+528,2026-08-12 20:05:07.525000,LOGIN,Sales.Transactions,8898,"{""old"": ""value""}",,sa,,4
+529,2026-08-12 20:05:07.525000,LOGIN,HR.Employees,6875,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+530,2026-08-12 20:05:07.529000,INSERT,Security.SensitiveData,8275,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+531,2026-08-12 20:05:07.529000,DELETE,Sales.Products,8591,,"{""new"": ""value""}",sa,,5
+532,2026-08-12 20:05:07.529000,UPDATE,Sales.Transactions,3259,,,sa,,4
+533,2026-08-12 20:05:07.533000,LOGIN,Sales.Products,5837,"{""old"": ""value""}",,sa,,5
+534,2026-08-12 20:05:07.533000,UPDATE,HR.Employees,6934,,,sa,,5
+535,2026-08-12 20:05:07.533000,UPDATE,Security.SensitiveData,872,,"{""new"": ""value""}",sa,,1
+536,2026-08-12 20:05:07.537000,DELETE,Security.SensitiveData,8865,"{""old"": ""value""}",,sa,,1
+537,2026-08-12 20:05:07.537000,DELETE,Security.SensitiveData,1613,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+538,2026-08-12 20:05:07.537000,SELECT,Security.SensitiveData,8530,"{""old"": ""value""}",,sa,,3
+539,2026-08-12 20:05:07.537000,SELECT,Sales.Products,6305,"{""old"": ""value""}",,sa,,5
+540,2026-08-12 20:05:07.541000,UPDATE,Sales.Transactions,601,"{""old"": ""value""}",,sa,,1
+541,2026-08-12 20:05:07.541000,LOGIN,HR.Employees,591,,"{""new"": ""value""}",sa,,4
+542,2026-08-12 20:05:07.541000,DELETE,Sales.Products,1316,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+543,2026-08-12 20:05:07.545000,DELETE,Sales.Transactions,9722,"{""old"": ""value""}",,sa,,5
+544,2026-08-12 20:05:07.545000,INSERT,Security.SensitiveData,9735,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+545,2026-08-12 20:05:07.545000,SELECT,Sales.Transactions,2878,"{""old"": ""value""}",,sa,,1
+546,2026-08-12 20:05:07.549000,LOGIN,HR.Employees,1056,,,sa,,5
+547,2026-08-12 20:05:07.549000,SELECT,Security.SensitiveData,875,"{""old"": ""value""}",,sa,,1
+548,2026-08-12 20:05:07.549000,UPDATE,HR.Employees,2677,,,sa,,5
+549,2026-08-12 20:05:07.553000,SELECT,HR.Employees,3417,"{""old"": ""value""}",,sa,,5
+550,2026-08-12 20:05:07.553000,LOGIN,HR.Employees,7934,,,sa,,4
+551,2026-08-12 20:05:07.553000,INSERT,HR.Employees,8729,"{""old"": ""value""}",,sa,,2
+552,2026-08-12 20:05:07.558000,DELETE,Sales.Products,8682,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+553,2026-08-12 20:05:07.558000,SELECT,Sales.Products,324,,,sa,,1
+554,2026-08-12 20:05:07.562000,LOGIN,HR.Employees,1302,,,sa,,5
+555,2026-08-12 20:05:07.562000,INSERT,Sales.Transactions,6879,"{""old"": ""value""}",,sa,,3
+556,2026-08-12 20:05:07.562000,UPDATE,Sales.Products,2766,,"{""new"": ""value""}",sa,,1
+557,2026-08-12 20:05:07.566000,SELECT,Sales.Transactions,6970,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+558,2026-08-12 20:05:07.566000,UPDATE,Sales.Transactions,9416,,"{""new"": ""value""}",sa,,4
+559,2026-08-12 20:05:07.571000,UPDATE,Sales.Transactions,1378,"{""old"": ""value""}",,sa,,4
+560,2026-08-12 20:05:07.571000,SELECT,Security.SensitiveData,4254,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+561,2026-08-12 20:05:07.571000,SELECT,Sales.Transactions,1903,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+562,2026-08-12 20:05:07.575000,UPDATE,Sales.Products,3125,"{""old"": ""value""}",,sa,,3
+563,2026-08-12 20:05:07.575000,SELECT,Sales.Transactions,5410,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+564,2026-08-12 20:05:07.579000,SELECT,Sales.Transactions,3564,,,sa,,2
+565,2026-08-12 20:05:07.579000,DELETE,Sales.Products,609,,,sa,,3
+566,2026-08-12 20:05:07.579000,UPDATE,Sales.Transactions,2007,,"{""new"": ""value""}",sa,,1
+567,2026-08-12 20:05:07.583000,DELETE,Sales.Products,936,"{""old"": ""value""}",,sa,,4
+568,2026-08-12 20:05:07.583000,INSERT,Security.SensitiveData,6713,,"{""new"": ""value""}",sa,,1
+569,2026-08-12 20:05:07.583000,SELECT,Sales.Products,7908,"{""old"": ""value""}",,sa,,2
+570,2026-08-12 20:05:07.587000,SELECT,Security.SensitiveData,9548,,"{""new"": ""value""}",sa,,4
+571,2026-08-12 20:05:07.587000,LOGIN,HR.Employees,6616,"{""old"": ""value""}",,sa,,5
+572,2026-08-12 20:05:07.591000,SELECT,HR.Employees,6601,,"{""new"": ""value""}",sa,,5
+573,2026-08-12 20:05:07.591000,INSERT,Security.SensitiveData,2458,,"{""new"": ""value""}",sa,,2
+574,2026-08-12 20:05:07.591000,UPDATE,Sales.Transactions,317,,,sa,,4
+575,2026-08-12 20:05:07.591000,UPDATE,HR.Employees,2248,,"{""new"": ""value""}",sa,,5
+576,2026-08-12 20:05:07.595000,DELETE,Sales.Transactions,6695,,"{""new"": ""value""}",sa,,3
+577,2026-08-12 20:05:07.595000,DELETE,HR.Employees,2398,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+578,2026-08-12 20:05:07.595000,UPDATE,Security.SensitiveData,4989,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+579,2026-08-12 20:05:07.595000,INSERT,Sales.Products,9927,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+580,2026-08-12 20:05:07.595000,SELECT,Sales.Transactions,137,,,sa,,5
+581,2026-08-12 20:05:07.599000,DELETE,Sales.Transactions,7613,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+582,2026-08-12 20:05:07.599000,INSERT,Sales.Transactions,6919,,,sa,,1
+583,2026-08-12 20:05:07.603000,LOGIN,Security.SensitiveData,1122,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+584,2026-08-12 20:05:07.603000,INSERT,Sales.Transactions,3122,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+585,2026-08-12 20:05:07.603000,LOGIN,Sales.Transactions,9874,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+586,2026-08-12 20:05:07.608000,SELECT,HR.Employees,4629,,,sa,,4
+587,2026-08-12 20:05:07.608000,LOGIN,HR.Employees,3267,,"{""new"": ""value""}",sa,,4
+588,2026-08-12 20:05:07.612000,DELETE,Sales.Transactions,3760,"{""old"": ""value""}",,sa,,4
+589,2026-08-12 20:05:07.612000,INSERT,Security.SensitiveData,6203,,,sa,,1
+590,2026-08-12 20:05:07.612000,SELECT,Sales.Transactions,5703,"{""old"": ""value""}",,sa,,3
+591,2026-08-12 20:05:07.616000,UPDATE,Security.SensitiveData,1053,,,sa,,5
+592,2026-08-12 20:05:07.616000,DELETE,Sales.Transactions,6691,"{""old"": ""value""}",,sa,,3
+593,2026-08-12 20:05:07.620000,UPDATE,Sales.Products,3271,,,sa,,2
+594,2026-08-12 20:05:07.620000,UPDATE,HR.Employees,1658,,,sa,,5
+595,2026-08-12 20:05:07.620000,SELECT,HR.Employees,3860,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+596,2026-08-12 20:05:07.624000,UPDATE,HR.Employees,5093,,,sa,,2
+597,2026-08-12 20:05:07.624000,UPDATE,Security.SensitiveData,6295,"{""old"": ""value""}",,sa,,5
+598,2026-08-12 20:05:07.624000,INSERT,Sales.Products,3440,,,sa,,4
+599,2026-08-12 20:05:07.624000,LOGIN,Sales.Transactions,9639,,,sa,,5
+600,2026-08-12 20:05:07.628000,INSERT,Sales.Transactions,8966,,,sa,,4
+601,2026-08-12 20:05:07.628000,UPDATE,Security.SensitiveData,3449,,"{""new"": ""value""}",sa,,2
+602,2026-08-12 20:05:07.632000,INSERT,Sales.Products,4937,,,sa,,1
+603,2026-08-12 20:05:07.632000,UPDATE,Security.SensitiveData,3935,"{""old"": ""value""}",,sa,,1
+604,2026-08-12 20:05:07.632000,SELECT,HR.Employees,6948,,,sa,,1
+605,2026-08-12 20:05:07.632000,UPDATE,HR.Employees,839,"{""old"": ""value""}",,sa,,1
+606,2026-08-12 20:05:07.636000,LOGIN,HR.Employees,9585,,"{""new"": ""value""}",sa,,1
+607,2026-08-12 20:05:07.636000,LOGIN,HR.Employees,1115,,"{""new"": ""value""}",sa,,4
+608,2026-08-12 20:05:07.636000,LOGIN,Security.SensitiveData,6121,,"{""new"": ""value""}",sa,,4
+609,2026-08-12 20:05:07.640000,LOGIN,HR.Employees,5178,"{""old"": ""value""}",,sa,,1
+610,2026-08-12 20:05:07.640000,UPDATE,HR.Employees,6329,"{""old"": ""value""}",,sa,,3
+611,2026-08-12 20:05:07.640000,LOGIN,Security.SensitiveData,4023,,,sa,,1
+612,2026-08-12 20:05:07.640000,DELETE,Security.SensitiveData,5516,"{""old"": ""value""}",,sa,,2
+613,2026-08-12 20:05:07.640000,UPDATE,Sales.Transactions,551,,,sa,,4
+614,2026-08-12 20:05:07.644000,INSERT,HR.Employees,7289,,,sa,,4
+615,2026-08-12 20:05:07.644000,INSERT,Sales.Products,3191,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+616,2026-08-12 20:05:07.644000,INSERT,HR.Employees,6655,"{""old"": ""value""}",,sa,,5
+617,2026-08-12 20:05:07.644000,INSERT,Security.SensitiveData,2993,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+618,2026-08-12 20:05:07.648000,LOGIN,Sales.Transactions,8234,,"{""new"": ""value""}",sa,,5
+619,2026-08-12 20:05:07.648000,SELECT,Security.SensitiveData,6587,,,sa,,4
+620,2026-08-12 20:05:07.648000,LOGIN,Sales.Transactions,6690,,"{""new"": ""value""}",sa,,1
+621,2026-08-12 20:05:07.648000,INSERT,HR.Employees,9380,,"{""new"": ""value""}",sa,,4
+622,2026-08-12 20:05:07.653000,DELETE,HR.Employees,5181,,"{""new"": ""value""}",sa,,1
+623,2026-08-12 20:05:07.657000,LOGIN,Sales.Transactions,1613,"{""old"": ""value""}",,sa,,1
+624,2026-08-12 20:05:07.657000,UPDATE,Sales.Transactions,7315,,,sa,,4
+625,2026-08-12 20:05:07.661000,INSERT,Security.SensitiveData,4737,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+626,2026-08-12 20:05:07.661000,INSERT,Sales.Transactions,5383,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+627,2026-08-12 20:05:07.665000,UPDATE,Security.SensitiveData,3893,"{""old"": ""value""}",,sa,,2
+628,2026-08-12 20:05:07.665000,DELETE,HR.Employees,5800,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+629,2026-08-12 20:05:07.665000,SELECT,HR.Employees,1282,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+630,2026-08-12 20:05:07.669000,LOGIN,HR.Employees,5097,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+631,2026-08-12 20:05:07.669000,INSERT,Security.SensitiveData,9591,"{""old"": ""value""}",,sa,,1
+632,2026-08-12 20:05:07.669000,INSERT,Security.SensitiveData,4665,,,sa,,4
+633,2026-08-12 20:05:07.673000,INSERT,Security.SensitiveData,9706,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+634,2026-08-12 20:05:07.673000,SELECT,Sales.Products,2144,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+635,2026-08-12 20:05:07.673000,INSERT,HR.Employees,8525,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+636,2026-08-12 20:05:07.677000,LOGIN,Security.SensitiveData,3105,"{""old"": ""value""}",,sa,,1
+637,2026-08-12 20:05:07.677000,INSERT,Sales.Products,6124,"{""old"": ""value""}",,sa,,1
+638,2026-08-12 20:05:07.677000,DELETE,Security.SensitiveData,2467,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+639,2026-08-12 20:05:07.681000,INSERT,Sales.Products,3241,,,sa,,2
+640,2026-08-12 20:05:07.681000,INSERT,Sales.Products,7546,,"{""new"": ""value""}",sa,,1
+641,2026-08-12 20:05:07.685000,DELETE,Sales.Transactions,1224,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+642,2026-08-12 20:05:07.685000,UPDATE,HR.Employees,9292,"{""old"": ""value""}",,sa,,5
+643,2026-08-12 20:05:07.685000,DELETE,HR.Employees,8753,"{""old"": ""value""}",,sa,,3
+644,2026-08-12 20:05:07.689000,SELECT,HR.Employees,9450,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+645,2026-08-12 20:05:07.689000,UPDATE,Sales.Transactions,2443,"{""old"": ""value""}",,sa,,3
+646,2026-08-12 20:05:07.689000,UPDATE,HR.Employees,5935,,,sa,,3
+647,2026-08-12 20:05:07.694000,INSERT,Security.SensitiveData,3172,,,sa,,2
+648,2026-08-12 20:05:07.694000,DELETE,Sales.Transactions,9267,,"{""new"": ""value""}",sa,,5
+649,2026-08-12 20:05:07.698000,DELETE,Sales.Products,1965,,,sa,,4
+650,2026-08-12 20:05:07.698000,LOGIN,Sales.Transactions,6528,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+651,2026-08-12 20:05:07.698000,SELECT,Sales.Products,1905,"{""old"": ""value""}",,sa,,2
+652,2026-08-12 20:05:07.702000,DELETE,Sales.Products,3629,,,sa,,2
+653,2026-08-12 20:05:07.702000,UPDATE,Sales.Products,3004,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+654,2026-08-12 20:05:07.702000,SELECT,Sales.Products,200,,,sa,,1
+655,2026-08-12 20:05:07.702000,UPDATE,Security.SensitiveData,2664,,,sa,,1
+656,2026-08-12 20:05:07.706000,SELECT,HR.Employees,2932,"{""old"": ""value""}",,sa,,5
+657,2026-08-12 20:05:07.706000,LOGIN,HR.Employees,2051,,"{""new"": ""value""}",sa,,3
+658,2026-08-12 20:05:07.706000,DELETE,Security.SensitiveData,7132,"{""old"": ""value""}",,sa,,2
+659,2026-08-12 20:05:07.710000,DELETE,Sales.Transactions,5622,"{""old"": ""value""}",,sa,,1
+660,2026-08-12 20:05:07.710000,SELECT,HR.Employees,2211,,"{""new"": ""value""}",sa,,2
+661,2026-08-12 20:05:07.714000,DELETE,HR.Employees,2328,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+662,2026-08-12 20:05:07.714000,DELETE,Security.SensitiveData,8096,,,sa,,3
+663,2026-08-12 20:05:07.714000,UPDATE,Sales.Transactions,5929,"{""old"": ""value""}",,sa,,3
+664,2026-08-12 20:05:07.719000,INSERT,Sales.Transactions,8934,,"{""new"": ""value""}",sa,,1
+665,2026-08-12 20:05:07.719000,INSERT,Security.SensitiveData,864,,,sa,,5
+666,2026-08-12 20:05:07.719000,UPDATE,Sales.Transactions,4870,,"{""new"": ""value""}",sa,,2
+667,2026-08-12 20:05:07.723000,DELETE,Security.SensitiveData,2002,,,sa,,5
+668,2026-08-12 20:05:07.723000,DELETE,Sales.Transactions,7860,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+669,2026-08-12 20:05:07.723000,SELECT,HR.Employees,7851,"{""old"": ""value""}",,sa,,5
+670,2026-08-12 20:05:07.727000,UPDATE,HR.Employees,7098,,,sa,,5
+671,2026-08-12 20:05:07.727000,INSERT,HR.Employees,8486,"{""old"": ""value""}",,sa,,3
+672,2026-08-12 20:05:07.727000,SELECT,HR.Employees,7187,,"{""new"": ""value""}",sa,,5
+673,2026-08-12 20:05:07.731000,SELECT,Sales.Transactions,7128,"{""old"": ""value""}",,sa,,5
+674,2026-08-12 20:05:07.731000,DELETE,Security.SensitiveData,461,"{""old"": ""value""}",,sa,,4
+675,2026-08-12 20:05:07.731000,DELETE,Sales.Transactions,5247,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+676,2026-08-12 20:05:07.735000,INSERT,Sales.Products,4514,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+677,2026-08-12 20:05:07.735000,DELETE,Security.SensitiveData,3892,,"{""new"": ""value""}",sa,,4
+678,2026-08-12 20:05:07.735000,SELECT,Sales.Transactions,3699,,"{""new"": ""value""}",sa,,2
+679,2026-08-12 20:05:07.735000,DELETE,HR.Employees,3715,,,sa,,2
+680,2026-08-12 20:05:07.739000,LOGIN,Sales.Products,176,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+681,2026-08-12 20:05:07.739000,DELETE,Sales.Transactions,9563,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+682,2026-08-12 20:05:07.739000,LOGIN,HR.Employees,4408,,"{""new"": ""value""}",sa,,2
+683,2026-08-12 20:05:07.743000,INSERT,HR.Employees,9938,,"{""new"": ""value""}",sa,,5
+684,2026-08-12 20:05:07.743000,DELETE,Sales.Transactions,1177,,"{""new"": ""value""}",sa,,4
+685,2026-08-12 20:05:07.743000,LOGIN,Sales.Products,1212,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+686,2026-08-12 20:05:07.747000,SELECT,Security.SensitiveData,2991,,"{""new"": ""value""}",sa,,4
+687,2026-08-12 20:05:07.747000,LOGIN,Security.SensitiveData,1408,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+688,2026-08-12 20:05:07.747000,INSERT,HR.Employees,3354,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+689,2026-08-12 20:05:07.747000,INSERT,Security.SensitiveData,6861,,,sa,,1
+690,2026-08-12 20:05:07.751000,SELECT,HR.Employees,907,"{""old"": ""value""}",,sa,,5
+691,2026-08-12 20:05:07.751000,LOGIN,HR.Employees,8078,,,sa,,4
+692,2026-08-12 20:05:07.751000,DELETE,Security.SensitiveData,2995,,"{""new"": ""value""}",sa,,4
+693,2026-08-12 20:05:07.755000,LOGIN,Sales.Transactions,4938,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+694,2026-08-12 20:05:07.755000,DELETE,HR.Employees,3246,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+695,2026-08-12 20:05:07.755000,DELETE,Security.SensitiveData,5629,,"{""new"": ""value""}",sa,,5
+696,2026-08-12 20:05:07.755000,DELETE,Sales.Transactions,4702,,,sa,,5
+697,2026-08-12 20:05:07.759000,LOGIN,Sales.Transactions,3532,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+698,2026-08-12 20:05:07.759000,INSERT,Sales.Transactions,446,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+699,2026-08-12 20:05:07.759000,INSERT,Sales.Products,2507,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+700,2026-08-12 20:05:07.763000,SELECT,Security.SensitiveData,1000,"{""old"": ""value""}",,sa,,4
+701,2026-08-12 20:05:07.763000,SELECT,Sales.Products,7972,,"{""new"": ""value""}",sa,,3
+702,2026-08-12 20:05:07.768000,SELECT,Sales.Transactions,6075,,,sa,,5
+703,2026-08-12 20:05:07.768000,LOGIN,Sales.Transactions,8481,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+704,2026-08-12 20:05:07.768000,UPDATE,Sales.Products,866,"{""old"": ""value""}",,sa,,4
+705,2026-08-12 20:05:07.772000,SELECT,Sales.Transactions,7097,,"{""new"": ""value""}",sa,,2
+706,2026-08-12 20:05:07.772000,UPDATE,Sales.Transactions,3445,"{""old"": ""value""}",,sa,,2
+707,2026-08-12 20:05:07.772000,DELETE,HR.Employees,1871,,"{""new"": ""value""}",sa,,5
+708,2026-08-12 20:05:07.776000,LOGIN,HR.Employees,9243,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+709,2026-08-12 20:05:07.776000,SELECT,Sales.Transactions,3706,,,sa,,3
+710,2026-08-12 20:05:07.776000,LOGIN,Security.SensitiveData,8895,"{""old"": ""value""}",,sa,,2
+711,2026-08-12 20:05:07.780000,LOGIN,HR.Employees,894,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+712,2026-08-12 20:05:07.780000,LOGIN,Sales.Products,4928,,,sa,,5
+713,2026-08-12 20:05:07.780000,SELECT,Sales.Products,963,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+714,2026-08-12 20:05:07.784000,DELETE,Sales.Products,2228,,"{""new"": ""value""}",sa,,4
+715,2026-08-12 20:05:07.784000,UPDATE,Security.SensitiveData,4235,,,sa,,1
+716,2026-08-12 20:05:07.784000,LOGIN,Sales.Transactions,1591,,"{""new"": ""value""}",sa,,5
+717,2026-08-12 20:05:07.788000,DELETE,Sales.Products,4036,"{""old"": ""value""}",,sa,,3
+718,2026-08-12 20:05:07.788000,UPDATE,Sales.Transactions,3035,,"{""new"": ""value""}",sa,,1
+719,2026-08-12 20:05:07.788000,DELETE,Sales.Transactions,7298,"{""old"": ""value""}",,sa,,2
+720,2026-08-12 20:05:07.792000,INSERT,Sales.Transactions,1862,,,sa,,1
+721,2026-08-12 20:05:07.792000,LOGIN,Sales.Transactions,4939,,,sa,,5
+722,2026-08-12 20:05:07.792000,LOGIN,Sales.Products,1048,,,sa,,4
+723,2026-08-12 20:05:07.796000,DELETE,Sales.Transactions,6058,,"{""new"": ""value""}",sa,,5
+724,2026-08-12 20:05:07.796000,DELETE,Security.SensitiveData,8387,,,sa,,4
+725,2026-08-12 20:05:07.796000,LOGIN,Sales.Products,773,"{""old"": ""value""}",,sa,,5
+726,2026-08-12 20:05:07.800000,LOGIN,Security.SensitiveData,9676,,"{""new"": ""value""}",sa,,4
+727,2026-08-12 20:05:07.800000,DELETE,HR.Employees,9638,"{""old"": ""value""}",,sa,,1
+728,2026-08-12 20:05:07.800000,UPDATE,HR.Employees,1667,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+729,2026-08-12 20:05:07.804000,SELECT,Sales.Transactions,9342,,"{""new"": ""value""}",sa,,5
+730,2026-08-12 20:05:07.804000,LOGIN,Sales.Transactions,4052,"{""old"": ""value""}",,sa,,3
+731,2026-08-12 20:05:07.804000,LOGIN,Sales.Products,4306,,,sa,,4
+732,2026-08-12 20:05:07.808000,LOGIN,Security.SensitiveData,1914,,,sa,,3
+733,2026-08-12 20:05:07.808000,LOGIN,Sales.Products,5970,"{""old"": ""value""}",,sa,,4
+734,2026-08-12 20:05:07.808000,LOGIN,Security.SensitiveData,4038,,,sa,,5
+735,2026-08-12 20:05:07.812000,LOGIN,Security.SensitiveData,4599,"{""old"": ""value""}",,sa,,5
+736,2026-08-12 20:05:07.812000,DELETE,Sales.Products,7794,,"{""new"": ""value""}",sa,,2
+737,2026-08-12 20:05:07.816000,LOGIN,Sales.Transactions,8941,"{""old"": ""value""}",,sa,,4
+738,2026-08-12 20:05:07.816000,INSERT,HR.Employees,9293,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+739,2026-08-12 20:05:07.816000,INSERT,Sales.Transactions,5247,"{""old"": ""value""}",,sa,,2
+740,2026-08-12 20:05:07.821000,INSERT,Sales.Products,4256,,"{""new"": ""value""}",sa,,1
+741,2026-08-12 20:05:07.821000,UPDATE,Sales.Transactions,5690,,,sa,,1
+742,2026-08-12 20:05:07.821000,DELETE,HR.Employees,5847,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+743,2026-08-12 20:05:07.825000,DELETE,Security.SensitiveData,6384,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+744,2026-08-12 20:05:07.825000,SELECT,Sales.Products,1228,,,sa,,2
+745,2026-08-12 20:05:07.829000,SELECT,Sales.Transactions,3345,,,sa,,4
+746,2026-08-12 20:05:07.829000,LOGIN,Security.SensitiveData,6889,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+747,2026-08-12 20:05:07.833000,SELECT,HR.Employees,9690,"{""old"": ""value""}",,sa,,4
+748,2026-08-12 20:05:07.833000,UPDATE,Sales.Products,3411,"{""old"": ""value""}",,sa,,1
+749,2026-08-12 20:05:07.837000,DELETE,Security.SensitiveData,7774,"{""old"": ""value""}",,sa,,2
+750,2026-08-12 20:05:07.837000,INSERT,Sales.Transactions,5838,,,sa,,4
+751,2026-08-12 20:05:07.841000,DELETE,Sales.Products,2983,,,sa,,3
+752,2026-08-12 20:05:07.841000,LOGIN,Security.SensitiveData,5570,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+753,2026-08-12 20:05:07.845000,LOGIN,Sales.Transactions,2586,,"{""new"": ""value""}",sa,,1
+754,2026-08-12 20:05:07.845000,DELETE,Sales.Transactions,7593,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+755,2026-08-12 20:05:07.845000,LOGIN,Sales.Transactions,4704,,"{""new"": ""value""}",sa,,5
+756,2026-08-12 20:05:07.849000,SELECT,HR.Employees,2598,,"{""new"": ""value""}",sa,,3
+757,2026-08-12 20:05:07.849000,INSERT,Security.SensitiveData,1354,,,sa,,3
+758,2026-08-12 20:05:07.849000,UPDATE,Security.SensitiveData,3502,"{""old"": ""value""}",,sa,,1
+759,2026-08-12 20:05:07.853000,INSERT,Sales.Transactions,8959,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+760,2026-08-12 20:05:07.853000,LOGIN,Sales.Products,3367,,"{""new"": ""value""}",sa,,1
+761,2026-08-12 20:05:07.853000,UPDATE,Security.SensitiveData,4370,,,sa,,3
+762,2026-08-12 20:05:07.857000,INSERT,Sales.Products,6833,"{""old"": ""value""}",,sa,,2
+763,2026-08-12 20:05:07.857000,LOGIN,Security.SensitiveData,9517,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+764,2026-08-12 20:05:07.857000,UPDATE,HR.Employees,7261,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+765,2026-08-12 20:05:07.861000,UPDATE,HR.Employees,7371,,,sa,,2
+766,2026-08-12 20:05:07.861000,LOGIN,Security.SensitiveData,8330,,,sa,,3
+767,2026-08-12 20:05:07.861000,DELETE,Security.SensitiveData,4919,,"{""new"": ""value""}",sa,,1
+768,2026-08-12 20:05:07.865000,SELECT,Sales.Products,7662,,"{""new"": ""value""}",sa,,1
+769,2026-08-12 20:05:07.865000,DELETE,Sales.Transactions,8035,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+770,2026-08-12 20:05:07.865000,SELECT,Sales.Transactions,7493,,"{""new"": ""value""}",sa,,4
+771,2026-08-12 20:05:07.870000,SELECT,Sales.Transactions,9307,,"{""new"": ""value""}",sa,,4
+772,2026-08-12 20:05:07.870000,LOGIN,Security.SensitiveData,7260,,,sa,,5
+773,2026-08-12 20:05:07.870000,UPDATE,HR.Employees,8086,,,sa,,1
+774,2026-08-12 20:05:07.874000,INSERT,Security.SensitiveData,8520,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+775,2026-08-12 20:05:07.874000,LOGIN,Sales.Transactions,7808,,,sa,,4
+776,2026-08-12 20:05:07.874000,UPDATE,Sales.Products,6117,,"{""new"": ""value""}",sa,,4
+777,2026-08-12 20:05:07.878000,DELETE,HR.Employees,5505,,,sa,,1
+778,2026-08-12 20:05:07.878000,INSERT,HR.Employees,6683,,,sa,,3
+779,2026-08-12 20:05:07.878000,DELETE,Security.SensitiveData,7929,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+780,2026-08-12 20:05:07.882000,SELECT,Sales.Products,1999,,,sa,,4
+781,2026-08-12 20:05:07.882000,DELETE,HR.Employees,7454,"{""old"": ""value""}",,sa,,4
+782,2026-08-12 20:05:07.882000,UPDATE,Security.SensitiveData,8917,"{""old"": ""value""}",,sa,,5
+783,2026-08-12 20:05:07.886000,UPDATE,Sales.Transactions,5154,,,sa,,1
+784,2026-08-12 20:05:07.886000,SELECT,HR.Employees,391,,,sa,,2
+785,2026-08-12 20:05:07.886000,LOGIN,Sales.Transactions,8691,"{""old"": ""value""}",,sa,,1
+786,2026-08-12 20:05:07.890000,DELETE,Sales.Products,8742,,"{""new"": ""value""}",sa,,4
+787,2026-08-12 20:05:07.890000,DELETE,HR.Employees,2870,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+788,2026-08-12 20:05:07.890000,LOGIN,HR.Employees,2947,,,sa,,5
+789,2026-08-12 20:05:07.894000,LOGIN,Sales.Transactions,1502,"{""old"": ""value""}",,sa,,3
+790,2026-08-12 20:05:07.894000,INSERT,HR.Employees,3674,,,sa,,2
+791,2026-08-12 20:05:07.894000,SELECT,HR.Employees,2002,,,sa,,3
+792,2026-08-12 20:05:07.898000,INSERT,Security.SensitiveData,9586,"{""old"": ""value""}",,sa,,3
+793,2026-08-12 20:05:07.898000,DELETE,Sales.Transactions,6133,,"{""new"": ""value""}",sa,,3
+794,2026-08-12 20:05:07.898000,INSERT,Sales.Transactions,6051,,"{""new"": ""value""}",sa,,4
+795,2026-08-12 20:05:07.902000,LOGIN,Security.SensitiveData,1275,"{""old"": ""value""}",,sa,,5
+796,2026-08-12 20:05:07.902000,LOGIN,HR.Employees,7469,,"{""new"": ""value""}",sa,,2
+797,2026-08-12 20:05:07.902000,UPDATE,Sales.Transactions,8724,"{""old"": ""value""}",,sa,,1
+798,2026-08-12 20:05:07.906000,INSERT,Sales.Transactions,7420,,"{""new"": ""value""}",sa,,2
+799,2026-08-12 20:05:07.906000,UPDATE,Sales.Transactions,2001,"{""old"": ""value""}",,sa,,1
+800,2026-08-12 20:05:07.906000,INSERT,Sales.Transactions,9610,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+801,2026-08-12 20:05:07.910000,DELETE,HR.Employees,2048,,,sa,,5
+802,2026-08-12 20:05:07.910000,SELECT,Sales.Transactions,3601,"{""old"": ""value""}",,sa,,5
+803,2026-08-12 20:05:07.914000,DELETE,Sales.Transactions,4519,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+804,2026-08-12 20:05:07.914000,SELECT,Sales.Products,991,"{""old"": ""value""}",,sa,,4
+805,2026-08-12 20:05:07.914000,UPDATE,Sales.Products,120,,,sa,,5
+806,2026-08-12 20:05:07.919000,INSERT,HR.Employees,9923,,"{""new"": ""value""}",sa,,2
+807,2026-08-12 20:05:07.919000,LOGIN,Sales.Transactions,1734,,"{""new"": ""value""}",sa,,1
+808,2026-08-12 20:05:07.919000,SELECT,Security.SensitiveData,8672,,"{""new"": ""value""}",sa,,4
+809,2026-08-12 20:05:07.923000,INSERT,HR.Employees,7720,,,sa,,4
+810,2026-08-12 20:05:07.923000,INSERT,Sales.Transactions,2791,"{""old"": ""value""}",,sa,,4
+811,2026-08-12 20:05:07.923000,UPDATE,Sales.Products,7667,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+812,2026-08-12 20:05:07.927000,DELETE,Sales.Transactions,7480,"{""old"": ""value""}",,sa,,2
+813,2026-08-12 20:05:07.927000,LOGIN,Sales.Products,7981,,"{""new"": ""value""}",sa,,4
+814,2026-08-12 20:05:07.927000,LOGIN,Sales.Products,2046,,"{""new"": ""value""}",sa,,5
+815,2026-08-12 20:05:07.931000,SELECT,Security.SensitiveData,6027,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+816,2026-08-12 20:05:07.931000,DELETE,Security.SensitiveData,1156,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+817,2026-08-12 20:05:07.931000,UPDATE,HR.Employees,8834,,,sa,,2
+818,2026-08-12 20:05:07.935000,LOGIN,Sales.Transactions,352,"{""old"": ""value""}",,sa,,1
+819,2026-08-12 20:05:07.935000,LOGIN,Security.SensitiveData,1659,"{""old"": ""value""}",,sa,,3
+820,2026-08-12 20:05:07.935000,INSERT,Security.SensitiveData,3436,,"{""new"": ""value""}",sa,,1
+821,2026-08-12 20:05:07.939000,INSERT,Sales.Transactions,9108,"{""old"": ""value""}",,sa,,5
+822,2026-08-12 20:05:07.939000,LOGIN,Sales.Products,1841,,"{""new"": ""value""}",sa,,5
+823,2026-08-12 20:05:07.939000,SELECT,Security.SensitiveData,2576,,,sa,,4
+824,2026-08-12 20:05:07.943000,SELECT,Sales.Transactions,420,,"{""new"": ""value""}",sa,,5
+825,2026-08-12 20:05:07.943000,UPDATE,Security.SensitiveData,4191,,"{""new"": ""value""}",sa,,5
+826,2026-08-12 20:05:07.943000,UPDATE,Security.SensitiveData,9328,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+827,2026-08-12 20:05:07.947000,DELETE,HR.Employees,3236,,"{""new"": ""value""}",sa,,3
+828,2026-08-12 20:05:07.947000,DELETE,Sales.Transactions,9047,,"{""new"": ""value""}",sa,,1
+829,2026-08-12 20:05:07.947000,UPDATE,Security.SensitiveData,2896,,"{""new"": ""value""}",sa,,2
+830,2026-08-12 20:05:07.951000,LOGIN,HR.Employees,5671,"{""old"": ""value""}",,sa,,5
+831,2026-08-12 20:05:07.951000,UPDATE,Sales.Transactions,7097,,"{""new"": ""value""}",sa,,1
+832,2026-08-12 20:05:07.951000,SELECT,Sales.Transactions,355,,"{""new"": ""value""}",sa,,1
+833,2026-08-12 20:05:07.955000,SELECT,Security.SensitiveData,382,"{""old"": ""value""}",,sa,,4
+834,2026-08-12 20:05:07.955000,SELECT,Sales.Products,4889,,"{""new"": ""value""}",sa,,4
+835,2026-08-12 20:05:07.955000,LOGIN,HR.Employees,2399,,"{""new"": ""value""}",sa,,3
+836,2026-08-12 20:05:07.959000,LOGIN,Sales.Products,8348,"{""old"": ""value""}",,sa,,2
+837,2026-08-12 20:05:07.959000,DELETE,HR.Employees,6038,,,sa,,5
+838,2026-08-12 20:05:07.959000,INSERT,Sales.Transactions,4359,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+839,2026-08-12 20:05:07.963000,SELECT,Sales.Products,1539,"{""old"": ""value""}",,sa,,2
+840,2026-08-12 20:05:07.963000,UPDATE,Security.SensitiveData,1848,,,sa,,3
+841,2026-08-12 20:05:07.963000,SELECT,Sales.Products,8052,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+842,2026-08-12 20:05:07.967000,DELETE,Sales.Products,5448,,,sa,,1
+843,2026-08-12 20:05:07.967000,UPDATE,Sales.Products,7165,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+844,2026-08-12 20:05:07.967000,DELETE,Sales.Transactions,9131,"{""old"": ""value""}",,sa,,1
+845,2026-08-12 20:05:07.972000,INSERT,HR.Employees,9343,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+846,2026-08-12 20:05:07.972000,UPDATE,Sales.Transactions,8193,,,sa,,1
+847,2026-08-12 20:05:07.972000,UPDATE,HR.Employees,3626,,"{""new"": ""value""}",sa,,5
+848,2026-08-12 20:05:07.972000,UPDATE,Sales.Transactions,6351,,"{""new"": ""value""}",sa,,1
+849,2026-08-12 20:05:07.976000,LOGIN,Security.SensitiveData,5041,"{""old"": ""value""}",,sa,,5
+850,2026-08-12 20:05:07.976000,DELETE,Sales.Transactions,8106,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+851,2026-08-12 20:05:07.976000,DELETE,Security.SensitiveData,2648,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+852,2026-08-12 20:05:07.980000,UPDATE,Sales.Products,4844,"{""old"": ""value""}",,sa,,4
+853,2026-08-12 20:05:07.980000,DELETE,HR.Employees,1086,"{""old"": ""value""}",,sa,,5
+854,2026-08-12 20:05:07.984000,INSERT,Security.SensitiveData,8918,,,sa,,4
+855,2026-08-12 20:05:07.984000,LOGIN,Sales.Products,691,,,sa,,2
+856,2026-08-12 20:05:07.984000,DELETE,HR.Employees,8088,"{""old"": ""value""}",,sa,,5
+857,2026-08-12 20:05:07.988000,SELECT,Security.SensitiveData,1252,"{""old"": ""value""}",,sa,,3
+858,2026-08-12 20:05:07.988000,LOGIN,Sales.Transactions,3591,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+859,2026-08-12 20:05:07.988000,DELETE,Sales.Transactions,1205,,,sa,,2
+860,2026-08-12 20:05:07.992000,LOGIN,HR.Employees,8684,"{""old"": ""value""}",,sa,,5
+861,2026-08-12 20:05:07.992000,INSERT,Sales.Products,1076,,,sa,,1
+862,2026-08-12 20:05:07.992000,UPDATE,Sales.Products,8893,,"{""new"": ""value""}",sa,,2
+863,2026-08-12 20:05:07.996000,SELECT,Sales.Products,7354,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+864,2026-08-12 20:05:07.996000,INSERT,Security.SensitiveData,4261,,"{""new"": ""value""}",sa,,2
+865,2026-08-12 20:05:08,UPDATE,Sales.Transactions,1067,,"{""new"": ""value""}",sa,,3
+866,2026-08-12 20:05:08,INSERT,Security.SensitiveData,7514,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+867,2026-08-12 20:05:08,INSERT,Security.SensitiveData,3751,"{""old"": ""value""}",,sa,,3
+868,2026-08-12 20:05:08.004000,DELETE,Security.SensitiveData,8901,,,sa,,1
+869,2026-08-12 20:05:08.004000,UPDATE,Security.SensitiveData,1725,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+870,2026-08-12 20:05:08.008000,DELETE,HR.Employees,5729,,"{""new"": ""value""}",sa,,1
+871,2026-08-12 20:05:08.008000,DELETE,Sales.Products,1354,,"{""new"": ""value""}",sa,,3
+872,2026-08-12 20:05:08.008000,DELETE,HR.Employees,6126,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+873,2026-08-12 20:05:08.012000,INSERT,Security.SensitiveData,680,"{""old"": ""value""}",,sa,,3
+874,2026-08-12 20:05:08.012000,UPDATE,Sales.Products,268,"{""old"": ""value""}",,sa,,1
+875,2026-08-12 20:05:08.016000,INSERT,Sales.Transactions,7861,,,sa,,4
+876,2026-08-12 20:05:08.016000,INSERT,Sales.Transactions,7926,,,sa,,4
+877,2026-08-12 20:05:08.021000,LOGIN,Sales.Products,969,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+878,2026-08-12 20:05:08.021000,SELECT,Sales.Transactions,9244,"{""old"": ""value""}",,sa,,3
+879,2026-08-12 20:05:08.021000,SELECT,Sales.Transactions,6898,,,sa,,4
+880,2026-08-12 20:05:08.025000,SELECT,Sales.Products,3043,,,sa,,4
+881,2026-08-12 20:05:08.025000,UPDATE,Security.SensitiveData,3217,,"{""new"": ""value""}",sa,,4
+882,2026-08-12 20:05:08.029000,DELETE,Security.SensitiveData,5251,,"{""new"": ""value""}",sa,,5
+883,2026-08-12 20:05:08.029000,SELECT,HR.Employees,9323,,"{""new"": ""value""}",sa,,3
+884,2026-08-12 20:05:08.033000,SELECT,Sales.Products,3545,,"{""new"": ""value""}",sa,,4
+885,2026-08-12 20:05:08.037000,DELETE,Security.SensitiveData,9891,,,sa,,2
+886,2026-08-12 20:05:08.037000,UPDATE,HR.Employees,1944,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+887,2026-08-12 20:05:08.041000,INSERT,Security.SensitiveData,3304,,"{""new"": ""value""}",sa,,1
+888,2026-08-12 20:05:08.045000,SELECT,Sales.Products,2790,,,sa,,3
+889,2026-08-12 20:05:08.045000,LOGIN,HR.Employees,6709,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+890,2026-08-12 20:05:08.049000,LOGIN,Sales.Products,5872,,"{""new"": ""value""}",sa,,2
+891,2026-08-12 20:05:08.049000,SELECT,Security.SensitiveData,1368,,"{""new"": ""value""}",sa,,1
+892,2026-08-12 20:05:08.049000,DELETE,Sales.Products,3368,,,sa,,3
+893,2026-08-12 20:05:08.053000,LOGIN,HR.Employees,5933,"{""old"": ""value""}",,sa,,1
+894,2026-08-12 20:05:08.053000,DELETE,Sales.Transactions,4103,,,sa,,3
+895,2026-08-12 20:05:08.053000,UPDATE,Sales.Products,1306,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+896,2026-08-12 20:05:08.058000,DELETE,Sales.Transactions,3079,,"{""new"": ""value""}",sa,,3
+897,2026-08-12 20:05:08.058000,LOGIN,Sales.Products,10,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+898,2026-08-12 20:05:08.058000,LOGIN,Sales.Products,3255,"{""old"": ""value""}",,sa,,2
+899,2026-08-12 20:05:08.062000,INSERT,Sales.Transactions,4863,,"{""new"": ""value""}",sa,,1
+900,2026-08-12 20:05:08.062000,INSERT,Security.SensitiveData,5841,,"{""new"": ""value""}",sa,,3
+901,2026-08-12 20:05:08.062000,SELECT,Sales.Products,9764,,,sa,,5
+902,2026-08-12 20:05:08.066000,DELETE,Sales.Transactions,523,"{""old"": ""value""}",,sa,,3
+903,2026-08-12 20:05:08.070000,LOGIN,Sales.Transactions,9555,,"{""new"": ""value""}",sa,,5
+904,2026-08-12 20:05:08.070000,UPDATE,Sales.Products,7859,,"{""new"": ""value""}",sa,,1
+905,2026-08-12 20:05:08.074000,SELECT,Sales.Transactions,2321,,,sa,,4
+906,2026-08-12 20:05:08.074000,DELETE,Security.SensitiveData,6608,"{""old"": ""value""}",,sa,,3
+907,2026-08-12 20:05:08.078000,LOGIN,Sales.Transactions,6254,,"{""new"": ""value""}",sa,,2
+908,2026-08-12 20:05:08.078000,INSERT,Security.SensitiveData,7341,,,sa,,2
+909,2026-08-12 20:05:08.078000,DELETE,Sales.Transactions,3507,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+910,2026-08-12 20:05:08.082000,LOGIN,HR.Employees,7228,"{""old"": ""value""}",,sa,,5
+911,2026-08-12 20:05:08.082000,LOGIN,Sales.Transactions,6689,"{""old"": ""value""}",,sa,,3
+912,2026-08-12 20:05:08.082000,SELECT,Sales.Transactions,8777,"{""old"": ""value""}",,sa,,5
+913,2026-08-12 20:05:08.086000,SELECT,HR.Employees,4229,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+914,2026-08-12 20:05:08.086000,LOGIN,Sales.Products,2812,,"{""new"": ""value""}",sa,,2
+915,2026-08-12 20:05:08.090000,INSERT,HR.Employees,8012,,"{""new"": ""value""}",sa,,4
+916,2026-08-12 20:05:08.090000,LOGIN,HR.Employees,6148,,"{""new"": ""value""}",sa,,1
+917,2026-08-12 20:05:08.090000,DELETE,Security.SensitiveData,4418,,"{""new"": ""value""}",sa,,3
+918,2026-08-12 20:05:08.094000,SELECT,Security.SensitiveData,8906,,,sa,,4
+919,2026-08-12 20:05:08.094000,SELECT,Sales.Products,2170,,,sa,,3
+920,2026-08-12 20:05:08.094000,LOGIN,HR.Employees,5827,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+921,2026-08-12 20:05:08.098000,LOGIN,HR.Employees,7351,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+922,2026-08-12 20:05:08.098000,UPDATE,Sales.Transactions,2308,,"{""new"": ""value""}",sa,,5
+923,2026-08-12 20:05:08.098000,SELECT,Security.SensitiveData,6560,"{""old"": ""value""}",,sa,,2
+924,2026-08-12 20:05:08.102000,DELETE,Security.SensitiveData,2284,"{""old"": ""value""}",,sa,,1
+925,2026-08-12 20:05:08.102000,UPDATE,HR.Employees,7448,,"{""new"": ""value""}",sa,,3
+926,2026-08-12 20:05:08.107000,DELETE,HR.Employees,3743,,,sa,,5
+927,2026-08-12 20:05:08.107000,LOGIN,Sales.Transactions,1100,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+928,2026-08-12 20:05:08.107000,UPDATE,Sales.Products,7421,,"{""new"": ""value""}",sa,,4
+929,2026-08-12 20:05:08.111000,UPDATE,HR.Employees,2884,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+930,2026-08-12 20:05:08.111000,INSERT,Security.SensitiveData,8004,"{""old"": ""value""}",,sa,,5
+931,2026-08-12 20:05:08.111000,LOGIN,HR.Employees,1845,,"{""new"": ""value""}",sa,,1
+932,2026-08-12 20:05:08.115000,SELECT,Security.SensitiveData,1627,,,sa,,3
+933,2026-08-12 20:05:08.115000,INSERT,Security.SensitiveData,2645,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+934,2026-08-12 20:05:08.119000,LOGIN,HR.Employees,6869,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+935,2026-08-12 20:05:08.119000,SELECT,Sales.Products,4739,"{""old"": ""value""}",,sa,,4
+936,2026-08-12 20:05:08.119000,DELETE,Sales.Transactions,7469,,"{""new"": ""value""}",sa,,5
+937,2026-08-12 20:05:08.123000,DELETE,Security.SensitiveData,5717,,,sa,,3
+938,2026-08-12 20:05:08.123000,LOGIN,Sales.Products,6936,"{""old"": ""value""}",,sa,,5
+939,2026-08-12 20:05:08.123000,LOGIN,Sales.Products,9713,,"{""new"": ""value""}",sa,,4
+940,2026-08-12 20:05:08.127000,LOGIN,Sales.Products,4181,,,sa,,2
+941,2026-08-12 20:05:08.127000,DELETE,HR.Employees,1317,"{""old"": ""value""}",,sa,,4
+942,2026-08-12 20:05:08.131000,UPDATE,Sales.Transactions,490,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+943,2026-08-12 20:05:08.131000,LOGIN,HR.Employees,1856,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+944,2026-08-12 20:05:08.131000,DELETE,HR.Employees,26,,"{""new"": ""value""}",sa,,1
+945,2026-08-12 20:05:08.135000,SELECT,Sales.Products,5272,,,sa,,5
+946,2026-08-12 20:05:08.135000,LOGIN,Sales.Products,8714,,"{""new"": ""value""}",sa,,2
+947,2026-08-12 20:05:08.135000,LOGIN,HR.Employees,5310,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+948,2026-08-12 20:05:08.139000,SELECT,HR.Employees,405,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+949,2026-08-12 20:05:08.139000,SELECT,HR.Employees,3945,,,sa,,5
+950,2026-08-12 20:05:08.139000,SELECT,HR.Employees,6295,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+951,2026-08-12 20:05:08.143000,LOGIN,Sales.Transactions,1846,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+952,2026-08-12 20:05:08.143000,SELECT,HR.Employees,3230,,,sa,,4
+953,2026-08-12 20:05:08.147000,SELECT,Sales.Products,3923,"{""old"": ""value""}",,sa,,1
+954,2026-08-12 20:05:08.147000,LOGIN,Sales.Products,2829,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+955,2026-08-12 20:05:08.147000,DELETE,Sales.Products,571,,,sa,,1
+956,2026-08-12 20:05:08.151000,UPDATE,Security.SensitiveData,4509,"{""old"": ""value""}","{""new"": ""value""}",sa,,2
+957,2026-08-12 20:05:08.151000,UPDATE,Sales.Transactions,9125,,,sa,,1
+958,2026-08-12 20:05:08.151000,UPDATE,Security.SensitiveData,9948,"{""old"": ""value""}",,sa,,3
+959,2026-08-12 20:05:08.155000,SELECT,Security.SensitiveData,4306,"{""old"": ""value""}",,sa,,2
+960,2026-08-12 20:05:08.155000,LOGIN,Sales.Transactions,8987,"{""old"": ""value""}",,sa,,1
+961,2026-08-12 20:05:08.155000,LOGIN,HR.Employees,8376,,"{""new"": ""value""}",sa,,2
+962,2026-08-12 20:05:08.160000,DELETE,Sales.Products,6752,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+963,2026-08-12 20:05:08.160000,SELECT,Sales.Products,2187,,,sa,,1
+964,2026-08-12 20:05:08.160000,DELETE,Sales.Transactions,9579,,,sa,,5
+965,2026-08-12 20:05:08.164000,SELECT,Sales.Products,3311,,,sa,,5
+966,2026-08-12 20:05:08.164000,SELECT,Sales.Transactions,4147,,"{""new"": ""value""}",sa,,1
+967,2026-08-12 20:05:08.164000,SELECT,Sales.Products,2636,"{""old"": ""value""}",,sa,,1
+968,2026-08-12 20:05:08.168000,INSERT,Sales.Products,9087,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+969,2026-08-12 20:05:08.168000,INSERT,Sales.Transactions,7546,,,sa,,5
+970,2026-08-12 20:05:08.168000,INSERT,Sales.Transactions,1968,,"{""new"": ""value""}",sa,,3
+971,2026-08-12 20:05:08.172000,DELETE,Security.SensitiveData,5530,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+972,2026-08-12 20:05:08.172000,SELECT,Sales.Transactions,6115,,,sa,,2
+973,2026-08-12 20:05:08.172000,SELECT,HR.Employees,5193,,,sa,,2
+974,2026-08-12 20:05:08.176000,DELETE,Security.SensitiveData,9441,,"{""new"": ""value""}",sa,,1
+975,2026-08-12 20:05:08.176000,INSERT,HR.Employees,3983,"{""old"": ""value""}",,sa,,3
+976,2026-08-12 20:05:08.176000,INSERT,Sales.Transactions,3704,,,sa,,4
+977,2026-08-12 20:05:08.180000,INSERT,Sales.Products,7647,"{""old"": ""value""}","{""new"": ""value""}",sa,,4
+978,2026-08-12 20:05:08.180000,INSERT,Sales.Products,914,"{""old"": ""value""}",,sa,,2
+979,2026-08-12 20:05:08.180000,INSERT,Security.SensitiveData,6536,,,sa,,4
+980,2026-08-12 20:05:08.184000,INSERT,Sales.Products,3404,"{""old"": ""value""}",,sa,,1
+981,2026-08-12 20:05:08.184000,INSERT,Sales.Products,7358,"{""old"": ""value""}",,sa,,3
+982,2026-08-12 20:05:08.184000,SELECT,Security.SensitiveData,9898,,"{""new"": ""value""}",sa,,1
+983,2026-08-12 20:05:08.188000,UPDATE,Sales.Transactions,3407,"{""old"": ""value""}",,sa,,4
+984,2026-08-12 20:05:08.188000,INSERT,Sales.Products,8112,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+985,2026-08-12 20:05:08.188000,DELETE,Sales.Products,4815,"{""old"": ""value""}",,sa,,3
+986,2026-08-12 20:05:08.192000,DELETE,Sales.Transactions,358,"{""old"": ""value""}",,sa,,4
+987,2026-08-12 20:05:08.192000,UPDATE,Security.SensitiveData,1702,,,sa,,1
+988,2026-08-12 20:05:08.192000,LOGIN,HR.Employees,1661,,,sa,,3
+989,2026-08-12 20:05:08.196000,LOGIN,Sales.Products,3800,"{""old"": ""value""}",,sa,,1
+990,2026-08-12 20:05:08.196000,INSERT,Security.SensitiveData,6126,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+991,2026-08-12 20:05:08.196000,SELECT,HR.Employees,4649,,"{""new"": ""value""}",sa,,5
+992,2026-08-12 20:05:08.200000,LOGIN,Sales.Products,492,"{""old"": ""value""}","{""new"": ""value""}",sa,,5
+993,2026-08-12 20:05:08.200000,SELECT,HR.Employees,4016,"{""old"": ""value""}",,sa,,1
+994,2026-08-12 20:05:08.200000,INSERT,Sales.Transactions,2949,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+995,2026-08-12 20:05:08.204000,LOGIN,Security.SensitiveData,7768,"{""old"": ""value""}",,sa,,4
+996,2026-08-12 20:05:08.204000,LOGIN,HR.Employees,4377,"{""old"": ""value""}","{""new"": ""value""}",sa,,3
+997,2026-08-12 20:05:08.204000,INSERT,Security.SensitiveData,2088,,,sa,,1
+998,2026-08-12 20:05:08.208000,SELECT,HR.Employees,1996,"{""old"": ""value""}","{""new"": ""value""}",sa,,1
+999,2026-08-12 20:05:08.208000,INSERT,Sales.Products,5264,,,sa,,2
+1000,2026-08-12 20:05:08.208000,SELECT,Sales.Transactions,2137,"{""old"": ""value""}","{""new"": ""value""}",sa,,3

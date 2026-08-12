@@ -1,0 +1,38 @@
+[
+  [
+    "TransactionID",
+    "<class 'int'>"
+  ],
+  [
+    "Year",
+    "<class 'int'>"
+  ],
+  [
+    "Month",
+    "<class 'int'>"
+  ],
+  [
+    "Day",
+    "<class 'int'>"
+  ],
+  [
+    "Amount",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "CustomerID",
+    "<class 'int'>"
+  ],
+  [
+    "ProductID",
+    "<class 'int'>"
+  ],
+  [
+    "RegionCode",
+    "<class 'str'>"
+  ],
+  [
+    "ArchiveDate",
+    "<class 'datetime.date'>"
+  ]
+]

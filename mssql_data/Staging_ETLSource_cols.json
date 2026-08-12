@@ -1,0 +1,34 @@
+[
+  [
+    "SourceID",
+    "<class 'int'>"
+  ],
+  [
+    "ExternalProductID",
+    "<class 'str'>"
+  ],
+  [
+    "ProductName",
+    "<class 'str'>"
+  ],
+  [
+    "Category",
+    "<class 'str'>"
+  ],
+  [
+    "Price",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "ActionCode",
+    "<class 'str'>"
+  ],
+  [
+    "Processed",
+    "<class 'bool'>"
+  ],
+  [
+    "ImportedAt",
+    "<class 'datetime.datetime'>"
+  ]
+]

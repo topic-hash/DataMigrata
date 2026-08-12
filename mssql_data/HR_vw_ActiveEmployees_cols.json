@@ -1,0 +1,34 @@
+[
+  [
+    "EmployeeID",
+    "<class 'int'>"
+  ],
+  [
+    "FullName",
+    "<class 'str'>"
+  ],
+  [
+    "Email",
+    "<class 'str'>"
+  ],
+  [
+    "Department",
+    "<class 'str'>"
+  ],
+  [
+    "JobTitle",
+    "<class 'str'>"
+  ],
+  [
+    "Salary",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "HireDate",
+    "<class 'datetime.date'>"
+  ],
+  [
+    "ManagerID",
+    "<class 'int'>"
+  ]
+]

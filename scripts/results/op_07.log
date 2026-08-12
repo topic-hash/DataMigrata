@@ -1,0 +1,60 @@
+=== OP 7 ===
+STATUS: PASS  exit=0  elapsed=0.14s  rows=50
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+1,Rodolfo Gallagher,Advanced,Project Management
+1,Rodolfo Gallagher,Advanced,Project Management
+1,Rodolfo Gallagher,Advanced,Project Management
+1,Rodolfo Gallagher,Advanced,Docker
+1,Rodolfo Gallagher,Expert,Data Modeling
+1,Rodolfo Gallagher,Intermediate,Angular
+2,Elma Salinas,Advanced,Docker
+2,Elma Salinas,Advanced,Project Management
+2,Elma Salinas,Advanced,Project Management
+2,Elma Salinas,Advanced,Project Management
+2,Elma Salinas,Expert,T-SQL
+2,Elma Salinas,Intermediate,Go
+3,Antoinette Barrera,Advanced,Project Management
+3,Antoinette Barrera,Advanced,Project Management
+3,Antoinette Barrera,Advanced,Project Management
+3,Antoinette Barrera,Advanced,PowerShell
+3,Antoinette Barrera,Expert,Data Modeling
+3,Antoinette Barrera,Intermediate,React
+4,Lorenzo Munoz,Advanced,Kubernetes
+4,Lorenzo Munoz,Advanced,Project Management
+4,Lorenzo Munoz,Advanced,Project Management
+4,Lorenzo Munoz,Advanced,Project Management
+4,Lorenzo Munoz,Expert,C#
+4,Lorenzo Munoz,Intermediate,Go
+5,Leigh Leach,Advanced,Project Management
+5,Leigh Leach,Advanced,Project Management
+5,Leigh Leach,Advanced,Project Management
+5,Leigh Leach,Advanced,Kubernetes
+5,Leigh Leach,Expert,Python
+5,Leigh Leach,Intermediate,Vue
+6,Russell Duncan,Advanced,Docker
+6,Russell Duncan,Advanced,Project Management
+6,Russell Duncan,Advanced,Project Management
+6,Russell Duncan,Advanced,Project Management
+6,Russell Duncan,Expert,T-SQL
+6,Russell Duncan,Intermediate,React
+7,Stephen Morgan,Advanced,Project Management
+7,Stephen Morgan,Advanced,Project Management
+7,Stephen Morgan,Advanced,Project Management
+7,Stephen Morgan,Advanced,PowerShell
+7,Stephen Morgan,Expert,Python
+7,Stephen Morgan,Intermediate,Node.js
+8,Lori Marshall,Advanced,ETL
+8,Lori Marshall,Advanced,Project Management
+8,Lori Marshall,Advanced,Project Management
+8,Lori Marshall,Advanced,Project Management
+8,Lori Marshall,Expert,C#
+8,Lori Marshall,Intermediate,Go
+9,Pedro Espinoza,Advanced,Project Management
+9,Pedro Espinoza,Advanced,Project Management
+
+(50 rows affected)
+

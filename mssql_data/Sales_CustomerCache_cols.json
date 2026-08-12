@@ -1,0 +1,30 @@
+[
+  [
+    "CustomerID",
+    "<class 'int'>"
+  ],
+  [
+    "CustomerName",
+    "<class 'str'>"
+  ],
+  [
+    "Email",
+    "<class 'str'>"
+  ],
+  [
+    "RegionCode",
+    "<class 'str'>"
+  ],
+  [
+    "LastOrderDate",
+    "<class 'datetime.datetime'>"
+  ],
+  [
+    "TotalSpent",
+    "<class 'decimal.Decimal'>"
+  ],
+  [
+    "OrderCount",
+    "<class 'int'>"
+  ]
+]

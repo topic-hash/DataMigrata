@@ -1,0 +1,23 @@
+=== OP 6 ===
+STATUS: PASS  exit=0  elapsed=0.11s  rows=20
+
+--- STDERR ---
+
+
+--- STDOUT (tail) ---
+t Management</Skill><Skill level="Advanced">Project Management</Skill>
+9,Pedro Espinoza,<Skill level="Expert">Data Modeling</Skill><Skill level="Advanced">PowerShell</Skill><Skill level="Intermediate">Go</Skill><Skill level="Advanced">Project Management</Skill><Skill level="Advanced">Project Management</Skill><Skill level="Advanced">Project M
+10,Winifred Bender,<Skill level="Expert">T-SQL</Skill><Skill level="Advanced">PowerShell</Skill><Skill level="Intermediate">Angular</Skill><Skill level="Advanced">Project Management</Skill><Skill level="Advanced">Project Management</Skill><Skill level="Advanced">Project Mana
+11,Catherine Hughes,<Skill level="Expert">T-SQL</Skill><Skill level="Advanced">Azure</Skill><Skill level="Intermediate">Angular</Skill>
+12,Reba Tyler,<Skill level="Expert">C#</Skill><Skill level="Advanced">Azure</Skill><Skill level="Intermediate">Vue</Skill>
+13,Juanita Krueger,<Skill level="Expert">Cloud Architecture</Skill><Skill level="Advanced">Azure</Skill><Skill level="Intermediate">React</Skill>
+14,Sondra Bean,<Skill level="Expert">T-SQL</Skill><Skill level="Advanced">PowerShell</Skill><Skill level="Intermediate">Angular</Skill>
+15,Jennie Salinas,<Skill level="Expert">Data Modeling</Skill><Skill level="Advanced">Azure</Skill><Skill level="Intermediate">Node.js</Skill>
+16,Lucy Nash,<Skill level="Expert">Python</Skill><Skill level="Advanced">PowerShell</Skill><Skill level="Intermediate">Go</Skill>
+17,Celia Franco,<Skill level="Expert">Python</Skill><Skill level="Advanced">Azure</Skill><Skill level="Intermediate">React</Skill>
+18,Mona Bender,<Skill level="Expert">Cloud Architecture</Skill><Skill level="Advanced">Kubernetes</Skill><Skill level="Intermediate">Go</Skill>
+19,Bradford Mcclure,<Skill level="Expert">C#</Skill><Skill level="Advanced">Kubernetes</Skill><Skill level="Intermediate">Node.js</Skill>
+20,Sherman Bass,<Skill level="Expert">T-SQL</Skill><Skill level="Advanced">PowerShell</Skill><Skill level="Intermediate">Vue</Skill>
+
+(20 rows affected)
+

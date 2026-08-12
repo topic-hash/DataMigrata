@@ -1,0 +1,458 @@
+{
+  "total": 50,
+  "passed": 50,
+  "failed": 0,
+  "timeouts": 0,
+  "results": [
+    {
+      "op": 1,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 2.64,
+      "row_count": 100,
+      "stdout": " > Sterling Glass > Velma Brennan > Mildred Snyder > Chase Fernandez,1529389.00,                Chase Fernandez\n4177,Shelley Ericksen,Marketing,Specialist,90213.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Mildred Snyder > Chase Fernandez > Shelley Ericksen,1619602.00,                  Shelley Ericksen\n3129,Rocco Brennan,Operations,Engineer,171313.00,7,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan,1364619.00,              Rocco Brennan\n3228,Rod Gallagher,Finance,Engineer,199304.00,8,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher,1563923.00,                Rod Gallagher\n3485,Marsha Fleming,HR,Analyst,89472.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher > Marsha Fleming,1653395.00,                  Marsha Fleming\n4877,Darius Bullock,IT,Senior Engineer,235661.00,9,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Velma Brennan > Rocco Brennan > Rod Gallagher > Darius Bullock,1799584.00,                  Darius Bullock\n3130,Dylan Bradley,Sales,Coordinator,219331.00,6,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Dylan Bradley,1202202.00,            Dylan Bradley\n3210,Elsa Novak,Sales,Consultant,234737.00,7,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Dylan Bradley > Elsa Novak,1436939.00,              Elsa Novak\n694,Joanna Floyd,Finance,Specialist,123633.00,6,Rodolfo Gallagher > Winifred Bender > Jennie Salinas > Maureen Fields > Darlene Soto > Sterling Glass > Joanna Floyd,1106504.00,            Joanna Floyd\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 2,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.34,
+      "row_count": 50,
+      "stdout": "1,Rodolfo Gallagher,Sales,Architect,179366.00,49,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,53,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,54,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,42,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,67,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,71,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,27,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,60,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,46,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,51,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,60,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,55,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,58,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,49,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,34,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,47,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,54,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,47,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,55,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,48,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,52,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,44,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,52,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,38,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,50,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,56,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,38,2919427.00\n1,Rodolfo Gallagher,Sales,Architect,179366.00,66,2919427.00\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 3,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 1.01,
+      "row_count": 100,
+      "stdout": "oris Orr,VP,VP,/,1\n/56/,1,Helen Cox,Analyst,Analyst,/,1\n/57/,1,Matthew Thompson,VP,VP,/,1\n/58/,1,Joanna Floyd,Engineer,Engineer,/,1\n/59/,1,Sterling Glass,Architect,Architect,/,1\n/60/,1,Etta Rosales,Consultant,Consultant,/,1\n/61/,1,Juanita Krueger,Specialist,Specialist,/,1\n/62/,1,Bonnie Hale,Consultant,Consultant,/,1\n/63/,1,Johnnie Boyer,Analyst,Analyst,/,1\n/64/,1,Pablo Lynn,Engineer,Engineer,/,1\n/65/,1,Katherine Brooks,Engineer,Engineer,/,1\n/66/,1,Genevieve Horn,VP,VP,/,1\n/67/,1,Henry Perry,VP,VP,/,1\n/68/,1,Shawn Tate,Manager,Manager,/,1\n/69/,1,Imogene Conley,VP,VP,/,1\n/70/,1,Eunice Conley,VP,VP,/,1\n/71/,1,Benjamin Ward,Analyst,Analyst,/,1\n/72/,1,Ollie Paul,Consultant,Consultant,/,1\n/73/,1,Juan Elliott,Consultant,Consultant,/,1\n/74/,1,Robert Williamson,Architect,Architect,/,1\n/75/,1,Christopher Jackson,VP,VP,/,1\n/76/,1,Grant Sutton,Director,Director,/,1\n/77/,1,Jeri Charles,Director,Director,/,1\n/78/,1,Lynne Hale,Analyst,Analyst,/,1\n/79/,1,Brittany Arnold,Specialist,Specialist,/,1\n/80/,1,Gretchen Barrera,Senior Engineer,Senior Engineer,/,1\n/81/,1,Fabian Joseph,Consultant,Consultant,/,1\n/82/,1,Jana Castaneda,Engineer,Engineer,/,1\n/83/,1,Corey Howell,Specialist,Specialist,/,1\n/84/,1,Bobby Cervantes,Consultant,Consultant,/,1\n/85/,1,Rufus Sutton,Coordinator,Coordinator,/,1\n/86/,1,Lela Montoya,Senior Engineer,Senior Engineer,/,1\n/87/,1,Shawn Tate,Director,Director,/,1\n/88/,1,Anna Ortiz,Specialist,Specialist,/,1\n/89/,1,Ann Marshall,Manager,Manager,/,1\n/90/,1,Loren Solis,Consultant,Consultant,/,1\n/91/,1,Teri Valencia,Coordinator,Coordinator,/,1\n/92/,1,Gary Stewart,Engineer,Engineer,/,1\n/93/,1,Julius Wilkins,Coordinator,Coordinator,/,1\n/94/,1,Angelo Nolan,Consultant,Consultant,/,1\n/95/,1,Frances Mills,Engineer,Engineer,/,1\n/96/,1,Alonzo Parrish,Specialist,Specialist,/,1\n/97/,1,Marshall Barton,Coordinator,Coordinator,/,1\n/98/,1,Faye Higgins,Manager,Manager,/,1\n/99/,1,Richard Hernandez,Consultant,Consultant,/,1\n/100/,1,Rudy Black,Consultant,Consultant,/,1\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 4,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 3.09,
+      "row_count": 100,
+      "stdout": "elds -> Darlene Soto -> Sterling Glass -> Velma Brennan,1,10,15,159,408,529,1078,7\n1322,Francisca Ware,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware,1,10,15,159,408,529,1078,1322,8\n1927,Kirk Hurst,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Kirk Hurst,1,10,15,159,408,529,1078,1322,1927,9\n2016,Dolores Pena,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Dolores Pena,1,10,15,159,408,529,1078,1322,2016,9\n3005,Velma Brennan,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Francisca Ware -> Velma Brennan,1,10,15,159,408,529,1078,1322,3005,9\n2104,Mildred Snyder,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder,1,10,15,159,408,529,1078,2104,8\n3533,Chase Fernandez,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder -> Chase Fernandez,1,10,15,159,408,529,1078,2104,3533,9\n4177,Shelley Ericksen,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Mildred Snyder -> Chase Fernandez -> Shelley Ericksen,1,10,15,159,408,529,1078,2104,3533,4177,10\n3129,Rocco Brennan,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Rocco Brennan,1,10,15,159,408,529,1078,3129,8\n3228,Rod Gallagher,Rodolfo Gallagher -> Winifred Bender -> Jennie Salinas -> Maureen Fields -> Darlene Soto -> Sterling Glass -> Velma Brennan -> Rocco Brennan -> Rod Gallagher,1,10,15,159,408,529,1078,3129,3228,9\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 5,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.4,
+      "row_count": 100,
+      "stdout": " Jimenez,Operations,2,Indirect\nRodolfo Gallagher,Shawn Tate,Finance,2,Indirect\nRodolfo Gallagher,Miles Wong,Finance,2,Indirect\nRodolfo Gallagher,Eric Cook,Marketing,2,Indirect\nRodolfo Gallagher,Nora Andersen,Marketing,2,Indirect\nRodolfo Gallagher,Denise Lawrence,Marketing,2,Indirect\nRodolfo Gallagher,Willie Nichols,HR,2,Indirect\nRodolfo Gallagher,Elvira Mclean,Marketing,2,Indirect\nRodolfo Gallagher,Madeline Mays,R&D,2,Indirect\nRodolfo Gallagher,Deborah Mitchell,Marketing,2,Indirect\nRodolfo Gallagher,Robert Johnson,Engineering,2,Indirect\nRodolfo Gallagher,Clifford Doyle,Sales,2,Indirect\nRodolfo Gallagher,Reba Tyler,Customer Success,2,Indirect\nRodolfo Gallagher,Thaddeus Conway,IT,2,Indirect\nRodolfo Gallagher,Matthew Thompson,HR,2,Indirect\nRodolfo Gallagher,Grant Sutton,Marketing,2,Indirect\nRodolfo Gallagher,Timothy Gomez,R&D,2,Indirect\nRodolfo Gallagher,Claude Blackburn,Operations,2,Indirect\nRodolfo Gallagher,Alan Pierce,Sales,2,Indirect\nRodolfo Gallagher,Joanna Floyd,Engineering,2,Indirect\nRodolfo Gallagher,Rolando Hammond,IT,2,Indirect\nRodolfo Gallagher,Jimmie Hooper,Operations,2,Indirect\nRodolfo Gallagher,Patricia Davis,R&D,2,Indirect\nRodolfo Gallagher,Wayne Wagner,IT,2,Indirect\nRodolfo Gallagher,Catherine Hughes,Operations,2,Indirect\nRodolfo Gallagher,Lucile Sheppard,HR,2,Indirect\nRodolfo Gallagher,Sterling Glass,Customer Success,2,Indirect\nRodolfo Gallagher,Verna Krause,Customer Success,2,Indirect\nRodolfo Gallagher,Willie Nichols,Sales,2,Indirect\nRodolfo Gallagher,Hannah Graham,HR,2,Indirect\nRodolfo Gallagher,Rene Ware,Sales,2,Indirect\nRodolfo Gallagher,Myron Sexton,Operations,2,Indirect\nRodolfo Gallagher,Velma Brennan,Sales,2,Indirect\nRodolfo Gallagher,Elvira Mclean,Engineering,2,Indirect\nRodolfo Gallagher,Ralph Olson,Sales,2,Indirect\nRodolfo Gallagher,Nadine Grimes,Legal,2,Indirect\nRodolfo Gallagher,Maria Garcia,Customer Success,2,Indirect\nRodolfo Gallagher,Robert Johnson,Operations,2,Indirect\nRodolfo Gallagher,Bret Hays,Finance,2,Indirect\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 6,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 20,
+      "stdout": "t Management</Skill><Skill level=\"Advanced\">Project Management</Skill>\n9,Pedro Espinoza,<Skill level=\"Expert\">Data Modeling</Skill><Skill level=\"Advanced\">PowerShell</Skill><Skill level=\"Intermediate\">Go</Skill><Skill level=\"Advanced\">Project Management</Skill><Skill level=\"Advanced\">Project Management</Skill><Skill level=\"Advanced\">Project M\n10,Winifred Bender,<Skill level=\"Expert\">T-SQL</Skill><Skill level=\"Advanced\">PowerShell</Skill><Skill level=\"Intermediate\">Angular</Skill><Skill level=\"Advanced\">Project Management</Skill><Skill level=\"Advanced\">Project Management</Skill><Skill level=\"Advanced\">Project Mana\n11,Catherine Hughes,<Skill level=\"Expert\">T-SQL</Skill><Skill level=\"Advanced\">Azure</Skill><Skill level=\"Intermediate\">Angular</Skill>\n12,Reba Tyler,<Skill level=\"Expert\">C#</Skill><Skill level=\"Advanced\">Azure</Skill><Skill level=\"Intermediate\">Vue</Skill>\n13,Juanita Krueger,<Skill level=\"Expert\">Cloud Architecture</Skill><Skill level=\"Advanced\">Azure</Skill><Skill level=\"Intermediate\">React</Skill>\n14,Sondra Bean,<Skill level=\"Expert\">T-SQL</Skill><Skill level=\"Advanced\">PowerShell</Skill><Skill level=\"Intermediate\">Angular</Skill>\n15,Jennie Salinas,<Skill level=\"Expert\">Data Modeling</Skill><Skill level=\"Advanced\">Azure</Skill><Skill level=\"Intermediate\">Node.js</Skill>\n16,Lucy Nash,<Skill level=\"Expert\">Python</Skill><Skill level=\"Advanced\">PowerShell</Skill><Skill level=\"Intermediate\">Go</Skill>\n17,Celia Franco,<Skill level=\"Expert\">Python</Skill><Skill level=\"Advanced\">Azure</Skill><Skill level=\"Intermediate\">React</Skill>\n18,Mona Bender,<Skill level=\"Expert\">Cloud Architecture</Skill><Skill level=\"Advanced\">Kubernetes</Skill><Skill level=\"Intermediate\">Go</Skill>\n19,Bradford Mcclure,<Skill level=\"Expert\">C#</Skill><Skill level=\"Advanced\">Kubernetes</Skill><Skill level=\"Intermediate\">Node.js</Skill>\n20,Sherman Bass,<Skill level=\"Expert\">T-SQL</Skill><Skill level=\"Advanced\">PowerShell</Skill><Skill level=\"Intermediate\">Vue</Skill>\n\n(20 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 7,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.14,
+      "row_count": 50,
+      "stdout": "1,Rodolfo Gallagher,Advanced,Project Management\n1,Rodolfo Gallagher,Advanced,Project Management\n1,Rodolfo Gallagher,Advanced,Project Management\n1,Rodolfo Gallagher,Advanced,Docker\n1,Rodolfo Gallagher,Expert,Data Modeling\n1,Rodolfo Gallagher,Intermediate,Angular\n2,Elma Salinas,Advanced,Docker\n2,Elma Salinas,Advanced,Project Management\n2,Elma Salinas,Advanced,Project Management\n2,Elma Salinas,Advanced,Project Management\n2,Elma Salinas,Expert,T-SQL\n2,Elma Salinas,Intermediate,Go\n3,Antoinette Barrera,Advanced,Project Management\n3,Antoinette Barrera,Advanced,Project Management\n3,Antoinette Barrera,Advanced,Project Management\n3,Antoinette Barrera,Advanced,PowerShell\n3,Antoinette Barrera,Expert,Data Modeling\n3,Antoinette Barrera,Intermediate,React\n4,Lorenzo Munoz,Advanced,Kubernetes\n4,Lorenzo Munoz,Advanced,Project Management\n4,Lorenzo Munoz,Advanced,Project Management\n4,Lorenzo Munoz,Advanced,Project Management\n4,Lorenzo Munoz,Expert,C#\n4,Lorenzo Munoz,Intermediate,Go\n5,Leigh Leach,Advanced,Project Management\n5,Leigh Leach,Advanced,Project Management\n5,Leigh Leach,Advanced,Project Management\n5,Leigh Leach,Advanced,Kubernetes\n5,Leigh Leach,Expert,Python\n5,Leigh Leach,Intermediate,Vue\n6,Russell Duncan,Advanced,Docker\n6,Russell Duncan,Advanced,Project Management\n6,Russell Duncan,Advanced,Project Management\n6,Russell Duncan,Advanced,Project Management\n6,Russell Duncan,Expert,T-SQL\n6,Russell Duncan,Intermediate,React\n7,Stephen Morgan,Advanced,Project Management\n7,Stephen Morgan,Advanced,Project Management\n7,Stephen Morgan,Advanced,Project Management\n7,Stephen Morgan,Advanced,PowerShell\n7,Stephen Morgan,Expert,Python\n7,Stephen Morgan,Intermediate,Node.js\n8,Lori Marshall,Advanced,ETL\n8,Lori Marshall,Advanced,Project Management\n8,Lori Marshall,Advanced,Project Management\n8,Lori Marshall,Advanced,Project Management\n8,Lori Marshall,Expert,C#\n8,Lori Marshall,Intermediate,Go\n9,Pedro Espinoza,Advanced,Project Management\n9,Pedro Espinoza,Advanced,Project Management\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 8,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 20,
+      "stdout": "level=\"Intermediate\"/><Skill name=\"Project Management\" level=\"Advanced\"/><Skill name=\"Project Management\" level=\"Advanced\"/><Skill name=\"Project\n10,Winifred Bender,<Skills><Skill name=\"T-SQL\" level=\"Expert\"/><Skill name=\"PowerShell\" level=\"Advanced\"/><Skill name=\"Angular\" level=\"Intermediate\"/><Skill name=\"Project Management\" level=\"Advanced\"/><Skill name=\"Project Management\" level=\"Advanced\"/><Skill name=\"Project Ma\n11,Catherine Hughes,<Skills><Skill name=\"T-SQL\" level=\"Expert\"/><Skill name=\"Azure\" level=\"Advanced\"/><Skill name=\"Angular\" level=\"Intermediate\"/></Skills>\n12,Reba Tyler,<Skills><Skill name=\"C#\" level=\"Expert\"/><Skill name=\"Azure\" level=\"Advanced\"/><Skill name=\"Vue\" level=\"Intermediate\"/></Skills>\n13,Juanita Krueger,<Skills><Skill name=\"Cloud Architecture\" level=\"Expert\"/><Skill name=\"Azure\" level=\"Advanced\"/><Skill name=\"React\" level=\"Intermediate\"/></Skills>\n14,Sondra Bean,<Skills><Skill name=\"T-SQL\" level=\"Expert\"/><Skill name=\"PowerShell\" level=\"Advanced\"/><Skill name=\"Angular\" level=\"Intermediate\"/></Skills>\n15,Jennie Salinas,<Skills><Skill name=\"Data Modeling\" level=\"Expert\"/><Skill name=\"Azure\" level=\"Advanced\"/><Skill name=\"Node.js\" level=\"Intermediate\"/></Skills>\n16,Lucy Nash,<Skills><Skill name=\"Python\" level=\"Expert\"/><Skill name=\"PowerShell\" level=\"Advanced\"/><Skill name=\"Go\" level=\"Intermediate\"/></Skills>\n17,Celia Franco,<Skills><Skill name=\"Python\" level=\"Expert\"/><Skill name=\"Azure\" level=\"Advanced\"/><Skill name=\"React\" level=\"Intermediate\"/></Skills>\n18,Mona Bender,<Skills><Skill name=\"Cloud Architecture\" level=\"Expert\"/><Skill name=\"Kubernetes\" level=\"Advanced\"/><Skill name=\"Go\" level=\"Intermediate\"/></Skills>\n19,Bradford Mcclure,<Skills><Skill name=\"C#\" level=\"Expert\"/><Skill name=\"Kubernetes\" level=\"Advanced\"/><Skill name=\"Node.js\" level=\"Intermediate\"/></Skills>\n20,Sherman Bass,<Skills><Skill name=\"T-SQL\" level=\"Expert\"/><Skill name=\"PowerShell\" level=\"Advanced\"/><Skill name=\"Vue\" level=\"Intermediate\"/></Skills>\n\n(20 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 9,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "1,Rodolfo Gallagher,Sales\n2,Elma Salinas,Marketing\n3,Antoinette Barrera,R&D\n4,Lorenzo Munoz,Marketing\n5,Leigh Leach,Finance\n6,Russell Duncan,Engineering\n7,Stephen Morgan,Marketing\n8,Lori Marshall,Legal\n9,Pedro Espinoza,R&D\n10,Winifred Bender,Legal\n11,Catherine Hughes,Operations\n12,Reba Tyler,Customer Success\n13,Juanita Krueger,Customer Success\n14,Sondra Bean,R&D\n15,Jennie Salinas,Finance\n16,Lucy Nash,Engineering\n17,Celia Franco,Customer Success\n18,Mona Bender,Customer Success\n19,Bradford Mcclure,Marketing\n20,Sherman Bass,Operations\n21,Kendrick Glass,Marketing\n22,Rashad Villarreal,IT\n23,Alfonso Friedman,R&D\n24,Nicholas Morales,IT\n25,Steven Walker,Finance\n26,Wayne Wagner,Sales\n27,Thaddeus Conway,IT\n28,Cody Parsons,Operations\n29,Mariah Jimenez,Operations\n30,Bennie Duffy,Sales\n31,Dewayne Buck,Finance\n32,Cecilia Brock,Legal\n33,Victoria Willis,Sales\n34,Effie Hale,HR\n35,George Hall,HR\n36,Willie Nichols,HR\n37,Jennifer Williams,HR\n38,Lenore Gillespie,Operations\n39,Elva Roach,Legal\n40,Lucile Sheppard,HR\n41,Elvira Mclean,Marketing\n42,Ellen Carr,Engineering\n43,Dylan Bradley,R&D\n44,Cathleen Rosario,Legal\n45,Maria Garcia,Customer Success\n46,Ashley Robinson,Sales\n47,Maria Garcia,Legal\n48,Joyce Butler,IT\n49,Joseph Gonzalez,Operations\n50,Grace Fox,Sales\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 10,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 1,
+      "stdout": "<Skill level=\"Expert\">T-SQL</Skill>\n\n(1 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 11,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": "e,NULL,PO-2026-0003,NULL\n4,crypto,immediate,NULL,PO-2026-0004,NULL\n5,crypto,net_30,NULL,PO-2026-0005,NULL\n6,sepa,net_45,NULL,PO-2026-0006,NULL\n7,ach,net_45,NULL,PO-2026-0007,NULL\n8,sepa,net_45,NULL,PO-2026-0008,NULL\n9,crypto,net_45,NULL,PO-2026-0009,NULL\n10,ach,net_60,NULL,PO-2026-0010,NULL\n11,wire_transfer,immediate,NULL,PO-2026-0011,NULL\n12,ach,net_45,NULL,PO-2026-0012,NULL\n13,sepa,net_30,NULL,PO-2026-0013,NULL\n14,wire_transfer,net_30,NULL,PO-2026-0014,NULL\n15,credit_card,net_45,NULL,PO-2026-0015,NULL\n16,ach,net_30,NULL,PO-2026-0016,NULL\n17,crypto,net_60,NULL,PO-2026-0017,NULL\n18,crypto,immediate,NULL,PO-2026-0018,NULL\n19,ach,net_60,NULL,PO-2026-0019,NULL\n20,sepa,net_60,NULL,PO-2026-0020,NULL\n21,ach,net_60,NULL,PO-2026-0021,NULL\n22,credit_card,immediate,NULL,PO-2026-0022,NULL\n23,crypto,immediate,NULL,PO-2026-0023,NULL\n24,wire_transfer,net_60,NULL,PO-2026-0024,NULL\n25,crypto,net_45,NULL,PO-2026-0025,NULL\n26,credit_card,net_30,NULL,PO-2026-0026,NULL\n27,wire_transfer,immediate,NULL,PO-2026-0027,NULL\n28,crypto,immediate,NULL,PO-2026-0028,NULL\n29,sepa,net_30,NULL,PO-2026-0029,NULL\n30,crypto,net_30,NULL,PO-2026-0030,NULL\n31,sepa,net_45,NULL,PO-2026-0031,NULL\n32,wire_transfer,net_60,NULL,PO-2026-0032,NULL\n33,sepa,net_60,NULL,PO-2026-0033,NULL\n34,wire_transfer,net_30,NULL,PO-2026-0034,NULL\n35,wire_transfer,net_45,NULL,PO-2026-0035,NULL\n36,crypto,net_60,NULL,PO-2026-0036,NULL\n37,ach,net_60,NULL,PO-2026-0037,NULL\n38,sepa,net_60,NULL,PO-2026-0038,NULL\n39,wire_transfer,net_60,NULL,PO-2026-0039,NULL\n40,sepa,immediate,NULL,PO-2026-0040,NULL\n41,crypto,immediate,NULL,PO-2026-0041,NULL\n42,wire_transfer,net_30,NULL,PO-2026-0042,NULL\n43,ach,net_30,NULL,PO-2026-0043,NULL\n44,ach,net_60,NULL,PO-2026-0044,NULL\n45,credit_card,immediate,NULL,PO-2026-0045,NULL\n46,ach,net_45,NULL,PO-2026-0046,NULL\n47,credit_card,net_60,NULL,PO-2026-0047,NULL\n48,credit_card,net_30,NULL,PO-2026-0048,NULL\n49,credit_card,net_60,NULL,PO-2026-0049,NULL\n50,sepa,immediate,NULL,PO-2026-0050,NULL\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 12,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 3,
+      "stdout": "{\"SalesReport\":[{\"Department\":\"Finance\",\"EmployeeName\":\"Jane Ryan\",\"TransactionsJSON\":[{\"TransactionID\":1,\"TotalAmount\":643947.63000000,\"TransactionDate\":\"2026-07-26T17:54:01.7781368\",\"PaymentMethod\":\"crypto\"},{\"TransactionID\":3311,\"TotalAmount\":108000.830\n,{\"Department\":\"Sales\",\"EmployeeName\":\"Velma Brennan\",\"TransactionsJSON\":[{\"TransactionID\":6,\"TotalAmount\":77065.87050000,\"TransactionDate\":\"2026-07-26T17:54:01.8279898\",\"PaymentMethod\":\"sepa\"},{\"TransactionID\":1545,\"TotalAmount\":53613.98000000,\"Transactio\n99.50000000,\"TransactionDate\":\"2026-07-26T17:54:22.4370312\",\"PaymentMethod\":\"credit_card\"},{\"TransactionID\":4671,\"TotalAmount\":474759.90000000,\"TransactionDate\":\"2026-07-26T17:54:37.2467906\",\"PaymentMethod\":\"credit_card\"}]}]}\n\n(3 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 13,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.16,
+      "row_count": 20,
+      "stdout": "_value\"]}\n10,577659.66000000,{\"payment_method\":\"ach\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-0010\",\"processed\":true,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n11,3054831.66000000,{\"payment_method\":\"wire_transfer\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-0011\",\"processed\":true,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n12,2094255.62000000,{\"payment_method\":\"ach\",\"terms\":\"net_45\",\"po_number\":\"PO-2026-0012\",\"processed\":true,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n13,455069.78000000,{\"payment_method\":\"sepa\",\"terms\":\"net_30\",\"po_number\":\"PO-2026-0013\",\"processed\":false,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n14,470949.90000000,{\"payment_method\":\"wire_transfer\",\"terms\":\"net_30\",\"po_number\":\"PO-2026-0014\",\"processed\":true,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n15,1952612.73000000,{\"payment_method\":\"credit_card\",\"terms\":\"net_45\",\"po_number\":\"PO-2026-0015\",\"processed\":false,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n16,1809095.57000000,{\"payment_method\":\"ach\",\"terms\":\"net_30\",\"po_number\":\"PO-2026-0016\",\"processed\":false,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n17,258291.69000000,{\"payment_method\":\"crypto\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-0017\",\"processed\":true,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n18,792419.80000000,{\"payment_method\":\"crypto\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-0018\",\"processed\":false,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n19,1506327.28750000,{\"payment_method\":\"ach\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-0019\",\"processed\":true,\"discount_code\":\"SAVE15\",\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n20,591293.94000000,{\"payment_method\":\"sepa\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-0020\",\"processed\":false,\"discount_code\":null,\"tags\":[\"high_value\",\"high_value\",\"high_value\"]}\n\n(20 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 14,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 1,
+      "stdout": "crypto,net_30,NULL,PO-2026-0001,0\n\n(1 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 15,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 2,
+      "stdout": "Server,2,49999.99,99999.98\nAgent,5,4999.99,24999.95\n\n(2 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 16,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 0,
+      "stdout": "\n(0 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 17,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 50,
+      "stdout": "5.2347494,Historical\n7,661821.59000000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n8,990859.80000000,2026-07-26 17:54:01.8380207,2026-07-26 17:59:38.1389039,Historical\n8,990859.80000000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n8,990859.80000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,Historical\n8,990859.80000000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n9,474884.68950000,2026-07-26 17:54:01.8483089,2026-07-26 17:59:38.1389039,Historical\n9,474884.68950000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n9,474884.68950000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,Historical\n9,474884.68950000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n10,577659.66000000,2026-07-26 17:54:01.8564978,2026-07-26 17:59:38.1389039,Historical\n10,577659.66000000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n10,577659.66000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,Historical\n10,577659.66000000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n11,3054831.66000000,2026-07-26 17:54:01.8613216,2026-07-26 17:59:38.1389039,Historical\n11,3054831.66000000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n11,3054831.66000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,Historical\n11,3054831.66000000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n12,2094255.62000000,2026-07-26 17:54:01.8695004,2026-07-26 17:59:38.1389039,Historical\n12,2094255.62000000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n12,2094255.62000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,Historical\n12,2094255.62000000,2026-07-26 18:30:55.2347494,9999-12-31 23:59:59.9999999,Current\n13,455069.78000000,2026-07-26 17:54:01.8776701,2026-07-26 17:59:38.1389039,Historical\n13,455069.78000000,2026-07-26 17:59:38.1389039,2026-07-26 18:19:17.8370240,Historical\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 18,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": "530.36200000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n26,1232659.87000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n27,2509443.72000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n28,619857.13650000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n29,1021123.87000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n30,657243.72000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n31,1077039.80000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n32,304867.96000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n33,1546973.82000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n34,1856831.52000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n35,582231.72000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n36,2887299.50000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n37,1539859.66000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n38,389297.93000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n39,72289.95000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n40,646428.93000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n41,635114.57700000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n42,3404679.53000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n43,3836468.53000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n44,106853.89000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n46,926262.57000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n47,891955.87000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n48,2564549.59000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n49,1176897.81000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n50,604655.82000000,2026-07-26 18:19:17.8370240,2026-07-26 18:30:55.2347494,698\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 19,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.08,
+      "row_count": 20,
+      "stdout": "1,643947.63000000,NULL\n2,1410849.65000000,NULL\n3,460292.77350000,NULL\n4,2804481.59000000,NULL\n5,741509.65000000,NULL\n6,77065.87050000,NULL\n7,661821.59000000,NULL\n8,990859.80000000,NULL\n9,474884.68950000,NULL\n10,577659.66000000,NULL\n11,3054831.66000000,NULL\n12,2094255.62000000,NULL\n13,455069.78000000,NULL\n14,470949.90000000,NULL\n15,1952612.73000000,NULL\n16,1809095.57000000,NULL\n17,258291.69000000,NULL\n18,792419.80000000,NULL\n19,1506327.28750000,NULL\n20,591293.94000000,NULL\n\n(20 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 20,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "94211,2026-07-26 18:30:55.2347494,0\n32,4,2026-07-26 17:54:02.0334961,2026-07-26 18:30:55.2347494,0\n31,4,2026-07-26 17:54:02.0253110,2026-07-26 18:30:55.2347494,0\n30,4,2026-07-26 17:54:02.0093342,2026-07-26 18:30:55.2347494,0\n29,4,2026-07-26 17:54:02.0003167,2026-07-26 18:30:55.2347494,0\n28,4,2026-07-26 17:54:01.9921909,2026-07-26 18:30:55.2347494,0\n27,4,2026-07-26 17:54:01.9834928,2026-07-26 18:30:55.2347494,0\n26,4,2026-07-26 17:54:01.9752956,2026-07-26 18:30:55.2347494,0\n24,4,2026-07-26 17:54:01.9533099,2026-07-26 18:30:55.2347494,0\n23,4,2026-07-26 17:54:01.9470869,2026-07-26 18:30:55.2347494,0\n22,4,2026-07-26 17:54:01.9389105,2026-07-26 18:30:55.2347494,0\n21,4,2026-07-26 17:54:01.9307349,2026-07-26 18:30:55.2347494,0\n20,4,2026-07-26 17:54:01.9225702,2026-07-26 18:30:55.2347494,0\n19,4,2026-07-26 17:54:01.9184913,2026-07-26 18:30:55.2347494,0\n18,4,2026-07-26 17:54:01.9103020,2026-07-26 18:30:55.2347494,0\n17,4,2026-07-26 17:54:01.9021675,2026-07-26 18:30:55.2347494,0\n16,4,2026-07-26 17:54:01.8939960,2026-07-26 18:30:55.2347494,0\n15,4,2026-07-26 17:54:01.8899139,2026-07-26 18:30:55.2347494,0\n14,4,2026-07-26 17:54:01.8817485,2026-07-26 18:30:55.2347494,0\n13,4,2026-07-26 17:54:01.8776701,2026-07-26 18:30:55.2347494,0\n12,4,2026-07-26 17:54:01.8695004,2026-07-26 18:30:55.2347494,0\n11,4,2026-07-26 17:54:01.8613216,2026-07-26 18:30:55.2347494,0\n10,4,2026-07-26 17:54:01.8564978,2026-07-26 18:30:55.2347494,0\n9,4,2026-07-26 17:54:01.8483089,2026-07-26 18:30:55.2347494,0\n8,4,2026-07-26 17:54:01.8380207,2026-07-26 18:30:55.2347494,0\n7,4,2026-07-26 17:54:01.8320788,2026-07-26 18:30:55.2347494,0\n6,4,2026-07-26 17:54:01.8279898,2026-07-26 18:30:55.2347494,0\n5,4,2026-07-26 17:54:01.8183088,2026-07-26 18:30:55.2347494,0\n4,4,2026-07-26 17:54:01.8046041,2026-07-26 18:30:55.2347494,0\n3,4,2026-07-26 17:54:01.7963133,2026-07-26 18:30:55.2347494,0\n2,4,2026-07-26 17:54:01.7842632,2026-07-26 18:30:55.2347494,0\n1,4,2026-07-26 17:54:01.6996817,2026-07-26 18:30:55.2347494,0\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 21,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 10,
+      "stdout": "Analytics,102,5251980.9800,3151188.5880\nCloud,89,4442523.1100,2665513.8660\nDevelopment,105,5359772.9500,3215863.7700\nHardware,118,5796803.8200,3478082.2920\nInfrastructure,99,4297242.0100,2578345.2060\nMonitoring,112,5185457.8800,3111274.7280\nSecurity,102,4603883.9800,2762330.3880\nServices,93,4650717.0700,2790430.2420\nSoftware,87,4307889.1300,2575002.6840\nStorage,94,4455884.0600,2673530.4360\n\n(10 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 22,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 50,
+      "stdout": "d\":\"wire_transfer\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-4964\",\"processed\":false,\"discount_code\":null},pending\n4963,2427,61,6,69277.9900,.0000,415667.94000000,2026-07-26 17:54:39.4557814,0xE610,{\"payment_method\":\"ach\",\"terms\":\"net_45\",\"po_number\":\"PO-2026-4963\",\"processed\":false,\"discount_code\":null},completed\n4962,419,719,27,48918.9900,.1500,1122690.82050000,2026-07-26 17:54:39.4516916,0xE610,{\"payment_method\":\"crypto\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-4962\",\"processed\":false,\"discount_code\":\"SAVE15\"},disputed\n4961,1554,84,12,86307.9900,.1500,880341.49800000,2026-07-26 17:54:39.4475988,0xE610,{\"payment_method\":\"crypto\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-4961\",\"processed\":true,\"discount_code\":\"SAVE15\"},refunded\n4960,3158,436,47,81258.9900,.0000,3819172.53000000,2026-07-26 17:54:39.4394245,0xE610,{\"payment_method\":\"credit_card\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-4960\",\"processed\":false,\"discount_code\":null},refunded\n4959,934,989,47,81297.9900,.0000,3821005.53000000,2026-07-26 17:54:39.4312375,0xE610,{\"payment_method\":\"crypto\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-4959\",\"processed\":false,\"discount_code\":null},disputed\n4958,3641,210,33,12266.9900,.1500,344089.06950000,2026-07-26 17:54:39.4230604,0xE610,{\"payment_method\":\"crypto\",\"terms\":\"net_60\",\"po_number\":\"PO-2026-4958\",\"processed\":true,\"discount_code\":\"SAVE15\"},disputed\n4957,998,642,37,72318.9900,.0000,2675802.63000000,2026-07-26 17:54:39.4189692,0xE610,{\"payment_method\":\"ach\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-4957\",\"processed\":false,\"discount_code\":null},completed\n4956,4167,77,16,59903.9900,.0000,958463.84000000,2026-07-26 17:54:39.4107883,0xE610,{\"payment_method\":\"sepa\",\"terms\":\"net_30\",\"po_number\":\"PO-2026-4956\",\"processed\":false,\"discount_code\":null},pending\n4955,780,604,31,13077.9900,.0000,405417.69000000,2026-07-26 17:54:39.4066965,0xE610,{\"payment_method\":\"wire_transfer\",\"terms\":\"immediate\",\"po_number\":\"PO-2026-4955\",\"processed\":false,\"discount_code\":null},completed\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 23,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": "ce,Specialist,183365.00,2026-07-05,1168\n1317,Gwendolyn Valdez,gwendolyn.valdez1317@corp.com,Finance,Senior Engineer,189986.00,2026-07-04,865\n800,Minnie Cisneros,minnie.cisneros800@corp.com,Customer Success,Director,87089.00,2026-07-04,245\n1402,Kendrick Glass,kendrick.glass1402@corp.com,R&D,VP,209914.00,2026-07-03,278\n3660,Wilbur Serrano,wilbur.serrano3660@corp.com,Legal,Specialist,209340.00,2026-07-02,2087\n1527,Wilbert Lambert,wilbert.lambert1527@corp.com,IT,Specialist,60985.00,2026-06-29,577\n4595,Dora Acosta,dora.acosta4595@corp.com,Customer Success,Architect,84019.00,2026-06-28,1924\n3447,Dylan Bradley,dylan.bradley3447@corp.com,IT,Senior Engineer,162561.00,2026-06-27,747\n523,Olivia Ross,olivia.ross523@corp.com,HR,Architect,145981.00,2026-06-25,79\n4941,Melissa Rivera,melissa.rivera4941@corp.com,Finance,Architect,239424.00,2026-06-24,339\n2230,Edward Campbell,edward.campbell2230@corp.com,Customer Success,Specialist,149844.00,2026-06-23,1772\n1870,Kayla Cunningham,kayla.cunningham1870@corp.com,Operations,Analyst,159856.00,2026-06-23,1766\n3564,Darin Pena,darin.pena3564@corp.com,R&D,Specialist,106728.00,2026-06-23,401\n3625,Tracey Johnston,tracey.johnston3625@corp.com,Finance,VP,64338.00,2026-06-23,1045\n1102,Henry Perry,henry.perry1102@corp.com,Finance,Engineer,64353.00,2026-06-21,275\n688,Luis Gutierrez,luis.gutierrez688@corp.com,Operations,Analyst,88560.00,2026-06-20,55\n3605,Rene Ware,rene.ware3605@corp.com,Marketing,Manager,190996.00,2026-06-20,142\n2373,Pablo Lynn,pablo.lynn2373@corp.com,HR,Architect,69313.00,2026-06-19,397\n2491,Jerry Long,jerry.long2491@corp.com,Operations,Coordinator,145945.00,2026-06-19,2052\n406,Lucia Mclean,lucia.mclean406@corp.com,Legal,Architect,179519.00,2026-06-15,354\n4852,Minnie Cisneros,minnie.cisneros4852@corp.com,R&D,Manager,225161.00,2026-06-15,2153\n4786,Faith Bender,faith.bender4786@corp.com,Operations,Analyst,139170.00,2026-06-15,554\n306,Maria Garcia,maria.garcia306@corp.com,IT,Senior Engineer,214667.00,2026-06-12,207\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 24,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "16.73000000,358316.73000000,1\n2026-07-26 17:54:39.5718728,1,2089790.67000000,2089790.67000000,1\n2026-07-26 17:54:39.5636937,1,3117785.62000000,3117785.62000000,1\n2026-07-26 17:54:39.5596034,1,119483.98000000,119483.98000000,1\n2026-07-26 17:54:39.5514266,1,310199.60000000,310199.60000000,1\n2026-07-26 17:54:39.5473101,1,1510143.84000000,1510143.84000000,1\n2026-07-26 17:54:39.5391738,1,2815699.50000000,2815699.50000000,1\n2026-07-26 17:54:39.5350816,1,3144959.58000000,3144959.58000000,1\n2026-07-26 17:54:39.5309935,1,414959.58000000,414959.58000000,1\n2026-07-26 17:54:39.5227896,1,424972.62150000,424972.62150000,1\n2026-07-26 17:54:39.5186972,1,727662.69000000,727662.69000000,1\n2026-07-26 17:54:39.5105167,1,2271398.65350000,2271398.65350000,1\n2026-07-26 17:54:39.5064271,1,1957524.75000000,1957524.75000000,1\n2026-07-26 17:54:39.4966912,1,1377839.80000000,1377839.80000000,1\n2026-07-26 17:54:39.4925991,1,23264.97000000,23264.97000000,1\n2026-07-26 17:54:39.4885095,1,3673239.60000000,3673239.60000000,1\n2026-07-26 17:54:39.4803089,1,854881.86000000,854881.86000000,1\n2026-07-26 17:54:39.4762411,1,332027.54000000,332027.54000000,1\n2026-07-26 17:54:39.4680534,1,3606611.63000000,3606611.63000000,1\n2026-07-26 17:54:39.4639628,1,1348502.61000000,1348502.61000000,1\n2026-07-26 17:54:39.4557814,1,415667.94000000,415667.94000000,1\n2026-07-26 17:54:39.4516916,1,1122690.82050000,1122690.82050000,1\n2026-07-26 17:54:39.4475988,1,880341.49800000,880341.49800000,1\n2026-07-26 17:54:39.4394245,1,3819172.53000000,3819172.53000000,1\n2026-07-26 17:54:39.4312375,1,3821005.53000000,3821005.53000000,1\n2026-07-26 17:54:39.4230604,1,344089.06950000,344089.06950000,1\n2026-07-26 17:54:39.4189692,1,2675802.63000000,2675802.63000000,1\n2026-07-26 17:54:39.4107883,1,958463.84000000,958463.84000000,1\n2026-07-26 17:54:39.4066965,1,405417.69000000,405417.69000000,1\n2026-07-26 17:54:39.4026055,1,1075493.86000000,1075493.86000000,1\n2026-07-26 17:54:39.3944246,1,657477.54000000,657477.54000000,1\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 25,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 4,
+      "stdout": "5002,2026-07-26 18:18:55.1160048,3,5,4999.9900,.1000,22499.95500000,pending\n5001,2026-07-26 18:18:55.1160048,1,2,49999.9900,.0000,99999.98000000,pending\n5004,2026-07-26 18:21:09.7930134,3,5,4999.9900,.1000,22499.95500000,pending\n5003,2026-07-26 18:21:09.7930134,1,2,49999.9900,.0000,99999.98000000,pending\n\n(4 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 26,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.13,
+      "row_count": 3142,
+      "stdout": "us Alexander,2026,NULL,NULL,678614.77000000,NULL\n4939,Myrtle Yates,2026,NULL,NULL,213526.27050000,NULL\n4941,Melissa Rivera,2026,NULL,NULL,621137.86000000,NULL\n4942,Joan Barnes,2026,NULL,NULL,529511.92000000,NULL\n4943,Rex Baird,2026,NULL,NULL,179561.98000000,NULL\n4947,Andrea Reyes,2026,NULL,NULL,2534921.61000000,NULL\n4949,Hector Fuentes,2026,NULL,NULL,678050.91000000,NULL\n4950,Shirley Rogers,2026,NULL,NULL,4391767.91250000,NULL\n4951,Tommy Oneal,2026,NULL,NULL,791493.78000000,NULL\n4953,Leila Roth,2026,NULL,NULL,651939.80000000,NULL\n4954,Laura Parker,2026,NULL,NULL,2053344.21400000,NULL\n4955,Aaron Powell,2026,NULL,NULL,250967.23000000,NULL\n4956,Karen Moore,2026,NULL,NULL,646573.84000000,NULL\n4957,Irma Farrell,2026,NULL,NULL,188775.98000000,NULL\n4960,Manuel Klein,2026,NULL,NULL,1092622.18100000,NULL\n4961,Stephanie Roberts,2026,NULL,NULL,15626.97000000,NULL\n4963,Jessica Wilson,2026,NULL,NULL,6184953.79350000,NULL\n4966,Gary Stewart,2026,NULL,NULL,793257.79250000,NULL\n4967,Salvatore Odonnell,2026,NULL,NULL,3664840.33000000,NULL\n4969,Mable Norton,2026,NULL,NULL,2141124.80000000,NULL\n4971,Marcia Jennings,2026,NULL,NULL,3475223.44000000,NULL\n4972,Jessica Wilson,2026,NULL,NULL,25976.79000000,NULL\n4973,Rolland Buck,2026,NULL,NULL,2417916.29000000,NULL\n4977,Maria Garcia,2026,NULL,NULL,4399202.25000000,NULL\n4978,Marcie Franco,2026,NULL,NULL,90725.98000000,NULL\n4979,Patrick Price,2026,NULL,NULL,2050333.78000000,NULL\n4981,Timothy Gomez,2026,NULL,NULL,445211.94000000,NULL\n4982,Iva Wolf,2026,NULL,NULL,5468147.10000000,NULL\n4984,Jacob Collins,2026,NULL,NULL,254603.58000000,NULL\n4985,Rolando Herman,2026,NULL,NULL,5858341.55000000,NULL\n4986,Jeannette Norton,2026,NULL,NULL,5302722.36600000,NULL\n4989,Shirley Rogers,2026,NULL,NULL,2058635.69000000,NULL\n4991,Curt Macdonald,2026,NULL,NULL,1870239.68000000,NULL\n4992,Leigh Leach,2026,NULL,NULL,308393.73000000,NULL\n4995,Chase Fernandez,2026,NULL,NULL,76463.98000000,NULL\n4998,Ruby Stone,2026,NULL,NULL,1251275.78000000,NULL\n\n(3142 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 27,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 50,
+      "stdout": "Duncan,2026,Q3,244999.87000000\n7,Stephen Morgan,2026,Q3,36811.99000000\n9,Pedro Espinoza,2026,Q3,3661956.39200000\n11,Catherine Hughes,2026,Q3,148567.93000000\n12,Reba Tyler,2026,Q3,628509.90000000\n14,Sondra Bean,2026,Q3,278754.95000000\n15,Jennie Salinas,2026,Q3,3069263.67000000\n16,Lucy Nash,2026,Q3,545553.55300000\n17,Celia Franco,2026,Q3,3901247.52000000\n19,Bradford Mcclure,2026,Q3,822504.87000000\n20,Sherman Bass,2026,Q3,4779300.20000000\n21,Kendrick Glass,2026,Q3,2757406.71000000\n22,Rashad Villarreal,2026,Q3,339145.96950000\n23,Alfonso Friedman,2026,Q3,259007.52000000\n25,Steven Walker,2026,Q3,2189123.51000000\n26,Wayne Wagner,2026,Q3,2315249.34000000\n28,Cody Parsons,2026,Q3,197250.65150000\n30,Bennie Duffy,2026,Q3,2313167.61000000\n33,Victoria Willis,2026,Q3,187649.75000000\n34,Effie Hale,2026,Q3,388568.83000000\n35,George Hall,2026,Q3,2163263.62000000\n36,Willie Nichols,2026,Q3,1922912.37000000\n37,Jennifer Williams,2026,Q3,88083.98000000\n39,Elva Roach,2026,Q3,7507584.99000000\n40,Lucile Sheppard,2026,Q3,4530911.52000000\n41,Elvira Mclean,2026,Q3,2510654.65000000\n42,Ellen Carr,2026,Q3,410369.85000000\n45,Maria Garcia,2026,Q3,5143454.21000000\n46,Ashley Robinson,2026,Q3,716117.74000000\n49,Joseph Gonzalez,2026,Q3,8117457.14000000\n51,Myron Sexton,2026,Q3,4525984.25000000\n52,Doris Orr,2026,Q3,6563418.85000000\n53,Robin Winters,2026,Q3,3508697.20000000\n54,Zachary Romero,2026,Q3,2370455.27000000\n55,Doris Orr,2026,Q3,992214.65000000\n56,Helen Cox,2026,Q3,2901324.69700000\n57,Matthew Thompson,2026,Q3,772575.72000000\n58,Joanna Floyd,2026,Q3,876829.65000000\n59,Sterling Glass,2026,Q3,1246112.59000000\n60,Etta Rosales,2026,Q3,1608769.80000000\n63,Johnnie Boyer,2026,Q3,3577111.56000000\n65,Katherine Brooks,2026,Q3,1232114.58000000\n69,Imogene Conley,2026,Q3,7764153.92000000\n70,Eunice Conley,2026,Q3,3383159.60000000\n71,Benjamin Ward,2026,Q3,269153.81000000\n72,Ollie Paul,2026,Q3,2981422.67000000\n73,Juan Elliott,2026,Q3,3839367.97250000\n74,Robert Williamson,2026,Q3,507859.55550000\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 28,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 2.38,
+      "row_count": 100,
+      "stdout": "1\n1,9,Pedro Espinoza,1\n1,8,Lori Marshall,1\n1,7,Stephen Morgan,1\n1,6,Russell Duncan,1\n1,5,Leigh Leach,1\n1,4,Lorenzo Munoz,1\n1,3,Antoinette Barrera,1\n1,2,Elma Salinas,1\n2,45,Maria Garcia,2\n2,137,Robert Johnson,2\n2,195,Bret Hays,2\n2,320,Sharon Turner,2\n2,3676,Teresa Alexander,2\n3,51,Myron Sexton,2\n3,1056,Velma Brennan,2\n3,2433,Elvira Mclean,2\n3,3739,Ralph Olson,2\n3,4427,Nadine Grimes,2\n4,11,Catherine Hughes,2\n4,40,Lucile Sheppard,2\n4,59,Sterling Glass,2\n4,214,Verna Krause,2\n4,420,Willie Nichols,2\n4,1501,Hannah Graham,2\n4,2681,Rene Ware,2\n5,218,Joanna Floyd,2\n5,747,Rolando Hammond,2\n5,1719,Jimmie Hooper,2\n5,3818,Patricia Davis,2\n5,4107,Wayne Wagner,2\n6,12,Reba Tyler,2\n6,27,Thaddeus Conway,2\n6,57,Matthew Thompson,2\n6,76,Grant Sutton,2\n6,201,Timothy Gomez,2\n6,1547,Claude Blackburn,2\n6,2948,Alan Pierce,2\n7,36,Willie Nichols,2\n7,41,Elvira Mclean,2\n7,876,Madeline Mays,2\n7,942,Deborah Mitchell,2\n7,1080,Robert Johnson,2\n7,1788,Clifford Doyle,2\n8,29,Mariah Jimenez,2\n8,87,Shawn Tate,2\n8,126,Miles Wong,2\n8,321,Eric Cook,2\n8,2617,Nora Andersen,2\n8,4216,Denise Lawrence,2\n9,13,Juanita Krueger,2\n9,25,Steven Walker,2\n9,26,Wayne Wagner,2\n9,327,Matthew Thompson,2\n9,544,Pat Moran,2\n9,1359,Dick Decker,2\n10,15,Jennie Salinas,2\n10,18,Mona Bender,2\n10,640,Naomi Middleton,2\n10,682,Nina Browning,2\n10,2795,Rosie Hobbs,2\n10,3449,Lucille Calderon,2\n10,4738,Denise Grant,2\n11,14,Sondra Bean,3\n11,17,Celia Franco,3\n11,78,Lynne Hale,3\n11,123,Marcus Kirk,3\n11,158,Lionel Bass,3\n11,693,Lowell Gates,3\n11,1428,Michael Brown,3\n11,1493,Christian Woods,3\n11,4403,Carroll Bullock,3\n12,331,Lanny Rubio,3\n12,903,Abraham Pitts,3\n13,23,Alfonso Friedman,3\n13,140,Susie Valencia,3\n13,167,Jayden Williamson,3\n13,389,Claude Blackburn,3\n13,1227,Nadine Grimes,3\n13,1362,Nettie Buckner,3\n13,1392,Margaret Sanchez,3\n13,2994,Minnie Cisneros,3\n14,16,Lucy Nash,4\n14,33,Victoria Willis,4\n14,328,Reid Velasquez,4\n14,364,Anna Ortiz,4\n14,1021,Roy Ray,4\n14,1761,Janice West,4\n15,20,Sherman Bass,3\n15,30,Bennie Duffy,3\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 29,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.15,
+      "row_count": 100,
+      "stdout": "Success,Elijah Andrews,Detail,1,2302789.65000000,2302789.65000000\nCustomer Success,Elizabeth Martinez,Detail,1,2243396.59000000,2243396.59000000\nCustomer Success,Elva Roach,Detail,1,1214817.78000000,1214817.78000000\nCustomer Success,Emmett Barber,Detail,2,2843188.42000000,1421594.21000000\nCustomer Success,Erich Floyd,Detail,1,84947.28300000,84947.28300000\nCustomer Success,Esperanza Middleton,Detail,1,750419.91000000,750419.91000000\nCustomer Success,Essie Orr,Detail,1,744351.92000000,744351.92000000\nCustomer Success,Felix Whitehead,Detail,5,4511110.07000000,902222.01400000\nCustomer Success,Francisca Ware,Detail,1,1919249.55000000,1919249.55000000\nCustomer Success,Freddie Rubio,Detail,3,1827014.15000000,609004.71666666\nCustomer Success,Gary Stewart,Detail,2,5069900.27000000,2534950.13500000\nCustomer Success,Genevieve Horn,Detail,2,3552417.08000000,1776208.54000000\nCustomer Success,Gerald Bryant,Detail,6,7145020.40000000,1190836.73333333\nCustomer Success,Gilbert Doyle,Detail,1,116223.98000000,116223.98000000\nCustomer Success,Glenda Reid,Detail,1,1242903.63000000,1242903.63000000\nCustomer Success,Grace Fox,Detail,1,2482647.72000000,2482647.72000000\nCustomer Success,Graham Pitts,Detail,2,1986590.52000000,993295.26000000\nCustomer Success,Gretchen Barrera,Detail,1,123095.96000000,123095.96000000\nCustomer Success,Guadalupe Stanley,Detail,1,2449523.67000000,2449523.67000000\nCustomer Success,Guillermo Gates,Detail,1,2097039.56000000,2097039.56000000\nCustomer Success,Gustavo Pitts,Detail,5,6135073.51800000,1227014.70360000\nCustomer Success,Hannah Graham,Detail,5,8185877.52350000,1637175.50470000\nCustomer Success,Harold Reynolds,Detail,1,1960991.52000000,1960991.52000000\nCustomer Success,Hector Lambert,Detail,1,579014.91000000,579014.91000000\nCustomer Success,Henry Perry,Detail,1,1813779.54000000,1813779.54000000\nCustomer Success,Imogene Conley,Detail,1,1652429.74000000,1652429.74000000\nCustomer Success,Inez Rollins,Detail,1,262383.84000000,262383.84000000\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 30,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.13,
+      "row_count": 100,
+      "stdout": "63000000\nAlex Banks,2026-07-26 17:54:29.8293084,2127758.63000000,5207450.83000000,1,770728.83000000,NULL\nAlexander Gray,2026-07-26 17:54:01.9752956,1232659.87000000,1232659.87000000,5,NULL,34635.72000000\nAlexander Gray,2026-07-26 17:54:12.0909178,34635.72000000,1267295.59000000,10,1232659.87000000,2086749.66000000\nAlexander Gray,2026-07-26 17:54:12.6236585,2086749.66000000,3354045.25000000,2,34635.72000000,1957887.68000000\nAlexander Gray,2026-07-26 17:54:14.7746908,1957887.68000000,5311932.93000000,3,2086749.66000000,150075.96000000\nAlexander Gray,2026-07-26 17:54:24.1753084,150075.96000000,5462008.89000000,8,1957887.68000000,860180.79000000\nAlexander Gray,2026-07-26 17:54:25.2168612,860180.79000000,6322189.68000000,6,150075.96000000,3558992.63000000\nAlexander Gray,2026-07-26 17:54:25.3980491,3558992.63000000,9881182.31000000,1,860180.79000000,73439.66000000\nAlexander Gray,2026-07-26 17:54:28.4302154,73439.66000000,9954621.97000000,9,3558992.63000000,226865.97000000\nAlexander Gray,2026-07-26 17:54:28.6716762,226865.97000000,10181487.94000000,7,73439.66000000,1874591.77000000\nAlexander Gray,2026-07-26 17:54:36.4944119,1874591.77000000,12056079.71000000,4,226865.97000000,NULL\nAlfonso Friedman,2026-07-26 17:54:02.4697748,4147065.51000000,4147065.51000000,1,NULL,4025825.58000000\nAlfonso Friedman,2026-07-26 17:54:10.2083148,4025825.58000000,8172891.09000000,2,4147065.51000000,2781621.71000000\nAlfonso Friedman,2026-07-26 17:54:15.3043305,2781621.71000000,10954512.80000000,3,4025825.58000000,255015.92000000\nAlfonso Friedman,2026-07-26 17:54:19.0116856,255015.92000000,11209528.72000000,7,2781621.71000000,388478.87000000\nAlfonso Friedman,2026-07-26 17:54:26.5983029,388478.87000000,11598007.59000000,5,255015.92000000,259007.52000000\nAlfonso Friedman,2026-07-26 17:54:26.6976589,259007.52000000,11857015.11000000,6,388478.87000000,172358.70750000\nAlfonso Friedman,2026-07-26 17:54:32.2465888,172358.70750000,12029373.81750000,9,259007.52000000,866189.85000000\n\n(100 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 31,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 108.04,
+      "row_count": 50,
+      "stdout": ".380317096537162,POINT (-94.79 -87.5),POINT (-95.11 -87.61)\n2092,4349,12.534474814515036,POINT (-170.82 -64.63),POINT (-170.7 -64.73)\n1325,2261,12.562976710596686,POINT (21.25 -89.17),POINT (19.51 -89.28)\n3229,3874,12.717007961745992,POINT (159.53 84.49),POINT (160.38 84.57)\n2140,2855,12.812665889938168,POINT (-122.6 -10.95),POINT (-122.49 -10.91)\n2981,4327,13.102608088393138,POINT (91.12 76.01),POINT (90.95 76.12)\n1488,2900,13.432103923281941,POINT (-138.38 -89),POINT (-134.73 -88.9)\n414,3570,13.953684087454597,POINT (-22.88 88.92),POINT (-29.46 88.91)\n315,2648,14.000424613047176,POINT (-135.09 83.34),POINT (-135.4 83.22)\n2300,4947,14.122348539852009,POINT (160.84 8.66),POINT (160.74 8.58)\n159,1888,14.228344179835725,POINT (-21.43 -11.09),POINT (-21.55 -11.14)\n1325,1484,14.530040705503177,POINT (21.25 -89.17),POINT (21.61 -89.3)\n1492,3113,14.699931379429589,POINT (162.04 87.13),POINT (160.36 87.03)\n779,1115,14.954367722567961,POINT (177.98 -77.87),POINT (177.39 -77.82)\n199,3590,15.391559415675689,POINT (26.63 -82.67),POINT (25.62 -82.72)\n1047,4541,15.564053760089751,POINT (71.16 -89.92),POINT (-97.64 -89.94)\n3986,4043,15.566501288172061,POINT (58.35 -87.68),POINT (55.17 -87.63)\n2643,3981,15.636609468230874,POINT (-26.82 -87.67),POINT (-29.18 -87.57)\n784,1003,15.637180120020854,POINT (-120.08 82.77),POINT (-120.06 82.91)\n1229,3715,15.71899939813977,POINT (154.23 -87.41),POINT (151.29 -87.46)\n680,2888,15.906736435422918,POINT (-171.04 72.76),POINT (-171.13 72.62)\n104,3680,15.995464948648786,POINT (50.41 32.39),POINT (50.58 32.39)\n3166,4677,16.334969785733595,POINT (-2.83 28.36),POINT (-2.69 28.44)\n3587,4080,16.378695539216846,POINT (19.62 -87.96),POINT (16.53 -88.06)\n2045,2800,16.463296360411711,POINT (-129.4 85.55),POINT (-130.92 85.64)\n2563,2658,16.481492558900396,POINT (158.93 74.18),POINT (158.39 74.17)\n3070,3219,16.567524200887064,POINT (88.53 -8.26),POINT (88.44 -8.14)\n1852,2597,16.661423026195617,POINT (-118.36 47.56),POINT (-118.47 47.43)\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 32,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.32,
+      "row_count": 50,
+      "stdout": "002,4602.975332747942,Within Range\n28,619857.13650000,84.670000000000002,-52.079999999999998,4944.7658816471176,Within Range\n29,1021123.87000000,54.909999999999997,-59.039999999999999,1927.2305086396177,Within Range\n30,657243.72000000,-48.390000000000001,-96.439999999999998,10114.881659076624,Outside Range\n31,1077039.80000000,18.809999999999999,-105.54000000000001,3861.4466181239814,Within Range\n32,304867.96000000,-5.3099999999999996,36.590000000000003,12127.571078567096,Outside Range\n33,1546973.82000000,-28.449999999999999,167.12,14367.787237407658,Outside Range\n34,1856831.52000000,88.010000000000005,137.16,5684.3369886909049,Outside Range\n35,582231.72000000,-88.390000000000001,-82.769999999999996,14332.869559855331,Outside Range\n36,2887299.50000000,-21.77,9.1899999999999995,11012.100841773625,Outside Range\n37,1539859.66000000,-18.449999999999999,-157.72999999999999,10816.426833501055,Outside Range\n38,389297.93000000,-31.18,-137.21000000000001,10275.987824889433,Outside Range\n39,72289.95000000,15.390000000000001,19.510000000000002,9200.3467896619331,Outside Range\n40,646428.93000000,25.57,14.59,8093.0666572049158,Outside Range\n41,635114.57700000,14.550000000000001,13.92,8797.9430458263905,Outside Range\n42,3404679.53000000,-13.06,10.66,10505.303211335811,Outside Range\n43,3836468.53000000,-66.900000000000006,-7.4500000000000002,13182.525622877127,Outside Range\n44,106853.89000000,83.599999999999994,79.569999999999993,6139.4740248104463,Outside Range\n45,33201.74000000,63.439999999999998,-134.86000000000001,4630.0139942365804,Within Range\n46,926262.57000000,-22.640000000000001,128.81,17084.668945689373,Outside Range\n47,891955.87000000,-55.579999999999998,-150.75,12885.333401344124,Outside Range\n48,2564549.59000000,52.280000000000001,65.109999999999999,8973.6145017778363,Outside Range\n49,1176897.81000000,39.920000000000002,165.59999999999999,9235.122641270671,Outside Range\n50,604655.82000000,-64.280000000000001,-167.13,14130.786628162667,Outside Range\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 33,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.14,
+      "row_count": 1,
+      "stdout": "15167.390843443118,3,POINT (-0.1278 51.5074)\n\n(1 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 34,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.13,
+      "row_count": 50,
+      "stdout": "3249,1154933.62000000\n261,1511559.80000000\n1257,1265151.72000000\n3581,1135781.81000000\n1589,1824398.53000000\n3178,154865.63950000\n925,1258490.77000000\n4506,51403.99000000\n2585,1002848.71000000\n238,21299.90000000\n1234,950651.82000000\n4529,229829.94000000\n1898,16055.99000000\n2230,320059.96000000\n3865,3077611.66000000\n4197,133881.86000000\n2894,2297009.70000000\n3226,212354.55000000\n23,472432.87000000\n1211,1487474.55000000\n879,1317609.51000000\n1374,396377.91000000\n2136,2827665.54000000\n1875,852553.59000000\n378,3494973.62000000\n1804,2025564.63000000\n2800,1447192.83000000\n4792,450781.91100000\n1042,231648.89000000\n547,118655.82000000\n2539,2090013.66000000\n733,82319.99000000\n2491,209419.63000000\n401,146756.97000000\n3487,569648.53750000\n192,3170690.57000000\n3819,717599.61000000\n2159,2029919.76000000\n2061,2287689.66000000\n501,68079.63000000\n756,152909.91000000\n3750,1887626.79000000\n3009,184291.98000000\n2748,1563191.82000000\n1758,164794.77000000\n4984,265733.81000000\n1781,782414.91000000\n2107,1413950.67000000\n4978,1510143.84000000\n2445,813299.75000000\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 35,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "1,643947.63000000,0\n2,1410849.65000000,0\n3,460292.77350000,0\n4,2804481.59000000,0\n5,741509.65000000,0\n6,77065.87050000,0\n7,661821.59000000,0\n8,990859.80000000,0\n9,474884.68950000,0\n10,577659.66000000,0\n11,3054831.66000000,0\n12,2094255.62000000,0\n13,455069.78000000,0\n14,470949.90000000,1\n15,1952612.73000000,0\n16,1809095.57000000,0\n17,258291.69000000,0\n18,792419.80000000,0\n19,1506327.28750000,0\n20,591293.94000000,0\n21,995303.88000000,0\n22,1136891.66000000,0\n23,472432.87000000,0\n24,1946530.36200000,0\n25,48425.79000000,0\n26,1232659.87000000,0\n27,2509443.72000000,0\n28,619857.13650000,0\n29,1021123.87000000,0\n30,657243.72000000,0\n31,1077039.80000000,0\n32,304867.96000000,0\n33,1546973.82000000,0\n34,1856831.52000000,0\n35,582231.72000000,0\n36,2887299.50000000,0\n37,1539859.66000000,0\n38,389297.93000000,0\n39,72289.95000000,0\n40,646428.93000000,0\n41,635114.57700000,0\n42,3404679.53000000,0\n43,3836468.53000000,0\n44,106853.89000000,0\n45,33201.74000000,0\n46,926262.57000000,0\n47,891955.87000000,0\n48,2564549.59000000,0\n49,1176897.81000000,0\n50,604655.82000000,0\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 36,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "50000,1913619.66062500,4,2026-07-26 17:54:37.3313093\n1575,7567366.05000000,3783683.02500000,2,2026-07-26 17:54:34.4254892\n39,7507584.99000000,2502528.33000000,3,2026-07-26 17:54:31.9103088\n2520,7504896.28850000,2501632.09616666,3,2026-07-26 17:54:37.0065093\n1814,7495439.22000000,3747719.61000000,2,2026-07-26 17:54:34.9804229\n1410,7462744.89000000,2487581.63000000,3,2026-07-26 17:54:33.5256630\n3687,7452079.91000000,2484026.63666666,3,2026-07-26 17:54:34.5194247\n4562,7421323.02000000,2473774.34000000,3,2026-07-26 17:54:32.2343027\n2102,7350547.90000000,1837636.97500000,4,2026-07-26 17:54:38.9366870\n4456,7330897.97000000,2443632.65666666,3,2026-07-26 17:54:28.7248556\n3550,7285456.97000000,2428485.65666666,3,2026-07-26 17:54:24.7852333\n3574,7233861.10000000,2411287.03333333,3,2026-07-26 17:54:32.1713076\n4922,7227353.13000000,3613676.56500000,2,2026-07-26 17:54:27.8104228\n406,7190149.18000000,3595074.59000000,2,2026-07-26 17:54:26.3027710\n1033,7186909.64950000,1437381.92990000,5,2026-07-26 17:54:32.3855040\n2074,7097066.85000000,2365688.95000000,3,2026-07-26 17:54:38.6800982\n1535,6996262.23000000,3498131.11500000,2,2026-07-26 17:54:32.5552133\n1756,6920830.32350000,1730207.58087500,4,2026-07-26 17:54:37.4665953\n898,6913296.26000000,3456648.13000000,2,2026-07-26 17:54:33.6762776\n3568,6905923.96000000,2301974.65333333,3,2026-07-26 17:54:33.5010487\n3234,6894095.65000000,1378819.13000000,5,2026-07-26 17:54:16.1775902\n1750,6889959.96000000,2296653.32000000,3,2026-07-26 17:54:35.9525031\n4332,6810086.82000000,1702521.70500000,4,2026-07-26 17:54:39.4680534\n184,6799473.01450000,1359894.60290000,5,2026-07-26 17:54:38.5942284\n3709,6761673.00000000,1690418.25000000,4,2026-07-26 17:54:28.8070443\n1307,6749097.82350000,3374548.91175000,2,2026-07-26 17:54:29.4573102\n3062,6747972.42000000,1686993.10500000,4,2026-07-26 17:54:30.3575028\n4487,6725543.84000000,2241847.94666666,3,2026-07-26 17:54:36.5442992\n3042,6724961.28000000,3362480.64000000,2,2026-07-26 17:54:36.9901359\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 37,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": null,
+      "stdout": "m,EU,2026-07-07 00:00:00.0000000,502534.00,325\n2309,Customer 1309 GmbH,contact1309@customer.com,EU,2026-07-07 00:00:00.0000000,502153.00,367\n2773,Customer 1773 Inc,contact1773@customer.com,NA,2026-07-06 00:00:00.0000000,936337.00,286\n2027,Customer 1027 Inc,contact1027@customer.com,EU,2026-07-06 00:00:00.0000000,439324.00,270\n1780,Customer 780 Inc,contact780@customer.com,EU,2026-07-06 00:00:00.0000000,620499.00,9\n1265,Customer 265 GmbH,contact265@customer.com,MEA,2026-07-06 00:00:00.0000000,194100.00,361\n2398,Customer 1398 Ltd,contact1398@customer.com,EU,2026-07-05 00:00:00.0000000,120545.00,250\n2581,Customer 1581 GmbH,contact1581@customer.com,EU,2026-07-05 00:00:00.0000000,198015.00,224\n2690,Customer 1690 GmbH,contact1690@customer.com,NA,2026-07-05 00:00:00.0000000,65159.00,27\n2154,Customer 1154 Ltd,contact1154@customer.com,APAC,2026-07-05 00:00:00.0000000,975409.00,268\n2173,Customer 1173 Inc,contact1173@customer.com,LATAM,2026-07-05 00:00:00.0000000,715655.00,32\n2379,Customer 1379 Inc,contact1379@customer.com,LATAM,2026-07-05 00:00:00.0000000,644131.00,175\n2507,Customer 1507 LLC,contact1507@customer.com,EU,2026-07-04 00:00:00.0000000,104535.00,252\n2982,Customer 1982 Inc,contact1982@customer.com,NA,2026-07-04 00:00:00.0000000,147578.00,164\n1814,Customer 814 GmbH,contact814@customer.com,NA,2026-07-04 00:00:00.0000000,775162.00,342\n1138,Customer 138 Ltd,contact138@customer.com,NA,2026-07-04 00:00:00.0000000,675250.00,247\n1241,Customer 241 GmbH,contact241@customer.com,EU,2026-07-04 00:00:00.0000000,995071.00,123\n1307,Customer 307 LLC,contact307@customer.com,MEA,2026-07-04 00:00:00.0000000,902045.00,419\n2965,Customer 1965 Inc,contact1965@customer.com,MEA,2026-07-03 00:00:00.0000000,304571.00,159\n1818,Customer 818 Corp,contact818@customer.com,APAC,2026-07-03 00:00:00.0000000,586335.00,235\n1575,Customer 575 Inc,contact575@customer.com,EU,2026-07-03 00:00:00.0000000,68705.00,481\n2306,Customer 1306 Ltd,contact1306@customer.com,APAC,2026-07-03 00:00:00.0000000,938333.00,396\n",
+      "stderr": ""
+    },
+    {
+      "op": 38,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": " 17:54:42.9942453\n117,LookupData_117_724150845,C,2026-07-26 17:54:42.9942453\n118,LookupData_118_894530977,B,2026-07-26 17:54:42.9983786\n119,LookupData_119_331515888,B,2026-07-26 17:54:42.9983786\n120,LookupData_120_1884739471,D,2026-07-26 17:54:42.9983786\n121,LookupData_121_979138626,D,2026-07-26 17:54:42.9983786\n122,LookupData_122_277810624,A,2026-07-26 17:54:43.0025261\n123,LookupData_123_830577924,C,2026-07-26 17:54:43.0066184\n124,LookupData_124_201124320,E,2026-07-26 17:54:43.0066184\n125,LookupData_125_842583779,D,2026-07-26 17:54:43.0066184\n126,LookupData_126_256850083,C,2026-07-26 17:54:43.0066184\n127,LookupData_127_2013336099,C,2026-07-26 17:54:43.0107022\n128,LookupData_128_1352208231,B,2026-07-26 17:54:43.0147894\n129,LookupData_129_1270422638,E,2026-07-26 17:54:43.0147894\n130,LookupData_130_1119426864,C,2026-07-26 17:54:43.0188726\n131,LookupData_131_1705396546,E,2026-07-26 17:54:43.0188726\n132,LookupData_132_2045188907,B,2026-07-26 17:54:43.0188726\n133,LookupData_133_1529855883,E,2026-07-26 17:54:43.0229633\n134,LookupData_134_2021822938,C,2026-07-26 17:54:43.0229633\n135,LookupData_135_660971844,D,2026-07-26 17:54:43.0270504\n136,LookupData_136_2113880600,E,2026-07-26 17:54:43.0270504\n137,LookupData_137_1138113120,B,2026-07-26 17:54:43.0270504\n138,LookupData_138_344170459,E,2026-07-26 17:54:43.0270504\n139,LookupData_139_173132184,D,2026-07-26 17:54:43.0311362\n140,LookupData_140_1053096393,E,2026-07-26 17:54:43.0311362\n141,LookupData_141_1588390751,A,2026-07-26 17:54:43.0311362\n142,LookupData_142_135201456,D,2026-07-26 17:54:43.0352455\n143,LookupData_143_80442592,A,2026-07-26 17:54:43.0352455\n144,LookupData_144_270437492,A,2026-07-26 17:54:43.0352455\n145,LookupData_145_949062329,B,2026-07-26 17:54:43.0352455\n146,LookupData_146_1065159142,D,2026-07-26 17:54:43.0352455\n147,LookupData_147_755225933,C,2026-07-26 17:54:43.0393799\n148,LookupData_148_1203131319,E,2026-07-26 17:54:43.0393799\n149,LookupData_149_1846502556,C,2026-07-26 17:54:43.0434680\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 39,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 6,
+      "stdout": "2020,23664965.00,486\n2021,24353785.00,511\n2022,24151576.00,487\n2023,25190903.00,519\n2024,25536390.00,511\n2025,24225370.00,486\n\n(6 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 40,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.11,
+      "row_count": 50,
+      "stdout": "720,Dennis Patel,14518950.81000000,1\n2909,Effie Hale,10243409.81000000,1\n1156,Caleb Riley,10193493.76750000,1\n1581,Inez Conley,9552056.51000000,1\n3520,Cathleen Rosario,9077286.09750000,1\n1490,Jerry Long,9074870.79000000,1\n2011,Ellen Carr,8852716.27000000,1\n3530,Effie Hale,8834518.86000000,1\n189,Olivia Ross,8626775.06000000,1\n2184,Vernon Hood,8566289.70000000,1\n787,Leo Velasquez,8396754.10000000,1\n2268,Debra Bennett,8303002.17450000,1\n1664,Dallas Frederick,8253365.85000000,1\n49,Joseph Gonzalez,8117457.14000000,1\n3783,Dolly Lambert,8033542.82000000,1\n613,Bobbie Mccarty,8030261.57000000,1\n2216,Elva Roach,7958147.70500000,1\n4471,Nicholas Morales,7957593.02000000,1\n254,Jeannette Norton,7854346.25200000,1\n69,Imogene Conley,7764153.92000000,1\n4258,Juan Matthews,7663356.73600000,1\n1208,Doris Ruiz,7654478.64250000,1\n1575,Effie Hale,7567366.05000000,1\n39,Elva Roach,7507584.99000000,1\n2520,Etta Rosales,7504896.28850000,1\n1814,Joann Sullivan,7495439.22000000,1\n1410,Christine Wood,7462744.89000000,1\n3687,Evan Chapman,7452079.91000000,1\n4562,Gustavo Pitts,7421323.02000000,1\n2102,Dave Quinn,7350547.90000000,1\n4456,Monte Strong,7330897.97000000,1\n3550,Moshe Stein,7285456.97000000,1\n3574,Jenny Hardin,7233861.10000000,1\n4922,Kurtis Tate,7227353.13000000,1\n406,Lucia Mclean,7190149.18000000,1\n1033,Kurtis Tate,7186909.64950000,1\n2074,Emily King,7097066.85000000,1\n1535,Pat Moran,6996262.23000000,1\n1756,Emmett Barber,6920830.32350000,1\n898,Lenore Gillespie,6913296.26000000,1\n3568,Marcia Jennings,6905923.96000000,1\n3234,Gerald Bryant,6894095.65000000,1\n1750,Eula Lindsey,6889959.96000000,1\n4332,Seth Ellis,6810086.82000000,1\n184,Rocco Parrish,6799473.01450000,1\n3709,Ashley Robinson,6761673.00000000,1\n1307,Micheal Mcgee,6749097.82350000,1\n3062,Mason Greene,6747972.42000000,1\n4487,Bret Hays,6725543.84000000,1\n3042,Rena Eldridge,6724961.28000000,1\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 41,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 0,
+      "stdout": "\n(0 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 42,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 50,
+      "stdout": "1,Rodolfo Gallagher,Sales,179366.00\n2,Elma Salinas,Marketing,230622.00\n3,Antoinette Barrera,R&D,235184.00\n4,Lorenzo Munoz,Marketing,192367.00\n5,Leigh Leach,Finance,54222.00\n6,Russell Duncan,Engineering,80010.00\n7,Stephen Morgan,Marketing,222106.00\n8,Lori Marshall,Legal,227487.00\n9,Pedro Espinoza,R&D,154283.00\n10,Winifred Bender,Legal,214977.00\n11,Catherine Hughes,Operations,77204.00\n12,Reba Tyler,Customer Success,51914.00\n13,Juanita Krueger,Customer Success,78415.00\n14,Sondra Bean,R&D,53531.00\n15,Jennie Salinas,Finance,204510.00\n16,Lucy Nash,Engineering,220302.00\n17,Celia Franco,Customer Success,92857.00\n18,Mona Bender,Customer Success,176860.00\n19,Bradford Mcclure,Marketing,249805.00\n20,Sherman Bass,Operations,134017.00\n21,Kendrick Glass,Marketing,215549.00\n22,Rashad Villarreal,IT,99420.00\n23,Alfonso Friedman,R&D,127976.00\n24,Nicholas Morales,IT,243306.00\n25,Steven Walker,Finance,222981.00\n26,Wayne Wagner,Sales,166108.00\n27,Thaddeus Conway,IT,199665.00\n28,Cody Parsons,Operations,98384.00\n29,Mariah Jimenez,Operations,207473.00\n30,Bennie Duffy,Sales,241798.00\n31,Dewayne Buck,Finance,202857.00\n32,Cecilia Brock,Legal,246649.00\n33,Victoria Willis,Sales,235005.00\n34,Effie Hale,HR,122617.00\n35,George Hall,HR,180315.00\n36,Willie Nichols,HR,83097.00\n37,Jennifer Williams,HR,98999.00\n38,Lenore Gillespie,Operations,149985.00\n39,Elva Roach,Legal,59927.00\n40,Lucile Sheppard,HR,65178.00\n41,Elvira Mclean,Marketing,145740.00\n42,Ellen Carr,Engineering,103629.00\n43,Dylan Bradley,R&D,213731.00\n44,Cathleen Rosario,Legal,102469.00\n45,Maria Garcia,Customer Success,132422.00\n46,Ashley Robinson,Sales,95207.00\n47,Maria Garcia,Legal,156189.00\n48,Joyce Butler,IT,152387.00\n49,Joseph Gonzalez,Operations,200034.00\n50,Grace Fox,Sales,138895.00\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 43,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": "13,Juanita Krueger,juanita.krueger13@corp.com,78415.00\n14,Sondra Bean,sondra.bean14@corp.com,53531.00\n15,Jennie Salinas,jennie.salinas15@corp.com,204510.00\n16,Lucy Nash,lucy.nash16@corp.com,220302.00\n17,Celia Franco,celia.franco17@corp.com,92857.00\n18,Mona Bender,mona.bender18@corp.com,176860.00\n19,Bradford Mcclure,bradford.mcclure19@corp.com,249805.00\n20,Sherman Bass,sherman.bass20@corp.com,134017.00\n21,Kendrick Glass,kendrick.glass21@corp.com,215549.00\n22,Rashad Villarreal,rashad.villarreal22@corp.com,99420.00\n23,Alfonso Friedman,alfonso.friedman23@corp.com,127976.00\n24,Nicholas Morales,nicholas.morales24@corp.com,243306.00\n25,Steven Walker,steven.walker25@corp.com,222981.00\n26,Wayne Wagner,wayne.wagner26@corp.com,166108.00\n27,Thaddeus Conway,thaddeus.conway27@corp.com,199665.00\n28,Cody Parsons,cody.parsons28@corp.com,98384.00\n29,Mariah Jimenez,mariah.jimenez29@corp.com,207473.00\n30,Bennie Duffy,bennie.duffy30@corp.com,241798.00\n31,Dewayne Buck,dewayne.buck31@corp.com,202857.00\n32,Cecilia Brock,cecilia.brock32@corp.com,246649.00\n33,Victoria Willis,victoria.willis33@corp.com,235005.00\n34,Effie Hale,effie.hale34@corp.com,122617.00\n35,George Hall,george.hall35@corp.com,180315.00\n36,Willie Nichols,willie.nichols36@corp.com,83097.00\n37,Jennifer Williams,jennifer.williams37@corp.com,98999.00\n38,Lenore Gillespie,lenore.gillespie38@corp.com,149985.00\n39,Elva Roach,elva.roach39@corp.com,59927.00\n40,Lucile Sheppard,lucile.sheppard40@corp.com,65178.00\n41,Elvira Mclean,elvira.mclean41@corp.com,145740.00\n42,Ellen Carr,ellen.carr42@corp.com,103629.00\n43,Dylan Bradley,dylan.bradley43@corp.com,213731.00\n44,Cathleen Rosario,cathleen.rosario44@corp.com,102469.00\n45,Maria Garcia,maria.garcia45@corp.com,132422.00\n46,Ashley Robinson,ashley.robinson46@corp.com,95207.00\n47,Maria Garcia,maria.garcia47@corp.com,156189.00\n48,Joyce Butler,joyce.butler48@corp.com,152387.00\n49,Joseph Gonzalez,joseph.gonzalez49@corp.com,200034.00\n50,Grace Fox,grace.fox50@corp.com,138895.00\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 44,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.12,
+      "row_count": 0,
+      "stdout": "\n(0 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 45,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": null,
+      "stdout": "m,NULL,NULL\n76,Grant Sutton,Marketing,Director,195699.00,grant.sutton76@corp.com,NULL,NULL\n77,Jeri Charles,Legal,Director,108916.00,jeri.charles77@corp.com,NULL,NULL\n78,Lynne Hale,Legal,Analyst,68356.00,lynne.hale78@corp.com,NULL,NULL\n79,Brittany Arnold,IT,Specialist,113656.00,brittany.arnold79@corp.com,NULL,NULL\n80,Gretchen Barrera,Marketing,Senior Engineer,198834.00,gretchen.barrera80@corp.com,NULL,NULL\n81,Fabian Joseph,Marketing,Consultant,239642.00,fabian.joseph81@corp.com,NULL,NULL\n82,Jana Castaneda,Operations,Engineer,127086.00,jana.castaneda82@corp.com,NULL,NULL\n83,Corey Howell,Marketing,Specialist,151562.00,corey.howell83@corp.com,NULL,NULL\n84,Bobby Cervantes,Customer Success,Consultant,176093.00,bobby.cervantes84@corp.com,NULL,NULL\n85,Rufus Sutton,Finance,Coordinator,190112.00,rufus.sutton85@corp.com,NULL,NULL\n86,Lela Montoya,Sales,Senior Engineer,172878.00,lela.montoya86@corp.com,NULL,NULL\n87,Shawn Tate,Finance,Director,174159.00,shawn.tate87@corp.com,NULL,NULL\n88,Anna Ortiz,IT,Specialist,129086.00,anna.ortiz88@corp.com,NULL,NULL\n89,Ann Marshall,IT,Manager,179561.00,ann.marshall89@corp.com,NULL,NULL\n90,Loren Solis,Sales,Consultant,199731.00,loren.solis90@corp.com,NULL,NULL\n91,Teri Valencia,IT,Coordinator,204185.00,teri.valencia91@corp.com,NULL,NULL\n92,Gary Stewart,Finance,Engineer,49841.00,gary.stewart92@corp.com,NULL,NULL\n93,Julius Wilkins,Marketing,Coordinator,70142.00,julius.wilkins93@corp.com,NULL,NULL\n94,Angelo Nolan,IT,Consultant,122883.00,angelo.nolan94@corp.com,NULL,NULL\n95,Frances Mills,R&D,Engineer,60358.00,frances.mills95@corp.com,NULL,NULL\n96,Alonzo Parrish,Legal,Specialist,105074.00,alonzo.parrish96@corp.com,NULL,NULL\n97,Marshall Barton,Finance,Coordinator,160542.00,marshall.barton97@corp.com,NULL,NULL\n98,Faye Higgins,Marketing,Manager,221939.00,faye.higgins98@corp.com,NULL,NULL\n99,Richard Hernandez,Operations,Consultant,168222.00,richard.hernandez99@corp.com,NULL,NULL\n100,Rudy Black,Sales,Consultant,223274.00,rudy.black100@corp.com,NULL,NULL\n",
+      "stderr": ""
+    },
+    {
+      "op": 46,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 2,
+      "stdout": "\n(2 rows affected)\n15002\n",
+      "stderr": ""
+    },
+    {
+      "op": 47,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.1,
+      "row_count": 2,
+      "stdout": "UPDATE,1,Quantum Database Server Enterprise v2,Quantum Database Server Enterprise v2,54999.9900,54999.9900\nUPDATE,1001,New AI Module 2026,New AI Module 2026,9999.9900,9999.9900\n\n(2 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 48,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 50,
+      "stdout": "1,NULL,NULL,0,Invalid\n2,NULL,NULL,1,Invalid\n3,NULL,NULL,0,Invalid\n4,NULL,NULL,0,Invalid\n5,NULL,NULL,0,Invalid\n6,NULL,NULL,1,Invalid\n7,NULL,NULL,1,Invalid\n8,NULL,NULL,0,Invalid\n9,NULL,NULL,0,Invalid\n10,NULL,NULL,1,Invalid\n11,NULL,NULL,1,Invalid\n12,NULL,NULL,1,Invalid\n13,NULL,NULL,0,Invalid\n14,NULL,NULL,1,Invalid\n15,NULL,NULL,0,Invalid\n16,NULL,NULL,0,Invalid\n17,NULL,NULL,1,Invalid\n18,NULL,NULL,0,Invalid\n19,NULL,NULL,1,Invalid\n20,NULL,NULL,0,Invalid\n21,NULL,NULL,1,Invalid\n22,NULL,NULL,1,Invalid\n23,NULL,NULL,0,Invalid\n24,NULL,NULL,1,Invalid\n25,NULL,NULL,0,Invalid\n26,NULL,NULL,0,Invalid\n27,NULL,NULL,0,Invalid\n28,NULL,NULL,1,Invalid\n29,NULL,NULL,1,Invalid\n30,NULL,NULL,1,Invalid\n31,NULL,NULL,0,Invalid\n32,NULL,NULL,1,Invalid\n33,NULL,NULL,0,Invalid\n34,NULL,NULL,0,Invalid\n35,NULL,NULL,0,Invalid\n36,NULL,NULL,1,Invalid\n37,NULL,NULL,1,Invalid\n38,NULL,NULL,0,Invalid\n39,NULL,NULL,1,Invalid\n40,NULL,NULL,1,Invalid\n41,NULL,NULL,0,Invalid\n42,NULL,NULL,0,Invalid\n43,NULL,NULL,0,Invalid\n44,NULL,NULL,0,Invalid\n45,NULL,NULL,1,Invalid\n46,NULL,NULL,1,Invalid\n47,NULL,NULL,1,Invalid\n48,NULL,NULL,1,Invalid\n49,NULL,NULL,0,Invalid\n50,NULL,NULL,0,Invalid\n\n(50 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 49,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.09,
+      "row_count": 1,
+      "stdout": "4,Engineering,3,sa,sa,SQLCMD\n\n(1 rows affected)\n",
+      "stderr": ""
+    },
+    {
+      "op": 50,
+      "status": "PASS",
+      "exit_code": 0,
+      "elapsed_s": 0.21,
+      "row_count": 6,
+      "stdout": "394439,2026-07-26 17:54:54.0000000 +00:00\n24,0x20EE15FF8FFAFB2A,4975,0.19699839195979899,0.19559738693467338,7.7447236180904522,2026-07-26 17:54:39.7470000 +00:00\n26,0x933F94BE75747FEA,4971,0.13014484007242003,0.12984389458861395,3.0,2026-07-26 17:54:39.7470000 +00:00\n16,0x7DC5283FDA689CD2,4971,0.11672782136391067,0.11594146047073023,0.0,2026-07-26 17:53:59.7170000 +00:00\n20,0xD96CC1CA4C3196D8,971,0.06346446961894954,6.3276004119464463E-2,3.6127703398558189,2026-07-26 17:54:01.4730000 +00:00\n35,0x7104E4994DF727CE,471,5.9116772823779196E-2,5.8823779193205944E-2,3.2547770700636942,2026-07-26 17:54:54.7670000 +00:00\n30,0xA9F32AEF09937C02,971,0.05657157569515963,5.6287332646755922E-2,0.0,2026-07-26 17:54:44.4270000 +00:00\n29,0xFFCE3E40AC384C6D,1971,0.05130035514967022,5.1117199391171993E-2,0.0,2026-07-26 17:54:42.8170000 +00:00\n31,0x104A691FD0A4DFF2,2971,0.04575866711544934,0.04547492426792326,3.1447324133288457,2026-07-26 17:54:48.7470000 +00:00\n18,0xD45CB60427B5C991,971,2.1404737384140064E-2,2.1140061791967046E-2,0.0,2026-07-26 17:54:01.4730000 +00:00\n23,0x77DFD604395798AE,4971,1.9621404144035407E-2,1.9441963387648361E-2,2.0,2026-07-26 17:54:39.7470000 +00:00\n27,0x7AA77CF3EEDEB78F,1971,1.7327752409944188E-2,1.7031456113647894E-2,0.0,2026-07-26 17:54:42.8170000 +00:00\n13,0xD45CB60427B5C991,4971,0.01688593844296922,1.6716153691410177E-2,0.0,2026-07-26 17:53:59.7070000 +00:00\n14,0xD45CB60427B5C991,4971,1.1412190706095353E-2,0.01127459263729632,0.0,2026-07-26 17:53:59.7070000 +00:00\n19,0xD45CB60427B5C991,971,1.0972193614830072E-2,1.0822863027806384E-2,0.0,2026-07-26 17:54:01.4730000 +00:00\n\n(50 rows affected)\nPartitionedSales,1,NULL,364\nPartitionedSales,2,2022,335\nPartitionedSales,3,2023,313\nPartitionedSales,4,2024,311\nPartitionedSales,5,2025,342\nPartitionedSales,6,2026,335\n\n(6 rows affected)\n============================================================\nALL 50 SOPHISTICATED MSSQL OPERATIONS EXECUTED SUCCESSFULLY\n============================================================\n",
+      "stderr": ""
+    }
+  ]
+}
