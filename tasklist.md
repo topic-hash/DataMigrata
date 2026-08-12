@@ -108,10 +108,10 @@
 - [x] 089 schema_benchmark_report.md updated with all 3 variants
 
 ## Wave 6 — Combinatorial Optimization Search
-- [ ] 090 Search harness (op × schema × rewrite × alternative)
-- [ ] 091 Energy measurement per config
-- [ ] 092 search_results.csv populated
-- [ ] 093 Identify global optimum
+- [x] 090 Search harness (op × schema × rewrite × alternative)
+- [x] 091 Energy measurement per config
+- [x] 092 search_results.csv populated
+- [x] 093 Identify global optimum
 
 ## Wave 7 — Final Report & Delivery
 - [ ] 094 FINAL_REPORT.md with energy analysis
