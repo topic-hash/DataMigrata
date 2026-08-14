@@ -1,6 +1,6 @@
 # DataMigrata
 
-> **Intelligent Oracle-to-MSSQL Semantic Translation Middleware**
+> **Intelligent DuckDB-to-MSSQL Semantic Translation Middleware**
 >
 > A universal translation and optimization bridge that autonomously restructures relational data estates into the most efficient MSSQL format possible — while maintaining absolute compatibility with existing Oracle application logic.
 
