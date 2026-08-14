@@ -44,6 +44,29 @@ serde_json = "1"
 # CLI argument parsing
 clap = { version = "4", features = ["derive"] }
 
+# --- Tooling crates (Python script port) ---
+
+# DuckDB embedded — replaces Python duckdb binding
+duckdb = { version = "1", features = ["bundled"] }
+
+# CSV reading/writing (replaces Python csv module)
+csv = "1"
+
+# Regex for T-SQL translation, op splitting, value formatting (replaces Python re)
+regex = "1"
+
+# MD5 hashing for gold-standard comparison (replaces Python hashlib)
+md5 = "0.7"
+
+# Date/time formatting to match MSSQL bcp output (replaces Python datetime)
+chrono = { version = "0.4", features = ["serde"] }
+
+# Decimal precision matching for DECIMAL(p,s) (replaces Python decimal.Decimal)
+rust_decimal = "1"
+
+# Hex encoding for binary data export (replaces Python bytes.hex())
+hex = "0.4"
+
 # NOTE: No TNS/TDS protocol needed. Source is MSSQL T-SQL (read from files).
 # Target is DuckDB (in-process, no network protocol).
 
