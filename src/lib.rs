@@ -24,6 +24,7 @@ pub mod ir;
 pub mod optimizer;
 pub mod codemodel;
 pub mod catalog;
+pub mod tools;
 
 pub use parser::{MssqlDialect, ParseError, ParseResult, MssqlParser};
 pub use ir::{IrError, IrResult, AstToLogicalPlan};
