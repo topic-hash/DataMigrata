@@ -18,3 +18,7 @@
 # Existing (preserved from prior .gitignore)
 sql/*.log
 target/
+
+# Agent tooling — not part of the project
+skills/
+tools/bin/
